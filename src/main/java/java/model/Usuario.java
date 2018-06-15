@@ -1,21 +1,23 @@
+package java.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * A serialização em Java é o processo no qual a instância de um objeto é
+ * transformada em uma sequência de bytes e é útil quando precisamos enviar
+ * objetos pela rede, salvar no disco, ou comunicar de uma JVM com outra.
  */
-
 /**
  *
- * @author Val
+ * @author mayco
  */
 @Entity
-public class Usuario{
+public class Usuario implements Serializable {
+
     @Id
     @GeneratedValue
     private int id;
@@ -28,10 +30,10 @@ public class Usuario{
     @Column(length = 20)
     private int cpf;
 
-     public Usuario() {
-       
+    public Usuario() {
+
     }
-    
+
     public Usuario(int id, String email, String senha, String nome, int cpf) {
         this.id = id;
         this.email = email;
@@ -39,9 +41,7 @@ public class Usuario{
         this.nome = nome;
         this.cpf = cpf;
     }
-    
-    
-    
+
     public int getId() {
         return id;
     }
@@ -81,5 +81,5 @@ public class Usuario{
     public void setCpf(int cpf) {
         this.cpf = cpf;
     }
-    
+
 }

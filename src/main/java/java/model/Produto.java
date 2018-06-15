@@ -1,16 +1,25 @@
 package java.model;
 
-
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import negocio.Categoria;
-import negocio.Tamanho;
-import negocio.Fornecedor;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
+/**
+ * A serialização em Java é o processo no qual a instância de um objeto é
+ * transformada em uma sequência de bytes e é útil quando precisamos enviar
+ * objetos pela rede, salvar no disco, ou comunicar de uma JVM com outra.
+ */
+/**
+ *
+ * @author mayco
+ */
 @Entity
-public class Produto {
+public class Produto implements Serializable {
 
     @Id
     @GeneratedValue
@@ -20,6 +29,7 @@ public class Produto {
     @Column(length = 20)
     private String marca;
     @Column(length = 20)
+    @ManyToMany 
     Categoria categoria;
     @Column(length = 20)
     private String descricao;
@@ -28,12 +38,14 @@ public class Produto {
     @Column(length = 20)
     private String imagem;
     @Column(length = 20)
+    @OneToOne
     Tamanho tamanho;
     @Column(length = 20)
     private Boolean disponivel;
     @Column(length = 20)
     private boolean promocao;
     @Column(length = 20)
+    @OneToMany
     Fornecedor fornecedor;
 
     public Produto() {

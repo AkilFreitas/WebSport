@@ -1,30 +1,44 @@
 package java.model;
 
-
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import negocio.Cliente;
-import negocio.Pagamento;
-import negocio.Produto;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
+ * A serialização em Java é o processo no qual a instância de um objeto é
+ * transformada em uma sequência de bytes e é útil quando precisamos enviar
+ * objetos pela rede, salvar no disco, ou comunicar de uma JVM com outra.
+ */
+/**
+ * Em APIs Java simples, a precisão temporal do tempo não é definida. Ao lidar
+ * com dados temporais, você pode querer descrever a precisão esperada no banco
+ * de dados. Os dados temporais podem ter precisão de DATE, TIME ou TIMESTAMP
+ * (ou seja, a data real, apenas a hora ou ambos). Use a anotação @Temporal para
+ * afinar isso.
+ */
+/**
  *
- * @author paulo
+ * @author mayco
  */
 @Entity
-public class Compra {
+public class Compra implements Serializable {
 
     @Id
     @GeneratedValue
     private int id;
     @Column(length = 20)
-    private Date date;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date data;
     @Column(length = 20)
     private float total;
     @Column(length = 20)
+    @ManyToMany
     private Cliente cliente;
     @Column(length = 20)
     private float frete;
@@ -33,8 +47,10 @@ public class Compra {
     @Column(length = 20)
     private String observacoes;
     @Column(length = 20)
+    @OneToOne
     private Pagamento tipoDePagamento;
     @Column(length = 20)
+    @OneToOne
     private Produto produto;
     @Column(length = 20)
     private Enum pedidoRealizado;
@@ -47,13 +63,15 @@ public class Compra {
     @Column(length = 20)
     private Enum cloncluido;
 
-    Compra() {
-
+    public Compra() {
     }
 
-    public Compra(int id, Date date, float total, Cliente cliente, float frete, boolean concluida, String observacoes, Pagamento tipoDePagamento, Produto produto, Enum pedidoRealizado, Enum pagamentoIdentificado, Enum emProcessamento, Enum eviado, Enum cloncluido) {
+    public Compra(int id, Date data, float total, Cliente cliente, float frete,
+            boolean concluida, String observacoes, Pagamento tipoDePagamento,
+            Produto produto, Enum pedidoRealizado, Enum pagamentoIdentificado,
+            Enum emProcessamento, Enum eviado, Enum cloncluido) {
         this.id = id;
-        this.date = date;
+        this.data = data;
         this.total = total;
         this.cliente = cliente;
         this.frete = frete;
@@ -76,12 +94,12 @@ public class Compra {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getData() {
+        return data;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(Date data) {
+        this.data = data;
     }
 
     public float getTotal() {
