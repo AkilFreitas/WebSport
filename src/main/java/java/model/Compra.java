@@ -1,3 +1,5 @@
+package java.model;
+
 
 import java.util.Date;
 import javax.persistence.Column;

@@ -1,3 +1,5 @@
+package java.model;
+
 
 import com.mysql.fabric.xmlrpc.base.Data;
 import java.util.Date;
