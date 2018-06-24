@@ -20,7 +20,7 @@ public interface RepositorioGenerico<T, G> {
 
     public void alterar(T t);
 
-    public T recuperar(G codigo);
+    public T recuperar(G id);
 
     public void deletar(T t);
 
