@@ -20,7 +20,7 @@ private static PersistenceDao instance = null;
     
     private PersistenceDao(){
     
-        this.emf = Persistence.createEntityManagerFactory("SYSCOLETAAPU");
+        this.emf = Persistence.createEntityManagerFactory("WebSportPU");
     }
     
     public static PersistenceDao getInstance(){
