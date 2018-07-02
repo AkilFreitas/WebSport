@@ -5,6 +5,7 @@
  */
 package bancodedados.dao;
  
+import java.model.Cliente;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -37,7 +38,8 @@ private static PersistenceDao instance = null;
         em.getTransaction().commit();
         em.close(); 
     }
-   public void update (Object o){
+    //atualizar
+   public void  update(Object o){
        EntityManager em = emf.createEntityManager();
        
        em.getTransaction().begin();
@@ -46,8 +48,8 @@ private static PersistenceDao instance = null;
        em.getTransaction().commit();
        em.close();
    }
-   
-   public List read(String sql){
+   //recuperar
+   public List read (String sql){
        EntityManager em = emf.createEntityManager();
        List result = em.createQuery(sql).getResultList();
        em.close();
@@ -62,4 +64,8 @@ private static PersistenceDao instance = null;
        em.getTransaction().commit();
        em.close();
    }
+
+    Cliente update(String sql, String email, String senha) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

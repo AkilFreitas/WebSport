@@ -37,6 +37,7 @@ public class RepositorioCliente implements RepositorioGenerico<Cliente, String> 
                 e.setCpf(t.getCpf());
                 e.setTelefone(t.getTelefone());
                 e.setEmail(t.getEmail());
+                e.setSenha(t.getSenha());
                 e.setDataDeNascimento(t.getDataDeNascimento());
                 e.setSexo(t.getSexo());
                 e.setEndereco(t.getEndereco());

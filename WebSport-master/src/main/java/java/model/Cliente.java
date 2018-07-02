@@ -1,4 +1,5 @@
 package java.model;
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * A serialização em Java é o processo no qual a instância de um objeto é
@@ -17,6 +19,7 @@ import javax.persistence.OneToOne;
  * @author mayco
  */
 @Entity
+@Table(name = "cliente")
 public class Cliente extends Usuario implements Serializable {
 
     @Id
@@ -27,7 +30,7 @@ public class Cliente extends Usuario implements Serializable {
     @Column(length = 20)
     private int rg;
     @Column(length = 20)
-    private int cpf;
+    private String cpf;
     @Column(length = 20)
     private String telefone;
     @Column(length = 20)
@@ -48,7 +51,7 @@ public class Cliente extends Usuario implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(int id, int idade, int rg, int cpf, String telefone, String nome,
+    public Cliente(int id, int idade, int rg, String cpf, String telefone, String nome,
             String email, String dataDeNascimento, String sexo, Endereco endereco, Usuario login) {
         this.id = id;
         this.idade = idade;
@@ -90,12 +93,12 @@ public class Cliente extends Usuario implements Serializable {
     }
 
     @Override
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
     @Override
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -159,6 +162,8 @@ public class Cliente extends Usuario implements Serializable {
         this.login = login;
     }
 
+    
+    
     public void manterCliente() {
 
     }
@@ -170,7 +175,5 @@ public class Cliente extends Usuario implements Serializable {
     public void efetuaCompra() {
 
     }
-
-   
 
 }

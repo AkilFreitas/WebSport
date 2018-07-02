@@ -101,7 +101,7 @@ public class UsuarioTest {
         System.out.println("getCpf");
         Usuario instance = new Usuario();
         int expResult = 0;
-        int result = instance.getCpf();
+        String result = instance.getCpf();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -165,7 +165,7 @@ public class UsuarioTest {
     @Test
     public void testSetCpf() {
         System.out.println("setCpf");
-        int cpf = 0;
+        String cpf = null;
         Usuario instance = new Usuario();
         instance.setCpf(cpf);
         // TODO review the generated test code and remove the default call to fail.

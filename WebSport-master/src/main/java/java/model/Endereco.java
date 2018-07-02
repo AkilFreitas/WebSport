@@ -96,4 +96,8 @@ public class Endereco implements Serializable {
     public void manterEndereco() {
 
     }
+
+    public void setCidade(String garanhuns) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

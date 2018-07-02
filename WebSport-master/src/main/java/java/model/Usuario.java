@@ -28,13 +28,13 @@ public class Usuario implements Serializable {
     @Column(length = 20)
     private String nome;
     @Column(length = 20)
-    private int cpf;
+    private String cpf;
 
     public Usuario() {
 
     }
 
-    public Usuario(int id, String email, String senha, String nome, int cpf) {
+    public Usuario(int id, String email, String senha, String nome, String cpf) {
         this.id = id;
         this.email = email;
         this.senha = senha;
@@ -58,7 +58,7 @@ public class Usuario implements Serializable {
         return nome;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
@@ -78,7 +78,7 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
