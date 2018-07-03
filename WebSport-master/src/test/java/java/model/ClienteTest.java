@@ -16,7 +16,7 @@ import org.junit.runners.MethodSorters;
  * @author mayco
  */
 public class ClienteTest {
-
+/*
     public ClienteTest() {
     }
     Endereco endereco = new Endereco(); //colocar as coisas de end dentro dos ()
@@ -52,4 +52,5 @@ public class ClienteTest {
         clienteRes = negCliente.buscar(cliente.getIdCliente());
         assertEquals(null, clienteRes);
     }
+*/
 }

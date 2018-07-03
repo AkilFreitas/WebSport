@@ -169,7 +169,7 @@ public class Cliente extends Usuario implements Serializable {
     }
 
     public void efetuaLogin() {
-
+          
     }
 
     public void efetuaCompra() {
