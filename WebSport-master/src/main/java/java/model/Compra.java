@@ -59,7 +59,7 @@ public class Compra implements Serializable {
     @Column(length = 20)
     private Enum emProcessamento;
     @Column(length = 20)
-    private Enum eviado;
+    private Enum enviado;
     @Column(length = 20)
     private Enum cloncluido;
 
@@ -69,7 +69,7 @@ public class Compra implements Serializable {
     public Compra(int id, Date data, float total, Cliente cliente, float frete,
             boolean concluida, String observacoes, Pagamento tipoDePagamento,
             Produto produto, Enum pedidoRealizado, Enum pagamentoIdentificado,
-            Enum emProcessamento, Enum eviado, Enum cloncluido) {
+            Enum emProcessamento, Enum enviado, Enum cloncluido) {
         this.id = id;
         this.data = data;
         this.total = total;
@@ -82,7 +82,7 @@ public class Compra implements Serializable {
         this.pedidoRealizado = pedidoRealizado;
         this.pagamentoIdentificado = pagamentoIdentificado;
         this.emProcessamento = emProcessamento;
-        this.eviado = eviado;
+        this.enviado = enviado;
         this.cloncluido = cloncluido;
     }
 
@@ -98,7 +98,7 @@ public class Compra implements Serializable {
         return data;
     }
 
-    public void setDate(Date data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
@@ -126,7 +126,7 @@ public class Compra implements Serializable {
         this.frete = frete;
     }
 
-    public boolean isConcluida() {
+    public boolean getConcluida() {
         return concluida;
     }
 
@@ -182,12 +182,12 @@ public class Compra implements Serializable {
         this.emProcessamento = emProcessamento;
     }
 
-    public Enum getEviado() {
-        return eviado;
+    public Enum getEnviado() {
+        return enviado;
     }
 
-    public void setEviado(Enum eviado) {
-        this.eviado = eviado;
+    public void setEnviado(Enum enviado) {
+        this.enviado = enviado;
     }
 
     public Enum getCloncluido() {

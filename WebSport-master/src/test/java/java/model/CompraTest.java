@@ -87,7 +87,7 @@ public class CompraTest {
         System.out.println("setDate");
         Date data = null;
         Compra instance = new Compra();
-        instance.setDate(data);
+        instance.setData(data);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -181,7 +181,7 @@ public class CompraTest {
         System.out.println("isConcluida");
         Compra instance = new Compra();
         boolean expResult = false;
-        boolean result = instance.isConcluida();
+        boolean result = instance.getConcluida();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -366,11 +366,11 @@ public class CompraTest {
      * Test of getEviado method, of class Compra.
      */
     @Test
-    public void testGetEviado() {
-        System.out.println("getEviado");
+    public void testGetEnviado() {
+        System.out.println("getEnviado");
         Compra instance = new Compra();
         Enum expResult = null;
-        Enum result = instance.getEviado();
+        Enum result = instance.getEnviado();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -380,11 +380,11 @@ public class CompraTest {
      * Test of setEviado method, of class Compra.
      */
     @Test
-    public void testSetEviado() {
-        System.out.println("setEviado");
-        Enum eviado = null;
+    public void testSetEnviado() {
+        System.out.println("setEnviado");
+        Enum enviado = null;
         Compra instance = new Compra();
-        instance.setEviado(eviado);
+        instance.setEnviado(enviado);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
