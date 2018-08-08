@@ -17,8 +17,38 @@ import static org.junit.Assert.*;
  * @author mayco
  */
 public class UsuarioTest {
+  
+/*    @Injectable()
+export class UsuariosService {
+
+  constructor(private router:Router) { }
+
+  usuarios: Usuario[] = [];
+  rota: RouterModule;
+  usuarioLogado: Usuario;
+
+  cadastrarUsuario(usuarioCadastro){
+   this.usuarios.push(usuarioCadastro);
+     return true;
+  }
+
+  autenticacaoLogin(user: String, senha:String){ // LOGIN 
+    for(let x = 0; x < this.usuarios.length; x++){
+      if(this.usuarios[x].user == user && this.usuarios[x].senha == senha){
+        this.usuarioLogado = this.usuarios[x];
+        return this.usuarioLogado;     
+         
+
+      } else {
     
-    public UsuarioTest() {
+      return false;
+      }
+    }
+
+  }
+
+}
+ /*   public UsuarioTest() {
     }
     
     @BeforeClass
@@ -171,5 +201,5 @@ public class UsuarioTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
 }

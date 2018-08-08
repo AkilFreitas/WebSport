@@ -8,11 +8,6 @@ package java.model;
 import Validacao.ValidacaoEndereco;
 import org.junit.Assert;
 import org.junit.Test;
-
-/**
- *
- * @author mayco
- */
 public class EnderecoTest {
     
     public EnderecoTest() {
