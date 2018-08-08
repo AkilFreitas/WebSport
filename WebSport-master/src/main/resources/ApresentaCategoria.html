@@ -13,4 +13,85 @@ and open the template in the editor.
     <body>
         <div>TODO write content</div>
     </body>
+</html><!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+ <?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <ui:include src="menu.xhtml"/>
+        
+        <p:growl id="gro" life="3000"/>
+        
+        <h:form id="formApresentaCategoria">
+            <p:dataTable id="tabelaCategoria" var="item" value="#{CategoriaController.recuperarTodasCategoria()}"
+                         rowKey="#{item.id}" selectionMode="single" selection="#{CategoriaController.selectedCategoria}">
+                <f:facet name="header">
+                    Categoria Cadastrados
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+               
+                <p:column headerText="Descricao" filterBy="#{item.descricao}">
+                    <h:outputText value="#{item.descricao}"/>
+                </p:column>
+                <p:column headerText="Nome" filterBy="#{item.nome}">
+                    <h:outputText value="#{item.nome}"/>
+                </p:column>
+              
+            </p:dataTable>
+            
+            <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaCategoria').show()"
+                             update='dialVisualizaCategoria'/>
+            <p:commandButton value="atualizar" action='alteraCategoria.xhtml'/>
+            
+             <p:commandButton value="Deletar" oncomplete="PF('widDialCategoria').show()"/>
+             
+             <p:confirmDialog id="dialCategoria" message="Deseja realmente apagar a Categoria?"
+                             visible="false" widgetVar="widDialCategoria" showEffect="fade"
+                             hideEffect="explode">
+                 
+                <p:commandButton value="sim" 
+                                 action="#{CategoriaController.deletar(CategoriaController.selectedCategoria)}"
+                                 oncomplete="PF('widDialCategoria').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialCategoria').hide()"/>
+            </p:confirmDialog>
+            
+            <p:dialog id="dialVisualizaCategoria" visible="false" resizable="false"
+                      modal="true" widgetVar="widDialVisualizaCategoria">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id"/>
+                    <h:outputText value="#{CategoriaController.selectedCategoria.id}"/>
+                    
+                    
+                    <h:outputText value="Nome"/>
+                    <h:outputText value="#{CategoriaController.selectedCategoria.nome}"/>
+                    
+                    <h:outputText value="Descricao"/>
+                    <h:outputText value="#{CategoriaController.selectedCategoria.descricao}"/>                   
+                 
+                </p:panelGrid>
+                <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaCategoria').hide()"/>
+            </p:dialog>
+            
+        </h:form>
+    </h:body>
+
+
+
 </html>
+
