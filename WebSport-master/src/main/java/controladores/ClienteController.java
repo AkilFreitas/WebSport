@@ -49,8 +49,8 @@ public class ClienteController {
                 new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso!","O cliente foi alterado com sucesso!"));
     }
     
-    public Cliente recuperarCliente(int codigo){
-        return this.repositorioCliente.recuperar(codigo);
+    public Cliente recuperarCliente(int id){
+        return this.repositorioCliente.recuperar(id);
     }
     
     public void deletar(Cliente c){
