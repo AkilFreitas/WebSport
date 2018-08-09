@@ -18,6 +18,8 @@ import java.model.Cidade;
  *
  * @author Neto
  */
+@ManagedBean
+@SessionScoped
 public class CidadeController {
 
     private RepositorioGenerico<Cidade, Integer> repositorioCidade = null;
