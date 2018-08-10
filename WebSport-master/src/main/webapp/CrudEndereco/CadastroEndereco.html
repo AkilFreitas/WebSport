@@ -21,9 +21,9 @@
                     <p:message for="txtId"/>
 
                     <h:outputText value="Estado*:"/>
-                    <p:inputText id="txtEndereco" value="#{bEndereco.endereco}"
+                    <p:inputText id="txtEstado" value="#{bEndereco.estado}"
                                  required="true" requiredMessage="O campo estado é obrigatório"/>
-                    <p:message for="txtEndereco"/>
+                    <p:message for="txtEstado"/>
                     
                     <h:outputText value="Cidade*:"/>
                     <p:inputText id="txtCidade" value="#{bCidade.cidade}"
@@ -52,19 +52,19 @@
 
                 </p:panelGrid>
                 <p:commandButton value="Cadastrar"
-                                 oncomplete="PF('widDialEstado').show()"/>
+                                 oncomplete="PF('widDialEndereco').show()"/>
             </p:fieldset>
 
-            <p:confirmDialog id="dialEstado" message="Deseja realmente cadastrar o Estado?"
-                             visible="false" widgetVar="widDialEstado" showEffect="fade"
+            <p:confirmDialog id="dialEndereco" message="Deseja realmente cadastrar o endereco?"
+                             visible="false" widgetVar="widDialEndereco" showEffect="fade"
                              hideEffect="explode">
                 <f:facet name="header">
                     ATENÇÃO!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{estadoController.inserir(bEstado.buiderEstado())}"
-                                 oncomplete="PF('widDialEstado').hide()" update="@form"/>
-                <p:commandButton value="não" oncomplete="PF('widDialEstado').hide()"/>
+                                 action="#{enderecoController.inserir(bEndereco.buiderEndereco())}"
+                                 oncomplete="PF('widDialEndereco').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialEndereco').hide()"/>
             </p:confirmDialog>
 
             <p:dialog id="dialConfirm" visible="false" resizable="false" modal="true"
