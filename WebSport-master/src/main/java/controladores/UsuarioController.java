@@ -58,7 +58,7 @@ public class UsuarioController {
                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O usuario foi deletado com sucesso!"));
     }
 
-    public List<Usuario> recuperarTodosClientes() {
+    public List<Usuario> recuperarTodosUsuarios() {
         return this.repositorioUsuario.recuperarTodos();
     }
 
