@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+ <?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <ui:include src="menu.xhtml"/>
+        
+        <p:growl id="gro" life="3000"/>
+        
+        <h:form id="formApresentaCliente">
+            <p:dataTable id="tabelaCliente" var="item" value="#{fornecedorController.recuperarTodosFornecedor()}"
+                         rowKey="#{item.id}" selectionMode="single" selection="#{fornecedorController.selectedCliente}">
+                <f:facet name="header">
+                    Fornecedor Cadastrados
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                </p:column>
+                <p:column headerText="NomeFantasia" filterBy="#{item.nomeFantasia}">
+                    <h:outputText value="#{item.nomeFantasia}"/>
+                </p:column>
+                <p:column headerText="Email" filterBy="#{item.email}">
+                    <h:outputText value="#{item.email}"/>
+                </p:column>
+                <p:column headerText="Cnpj" filterBy="#{item.cnpj}">
+                    <h:outputText value="#{item.cnpj}"/>
+                </p:column>
+                <p:column headerText="Telefone" filterBy="#{item.telefone}">
+                    <h:outputText value="#{item.telefone}"/>
+                </p:column>
+               
+            </p:dataTable>
+            
+            <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaCliente').show()"
+                             update='dialVisualizaCliente'/>
+            <p:commandButton value="atualizar" action='alteraCliente.xhtml'/>
+            
+             <p:commandButton value="Deletar" oncomplete="PF('widDialCliente').show()"/>
+             
+             <p:confirmDialog id="dialCliente" message="Deseja realmente apagar o Cliente?"
+                             visible="false" widgetVar="widDialCliente" showEffect="fade"
+                             hideEffect="explode">
+                 
+                <p:commandButton value="sim" 
+                                 action="#{fornecedorController.deletar(fornecedorController.selectedCliente)}"
+                                 oncomplete="PF('widDialCliente').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialCliente').hide()"/>
+            </p:confirmDialog>
+            
+            <p:dialog id="dialVisualizaCliente" visible="false" resizable="false"
+                      modal="true" widgetVar="widDialVisualizaCliente">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id"/>
+                    <h:outputText value="#{fornecedorController.selectedCliente.id}"/>
+                    
+                    <h:outputText value="Email:"/>
+                    <h:outputText value="#{fornecedorController.selectedUsuario.email}"/>
+                    
+                    <h:outputText value="Cnpj"/>
+                    <h:outputText value="#{fornecedorController.selectedUsuario.cnpj}"/>
+                    
+                    <h:outputText value="NomeFantasia"/>
+                    <h:outputText value="#{fornecedorController.selectedCliente.nomeFantasia}"/>
+                                                      
+                    <h:outputText value="Telefone"/>
+                    <h:outputText value="#{fornecedorController.selectedCliente.telefone}"/>
+                   
+                </p:panelGrid>
+                <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaCliente').hide()"/>
+            </p:dialog>
+            
+        </h:form>
+    </h:body>
+
+
+
+</html>
