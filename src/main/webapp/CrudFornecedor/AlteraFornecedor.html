@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:include src="menu.xhtml"/>
+
+        <h:form id="formAlteraFornecedor">
+            <p:growl id="dro" life="3000"/>
+            <p:fieldset legend="Alteração de Fornecedor">
+                <p:messages/>
+                <p:panelGrid columns="3">
+
+                    <h:outputText value="Id:"/>
+                    <p:inputText value="#{FornecedorController.selectedFornecedor.id}"/>
+                    <h:outputText/>
+
+                    <h:outputText value="Cnpj*:"/>
+                    <p:inputText value="#{FornecedorController.selectedFornecedor.cnpj}" id="txtCnpj"
+                                 required="true" requiredMessage="O campo Cnpj é obrigatorio"/>
+                    <p:message for="txtCnpj"/>
+
+                    <h:outputText value="Telefone*:"/>
+                    <p:inputText value="#{FornecedorController.selectedFornecedor.rg}" id="txtTelefone"
+                                 required="true" requiredMessage="O campo telefone é obrigatorio"/>
+                    <p:message for="txtTelefone"/>
+
+                    <h:outputText value="NomeFantasia*:"/>
+                    <p:inputText value="#{FornecedorController.selectedFornecedor.rg}" id="txtNomeFantasia"
+                                 required="true" requiredMessage="O campo NomeFantasiaé obrigatorio"/>
+                    <p:message for="txtNomeFantasia"/>
+
+                    <h:outputText value="Email*:"/>
+                    <p:inputText value="#{FornecedorController.selectedFornecedor.rg}" id="txtEmail"
+                                 required="true" requiredMessage="O campo email é obrigatorio"/>
+                    <p:message for="txtEmail"/>
+
+                </p:panelGrid>
+                <p:commandButton value="Alterar"
+                                 oncomplete="PF('widDialFornecedor').show()"/>
+            </p:fieldset>
+
+            <p:confirmDialog id="dialFornecedor" message="Deseja realmente alterar o Fornecedor?"
+                             visible="false" widgetVar="widDialFornecedor" showEffect="fade"
+                             hideEffect="explode">
+                <f:facet name="header">
+                    atencão!
+                </f:facet>
+                <p:commandButton value="sim" 
+                                 action="#{FornecedorController.alterar(FornecedorController.selectedFornecedor)}"
+                                 oncomplete="PF('widDialFornecedor').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialFornecedor').hide()"/>
+            </p:confirmDialog>
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:include src="menu.xhtml"/>
+        
+        <h:form id="formAlteraCompra">
+            <p:growl id="dro" life="3000"/>
+            <p:fieldset legend="Alteração de Compras">
+                <p:messages/>
+                <p:panelGrid columns="3">
+                   
+                    
+                    <h:outputText value="Total*:"/>
+                    <p:inputText value="#{CompraController.selectedCompra.total}" id="txtTotal"
+                                 required="true" requiredMessage="O campo total é obrigatorio"/>
+                    <p:message for="txtTotal"/>
+                    
+                    <h:outputText value="Frete*:"/>
+                    <p:inputText value="#{CompraController.selectedCompra.frete}"id="txtFrete"
+                                 required="true" requiredMessage="O campo frete é obrigatorio"/>
+                    <p:message for="txtFrete"/>
+                    
+                    <h:outputText value="Id:"/>
+                    <p:inputText value="#{CompraController.selectedCompra.id}"/>
+                    <h:outputText/>
+                    
+                    <h:outputText value="Concluida:"/>
+                    <p:inputText value="#{CompraController.selectedCompra.concluida}"/>
+                    <h:outputText/>
+                    
+                    <h:outputText value="Observacoes:"/>
+                    <p:inputText value="#{CompraController.selectedCompra.obersavacoes}"/>
+                    <h:outputText/>
+                    
+                    <h:outputText value="Data:"/>
+                    <p:inputText value="#{CompraController.selectedCompra.data}"/>
+                    <h:outputText/>
+                    
+                    <h:outputText value="emProcessamento"/>
+                    <p:inputText value="#{CompraController.selectedCompra.emProcessamento}"/>
+                    <h:outputText/>
+                    
+                    <h:outputText value="enviado"/>
+                    <p:inputText value="#{CompraController.selectedCompra.enviado}"/>
+                    <h:outputText/>
+                    
+                    <h:outputText value="cloncluido"/>
+                    <p:inputText value="#{CompraController.selectedCompra.cloncluido}"/>
+                    <h:outputText/>
+                    
+                    <h:outputText value="Cliente*:"/>
+                    <p:inputText value="#{CompraController.selectedCompra.idade}" id="txtCliente"
+                                 required="true" requiredMessage="O campo cliente é obrigatorio"/>
+                    <p:message for="txtCliente"/>
+                    
+                    <h:outputText value="TipoDePagamento*:"/>
+                    <p:inputText value="#{CompraController.selectedCompra.tipoDePagamento}" id="txtTipoDePagamento"
+                                 required="true" requiredMessage="O campo tipo de pagamento é obrigatorio"/>
+                    <p:message for="txtTipoDePagamento"/>
+                    
+                    <h:outputText value="Produto*:"/>
+                    <p:inputText value="#{CompraController.selectedCompra.produto}" id="txtProduto"
+                                 required="true" requiredMessage="O campo produto é obrigatorio"/>
+                    <p:message for="txtProduto"/>
+                    
+                    
+                    <h:outputText value="PedidoRealizado*:"/>
+                    <p:inputText value="#{CompraController.selectedCompra.pedidoRealizado}" id="txtPedidoRealizado"
+                                 required="true" requiredMessage="O campo pedido realizado é obrigatorio"/>
+                    <p:message for="txtPedidoRealizado"/>
+                    
+                    <h:outputText value="PagamentoIdentificado*:"/>
+                    <p:inputText value="#{CompraController.selectedCompra.pagamentoIdentificadog}" id="txtPagamentoIdentificado"
+                                 required="true" requiredMessage="O campo pagamento identificado é obrigatorio"/>
+                    <p:message for="txtPagamentoIdentificado"/>
+                    
+                    
+                    
+                    
+                </p:panelGrid>
+                <p:commandButton value="Alterar"
+                                 oncomplete="PF('widDialCompra').show()"/>
+            </p:fieldset>
+            
+          <p:confirmDialog id="dialCliente" message="Deseja realmente alterar os dados da compra?"
+                             visible="false" widgetVar="widDialCompra" showEffect="fade"
+                             hideEffect="explode">
+                <f:facet name="header">
+                    atencão!
+                </f:facet>
+                <p:commandButton value="sim" 
+                                 action="#{CompraController.alterar(CompraController.selectedCompra)}"
+                                 oncomplete="PF('widDialCompra').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialCompra').hide()"/>
+            </p:confirmDialog>
+            

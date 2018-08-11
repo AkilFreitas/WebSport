@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+  <?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <ui:include src="menu.xhtml"/>
+        
+        <h:form id="formCadastroCliente">
+            <p:growl id="dro" life="3000"/>
+            <p:fieldset legend="Cadastro de Cliente">
+                <p:messages/>
+                <p:panelGrid columns="3">
+                    <h:outputText value="Id*:"/>
+                    <p:inputText id="txtCodigo" value="#{bCliente.id}"
+                                 required="true" requiredMessage="O campo id é obrigatório"/>
+                    <p:message for="txtId"/>
+                    
+                    <h:outputText value="Login*:"/>
+                    <p:inputText value="#{bUsuario.login}" id="txtLogin"
+                                 required="true" requiredMessage="O campo Login é obrigatório"/>
+                    <p:message for="txtLogin"/>
+                    
+                    <h:outputText value="Senha:"/>
+                    <p:inputText value="#{bUsuario.senha}"/>
+                    <h:outputText/>
+                    
+                    <h:outputText value="Endereço:"/>
+                    <p:inputText value="#{bUsuario.endereco}"/>
+                    <h:outputText/>
+                    
+                    <h:outputText value="Email*:"/>
+                    <p:inputText value="#{bUsuario.email}" id="txtEmail"
+                                 required="true" requiredMessage="O campo email é obrigatório"/>
+                    <p:message for="txtEmail"/>
+                    
+                    <h:outputText value="Nome*:"/>
+                    <p:inputText value="#{bCliente.nome}" id="txtNome"
+                                 required="true" requiredMessage="O campo nome é obrigatório"/>
+                    <p:message for="txtNome"/>
+                    
+                     <h:outputText value="Cpf*:"/>
+                    <p:inputText value="#{bCliente.cpf}" id="txtCpf"
+                                 required="true" requiredMessage="O campo cpf é obrigatório"/>
+                    <p:message for="txtCpf"/>
+                    
+                     <h:outputText value="Rg*:"/>
+                    <p:inputText value="#{bCliente.rg}" id="txtRg"
+                                 required="true" requiredMessage="O campo rg é obrigatório"/>
+                    <p:message for="txtRg"/>
+                    
+                     <h:outputText value="Telefone*:"/>
+                    <p:inputText value="#{bCliente.telefone}" id="txtTelefone"
+                                 required="true" requiredMessage="O campo telefone é obrigatório"/>
+                    <p:message for="txtTelefone"/>
+                    
+                     <h:outputText value="DataDeNascimento*:"/>
+                    <p:inputText value="#{bCliente.dataDeNascimento}" id="txtDataDeNascimento"
+                                 required="true" requiredMessage="O campo dataDeNascimeto é obrigatório"/>
+                    <p:message for="txtDataDeNascimento"/>
+                    
+                </p:panelGrid>
+                <p:commandButton value="Cadastrar"
+                                 oncomplete="PF('widDialCliente').show()"/>
+            </p:fieldset>
+            
+            <p:confirmDialog id="dialCliente" message="Deseja realmente cadastrar o Cliente?"
+                             visible="false" widgetVar="widDialCliente" showEffect="fade"
+                             hideEffect="explode">
+                <f:facet name="header">
+                    atenção!
+                </f:facet>
+                <p:commandButton value="sim" 
+                                 action="#{clienteController.inserir(bCliente.buiderCliente())}"
+                                 oncomplete="PF('widDialCliente').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialCliente').hide()"/>
+            </p:confirmDialog>
+            
+            <p:dialog id="dialConfirm" visible="false" resizable="false" modal="true"
+                      widgetVar="widDialConfirm">
+                <h:outputText value="cadastro realizado com sucesso"/><br/>
+                <p:commandButton value="ok" oncomplete="PF('widDialConfirm').hide()"/>
+            </p:dialog>
+            
+        </h:form>
+    </h:body>
+</html>
+
+
+
+
+</html>

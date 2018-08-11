@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <ui:include src="menu.xhtml"/>
+
+        <h:form id="formCadastroUsuario">
+            <p:growl id="dro" life="3000"/>
+            <p:fieldset legend="Cadastro de Usuario">
+                <p:messages/>
+                <p:panelGrid columns="3">
+                    <h:outputText value="Id*:"/>
+                    <p:inputText id="txtId" value="#{bUsuario.id}"
+                                 required="true" requiredMessage="O campo id é obrigatório"/>
+                    <p:message for="txtId"/>
+
+                    <h:outputText value="Nome*:"/>
+                    <p:inputText value="#{bUsuario.nome}" id="txtNome"
+                                 required="true" requiredMessage="O campo nome é obrigatório"/>
+                    <p:message for="txtNome"/>
+
+                    <h:outputText value="Cpf*:"/>
+                    <p:inputText value="#{bUsuario.cpf}" id="txtCpf"
+                                 required="true" requiredMessage="O campo cpf é obrigatório"/>
+                    <p:message for="txtCpf"/>
+
+                    <h:outputText value="Email*:"/>
+                    <p:inputText value="#{bUsuario.email}" id="txtEmail"
+                                 required="true" requiredMessage="O campo email é obrigatório"/>
+                    <p:message for="txtEmail"/>
+
+                    <h:outputText value="Senha*:"/>
+                    <p:inputText value="#{bUsuario.senha}" id="txtSenha"
+                                 required="true" requiredMessage="O campo senha é obrigatório"/>
+                    <p:message for="txtSenha"/>
+
+                </p:panelGrid>
+
+                <p:commandButton value="Alterar"
+                                 oncomplete="PF('widDialUsuario').show()"/>
+            </p:fieldset>
+
+            <p:confirmDialog id="dialUsuario" message="Deseja realmente alterar o Usuario?"
+                             visible="false" widgetVar="widDialUsuario" showEffect="fade"
+                             hideEffect="explode">
+                <f:facet name="header">
+                    ATENÇÃO!
+                </f:facet>
+                <p:commandButton value="sim" 
+                                 action="#{UsuarioController.alterar(UsuarioController.selectedUsuario)}"
+                                 oncomplete="PF('widDialUsuario').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialUsuario').hide()"/>
+            </p:confirmDialog>
+
+        </h:form>
+    </h:body>
+</html>
+
