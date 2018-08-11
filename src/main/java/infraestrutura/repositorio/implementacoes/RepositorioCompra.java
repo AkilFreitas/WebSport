@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author mayco
+ * @author Akil
  */
 public class RepositorioCompra implements RepositorioGenerico<Compra, String>{
      private List<Compra> compras = null;

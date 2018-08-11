@@ -137,11 +137,11 @@ public class Produto implements Serializable {
         this.disponivel = disponivel;
     }
 
-    public boolean isPromocao() {
+    public boolean getPromocao() {
         return promocao;
     }
 
-    public void setPromocao(boolean promocao) {
+    public void setPromocao(Boolean promocao) {
         this.promocao = promocao;
     }
 
