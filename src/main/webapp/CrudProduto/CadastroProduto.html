@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+  <?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <ui:include src="menu.xhtml"/>
+        
+        <h:form id="formCadastroProduto">
+            <p:growl id="dro" life="3000"/>
+            <p:fieldset legend="Cadastro de Produto">
+                <p:messages/>
+                <p:panelGrid columns="3">
+                    <h:outputText value="Id*:"/>
+                    <p:inputText id="txtCodigo" value="#{bProduto.id}"
+                                 required="true" requiredMessage="O campo id é obrigatório"/>
+                    <p:message for="txtId"/>
+                    
+                    <h:outputText value="Nome*:"/>
+                    <p:inputText value="#{bUsuario.nome}" id="txtNome"
+                                 required="true" requiredMessage="O campo Nome é obrigatório"/>
+                    <p:message for="txtNome"/>
+                    
+                  <h:outputText value="Marca*:"/>
+                    <p:inputText value="#{bUsuario.marca}" id="txtMarca"
+                                 required="true" requiredMessage="O campo marca é obrigatório"/>
+                    <p:message for="txtMarca"/>
+                    
+                  <h:outputText value="Categoria*:"/>
+                    <p:inputText value="#{bUsuario.categoria}" id="txtCategoria"
+                                 required="true" requiredMessage="O campo categoria é obrigatório"/>
+                    <p:message for="txtCategoria"/>
+                    
+                    <h:outputText value="Descricao*:"/>
+                    <p:inputText value="#{bUsuario.descricao}" id="txtDescricao"
+                                 required="true" requiredMessage="O campo descrição é obrigatório"/>
+                    <p:message for="txtDescricao"/>
+                    
+                    <h:outputText value="Preco*:"/>
+                    <p:inputText value="#{bProduto.preco}" id="txtPreco"
+                                 required="true" requiredMessage="O campo preço é obrigatório"/>
+                    <p:message for="txtPreco"/>
+                    
+                     <h:outputText value="Imagem*:"/>
+                    <p:inputText value="#{bProduto.imagem}" id="txtImagem"
+                                 required="true" requiredMessage="O campo imagem é obrigatório"/>
+                    <p:message for="txtImagem"/>
+                    
+                     <h:outputText value="Tamanho*:"/>
+                    <p:inputText value="#{bProduto.tamanho}" id="txtTamanho"
+                                 required="true" requiredMessage="O campo tamanho é obrigatório"/>
+                    <p:message for="txtTamanho"/>
+                    
+                     <h:outputText value="Disponivel*:"/>
+                    <p:inputText value="#{bProduto.disponivel}" id="txtDisponivel"
+                                 required="true" requiredMessage="O campo disponivel é obrigatório"/>
+                    <p:message for="txtDisponivel"/>
+                    
+                     <h:outputText value="Promocao*:"/>
+                    <p:inputText value="#{bProduto.promocao}" id="txtPromocao"
+                                 required="true" requiredMessage="O campo promocao é obrigatório"/>
+                    <p:message for="txtPromocao"/>
+                    
+                      <h:outputText value="Fornecedor*:"/>
+                    <p:inputText value="#{bProduto.fornecedor}" id="txtFornecedor"
+                                 required="true" requiredMessage="O campo fornecedor é obrigatório"/>
+                    <p:message for="txtFornecedor"/>
+                    
+                </p:panelGrid>
+                <p:commandButton value="Cadastrar"
+                                 oncomplete="PF('widDialProduto').show()"/>
+            </p:fieldset>
+            
+            <p:confirmDialog id="dialProduto" message="Deseja realmente cadastrar o Produto?"
+                             visible="false" widgetVar="widDialProduto" showEffect="fade"
+                             hideEffect="explode">
+                <f:facet name="header">
+                    atenção!
+                </f:facet>
+                <p:commandButton value="sim" 
+                                 action="#{produtoController.inserir(bProduto.buiderProduto())}"
+                                 oncomplete="PF('widDialProduto').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialProduto').hide()"/>
+            </p:confirmDialog>
+            
+            <p:dialog id="dialConfirm" visible="false" resizable="false" modal="true"
+                      widgetVar="widDialConfirm">
+                <h:outputText value="cadastro realizado com sucesso"/><br/>
+                <p:commandButton value="ok" oncomplete="PF('widDialConfirm').hide()"/>
+            </p:dialog>
+            
+        </h:form>
+    </h:body>
+</html>
+</html>
