@@ -60,7 +60,7 @@ public class CategoriaModel {
 
     public void deletar(Categoria c) throws Exception {
         if (c != null) {
-            this.repositorioCategoria.inserir(c);
+            this.repositorioCategoria.deletar(c);
         } else {
             throw new Exception("Não foi possivel deletar!!");
         }

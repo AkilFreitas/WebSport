@@ -9,6 +9,7 @@ package controladores;
  *
  * @author Val
  */
+import br.edu.ifpe.websport.model.CompraModel;
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
 import infraestrutura.repositorio.implementacoes.repositorioImplBD.CompraImplBD;
 import java.util.List;
@@ -17,50 +18,74 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import br.edu.ifpe.websport.model.entidades.Compra;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @ManagedBean
 @SessionScoped
 public class CompraController {
-    
-    private RepositorioGenerico<Compra,Integer> repositorioCompra = null;
+
+    CompraModel cm = new CompraModel();
     private Compra compraCadastro;
     private Compra selectedCompra;
-   
+
     Compra compra = new Compra();
-    
-    public CompraController(){
-        this.repositorioCompra = new CompraImplBD();
+
+    public CompraController() {
         this.compraCadastro = new Compra();
     }
-    
-    public void inserir(){
-        
-        this.repositorioCompra.inserir(this.compraCadastro);
-        this.compraCadastro = new Compra();
-        
-        FacesContext.getCurrentInstance().addMessage(null, 
-                new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso!","A compra foi cadastrado com sucesso!"));
+
+    public void inserirAction() {
+
+        try {
+            this.cm.inserir(this.compraCadastro);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A compra foi cadastrado com sucesso!"));
+
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A compra foi cadastrado com sucesso!"));
+        }
     }
-    
-    public void alterar(Compra c){
-        this.repositorioCompra.alterar(c);
-        FacesContext.getCurrentInstance().addMessage(null, 
-                new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso!","A compra foi alterado com sucesso!"));
+
+    public void alterar(Compra c) {
+        try {
+            this.cm.alterar(c);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A compra foi alterado com sucesso!"));
+
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A compra não foi alterado!"));
+        }
     }
-    
-    public Compra recuperarCompra(int codigo){
-        return this.repositorioCompra.recuperar(codigo);
+
+    public Compra recuperarCompra(int id) {
+        return this.cm.recuperarCategoria(id);
     }
-    
-    public void deletar(Compra c){
-        this.repositorioCompra.deletar(c);
-        FacesContext.getCurrentInstance().addMessage(null, 
-                new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso!","A compra foi deletado com sucesso!"));
+
+    public void deletar(Compra c) {
+        try {
+            this.cm.deletar(c);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A compra foi deletado com sucesso!"));
+
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A compra não foi deletado!"));
+        }
     }
-    
-    public List<Compra> recuperarTodosCompras(){
-        return this.repositorioCompra.recuperarTodos();
+
+    public List<Compra> recuperarTodosCompras() {
+        return this.cm.recuperarTodos();
+    }
+
+    public CompraModel getCm() {
+        return cm;
+    }
+
+    public void setCm(CompraModel cm) {
+        this.cm = cm;
     }
 
     public Compra getCompraCadastro() {
@@ -79,14 +104,6 @@ public class CompraController {
         this.selectedCompra = selectedCompra;
     }
 
-    public RepositorioGenerico<Compra,Integer> getRepositorioCompra() {
-        return repositorioCompra;
-    }
-
-    public void setRepositorioCompra(RepositorioGenerico<Compra, Integer> repositorioCompra) {
-        this.repositorioCompra= repositorioCompra;
-    }
-
     public Compra getCompra() {
         return compra;
     }
@@ -94,6 +111,5 @@ public class CompraController {
     public void setCompra(Compra compra) {
         this.compra = compra;
     }
-    
-    
+
 }
