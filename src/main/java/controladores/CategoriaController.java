@@ -51,13 +51,13 @@ public class CategoriaController {
     }
     
     public void alterar(Categoria c){
-        this.repositorioCategoria.alterar(c);
+        this.cm.alterar(c);
         FacesContext.getCurrentInstance().addMessage(null, 
                 new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso!","A categoria foi alterado com sucesso!"));
     }
     
     public Categoria recuperarCategoria(int codigo){
-        return this.repositorioCategoria.recuperar(codigo);
+        return this.cm.recuperar(codigo);
     }
     
     public void deletar(Categoria c){
@@ -85,15 +85,16 @@ public class CategoriaController {
     public void setSelectedCategoria(Categoria selectedCategoria) {
         this.selectedCategoria = selectedCategoria;
     }
-
-    public RepositorioGenerico<Categoria,Integer> getRepositorioCategoria() {
-        return repositorioCategoria;
+/*
+    TÁ COMENTADO PQ EU(MICHAEL) NÃO SEI SE É NECESSARIO ESSA PARTE DO CM
+    public CategoriaModel getCm() {
+        return cm;
     }
 
-    public void setRepositorioCategoria(RepositorioGenerico<Categoria, Integer> repositorioCategoria) {
-        this.repositorioCategoria= repositorioCategoria;
+    public void setCm(CategoriaModel cm) {
+        this.cm = cm;
     }
-
+*/
     public Categoria getCategoria() {
         return categoria;
     }

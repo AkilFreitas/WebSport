@@ -82,6 +82,8 @@ public class Compra implements Serializable {
     @Column(length = 20)
     private boolean concluida;
     @Column(length = 20)
+    private boolean cancelarCompra;
+    @Column(length = 20)
     private String observacoes;
     @Column(length = 20)
     @OneToOne
@@ -95,13 +97,14 @@ public class Compra implements Serializable {
     public Compra() {
     }
 
-    public Compra(int id, Date data, float total, Cliente cliente, float frete, boolean concluida, String observacoes, Pagamento tipoDePagamento, Produto produto, STATUS status) {
+    public Compra(int id, Date data, float total, Cliente cliente, float frete, boolean concluida, boolean cancelarCompra, String observacoes, Pagamento tipoDePagamento, Produto produto, STATUS status) {
         this.id = id;
         this.data = data;
         this.total = total;
         this.cliente = cliente;
         this.frete = frete;
         this.concluida = concluida;
+        this.cancelarCompra = cancelarCompra;
         this.observacoes = observacoes;
         this.tipoDePagamento = tipoDePagamento;
         this.produto = produto;
@@ -156,6 +159,14 @@ public class Compra implements Serializable {
         this.concluida = concluida;
     }
 
+    public boolean isCancelarCompra() {
+        return cancelarCompra;
+    }
+
+    public void setCancelarCompra(boolean cancelarCompra) {
+        this.cancelarCompra = cancelarCompra;
+    }
+
     public String getObservacoes() {
         return observacoes;
     }
@@ -188,6 +199,7 @@ public class Compra implements Serializable {
         this.status = status;
     }
 
+    
     public void manterCompra() {
 
     }

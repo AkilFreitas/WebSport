@@ -201,6 +201,33 @@ public class CompraNGTest {
     }
 
     /**
+     * Teste de método isCancelarCompra, da classe Compra.
+     */
+    @Test
+    public void testIsCancelarCompra() {
+        System.out.println("isCancelarCompra");
+        Compra instance = new Compra();
+        boolean expResult = false;
+        boolean result = instance.isCancelarCompra();
+        assertEquals(result, expResult);
+        // TODO verifica o código de teste gerado e remove a chamada default para falha.
+        fail("O caso de teste \u00e9 um prot\u00f3tipo.");
+    }
+
+    /**
+     * Teste de método setCancelarCompra, da classe Compra.
+     */
+    @Test
+    public void testSetCancelarCompra() {
+        System.out.println("setCancelarCompra");
+        boolean cancelarCompra = false;
+        Compra instance = new Compra();
+        instance.setCancelarCompra(cancelarCompra);
+        // TODO verifica o código de teste gerado e remove a chamada default para falha.
+        fail("O caso de teste \u00e9 um prot\u00f3tipo.");
+    }
+
+    /**
      * Teste de método getObservacoes, da classe Compra.
      */
     @Test
