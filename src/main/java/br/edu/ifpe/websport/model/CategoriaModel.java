@@ -8,10 +8,11 @@ package br.edu.ifpe.websport.model;
 import br.edu.ifpe.websport.model.entidades.Categoria;
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
 import infraestrutura.repositorio.implementacoes.repositorioImplBD.CategoriaImplBD;
+import java.util.List;
 
 /**
  *
- * @author 20151d12gr0316
+ * @author mayco
  */
 public class CategoriaModel {
 
@@ -38,14 +39,36 @@ public class CategoriaModel {
             throw new Exception("Categoria invalida!!");
         }
     }
+
+    /*
+    Conferir com o prof se esse codigo que eu fiz ta certo
+    (Pq na minha logica ta certo mas, tá dando erro na outra classe(CategoriaController)
     
-    public Categoria recuperarCategoria(int codigo) throws Exception{
-        if(codigo != ){
-            return this.repositorioCategoria.recuperar(codigo);
-        }else {
+    public Categoria recuperarCategoria(int id, Object obj) throws Exception {
+        final Categoria other = (Categoria) obj;
+        if (id != other.getId()) {
+            return this.repositorioCategoria.recuperar(id);
+        } else {
             throw new Exception("Falha na recuperação da categoria!!");
         }
-        
+
+    }
+     */
+    public Categoria recuperarCategoria(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void deletar(Categoria c) throws Exception {
+        if (c != null) {
+            this.repositorioCategoria.inserir(c);
+        } else {
+            throw new Exception("Não foi possivel deletar!!");
+        }
+
+    }
+
+    public List<Categoria> recuperarTodos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
