@@ -9,38 +9,45 @@ package controladores;
  *
  * @author Val
  */
+import br.edu.ifpe.websport.model.CategoriaModel;
+import br.edu.ifpe.websport.model.entidades.Categoria;
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
 import infraestrutura.repositorio.implementacoes.repositorioImplBD.CategoriaImplBD;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import java.model.Categoria;
 
 
 @ManagedBean
 @SessionScoped
 public class CategoriaController {
     
-    private RepositorioGenerico<Categoria,Integer> repositorioCategoria = null;
+    CategoriaModel cm = new CategoriaModel();
     private Categoria categoriaCadastro;
     private Categoria selectedCategoria;
    
     Categoria categoria = new Categoria();
     
     public CategoriaController(){
-        this.repositorioCategoria = new CategoriaImplBD();
         this.categoriaCadastro = new Categoria();
     }
     
-    public void inserir(){
+    public void inserirAction(){
         
-        this.repositorioCategoria.inserir(this.categoriaCadastro);
-        this.categoriaCadastro = new Categoria();
-        
-        FacesContext.getCurrentInstance().addMessage(null, 
+        try {
+            this.cm.inserir(this.categoriaCadastro);
+            
+            FacesContext.getCurrentInstance().addMessage(null, 
                 new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso!","A categoria foi cadastrado com sucesso!"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, 
+                new FacesMessage(FacesMessage.SEVERITY_INFO,"Falha!","A categoria não foi cadastrada!"));
+        }
+        
     }
     
     public void alterar(Categoria c){

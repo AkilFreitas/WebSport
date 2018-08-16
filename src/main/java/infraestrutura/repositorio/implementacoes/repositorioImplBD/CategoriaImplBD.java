@@ -5,9 +5,9 @@
  */
 package infraestrutura.repositorio.implementacoes.repositorioImplBD;
 
-import bancodedados.dao.PersistenceDao;
+import br.edu.ifpe.websport.model.dao.PersistenceDao;
+import br.edu.ifpe.websport.model.entidades.Categoria;
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import java.model.Categoria;
 import java.util.List;
 
 /**
