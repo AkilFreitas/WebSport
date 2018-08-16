@@ -7,59 +7,78 @@ package controladores;
 
 /**
  *
- * @author Akil
+ * @author Val e Michael
  */
+import br.edu.ifpe.websport.model.ClienteModel;
+import br.edu.ifpe.websport.model.entidades.Cliente;
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
 import infraestrutura.repositorio.implementacoes.repositorioImplBD.ClienteImplBD;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import br.edu.ifpe.websport.model.entidades.Cliente;
 
 @ManagedBean
 @SessionScoped
 public class ClienteController {
 
-    private RepositorioGenerico<Cliente, Integer> repositorioCliente = null;
+    ClienteModel cm = new ClienteModel();
     private Cliente clienteCadastro;
     private Cliente selectedCliente;
 
     Cliente cliente = new Cliente();
 
     public ClienteController() {
-        this.repositorioCliente = new ClienteImplBD();
         this.clienteCadastro = new Cliente();
     }
 
-    public void inserir() {
+    public void inserirAction() {
 
-        this.repositorioCliente.inserir(this.clienteCadastro);
-        this.clienteCadastro = new Cliente();
+        try {
+            this.cm.inserir(this.clienteCadastro);
 
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O cliente foi cadastrado com sucesso!"));
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O cliente foi cadastrado com sucesso!"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "Ocliente não foi cadastrada!"));
+        }
+
     }
 
-    public void alterar(Cliente c) {
-        this.repositorioCliente.alterar(c);
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O cliente foi alterado com sucesso!"));
+    public void alterarAction(Cliente c) {
+        try {
+            this.cm.alterar(c);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O cliente foi alterado com sucesso!"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O cliente não foi alterado!"));
+        }
+
     }
 
     public Cliente recuperarCliente(int id) {
-        return this.repositorioCliente.recuperar(id);
+        return this.cm.recuperarCliente(id);
     }
 
-    public void deletar(Cliente c) {
-        this.repositorioCliente.deletar(c);
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O cliente foi deletado com sucesso!"));
+    public void deletarAction(Cliente c) {
+        try {
+            this.cm.deletar(c);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O cliente foi deletado com sucesso!"));
+
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falfa!", "O cliente não foi deletado!"));
+        }
     }
 
     public List<Cliente> recuperarTodosClientes() {
-        return this.repositorioCliente.recuperarTodos();
+        return this.cm.recuperarTodos();
     }
 
     public Cliente getClienteCadastro() {
@@ -78,14 +97,17 @@ public class ClienteController {
         this.selectedCliente = selectedCliente;
     }
 
-    public RepositorioGenerico<Cliente, Integer> getRepositorioCliente() {
-        return repositorioCliente;
+    
+    
+    public ClienteModel getCm() {
+        return cm;
     }
 
-    public void setRepositorioCliente(RepositorioGenerico<Cliente, Integer> repositorioCliente) {
-        this.repositorioCliente = repositorioCliente;
+    public void setCm(ClienteModel cm) {
+        this.cm = cm;
     }
-
+     
+    
     public Cliente getCliente() {
         return cliente;
     }
