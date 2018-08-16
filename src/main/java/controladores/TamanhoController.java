@@ -5,70 +5,80 @@
  */
 package controladores;
 
+/**
+ *
+ * @author Val e Michael
+ */
+import br.edu.ifpe.websport.model.TamanhoModel;
+import br.edu.ifpe.websport.model.entidades.Tamanho;
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
 import infraestrutura.repositorio.implementacoes.repositorioImplBD.TamanhoImplBD;
-import br.edu.ifpe.websport.model.entidades.Tamanho;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-/**
- *
- * @author 20151D12GR0227
- */
 @ManagedBean
 @SessionScoped
 public class TamanhoController {
 
-    private RepositorioGenerico<Tamanho, Integer> repositorioTamanho = null;
+    TamanhoModel tm = new TamanhoModel();
     private Tamanho tamanhoCadastro;
     private Tamanho selectedTamanho;
 
-    Tamanho tamnho = new Tamanho();
+    Tamanho tamanho = new Tamanho();
 
     public TamanhoController() {
-        repositorioTamanho = new TamanhoImplBD();
         this.tamanhoCadastro = new Tamanho();
+    }
+
+    public void inserirAction() {
+
+        try {
+            this.tm.inserir(this.tamanhoCadastro);
+
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O tamanho foi cadastrado com sucesso!"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O tamanho não foi cadastrado!"));
+        }
 
     }
 
-    public void inserir() {
+    public void alterarAction(Tamanho c) {
+        try {
+            this.tm.alterar(c);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O tamanho foi alterado com sucesso!"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O tamanho não foi alterado!"));
+        }
 
-        this.repositorioTamanho.inserir(this.tamanhoCadastro);
-        this.tamanhoCadastro = new Tamanho();
-
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O tamanho foi cadastrado com sucesso!"));
-    }
-
-    public void alterar(Tamanho t) {
-        this.repositorioTamanho.alterar(t);
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O tamanho foi alterado com sucesso!"));
     }
 
     public Tamanho recuperarTamanho(int id) {
-        return this.repositorioTamanho.recuperar(id);
+        return this.tm.recuperarTamanho(id);
     }
 
-    public void deletar(Tamanho t) {
-        this.repositorioTamanho.deletar(t);
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O tamanho foi deletado com sucesso!"));
+    public void deletarAction(Tamanho c) {
+        try {
+            this.tm.deletar(c);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O tamanho foi deletado com sucesso!"));
+
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falfa!", "O tamanho não foi deletado!"));
+        }
     }
 
     public List<Tamanho> recuperarTodosTamanhos() {
-        return this.repositorioTamanho.recuperarTodos();
-    }
-
-    public RepositorioGenerico<Tamanho, Integer> getRepositorioTamanho() {
-        return repositorioTamanho;
-    }
-
-    public void setRepositorioTamanho(RepositorioGenerico<Tamanho, Integer> repositorioTamanho) {
-        this.repositorioTamanho = repositorioTamanho;
+        return this.tm.recuperarTodos();
     }
 
     public Tamanho getTamanhoCadastro() {
@@ -87,12 +97,23 @@ public class TamanhoController {
         this.selectedTamanho = selectedTamanho;
     }
 
-    public Tamanho getTamnho() {
-        return tamnho;
+    
+    
+    public TamanhoModel getCm() {
+        return tm;
     }
 
-    public void setTamnho(Tamanho tamnho) {
-        this.tamnho = tamnho;
+    public void setCm(TamanhoModel tm) {
+        this.tm = tm;
+    }
+     
+    
+    public Tamanho getTamanho() {
+        return tamanho;
+    }
+
+    public void setTamanho(Tamanho tamanho) {
+        this.tamanho = tamanho;
     }
 
 }
