@@ -5,8 +5,8 @@
  */
 package br.edu.ifpe.websport.model.dao;
 
-import java.model.Cliente;
-import java.model.Endereco;
+import br.edu.ifpe.websport.model.entidades.Cliente;
+import br.edu.ifpe.websport.model.entidades.Endereco;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;

@@ -4,17 +4,18 @@
  * and open the template in the editor.
  */
 package infraestrutura.repositorio.implementacoes.repositorioImplBD;
-import bancodedados.dao.PersistenceDao;
+
+import br.edu.ifpe.websport.model.dao.PersistenceDao;
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import java.model.EnderecoEntrega;
+import br.edu.ifpe.websport.model.entidades.EnderecoEntrega;
 import java.util.List;
 
 /**
  *
  * @author Neto
  */
-public class EnderecoEntregaImplBD implements RepositorioGenerico<EnderecoEntrega, Integer>{
-    
+public class EnderecoEntregaImplBD implements RepositorioGenerico<EnderecoEntrega, Integer> {
+
     @Override
     public void inserir(EnderecoEntrega t) {
         PersistenceDao.getInstance().persist(t);
@@ -46,5 +47,4 @@ public class EnderecoEntregaImplBD implements RepositorioGenerico<EnderecoEntreg
 
     }
 
-    
 }

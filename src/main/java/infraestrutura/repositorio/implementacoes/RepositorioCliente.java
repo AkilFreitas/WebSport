@@ -6,7 +6,7 @@
 package infraestrutura.repositorio.implementacoes;
 
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import java.model.Cliente;
+import br.edu.ifpe.websport.model.entidades.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class RepositorioCliente implements RepositorioGenerico<Cliente, String> 
                 e.setDataDeNascimento(t.getDataDeNascimento());
                 e.setSexo(t.getSexo());
                 e.setEndereco(t.getEndereco());
-                e.setLogin(t.getLogin());
+                
 
                 return;
             }

@@ -6,13 +6,13 @@
 package infraestrutura.repositorio.implementacoes;
 
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import java.model.Compra;
+import br.edu.ifpe.websport.model.entidades.Compra;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author Akil
+ * @author Akil e Michael
  */
 public class RepositorioCompra implements RepositorioGenerico<Compra, String>{
      private List<Compra> compras = null;
@@ -35,15 +35,20 @@ public class RepositorioCompra implements RepositorioGenerico<Compra, String>{
                 e.setTotal(t.getTotal());
                 e.setCliente(t.getCliente());
                 e.setFrete(t.getFrete());
-                e.setConcluida(t.getConcluida());
                 e.setObservacoes(t.getObservacoes());
                 e.setTipoDePagamento(t.getTipoDePagamento());
                 e.setProduto(t.getProduto());
-                e.setPedidoRealizado(t.getPedidoRealizado());
-                e.setPagamentoIdentificado(t.getPagamentoIdentificado());
-                e.setEmProcessamento(t.getEmProcessamento());
-                e.setEnviado(t.getEnviado());
-                e.setCloncluido(t.getCloncluido());
+                
+                //Eu(Michael) Ps: Falar com o prof para ver se estar certo
+                e.setConcluida(t.isConcluida());
+                e.setCancelarCompra(t.isCancelarCompra());
+                e.setStatus(Compra.STATUS.ENVIADO);
+                e.setStatus(Compra.STATUS.CONCLUIDO);
+                e.setStatus(Compra.STATUS.EM_PROCESSAMENTO);
+                e.setStatus(Compra.STATUS.PAGAMENTO_IDENTIFICADO);
+                e.setStatus(Compra.STATUS.PEDIDO_REALIZADO);
+                
+               
 
                 return;
             }

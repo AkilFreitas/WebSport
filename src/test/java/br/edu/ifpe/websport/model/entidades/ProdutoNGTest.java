@@ -254,14 +254,14 @@ public class ProdutoNGTest {
     }
 
     /**
-     * Teste de método getDisponivel, da classe Produto.
+     * Teste de método isDisponivel, da classe Produto.
      */
     @Test
-    public void testGetDisponivel() {
-        System.out.println("getDisponivel");
+    public void testIsDisponivel() {
+        System.out.println("isDisponivel");
         Produto instance = new Produto();
-        Boolean expResult = null;
-        Boolean result = instance.getDisponivel();
+        boolean expResult = false;
+        boolean result = instance.isDisponivel();
         assertEquals(result, expResult);
         // TODO verifica o código de teste gerado e remove a chamada default para falha.
         fail("O caso de teste \u00e9 um prot\u00f3tipo.");
@@ -273,7 +273,7 @@ public class ProdutoNGTest {
     @Test
     public void testSetDisponivel() {
         System.out.println("setDisponivel");
-        Boolean disponivel = null;
+        boolean disponivel = false;
         Produto instance = new Produto();
         instance.setDisponivel(disponivel);
         // TODO verifica o código de teste gerado e remove a chamada default para falha.

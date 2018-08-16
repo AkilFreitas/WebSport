@@ -43,7 +43,7 @@ public class Produto implements Serializable {
     @OneToOne
     Tamanho tamanho;
     @Column(length = 20)
-    private Boolean disponivel;
+    private boolean disponivel;
     @Column(length = 20)
     private boolean promocao;
     @Column(length = 20)
@@ -53,7 +53,7 @@ public class Produto implements Serializable {
     public Produto() {
     }
 
-    public Produto(int id, String nome, String marca, Categoria categoria, String descricao, float preco, String imagem, Tamanho tamanho, Boolean disponivel, boolean promocao, Fornecedor fornecedor) {
+    public Produto(int id, String nome, String marca, Categoria categoria, String descricao, float preco, String imagem, Tamanho tamanho, boolean disponivel, boolean promocao, Fornecedor fornecedor) {
         this.id = id;
         this.nome = nome;
         this.marca = marca;
@@ -131,11 +131,11 @@ public class Produto implements Serializable {
         this.tamanho = tamanho;
     }
 
-    public Boolean getDisponivel() {
+    public boolean isDisponivel() {
         return disponivel;
     }
 
-    public void setDisponivel(Boolean disponivel) {
+    public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
     }
 
@@ -154,6 +154,8 @@ public class Produto implements Serializable {
     public void setFornecedor(Fornecedor fornecedor) {
         this.fornecedor = fornecedor;
     }
+
+  
 
     public void manterProduto() {
 

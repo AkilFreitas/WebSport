@@ -6,7 +6,7 @@
 package infraestrutura.repositorio.implementacoes;
 
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import java.model.Fornecedor;
+import br.edu.ifpe.websport.model.entidades.Fornecedor;
 import java.util.ArrayList;
 import java.util.List;
 

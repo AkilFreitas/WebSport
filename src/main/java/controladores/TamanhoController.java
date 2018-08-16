@@ -7,7 +7,7 @@ package controladores;
 
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
 import infraestrutura.repositorio.implementacoes.repositorioImplBD.TamanhoImplBD;
-import java.model.Tamanho;
+import br.edu.ifpe.websport.model.entidades.Tamanho;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;

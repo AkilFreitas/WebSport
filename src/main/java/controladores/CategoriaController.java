@@ -50,18 +50,24 @@ public class CategoriaController {
         
     }
     
-    public void alterar(Categoria c){
-        this.cm.alterar(c);
-        FacesContext.getCurrentInstance().addMessage(null, 
+    public void alterarAction(Categoria c){
+        try {
+            this.cm.alterar(c);
+            FacesContext.getCurrentInstance().addMessage(null, 
                 new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso!","A categoria foi alterado com sucesso!"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null, 
+                new FacesMessage(FacesMessage.SEVERITY_INFO,"Falha!","A categoria não foi alterado!"));
+        }
+        
     }
     
     public Categoria recuperarCategoria(int codigo){
-        return this.cm.recuperar(codigo);
+        return this.cm.recuperarCategoria(codigo);
     }
     
     public void deletar(Categoria c){
-        this.repositorioCategoria.deletar(c);
+        this.cm.deletar(c);
         FacesContext.getCurrentInstance().addMessage(null, 
                 new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso!","A categoria foi deletado com sucesso!"));
     }

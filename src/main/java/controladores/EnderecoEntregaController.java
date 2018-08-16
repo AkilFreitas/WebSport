@@ -12,11 +12,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import java.model.EnderecoEntrega;
+import br.edu.ifpe.websport.model.entidades.EnderecoEntrega;
 
 /**
  *
- * @author Neto
+ * @author mayco
  */
 @ManagedBean
 @SessionScoped

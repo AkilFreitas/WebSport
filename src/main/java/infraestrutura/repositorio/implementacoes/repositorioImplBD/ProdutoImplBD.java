@@ -9,9 +9,9 @@ package infraestrutura.repositorio.implementacoes.repositorioImplBD;
  *
  * @author Akil
  */
-import bancodedados.dao.PersistenceDao;
+import br.edu.ifpe.websport.model.dao.PersistenceDao;
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import java.model.Produto;
+import br.edu.ifpe.websport.model.entidades.Produto;
 import java.util.List;
 
 public class ProdutoImplBD implements RepositorioGenerico<Produto, Integer> {

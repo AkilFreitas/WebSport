@@ -9,14 +9,14 @@ import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
 import infraestrutura.repositorio.implementacoes.repositorioImplBD.PagamentoImplBD;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import java.model.Pagamento;
+import br.edu.ifpe.websport.model.entidades.Pagamento;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 /**
  *
- * @author 20151D12GR0227
+ * @author mayco
  */
 @ManagedBean
 @SessionScoped

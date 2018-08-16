@@ -5,7 +5,7 @@
  */
 package br.edu.ifpe.websport.model.dao;
  
-import java.model.Cliente;
+import br.edu.ifpe.websport.model.entidades.Cliente;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

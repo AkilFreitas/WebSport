@@ -16,7 +16,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import java.model.Cliente;
+import br.edu.ifpe.websport.model.entidades.Cliente;
 
 @ManagedBean
 @SessionScoped

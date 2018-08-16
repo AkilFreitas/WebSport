@@ -5,14 +5,14 @@
  */
 package infraestrutura.repositorio.implementacoes.repositorioImplBD;
 
-import bancodedados.dao.PersistenceDao;
+import br.edu.ifpe.websport.model.dao.PersistenceDao;
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import java.model.Pagamento;
+import br.edu.ifpe.websport.model.entidades.Pagamento;
 import java.util.List;
 
 /**
  *
- * @author 20151D12GR0227
+ * @author mayco
  */
 public class PagamentoImplBD implements RepositorioGenerico<Pagamento, Integer> {
 

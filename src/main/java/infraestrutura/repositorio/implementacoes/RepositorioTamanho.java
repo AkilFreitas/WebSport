@@ -6,7 +6,7 @@
 package infraestrutura.repositorio.implementacoes;
 
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import java.model.Tamanho;
+import br.edu.ifpe.websport.model.entidades.Tamanho;
 import java.util.ArrayList;
 import java.util.List;
 

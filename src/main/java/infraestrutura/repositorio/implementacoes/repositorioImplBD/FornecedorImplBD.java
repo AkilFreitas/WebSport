@@ -5,13 +5,9 @@
  */
 package infraestrutura.repositorio.implementacoes.repositorioImplBD;
 
-/**
- *
- * @author Val
- */
-import bancodedados.dao.PersistenceDao;
+import br.edu.ifpe.websport.model.dao.PersistenceDao;
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import java.model.Fornecedor;
+import br.edu.ifpe.websport.model.entidades.Fornecedor;
 import java.util.List;
 
 /**
@@ -52,4 +48,3 @@ public class FornecedorImplBD implements RepositorioGenerico<Fornecedor, Integer
     }
 
 }
-

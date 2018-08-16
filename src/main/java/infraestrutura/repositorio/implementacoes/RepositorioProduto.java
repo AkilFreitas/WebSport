@@ -6,7 +6,7 @@
 package infraestrutura.repositorio.implementacoes;
 
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import java.model.Produto;
+import br.edu.ifpe.websport.model.entidades.Produto;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,8 +38,10 @@ public class RepositorioProduto implements RepositorioGenerico<Produto, String> 
                 e.setPreco(t.getPreco());
                 e.setImagem(t.getImagem());
                 e.setTamanho(t.getTamanho());
-                e.setDisponivel(t.getDisponivel());
-                e.setPromocao(t.getPromocao());
+                //VER COM O PROF ESSA PARTE 
+                e.setDisponivel(t.isDisponivel());
+                e.setPromocao(t.isPromocao());
+                //^-----------------------------^
                 e.setFornecedor(t.getFornecedor());
                   return;
             }
