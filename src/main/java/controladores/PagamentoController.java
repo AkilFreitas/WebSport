@@ -5,22 +5,18 @@
  */
 package controladores;
 
-/**
- *
- * @author Val e Michael
- */
 import br.edu.ifpe.websport.model.PagamentoModel;
 import br.edu.ifpe.websport.model.entidades.Pagamento;
-import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import infraestrutura.repositorio.implementacoes.repositorioImplBD.PagamentoImplBD;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+/**
+ *
+ * @author Val e Michael
+ */
 @ManagedBean
 @SessionScoped
 public class PagamentoController {
@@ -97,8 +93,6 @@ public class PagamentoController {
         this.selectedPagamento = selectedPagamento;
     }
 
-    
-    
     public PagamentoModel getCm() {
         return pm;
     }
@@ -106,8 +100,7 @@ public class PagamentoController {
     public void setCm(PagamentoModel pm) {
         this.pm = pm;
     }
-     
-    
+
     public Pagamento getPagamento() {
         return pagamento;
     }

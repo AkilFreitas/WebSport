@@ -40,7 +40,7 @@ public class CompraModel {
         }
     }
 
-    public Compra recuperarCategoria(int id) {
+    public Compra recuperarCompra(int id) {
         return this.repositorioCompra.recuperar(id);
     }
 

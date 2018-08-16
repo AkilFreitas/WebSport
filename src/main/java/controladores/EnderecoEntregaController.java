@@ -6,16 +6,12 @@
 package controladores;
 
 import br.edu.ifpe.websport.model.EnderecoEntregaModel;
-import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import infraestrutura.repositorio.implementacoes.repositorioImplBD.EnderecoEntregaImplBD;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import br.edu.ifpe.websport.model.entidades.EnderecoEntrega;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -61,20 +57,20 @@ public class EnderecoEntregaController {
     }
 
     public EnderecoEntrega recuperarEnderecoEntrega(int id) {
-        return this.eem.recuperarEndereco(id);
+        return this.eem.recuperarEnderecoEntrega(id);
     }
 
     public void deletar(EnderecoEntrega ee) {
         try {
             this.eem.deletar(ee);
             FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O Endereço de entrega foi deletado com sucesso!"));
- 
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O Endereço de entrega foi deletado com sucesso!"));
+
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O Endereço de entrega não foi deletado!"));
- }
-           }
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O Endereço de entrega não foi deletado!"));
+        }
+    }
 
     public List<EnderecoEntrega> recuperarTodosEnderecosEntregas() {
         return this.eem.recuperarTodos();
@@ -112,5 +108,4 @@ public class EnderecoEntregaController {
         this.enderecoEntrega = enderecoEntrega;
     }
 
-    
 }

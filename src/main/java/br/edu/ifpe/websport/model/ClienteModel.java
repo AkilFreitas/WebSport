@@ -36,7 +36,7 @@ public class ClienteModel {
         if (cliente != null) {
             this.repositorioCliente.alterar(cliente);
         } else {
-            throw new Exception("Cliente invalida!!");
+            throw new Exception("Cliente invalido!!");
         }
     }
 

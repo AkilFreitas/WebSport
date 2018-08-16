@@ -27,7 +27,7 @@ public class EnderecoModel {
         if (endereco != null) {
             this.repositorioEndereco.inserir(endereco);
         } else {
-            throw new Exception("Endereco invalida!!");
+            throw new Exception("Endereço invalido!!");
         }
     }
 
@@ -36,7 +36,7 @@ public class EnderecoModel {
         if (endereco != null) {
             this.repositorioEndereco.alterar(endereco);
         } else {
-            throw new Exception("Endereco invalida!!");
+            throw new Exception("Endereço invalido!!");
         }
     }
 

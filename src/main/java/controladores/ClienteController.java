@@ -5,22 +5,18 @@
  */
 package controladores;
 
-/**
- *
- * @author Val e Michael
- */
 import br.edu.ifpe.websport.model.ClienteModel;
 import br.edu.ifpe.websport.model.entidades.Cliente;
-import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import infraestrutura.repositorio.implementacoes.repositorioImplBD.ClienteImplBD;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+/**
+ *
+ * @author Val e Michael
+ */
 @ManagedBean
 @SessionScoped
 public class ClienteController {
@@ -44,7 +40,7 @@ public class ClienteController {
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O cliente foi cadastrado com sucesso!"));
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "Ocliente não foi cadastrada!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O cliente não foi cadastrada!"));
         }
 
     }
@@ -73,7 +69,7 @@ public class ClienteController {
 
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falfa!", "O cliente não foi deletado!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O cliente não foi deletado!"));
         }
     }
 
@@ -97,8 +93,6 @@ public class ClienteController {
         this.selectedCliente = selectedCliente;
     }
 
-    
-    
     public ClienteModel getCm() {
         return cm;
     }
@@ -106,8 +100,7 @@ public class ClienteController {
     public void setCm(ClienteModel cm) {
         this.cm = cm;
     }
-     
-    
+
     public Cliente getCliente() {
         return cliente;
     }

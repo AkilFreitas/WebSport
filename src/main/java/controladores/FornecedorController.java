@@ -5,12 +5,7 @@
  */
 package controladores;
 
-/**
- *
- * @author Val
- */
-import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import infraestrutura.repositorio.implementacoes.repositorioImplBD.FornecedorImplBD;
+import br.edu.ifpe.websport.model.FornecedorModel;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -18,56 +13,80 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import br.edu.ifpe.websport.model.entidades.Fornecedor;
 
-
+/**
+ *
+ * @author Val e Michael
+ */
 @ManagedBean
 @SessionScoped
 public class FornecedorController {
-    
-    private RepositorioGenerico<Fornecedor,Integer> repositorioFornecedor = null;
+
+    FornecedorModel fm = new FornecedorModel();
     private Fornecedor clienteCadastro;
     private Fornecedor selectedFornecedor;
-   
+
     Fornecedor cliente = new Fornecedor();
-    
-    public FornecedorController(){
-        this.repositorioFornecedor = new FornecedorImplBD();
+
+    public FornecedorController() {
         this.clienteCadastro = new Fornecedor();
-    }
-    
-    public void inserir(){
-        
-        this.repositorioFornecedor.inserir(this.clienteCadastro);
-        this.clienteCadastro = new Fornecedor();
-        
-        FacesContext.getCurrentInstance().addMessage(null, 
-                new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso!","O cliente foi cadastrado com sucesso!"));
-    }
-    
-    public void alterar(Fornecedor c){
-        this.repositorioFornecedor.alterar(c);
-        FacesContext.getCurrentInstance().addMessage(null, 
-                new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso!","O cliente foi alterado com sucesso!"));
-    }
-    
-    public Fornecedor recuperarFornecedor(int codigo){
-        return this.repositorioFornecedor.recuperar(codigo);
-    }
-    
-    public void deletar(Fornecedor c){
-        this.repositorioFornecedor.deletar(c);
-        FacesContext.getCurrentInstance().addMessage(null, 
-                new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso!","O cliente foi deletado com sucesso!"));
-    }
-    
-    public List<Fornecedor> recuperarTodosFornecedors(){
-        return this.repositorioFornecedor.recuperarTodos();
     }
 
-    public Fornecedor getFornecedorCadastro() {
+    public void inserir() {
+
+        try {
+            this.fm.inserir(this.clienteCadastro);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O fornecedor foi cadastrado com sucesso!"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O fornecedor não foi cadastrado!"));
+        }
+    }
+
+    public void alterar(Fornecedor f) {
+        try {
+            this.fm.alterar(f);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O fornecedor foi alterado com sucesso!"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O fornecedor não foi alterado!"));
+        }
+    }
+
+    public Fornecedor recuperarFornecedor(int id) {
+        return this.fm.recuperarFornecedor(id);
+    }
+
+    public void deletar(Fornecedor f) {
+        try {
+            this.fm.deletar(f);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O fornecedor foi deletado com sucesso!"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O fornecedor não foi deletado!"));
+        }
+
+    }
+
+    public List<Fornecedor> recuperarTodosFornecedors() {
+        return this.fm.recuperarTodos();
+    }
+
+    public FornecedorModel getFm() {
+        return fm;
+    }
+
+    public void setFm(FornecedorModel fm) {
+        this.fm = fm;
+    }
+
+    public Fornecedor getClienteCadastro() {
         return clienteCadastro;
     }
 
-    public void setFornecedorCadastro(Fornecedor clienteCadastro) {
+    public void setClienteCadastro(Fornecedor clienteCadastro) {
         this.clienteCadastro = clienteCadastro;
     }
 
@@ -79,21 +98,12 @@ public class FornecedorController {
         this.selectedFornecedor = selectedFornecedor;
     }
 
-    public RepositorioGenerico<Fornecedor,Integer> getRepositorioFornecedor() {
-        return repositorioFornecedor;
-    }
-
-    public void setRepositorioFornecedor(RepositorioGenerico<Fornecedor, Integer> repositorioFornecedor) {
-        this.repositorioFornecedor= repositorioFornecedor;
-    }
-
-    public Fornecedor getFornecedor() {
+    public Fornecedor getCliente() {
         return cliente;
     }
 
-    public void setFornecedor(Fornecedor cliente) {
+    public void setCliente(Fornecedor cliente) {
         this.cliente = cliente;
     }
-    
-    
+
 }

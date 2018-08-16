@@ -5,22 +5,18 @@
  */
 package controladores;
 
-/**
- *
- * @author Val
- */
 import br.edu.ifpe.websport.model.CompraModel;
-import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import infraestrutura.repositorio.implementacoes.repositorioImplBD.CompraImplBD;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import br.edu.ifpe.websport.model.entidades.Compra;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
+/**
+ *
+ * @author Val e Michael
+ */
 @ManagedBean
 @SessionScoped
 public class CompraController {
@@ -44,7 +40,7 @@ public class CompraController {
 
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A compra foi cadastrado com sucesso!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A compra não foi cadastrado!"));
         }
     }
 
@@ -61,7 +57,7 @@ public class CompraController {
     }
 
     public Compra recuperarCompra(int id) {
-        return this.cm.recuperarCategoria(id);
+        return this.cm.recuperarCompra(id);
     }
 
     public void deletar(Compra c) {

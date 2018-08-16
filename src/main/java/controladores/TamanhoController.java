@@ -1,26 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controladores;
 
-/**
- *
- * @author Val e Michael
- */
 import br.edu.ifpe.websport.model.TamanhoModel;
 import br.edu.ifpe.websport.model.entidades.Tamanho;
-import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import infraestrutura.repositorio.implementacoes.repositorioImplBD.TamanhoImplBD;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+/**
+ *
+ * @author Val e Michael
+ */
 @ManagedBean
 @SessionScoped
 public class TamanhoController {
@@ -97,8 +88,6 @@ public class TamanhoController {
         this.selectedTamanho = selectedTamanho;
     }
 
-    
-    
     public TamanhoModel getCm() {
         return tm;
     }
@@ -106,8 +95,7 @@ public class TamanhoController {
     public void setCm(TamanhoModel tm) {
         this.tm = tm;
     }
-     
-    
+
     public Tamanho getTamanho() {
         return tamanho;
     }

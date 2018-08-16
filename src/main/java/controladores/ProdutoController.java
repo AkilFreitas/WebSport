@@ -5,13 +5,7 @@
  */
 package controladores;
 
-/**
- *
- * @author Val
- */
-
-import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import infraestrutura.repositorio.implementacoes.repositorioImplBD.ProdutoImplBD;
+import br.edu.ifpe.websport.model.ProdutoModel;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -19,49 +13,75 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import br.edu.ifpe.websport.model.entidades.Produto;
 
-
+/**
+ *
+ * @author Val
+ */
 @ManagedBean
 @SessionScoped
 public class ProdutoController {
-    
-    private RepositorioGenerico<Produto,Integer> repositorioProduto = null;
+
+    ProdutoModel pm = new ProdutoModel();
     private Produto produtoCadastro;
     private Produto selectedProduto;
-   
+
     Produto produto = new Produto();
-    
-    public ProdutoController(){
-        this.repositorioProduto = new ProdutoImplBD();
+
+    public ProdutoController() {
         this.produtoCadastro = new Produto();
     }
-    
-    public void inserir(){
-        
-        this.repositorioProduto.inserir(this.produtoCadastro);
-        this.produtoCadastro = new Produto();
-        
-        FacesContext.getCurrentInstance().addMessage(null, 
-                new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso!","O produto foi cadastrado com sucesso!"));
+
+    public void inserir() {
+
+        try {
+            this.pm.inserir(this.produtoCadastro);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O produto foi cadastrado com sucesso!"));
+
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O produto não foi cadastrado!"));
+        }
     }
-    
-    public void alterar(Produto c){
-        this.repositorioProduto.alterar(c);
-        FacesContext.getCurrentInstance().addMessage(null, 
-                new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso!","O produto foi alterado com sucesso!"));
+
+    public void alterar(Produto p) {
+        try {
+            this.pm.alterar(p);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O produto foi alterado com sucesso!"));
+
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O produto não foi alterado!"));
+        }
     }
-    
-    public Produto recuperarProduto(int codigo){
-        return this.repositorioProduto.recuperar(codigo);
+
+    public Produto recuperarProduto(int id) {
+        return this.pm.recuperarProduto(id);
     }
-    
-    public void deletar(Produto c){
-        this.repositorioProduto.deletar(c);
-        FacesContext.getCurrentInstance().addMessage(null, 
-                new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso!","O produto foi deletado com sucesso!"));
+
+    public void deletar(Produto p) {
+        try {
+            this.pm.deletar(p);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O produto foi deletado com sucesso!"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O produto não foi deletado!"));
+        }
+
     }
-    
-    public List<Produto> recuperarTodosProdutos(){
-        return this.repositorioProduto.recuperarTodos();
+
+    public List<Produto> recuperarTodosProdutos() {
+        return this.pm.recuperarTodos();
+    }
+
+    public ProdutoModel getPm() {
+        return pm;
+    }
+
+    public void setPm(ProdutoModel pm) {
+        this.pm = pm;
     }
 
     public Produto getProdutoCadastro() {
@@ -80,14 +100,6 @@ public class ProdutoController {
         this.selectedProduto = selectedProduto;
     }
 
-    public RepositorioGenerico<Produto,Integer> getRepositorioProduto() {
-        return repositorioProduto;
-    }
-
-    public void setRepositorioProduto(RepositorioGenerico<Produto, Integer> repositorioProduto) {
-        this.repositorioProduto= repositorioProduto;
-    }
-
     public Produto getProduto() {
         return produto;
     }
@@ -95,6 +107,5 @@ public class ProdutoController {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
-    
-    
+
 }

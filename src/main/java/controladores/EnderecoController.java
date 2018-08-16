@@ -6,16 +6,12 @@
 package controladores;
 
 import br.edu.ifpe.websport.model.EnderecoModel;
-import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import infraestrutura.repositorio.implementacoes.repositorioImplBD.EnderecoImplBD;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import br.edu.ifpe.websport.model.entidades.Endereco;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -42,10 +38,10 @@ public class EnderecoController {
             this.em.inserir(this.enderecoCadastro);
 
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A categoria foi cadastrado com sucesso!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O endereço foi cadastrado com sucesso!"));
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A categoria não foi cadastrada!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O endereço não foi cadastrada!"));
         }
 
     }
@@ -54,10 +50,10 @@ public class EnderecoController {
         try {
             this.em.alterar(e);
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O Endereço foi alterado com sucesso!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O endereço foi alterado com sucesso!"));
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O Endereço não foi alterado!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O endereço não foi alterado!"));
         }
 
     }
@@ -70,11 +66,11 @@ public class EnderecoController {
         try {
             this.em.deletar(c);
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O Endereço foi deletado com sucesso!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O endereço foi deletado com sucesso!"));
 
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O Endereço não foi deletado!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O endereço não foi deletado!"));
         }
     }
 
@@ -113,6 +109,5 @@ public class EnderecoController {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
-    
+
 }

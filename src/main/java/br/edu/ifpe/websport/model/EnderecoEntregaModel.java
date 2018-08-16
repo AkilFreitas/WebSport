@@ -27,7 +27,7 @@ public class EnderecoEntregaModel {
         if (enderecoEntrega != null) {
             this.repositorioEnderecoEntrega.inserir(enderecoEntrega);
         } else {
-            throw new Exception("Endereco de entrega invalida!!");
+            throw new Exception("Endereço de entrega invalido!!");
         }
     }
 
@@ -36,11 +36,11 @@ public class EnderecoEntregaModel {
         if (enderecoEntrega != null) {
             this.repositorioEnderecoEntrega.alterar(enderecoEntrega);
         } else {
-            throw new Exception("Endereco de entrega invalida!!");
+            throw new Exception("Endereço de entrega invalido!!");
         }
     }
 
-    public EnderecoEntrega recuperarEndereco(int id) {
+    public EnderecoEntrega recuperarEnderecoEntrega(int id) {
         return this.repositorioEnderecoEntrega.recuperar(id);
     }
 

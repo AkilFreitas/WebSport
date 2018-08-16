@@ -5,22 +5,18 @@
  */
 package controladores;
 
-/**
- *
- * @author Val e Michael
- */
 import br.edu.ifpe.websport.model.CategoriaModel;
 import br.edu.ifpe.websport.model.entidades.Categoria;
-import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import infraestrutura.repositorio.implementacoes.repositorioImplBD.CategoriaImplBD;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+/**
+ *
+ * @author Val e Michael
+ */
 @ManagedBean
 @SessionScoped
 public class CategoriaController {
@@ -73,7 +69,7 @@ public class CategoriaController {
 
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falfa!", "A categoria não foi deletado!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A categoria não foi deletado!"));
         }
     }
 
