@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -27,7 +28,43 @@ import javax.persistence.Temporal;
  * @author mayco
  */
 @Entity
+@Table(name = "Compra")
 public class Compra implements Serializable {
+
+    public static enum STATUS {
+
+        PEDIDO_REALIZADO,
+        PAGAMENTO_IDENTIFICADO,
+        EM_PROCESSAMENTO,
+        ENVIADO,
+        CONCLUIDO;
+
+        public static STATUS getStatus(Integer auto) {
+            STATUS a = null;
+
+            switch (auto) {
+                case 0:
+                    a = PEDIDO_REALIZADO;
+                    break;
+                case 1:
+                    a = PAGAMENTO_IDENTIFICADO;
+                    break;
+                case 2:
+                    a = EM_PROCESSAMENTO;
+                    break;
+                case 3:
+                    a = ENVIADO;
+                    break;
+                case 4:
+                    a = CONCLUIDO;
+                    break;
+                default:
+                    break;
+            }
+
+            return a;
+        }
+    };
 
     @Id
     @GeneratedValue
@@ -53,23 +90,12 @@ public class Compra implements Serializable {
     @OneToOne
     private Produto produto;
     @Column(length = 20)
-    private Enum pedidoRealizado;
-    @Column(length = 20)
-    private Enum pagamentoIdentificado;
-    @Column(length = 20)
-    private Enum emProcessamento;
-    @Column(length = 20)
-    private Enum enviado;
-    @Column(length = 20)
-    private Enum cloncluido;
+    private STATUS status;
 
     public Compra() {
     }
 
-    public Compra(int id, Date data, float total, Cliente cliente, float frete,
-            boolean concluida, String observacoes, Pagamento tipoDePagamento,
-            Produto produto, Enum pedidoRealizado, Enum pagamentoIdentificado,
-            Enum emProcessamento, Enum enviado, Enum cloncluido) {
+    public Compra(int id, Date data, float total, Cliente cliente, float frete, boolean concluida, String observacoes, Pagamento tipoDePagamento, Produto produto, STATUS status) {
         this.id = id;
         this.data = data;
         this.total = total;
@@ -79,11 +105,7 @@ public class Compra implements Serializable {
         this.observacoes = observacoes;
         this.tipoDePagamento = tipoDePagamento;
         this.produto = produto;
-        this.pedidoRealizado = pedidoRealizado;
-        this.pagamentoIdentificado = pagamentoIdentificado;
-        this.emProcessamento = emProcessamento;
-        this.enviado = enviado;
-        this.cloncluido = cloncluido;
+        this.status = status;
     }
 
     public int getId() {
@@ -126,7 +148,7 @@ public class Compra implements Serializable {
         this.frete = frete;
     }
 
-    public boolean getConcluida() {
+    public boolean isConcluida() {
         return concluida;
     }
 
@@ -158,44 +180,12 @@ public class Compra implements Serializable {
         this.produto = produto;
     }
 
-    public Enum getPedidoRealizado() {
-        return pedidoRealizado;
+    public STATUS getStatus() {
+        return status;
     }
 
-    public void setPedidoRealizado(Enum pedidoRealizado) {
-        this.pedidoRealizado = pedidoRealizado;
-    }
-
-    public Enum getPagamentoIdentificado() {
-        return pagamentoIdentificado;
-    }
-
-    public void setPagamentoIdentificado(Enum pagamentoIdentificado) {
-        this.pagamentoIdentificado = pagamentoIdentificado;
-    }
-
-    public Enum getEmProcessamento() {
-        return emProcessamento;
-    }
-
-    public void setEmProcessamento(Enum emProcessamento) {
-        this.emProcessamento = emProcessamento;
-    }
-
-    public Enum getEnviado() {
-        return enviado;
-    }
-
-    public void setEnviado(Enum enviado) {
-        this.enviado = enviado;
-    }
-
-    public Enum getCloncluido() {
-        return cloncluido;
-    }
-
-    public void setCloncluido(Enum cloncluido) {
-        this.cloncluido = cloncluido;
+    public void setStatus(STATUS status) {
+        this.status = status;
     }
 
     public void manterCompra() {

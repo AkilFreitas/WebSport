@@ -1,4 +1,4 @@
-package java.model;
+package br.edu.ifpe.websport.model.entidades.outroTeste;
 
 import java.util.List;
 import org.junit.After;

@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * A serialização em Java é o processo no qual a instância de um objeto é
@@ -19,6 +20,7 @@ import javax.persistence.OneToOne;
  * @author mayco
  */
 @Entity
+@Table(name = "Produto")
 public class Produto implements Serializable {
 
     @Id
@@ -29,7 +31,7 @@ public class Produto implements Serializable {
     @Column(length = 20)
     private String marca;
     @Column(length = 20)
-    @ManyToMany 
+    @ManyToMany
     Categoria categoria;
     @Column(length = 20)
     private String descricao;
@@ -137,11 +139,11 @@ public class Produto implements Serializable {
         this.disponivel = disponivel;
     }
 
-    public boolean getPromocao() {
+    public boolean isPromocao() {
         return promocao;
     }
 
-    public void setPromocao(Boolean promocao) {
+    public void setPromocao(boolean promocao) {
         this.promocao = promocao;
     }
 

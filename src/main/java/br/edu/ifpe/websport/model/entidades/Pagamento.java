@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
@@ -25,13 +26,33 @@ import javax.persistence.Temporal;
  * @author mayco
  */
 @Entity
+@Table(name = "Pagamento")
 public class Pagamento implements Serializable {
+
+    public static enum STATUS {
+
+        TIPO_DE_PAGAMENTO;
+
+        public static STATUS getStatus(Integer auto) {
+            STATUS a = null;
+
+            switch (auto) {
+                case 0:
+                    a = TIPO_DE_PAGAMENTO;
+                    break;
+                default:
+                    break;
+            }
+
+            return a;
+        }
+    };
 
     @Id
     @GeneratedValue
     private int id;
     @Column(length = 20)
-    private Enum tipoDePagamento;
+    private STATUS status;
     @Column(length = 20)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataDePagamento;
@@ -42,43 +63,49 @@ public class Pagamento implements Serializable {
 
     }
 
-    public Pagamento(int id, Enum tipoDePagamento, Date dataDePagamento, String nome) {
+    public Pagamento(int id, STATUS status, Date dataDePagamento, String nome) {
         this.id = id;
-        this.tipoDePagamento = tipoDePagamento;
+        this.status = status;
         this.dataDePagamento = dataDePagamento;
         this.nome = nome;
-
     }
 
     public int getId() {
         return id;
     }
 
-    public Enum getTipoDePagamento() {
-        return tipoDePagamento;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public STATUS getStatus() {
+        return status;
+    }
+
+    public void setStatus(STATUS status) {
+        this.status = status;
     }
 
     public Date getDataDePagamento() {
         return dataDePagamento;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setTipoDePagamento(Enum tipoDePagamento) {
-        this.tipoDePagamento = tipoDePagamento;
-    }
-
     public void setDataDePagamento(Date dataDePagamento) {
         this.dataDePagamento = dataDePagamento;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public void gerarBoleto() {
+    }
+
+    public void manterTipoDePagamento() {
+    }
+
 }

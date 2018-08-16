@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * A serialização em Java é o processo no qual a instância de um objeto é
@@ -16,6 +17,7 @@ import javax.persistence.Id;
  * @author mayco
  */
 @Entity
+@Table(name = "Fornecedor")
 public class Fornecedor implements Serializable {
 
     @Id
@@ -39,7 +41,6 @@ public class Fornecedor implements Serializable {
         this.telefone = telefone;
         this.nomeFantasia = nomeFantasia;
         this.email = email;
-
     }
 
     public int getId() {
@@ -81,6 +82,8 @@ public class Fornecedor implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    
 
     public void manterEndereco() {
 

@@ -1,11 +1,11 @@
 package br.edu.ifpe.websport.model.entidades;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,8 +19,8 @@ import javax.persistence.Table;
  * @author mayco
  */
 @Entity
-@Table(name = "cliente")
-public class Cliente extends Usuario implements Serializable {
+@Table(name = "Cliente")
+public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue
@@ -38,21 +38,19 @@ public class Cliente extends Usuario implements Serializable {
     @Column(length = 20)
     private String email;
     @Column(length = 20)
+    private String senha;
+    @Column(length = 20)
     private String dataDeNascimento;
     @Column(length = 20)
     private String sexo;
     @Column(length = 20)
     @OneToOne
     Endereco endereco;
-    @Column(length = 20)
-    @OneToMany
-    Usuario login;
 
     public Cliente() {
     }
 
-    public Cliente(int id, int idade, int rg, String cpf, String telefone, String nome,
-            String email, String dataDeNascimento, String sexo, Endereco endereco, Usuario login) {
+    public Cliente(int id, int idade, int rg, String cpf, String telefone, String nome, String email, String senha, String dataDeNascimento, String sexo, Endereco endereco) {
         this.id = id;
         this.idade = idade;
         this.rg = rg;
@@ -60,18 +58,16 @@ public class Cliente extends Usuario implements Serializable {
         this.telefone = telefone;
         this.nome = nome;
         this.email = email;
+        this.senha = senha;
         this.dataDeNascimento = dataDeNascimento;
         this.sexo = sexo;
         this.endereco = endereco;
-        this.login = login;
     }
 
-    @Override
     public int getId() {
         return id;
     }
 
-    @Override
     public void setId(int id) {
         this.id = id;
     }
@@ -92,12 +88,10 @@ public class Cliente extends Usuario implements Serializable {
         this.rg = rg;
     }
 
-    @Override
     public String getCpf() {
         return cpf;
     }
 
-    @Override
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
@@ -110,24 +104,28 @@ public class Cliente extends Usuario implements Serializable {
         this.telefone = telefone;
     }
 
-    @Override
     public String getNome() {
         return nome;
     }
 
-    @Override
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    @Override
     public String getEmail() {
         return email;
     }
 
-    @Override
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getDataDeNascimento() {
@@ -154,22 +152,79 @@ public class Cliente extends Usuario implements Serializable {
         this.endereco = endereco;
     }
 
-    public Usuario getLogin() {
-        return login;
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + this.id;
+        hash = 97 * hash + this.idade;
+        hash = 97 * hash + this.rg;
+        hash = 97 * hash + Objects.hashCode(this.cpf);
+        hash = 97 * hash + Objects.hashCode(this.telefone);
+        hash = 97 * hash + Objects.hashCode(this.nome);
+        hash = 97 * hash + Objects.hashCode(this.email);
+        hash = 97 * hash + Objects.hashCode(this.senha);
+        hash = 97 * hash + Objects.hashCode(this.dataDeNascimento);
+        hash = 97 * hash + Objects.hashCode(this.sexo);
+        hash = 97 * hash + Objects.hashCode(this.endereco);
+        return hash;
     }
 
-    public void setLogin(Usuario login) {
-        this.login = login;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.idade != other.idade) {
+            return false;
+        }
+        if (this.rg != other.rg) {
+            return false;
+        }
+        if (!Objects.equals(this.cpf, other.cpf)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefone, other.telefone)) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.senha, other.senha)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataDeNascimento, other.dataDeNascimento)) {
+            return false;
+        }
+        if (!Objects.equals(this.sexo, other.sexo)) {
+            return false;
+        }
+        if (!Objects.equals(this.endereco, other.endereco)) {
+            return false;
+        }
+        return true;
     }
+    
+    
 
-    
-    
     public void manterCliente() {
 
     }
 
     public void efetuaLogin() {
-          
+
     }
 
     public void efetuaCompra() {
