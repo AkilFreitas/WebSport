@@ -40,26 +40,13 @@ public class ClienteModel {
         }
     }
 
-    
-    
-    
-    public Cliente recuperarCliente(int id, Object obj) throws Exception {
-        final Cliente other = (Cliente) obj;
-        if (id != other.getId()) {
-            return this.repositorioCliente.recuperar(id);
-        } else {
-            throw new Exception("Falha na recuperação do cliente!!");
-        }
-
-    }
-     
     public Cliente recuperarCliente(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.repositorioCliente.recuperar(id);
     }
 
     public void deletar(Cliente c) throws Exception {
         if (c != null) {
-            this.repositorioCliente.inserir(c);
+            this.repositorioCliente.deletar(c);
         } else {
             throw new Exception("Não foi possivel deletar!!");
         }
@@ -67,7 +54,7 @@ public class ClienteModel {
     }
 
     public List<Cliente> recuperarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.repositorioCliente.recuperarTodos();
     }
 
 }

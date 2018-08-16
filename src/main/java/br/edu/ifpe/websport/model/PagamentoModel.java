@@ -40,26 +40,13 @@ public class PagamentoModel {
         }
     }
 
-    
-    
-    
-    public Pagamento recuperarPagamento(int id, Object obj) throws Exception {
-        final Pagamento other = (Pagamento) obj;
-        if (id != other.getId()) {
-            return this.repositorioPagamento.recuperar(id);
-        } else {
-            throw new Exception("Falha na recuperação do pagamento!!");
-        }
-
-    }
-     
     public Pagamento recuperarPagamento(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.repositorioPagamento.recuperar(id);
     }
 
-    public void deletar(Pagamento c) throws Exception {
-        if (c != null) {
-            this.repositorioPagamento.inserir(c);
+    public void deletar(Pagamento p) throws Exception {
+        if (p != null) {
+            this.repositorioPagamento.deletar(p);
         } else {
             throw new Exception("Não foi possivel deletar!!");
         }
@@ -67,7 +54,7 @@ public class PagamentoModel {
     }
 
     public List<Pagamento> recuperarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.repositorioPagamento.recuperarTodos();
     }
 
 }

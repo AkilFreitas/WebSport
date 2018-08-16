@@ -40,26 +40,14 @@ public class TamanhoModel {
         }
     }
 
-    
-    
-    
-    public Tamanho recuperarTamanho(int id, Object obj) throws Exception {
-        final Tamanho other = (Tamanho) obj;
-        if (id != other.getId()) {
-            return this.repositorioTamanho.recuperar(id);
-        } else {
-            throw new Exception("Falha na recuperação do tamanho!!");
-        }
-
-    }
      
     public Tamanho recuperarTamanho(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.repositorioTamanho.recuperar(id);
     }
 
     public void deletar(Tamanho c) throws Exception {
         if (c != null) {
-            this.repositorioTamanho.inserir(c);
+            this.repositorioTamanho.deletar(c);
         } else {
             throw new Exception("Não foi possivel deletar!!");
         }
@@ -67,7 +55,6 @@ public class TamanhoModel {
     }
 
     public List<Tamanho> recuperarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.repositorioTamanho.recuperarTodos();
     }
-
 }

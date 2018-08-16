@@ -49,9 +49,9 @@ public class PagamentoController {
 
     }
 
-    public void alterarAction(Pagamento c) {
+    public void alterarAction(Pagamento p) {
         try {
-            this.pm.alterar(c);
+            this.pm.alterar(p);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O pagamento foi alterado com sucesso!"));
         } catch (Exception ex) {
@@ -65,9 +65,9 @@ public class PagamentoController {
         return this.pm.recuperarPagamento(id);
     }
 
-    public void deletarAction(Pagamento c) {
+    public void deletarAction(Pagamento p) {
         try {
-            this.pm.deletar(c);
+            this.pm.deletar(p);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O pagamento foi deletado com sucesso!"));
 
