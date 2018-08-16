@@ -5,6 +5,7 @@
  */
 package controladores;
 
+import br.edu.ifpe.websport.model.EnderecoEntregaModel;
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
 import infraestrutura.repositorio.implementacoes.repositorioImplBD.EnderecoEntregaImplBD;
 import java.util.List;
@@ -13,6 +14,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import br.edu.ifpe.websport.model.entidades.EnderecoEntrega;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,52 +25,67 @@ import br.edu.ifpe.websport.model.entidades.EnderecoEntrega;
 @SessionScoped
 public class EnderecoEntregaController {
 
-    private RepositorioGenerico<EnderecoEntrega, Integer> repositorioEnderecoEntrega = null;
+    EnderecoEntregaModel eem = new EnderecoEntregaModel();
     private EnderecoEntrega enderecoEntregaCadastro;
     private EnderecoEntrega selectedEnderecoEntrega;
 
     EnderecoEntrega enderecoEntrega = new EnderecoEntrega();
 
     public EnderecoEntregaController() {
-        this.repositorioEnderecoEntrega = new EnderecoEntregaImplBD();
         this.enderecoEntregaCadastro = new EnderecoEntrega();
     }
 
-    public void inserir() {
+    public void inserirAction() {
 
-        this.repositorioEnderecoEntrega.inserir(this.enderecoEntregaCadastro);
-        this.enderecoEntregaCadastro = new EnderecoEntrega();
+        try {
+            this.eem.inserir(this.enderecoEntregaCadastro);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O Endereço de entrega foi cadastrado com sucesso!"));
 
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O EnderecoEntrega foi cadastrado com sucesso!"));
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O Endereço de entrega não foi cadastrado!"));
+        }
     }
 
-    public void alterar(EnderecoEntrega e) {
-        this.repositorioEnderecoEntrega.alterar(e);
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O EnderecoEntrega foi alterado com sucesso!"));
+    public void alterarAction(EnderecoEntrega ee) {
+        try {
+            this.eem.alterar(ee);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O Endereço de entrega foi alterado com sucesso!"));
+
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O Endereço de entregan não foi alterado!"));
+        }
     }
 
     public EnderecoEntrega recuperarEnderecoEntrega(int id) {
-        return this.repositorioEnderecoEntrega.recuperar(id);
+        return this.eem.recuperarEndereco(id);
     }
 
-    public void deletar(EnderecoEntrega e) {
-        this.repositorioEnderecoEntrega.deletar(e);
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O EnderecoEntrega foi deletado com sucesso!"));
-    }
+    public void deletar(EnderecoEntrega ee) {
+        try {
+            this.eem.deletar(ee);
+            FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O Endereço de entrega foi deletado com sucesso!"));
+ 
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O Endereço de entrega não foi deletado!"));
+ }
+           }
 
     public List<EnderecoEntrega> recuperarTodosEnderecosEntregas() {
-        return this.repositorioEnderecoEntrega.recuperarTodos();
+        return this.eem.recuperarTodos();
     }
 
-    public RepositorioGenerico<EnderecoEntrega, Integer> getRepositorioEnderecoEntrega() {
-        return repositorioEnderecoEntrega;
+    public EnderecoEntregaModel getEem() {
+        return eem;
     }
 
-    public void setRepositorioEnderecoEntrega(RepositorioGenerico<EnderecoEntrega, Integer> repositorioEnderecoEntrega) {
-        this.repositorioEnderecoEntrega = repositorioEnderecoEntrega;
+    public void setEem(EnderecoEntregaModel eem) {
+        this.eem = eem;
     }
 
     public EnderecoEntrega getEnderecoEntregaCadastro() {
@@ -94,4 +112,5 @@ public class EnderecoEntregaController {
         this.enderecoEntrega = enderecoEntrega;
     }
 
+    
 }

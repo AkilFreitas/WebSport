@@ -81,4 +81,38 @@ public class EnderecoController {
     public List<Endereco> recuperarTodosEnderecos() {
         return this.em.recuperarTodos();
     }
+
+    public EnderecoModel getEm() {
+        return em;
+    }
+
+    public void setEm(EnderecoModel em) {
+        this.em = em;
+    }
+
+    public Endereco getEnderecoCadastro() {
+        return enderecoCadastro;
+    }
+
+    public void setEnderecoCadastro(Endereco enderecoCadastro) {
+        this.enderecoCadastro = enderecoCadastro;
+    }
+
+    public Endereco getSelectedEndereco() {
+        return selectedEndereco;
+    }
+
+    public void setSelectedEndereco(Endereco selectedEndereco) {
+        this.selectedEndereco = selectedEndereco;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    
+    
 }
