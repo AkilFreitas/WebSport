@@ -46,7 +46,7 @@ public class EnderecoEntregaModel {
 
     public void deletar(EnderecoEntrega ee) throws Exception {
         if (ee != null) {
-            this.repositorioEnderecoEntrega.inserir(ee);
+            this.repositorioEnderecoEntrega.deletar(ee);
         } else {
             throw new Exception("Não foi possivel deletar!!");
         }
