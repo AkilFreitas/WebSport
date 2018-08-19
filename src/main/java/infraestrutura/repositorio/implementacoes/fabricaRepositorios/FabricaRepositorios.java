@@ -11,6 +11,10 @@ import infraestrutura.repositorio.implementacoes.RepositorioCliente;
 import infraestrutura.repositorio.implementacoes.RepositorioCompra;
 import infraestrutura.repositorio.implementacoes.RepositorioEndereco;
 import infraestrutura.repositorio.implementacoes.RepositorioEnderecoEntrega;
+import infraestrutura.repositorio.implementacoes.RepositorioFornecedor;
+import infraestrutura.repositorio.implementacoes.RepositorioPagamento;
+import infraestrutura.repositorio.implementacoes.RepositorioProduto;
+import infraestrutura.repositorio.implementacoes.RepositorioTamanho;
 
 /**
  *
@@ -39,44 +43,93 @@ public class FabricaRepositorios {
      * @return
      */
     public static RepositorioGenerico manufactor(int tipoEntidade, int tipoPersistencia) {
-        if (tipoPersistencia == MEMORIA) {
 
-             if (tipoEntidade == CATEGORIA) {
+        if (tipoPersistencia == MEMORIA) {
+            if (tipoEntidade == CATEGORIA) {
                 return new RepositorioCategoria();
             }
             if (tipoEntidade == CLIENTE) {
                 return new RepositorioCliente();
             }
-             if (tipoEntidade == COMPRA) {
+            if (tipoEntidade == COMPRA) {
                 return new RepositorioCompra();
             }
-              if (tipoEntidade == ENDERECO) {
+            if (tipoEntidade == ENDERECO) {
                 return new RepositorioEndereco();
             }
-               if (tipoEntidade == ENDERECOENTREGA) {
+            if (tipoEntidade == ENDERECOENTREGA) {
                 return new RepositorioEnderecoEntrega();
             }
-                if (tipoEntidade == CLIENTE) {
-                return new RepositorioCliente();
+            if (tipoEntidade == FORNECEDOR) {
+                return new RepositorioFornecedor();
             }
-                 if (tipoEntidade == CLIENTE) {
-                return new RepositorioCliente();
+            if (tipoEntidade == PAGAMENTO) {
+                return new RepositorioPagamento();
             }
-                  if (tipoEntidade == CLIENTE) {
-                return new RepositorioCliente();
+            if (tipoEntidade == PRODUTO) {
+                return new RepositorioProduto();
             }
-                  
+            if (tipoEntidade == TAMANHO) {
+                return new RepositorioTamanho();
+            }
         }
-        if (tipoPersistencia == BANCODADOS) {
 
+        if (tipoPersistencia == BANCODADOS) {
+            if (tipoEntidade == CATEGORIA) {
+                return null;
+            }
             if (tipoEntidade == CLIENTE) {
+                return null;
+            }
+            if (tipoEntidade == COMPRA) {
+                return null;
+            }
+            if (tipoEntidade == ENDERECO) {
+                return null;
+            }
+            if (tipoEntidade == ENDERECOENTREGA) {
+                return null;
+            }
+            if (tipoEntidade == FORNECEDOR) {
+                return null;
+            }
+            if (tipoEntidade == PAGAMENTO) {
+                return null;
+            }
+            if (tipoEntidade == PRODUTO) {
+                return null;
+            }
+            if (tipoEntidade == TAMANHO) {
                 return null;
             }
         }
 
         if (tipoPersistencia == ARQUIVO) {
-
+            if (tipoEntidade == CATEGORIA) {
+                return null;
+            }
             if (tipoEntidade == CLIENTE) {
+                return null;
+            }
+            if (tipoEntidade == COMPRA) {
+                return null;
+            }
+            if (tipoEntidade == ENDERECO) {
+                return null;
+            }
+            if (tipoEntidade == ENDERECOENTREGA) {
+                return null;
+            }
+            if (tipoEntidade == FORNECEDOR) {
+                return null;
+            }
+            if (tipoEntidade == PAGAMENTO) {
+                return null;
+            }
+            if (tipoEntidade == PRODUTO) {
+                return null;
+            }
+            if (tipoEntidade == TAMANHO) {
                 return null;
             }
 
