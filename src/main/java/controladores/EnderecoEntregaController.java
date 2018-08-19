@@ -60,7 +60,7 @@ public class EnderecoEntregaController {
         return this.eem.recuperarEnderecoEntrega(id);
     }
 
-    public void deletar(EnderecoEntrega ee) {
+    public void deletarAction(EnderecoEntrega ee) {
         try {
             this.eem.deletar(ee);
             FacesContext.getCurrentInstance().addMessage(null,
