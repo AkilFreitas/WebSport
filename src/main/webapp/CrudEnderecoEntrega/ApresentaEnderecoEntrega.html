@@ -16,7 +16,7 @@
             <p:dataTable id="tabelaEnderecoEntrega" var="item" value="#{EnderecoEntregaController.recuperarTodosEnderecosEntregas()}"
                          rowKey="#{item.id}" selectionMode="single" selection="#{EnderecoEntregaController.selectedEnderecoEntrega}">
                 <f:facet name="header">
-                    Endereço de Entrega Cadastrados
+                    Endereço de Entrega Cadastrados:
                 </f:facet>
                 <p:column headerText="Id">
                     <h:outputText value="#{item.id}"/>

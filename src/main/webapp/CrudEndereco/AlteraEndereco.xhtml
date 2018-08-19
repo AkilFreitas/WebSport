@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -24,37 +25,37 @@ and open the template in the editor.
 
                     <h:outputText value="Id*:"/>
                     <p:inputText value="#{EnderecoController.selectedEndereco.id}" id="txtId"
-                                 required="true" requiredMessage="O campo id é obrigatorio"/>
+                                 required="true" requiredMessage="O campo id é obrigatório!"/>
                     <p:message for="txtId"/>
 
                     <h:outputText value="Estado*:"/>
                     <p:inputText value="#{EnderecoController.selectedEndereco.estado}" id="txtEstado"
-                                 required="true" requiredMessage="O campo estado é obrigatorio"/>
+                                 required="true" requiredMessage="O campo estado é obrigatório!"/>
                     <p:message for="txtEstado"/>
 
                     <h:outputText value="Cidade*:"/>
                     <p:inputText value="#{EnderecoController.selectedEndereco.cidade}" id="txtCidade"
-                                 required="true" requiredMessage="O campo cidade é obrigatorio"/>
+                                 required="true" requiredMessage="O campo cidade é obrigatório!"/>
                     <p:message for="txtCidade"/>
 
                     <h:outputText value="Bairro*:"/>
                     <p:inputText value="#{EnderecoController.selectedEndereco.bairro}" id="txtBairro"
-                                 required="true" requiredMessage="O campo bairro é obrigatorio"/>
+                                 required="true" requiredMessage="O campo bairro é obrigatório!"/>
                     <p:message for="txtBairro"/>
 
                     <h:outputText value="Cep*:"/>
                     <p:inputText value="#{EnderecoController.selectedEndereco.cep}" id="txtCep"
-                                 required="true" requiredMessage="O campo cep é obrigatorio"/>
+                                 required="true" requiredMessage="O campo cep é obrigatório!"/>
                     <p:message for="txtCep"/>
 
                     <h:outputText value="Rua*:"/>
                     <p:inputText value="#{EnderecoController.selectedEndereco.rua}" id="txtRua"
-                                 required="true" requiredMessage="O campo rua é obrigatorio"/>
+                                 required="true" requiredMessage="O campo rua é obrigatório!"/>
                     <p:message for="txtRua"/>
 
                     <h:outputText value="Numero*:"/>
                     <p:inputText value="#{EnderecoController.selectedEndereco.numero}" id="txtNumero"
-                                 required="true" requiredMessage="O campo numero é obrigatorio"/>
+                                 required="true" requiredMessage="O campo numero é obrigatório!"/>
                     <p:message for="txtNumero"/>
 
 
@@ -62,7 +63,7 @@ and open the template in the editor.
                 <p:commandButton value="Alterar"
                                  oncomplete="PF('widDialEndereco').show()"/>
             </p:fieldset>
-            <p:confirmDialog id="dialEndereco" message="Deseja realmente alterar o Endereço?"
+            <p:confirmDialog id="dialEndereco" message="Deseja realmente alterar o endereço?"
                              visible="false" widgetVar="widDialEndereco" showEffect="fade"
                              hideEffect="explode">
                 <f:facet name="header">
@@ -76,4 +77,3 @@ and open the template in the editor.
         </h:form>
     </h:body>
 </html>
-
