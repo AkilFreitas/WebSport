@@ -66,9 +66,15 @@ public class Compra implements Serializable {
         }
     };
 
+    /*
+    Seria interessante que o id da compra fosse igual ao id do produto, pq, 
+    quando eu comprar um produto seus id's vão ser iguais, e vai ter mais sentido
+    na hora de apresentar a compra, pq o id da compra vai bater com o id do produto,
+    e não tem sentido o cliente inserir o id da compra!
+    */
     @Id
     @GeneratedValue
-    private int id;
+    private int id; 
     @Column(length = 20)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date data;

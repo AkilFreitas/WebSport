@@ -44,7 +44,7 @@ public class CompraController {
         }
     }
 
-    public void alterar(Compra c) {
+    public void alterarAction(Compra c) {
         try {
             this.cm.alterar(c);
             FacesContext.getCurrentInstance().addMessage(null,
@@ -60,7 +60,7 @@ public class CompraController {
         return this.cm.recuperarCompra(id);
     }
 
-    public void deletar(Compra c) {
+    public void deletarAction(Compra c) {
         try {
             this.cm.deletar(c);
             FacesContext.getCurrentInstance().addMessage(null,
@@ -72,7 +72,7 @@ public class CompraController {
         }
     }
 
-    public List<Compra> recuperarTodosCompras() {
+    public List<Compra> recuperarTodasCompras() {
         return this.cm.recuperarTodos();
     }
 
