@@ -39,21 +39,21 @@
                 <p:column headerText="Numero">
                     <h:outputText value="#{item.numero}"/>
                 </p:column>
-                
+
             </p:dataTable>
 
             <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaEndereco').show()"
                              update='dialVisualizaEndereco'/>
-            <p:commandButton value="atualizar" action='alteraEndereco.xhtml'/>
+            <p:commandButton value="atualizar" action='AlteraEndereco.xhtml'/>
 
             <p:commandButton value="Deletar" oncomplete="PF('widDialEndereco').show()"/>
 
-            <p:confirmDialog id="dialEndereco" message="Deseja realmente apagar o Endereco?"
+            <p:confirmDialog id="dialEndereco" message="Deseja realmente apagar o endereço?"
                              visible="false" widgetVar="widDialEndereco" showEffect="fade"
                              hideEffect="explode">
 
                 <p:commandButton value="sim" 
-                                 action="#{enderecoController.deletar(enderecoController.selectedEndereco)}"
+                                 action="#{EnderecoController.deletarAction(EnderecoController.selectedEndereco)}"
                                  oncomplete="PF('widDialEndereco').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialEndereco').hide()"/>
             </p:confirmDialog>
@@ -62,25 +62,25 @@
                       modal="true" widgetVar="widDialVisualizaEndereco">
                 <p:panelGrid columns="2">
                     <h:outputText value="Id"/>
-                    <h:outputText value="#{enderecoController.selectedEndereco.id}"/>
+                    <h:outputText value="#{EnderecoController.selectedEndereco.id}"/>
 
                     <h:outputText value="Estado:"/>
-                    <h:outputText value="#{enderecoController.selectedEndereco.estado}"/>
-                    
-                     <h:outputText value="Cidade:"/>
-                    <h:outputText value="#{enderecoController.selectedCidade.cidade}"/>
-                    
+                    <h:outputText value="#{EnderecoController.selectedEndereco.estado}"/>
+
+                    <h:outputText value="Cidade:"/>
+                    <h:outputText value="#{EnderecoController.selectedCidade.cidade}"/>
+
                     <h:outputText value="Bairro:"/>
-                    <h:outputText value="#{enderecoController.selectedEndereco.bairro}"/>
-                    
+                    <h:outputText value="#{EnderecoController.selectedEndereco.bairro}"/>
+
                     <h:outputText value="Rua:"/>
-                    <h:outputText value="#{enderecoController.selectedEndereco.rua}"/>
-                    
+                    <h:outputText value="#{EnderecoController.selectedEndereco.rua}"/>
+
                     <h:outputText value="Cep:"/>
-                    <h:outputText value="#{enderecoController.selectedEndereco.cep}"/>
-                    
+                    <h:outputText value="#{EnderecoController.selectedEndereco.cep}"/>
+
                     <h:outputText value="Numero:"/>
-                    <h:outputText value="#{enderecoController.selectedEndereco.numero}"/>
+                    <h:outputText value="#{EnderecoController.selectedEndereco.numero}"/>
 
                 </p:panelGrid>
                 <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaEndereco').hide()"/>
