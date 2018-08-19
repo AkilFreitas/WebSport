@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class PagamentoImplBD implements RepositorioGenerico<Pagamento, Integer> {
 
+    
     @Override
     public void inserir(Pagamento t) {
         PersistenceDao.getInstance().persist(t);
@@ -44,5 +45,5 @@ public class PagamentoImplBD implements RepositorioGenerico<Pagamento, Integer> 
     public List<Pagamento> recuperarTodos() {
         return PersistenceDao.getInstance().read("select a from Pagamento a");
     }
-
+    
 }

@@ -29,7 +29,7 @@ public class ClienteImplBD implements RepositorioGenerico<Cliente, Integer> {
     @Override
     public Cliente recuperar(Integer id) {
         try {
-            return (Cliente) PersistenceDao.getInstance().read("select a from cliente a where a.id=" + id).get(0);
+            return (Cliente) PersistenceDao.getInstance().read("select a from Cliente a where a.id=" + id).get(0);
         } catch (IndexOutOfBoundsException index) {
             return null;
         }
@@ -38,13 +38,11 @@ public class ClienteImplBD implements RepositorioGenerico<Cliente, Integer> {
     @Override
     public void deletar(Cliente t) {
         PersistenceDao.getInstance().delete(t);
-
     }
 
     @Override
     public List<Cliente> recuperarTodos() {
         return PersistenceDao.getInstance().read("select a from Cliente a");
-
     }
 
 }

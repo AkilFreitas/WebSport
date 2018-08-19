@@ -39,14 +39,11 @@ public class CategoriaImplBD implements RepositorioGenerico<Categoria, Integer>{
     @Override
     public void deletar(Categoria t) {
         PersistenceDao.getInstance().delete(t);
-
     }
 
     @Override
     public List<Categoria> recuperarTodos() {
         return PersistenceDao.getInstance().read("select a from Categoria a");
-
     }
-
     
 }

@@ -29,7 +29,7 @@ public class ProdutoImplBD implements RepositorioGenerico<Produto, Integer> {
     @Override
     public Produto recuperar(Integer id) {
         try {
-            return (Produto) PersistenceDao.getInstance().read("select a from produto a where a.id=" + id).get(0);
+            return (Produto) PersistenceDao.getInstance().read("select a from Produto a where a.id=" + id).get(0);
         } catch (IndexOutOfBoundsException index) {
             return null;
         }
@@ -38,13 +38,10 @@ public class ProdutoImplBD implements RepositorioGenerico<Produto, Integer> {
     @Override
     public void deletar(Produto t) {
         PersistenceDao.getInstance().delete(t);
-
     }
 
     @Override
     public List<Produto> recuperarTodos() {
         return PersistenceDao.getInstance().read("select a from Produto a");
-
     }
-
 }

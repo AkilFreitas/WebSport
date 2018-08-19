@@ -38,12 +38,10 @@ public class TamanhoImplBD implements RepositorioGenerico<Tamanho, Integer> {
     @Override
     public void deletar(Tamanho t) {
         PersistenceDao.getInstance().delete(t);
-
     }
 
     @Override
     public List<Tamanho> recuperarTodos() {
         return PersistenceDao.getInstance().read("select a from Tamanho a");
-
     }
 }

@@ -38,13 +38,11 @@ public class EnderecoImplBD implements RepositorioGenerico<Endereco, Integer> {
     @Override
     public void deletar(Endereco t) {
         PersistenceDao.getInstance().delete(t);
-
     }
 
     @Override
     public List<Endereco> recuperarTodos() {
         return PersistenceDao.getInstance().read("select a from Endereco a");
-
     }
 
 }

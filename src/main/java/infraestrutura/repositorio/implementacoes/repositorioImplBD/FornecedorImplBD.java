@@ -29,7 +29,7 @@ public class FornecedorImplBD implements RepositorioGenerico<Fornecedor, Integer
     @Override
     public Fornecedor recuperar(Integer id) {
         try {
-            return (Fornecedor) PersistenceDao.getInstance().read("select a from fornecedor a where a.id=" + id).get(0);
+            return (Fornecedor) PersistenceDao.getInstance().read("select a from Fornecedor a where a.id=" + id).get(0);
         } catch (IndexOutOfBoundsException index) {
             return null;
         }
@@ -44,7 +44,6 @@ public class FornecedorImplBD implements RepositorioGenerico<Fornecedor, Integer
     @Override
     public List<Fornecedor> recuperarTodos() {
         return PersistenceDao.getInstance().read("select a from Fornecedor a");
-
     }
 
 }

@@ -38,12 +38,11 @@ public class CompraImplBD implements RepositorioGenerico<Compra, Integer> {
     @Override
     public void deletar(Compra t) {
         PersistenceDao.getInstance().delete(t);
-
     }
 
     @Override
     public List<Compra> recuperarTodos() {
         return PersistenceDao.getInstance().read("select a from Compra a");
-
     }
+    
 }
