@@ -39,10 +39,11 @@ public class RepositorioTamanho implements RepositorioGenerico<Tamanho, String> 
         }
     }
 
+    //TIRAR DUVIDA COM O PROF
     @Override
     public Tamanho recuperar(String id) {
         for (Tamanho e : this.tamanhos) {
-            if (e.getDimensao().equals(id)) {
+            if (e.getPeso().equals(id) & e.getDimensao().equals(id)) {
                 return e;
             }
         }

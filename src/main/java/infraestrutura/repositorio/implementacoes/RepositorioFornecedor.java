@@ -18,6 +18,7 @@ public class RepositorioFornecedor implements RepositorioGenerico<Fornecedor, St
 
     private List<Fornecedor> fornecedores = null;
 
+    
     public RepositorioFornecedor() {
         this.fornecedores = new ArrayList<>();
     }
@@ -35,6 +36,7 @@ public class RepositorioFornecedor implements RepositorioGenerico<Fornecedor, St
                 e.setTelefone(t.getTelefone());
                 e.setEmail(t.getEmail());
                 e.setCnpj(t.getCnpj());
+                
                 return;
             }
         }

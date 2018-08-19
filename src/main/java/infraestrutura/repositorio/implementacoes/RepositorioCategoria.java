@@ -39,14 +39,20 @@ public class RepositorioCategoria implements RepositorioGenerico<Categoria, Stri
         }
     }
 
+    // TIRAR DUVIDADA COM O PROF
     @Override
     public Categoria recuperar(String id) {
         for (Categoria e : this.categorias) {
+           if (e.getNome().equals(id) & e.getDescricao().equals(id)) {
+                return e;
+            }
+            /*
             if (e.getNome().equals(id)) {
                 return e;
             } else if (e.getDescricao().equals(id)) {
                 return e;
             }
+             */
         }
         return null;
     }

@@ -16,20 +16,21 @@ import java.util.List;
  */
 public class RepositorioEnderecoEntrega implements RepositorioGenerico<EnderecoEntrega, String> {
 
-    private List<EnderecoEntrega> enderecoEntrega = null;
+    private List<EnderecoEntrega> enderecosEntregas = null;
 
     public RepositorioEnderecoEntrega() {
-        this.enderecoEntrega = new ArrayList<>();
+        this.enderecosEntregas = new ArrayList<>();
     }
 
+    
     @Override
     public void inserir(EnderecoEntrega t) {
-        this.enderecoEntrega.add(t);
+        this.enderecosEntregas.add(t);
     }
 
     @Override
     public void alterar(EnderecoEntrega t) {
-        for (EnderecoEntrega e : this.enderecoEntrega) {
+        for (EnderecoEntrega e : this.enderecosEntregas) {
             if (e.getCidade().equals(t.getCidade())) {
                 e.setId(t.getId());
                 e.setCep(t.getCep());
@@ -38,6 +39,7 @@ public class RepositorioEnderecoEntrega implements RepositorioGenerico<EnderecoE
                 e.setBairro(t.getBairro());
                 e.setFormaDeEntrega(t.getFormaDeEntrega());
                 e.setFrete(t.getFrete());
+                
                 return;
             }
         }
@@ -46,7 +48,7 @@ public class RepositorioEnderecoEntrega implements RepositorioGenerico<EnderecoE
     //TIRAR DUVIDAR COM O PROFESSOR
     @Override
     public EnderecoEntrega recuperar(String id) {
-        for (EnderecoEntrega e : this.enderecoEntrega) {
+        for (EnderecoEntrega e : this.enderecosEntregas) {
             if (e.getCidade().equals(id)) {
                 return e;
             }
@@ -56,12 +58,11 @@ public class RepositorioEnderecoEntrega implements RepositorioGenerico<EnderecoE
 
     @Override
     public void deletar(EnderecoEntrega t) {
-        this.enderecoEntrega.remove(t);
+        this.enderecosEntregas.remove(t);
     }
 
     @Override
     public List<EnderecoEntrega> recuperarTodos() {
-        return this.enderecoEntrega;
+        return this.enderecosEntregas;
     }
-
 }

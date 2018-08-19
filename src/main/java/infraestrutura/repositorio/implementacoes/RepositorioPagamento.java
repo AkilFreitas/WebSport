@@ -57,6 +57,5 @@ public class RepositorioPagamento implements RepositorioGenerico<Pagamento, Stri
     @Override
     public List<Pagamento> recuperarTodos() {
         return this.pagamentos;
-    }
-    
+    }    
 }

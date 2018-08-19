@@ -22,6 +22,7 @@ public class RepositorioCliente implements RepositorioGenerico<Cliente, String> 
         this.clientes = new ArrayList<>();
     }
 
+    
     @Override
     public void inserir(Cliente t) {
         this.clientes.add(t);
@@ -42,7 +43,6 @@ public class RepositorioCliente implements RepositorioGenerico<Cliente, String> 
                 e.setSexo(t.getSexo());
                 e.setEndereco(t.getEndereco());
                 
-
                 return;
             }
         }

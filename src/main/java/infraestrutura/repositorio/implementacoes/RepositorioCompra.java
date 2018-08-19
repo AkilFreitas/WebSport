@@ -15,12 +15,14 @@ import java.util.List;
  * @author Akil e Michael
  */
 public class RepositorioCompra implements RepositorioGenerico<Compra, String>{
-     private List<Compra> compras = null;
+     
+    private List<Compra> compras = null;
 
     public RepositorioCompra() {
         this.compras = new ArrayList<>();
     }
 
+    
     @Override
     public void inserir(Compra t) {
         this.compras.add(t);
@@ -37,7 +39,6 @@ public class RepositorioCompra implements RepositorioGenerico<Compra, String>{
                 e.setFrete(t.getFrete());
                 e.setObservacoes(t.getObservacoes());
                 e.setTipoDePagamento(t.getTipoDePagamento());
-                e.setProduto(t.getProduto());
                 
                 //Eu(Michael) Ps: Falar com o prof para ver se estar certo
                 e.setConcluida(t.isConcluida());
@@ -47,18 +48,18 @@ public class RepositorioCompra implements RepositorioGenerico<Compra, String>{
                 e.setStatus(Compra.STATUS.EM_PROCESSAMENTO);
                 e.setStatus(Compra.STATUS.PAGAMENTO_IDENTIFICADO);
                 e.setStatus(Compra.STATUS.PEDIDO_REALIZADO);
-                
-               
-
+ 
                 return;
             }
         }
     }
 
+    //TIRAR DUVIDA COM O PROF
     @Override
     public Compra recuperar(String id) {
         for (Compra e : this.compras) {
-            if (e.getProduto().equals(id)) {
+             if (e.getCliente().equals(id)) {
+           // if (e.getProduto().equals(id)) {
                 return e;
             }
         }

@@ -38,10 +38,8 @@ public class RepositorioProduto implements RepositorioGenerico<Produto, String> 
                 e.setPreco(t.getPreco());
                 e.setImagem(t.getImagem());
                 e.setTamanho(t.getTamanho());
-                //VER COM O PROF ESSA PARTE 
                 e.setDisponivel(t.isDisponivel());
                 e.setPromocao(t.isPromocao());
-                //^-----------------------------^
                 e.setFornecedor(t.getFornecedor());
                   return;
             }

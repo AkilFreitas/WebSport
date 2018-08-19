@@ -22,6 +22,7 @@ public class RepositorioEndereco implements RepositorioGenerico<Endereco, String
         this.enderecos = new ArrayList<>();
     }
 
+    
     @Override
     public void inserir(Endereco t) {
         this.enderecos.add(t);
@@ -37,6 +38,7 @@ public class RepositorioEndereco implements RepositorioGenerico<Endereco, String
                 e.setBairro(t.getBairro());
                 e.setEstado(t.getEstado());
                 e.setCidade(t.getCidade());
+                
                 return;
             }
         }
