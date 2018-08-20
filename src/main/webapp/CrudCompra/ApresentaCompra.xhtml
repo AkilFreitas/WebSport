@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <ui:include src="menu.xhtml"/>
+
+        <p:growl id="gro" life="3000"/>
+
+        <h:form id="formApresentaCompra">
+            <p:dataTable id="tabelaCompra" var="item" value="#{CompraController.recuperarTodasCompras()}"
+                         rowKey="#{item.id}" selectionMode="single" selection="#{CompraController.selectedCompra}">
+                <f:facet name="header">
+                    Compras Cadastradas:
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="Cliente" filterBy="#{item.cliente}">
+                    <h:outputText value="#{item.cliente}"/>
+                </p:column>
+                <p:column headerText="Produto" filterBy="#{item.produto}">
+                    <h:outputText value="#{item.produto}"/>
+                </p:column>
+                <p:column headerText="Data">
+                    <h:outputText value="#{item.data}"/>
+                </p:column>
+                <p:column headerText="Total" filterBy="#{item.total}">
+                    <h:outputText value="#{item.total}"/>
+                </p:column>
+                <p:column headerText="Frete" filterBy="#{item.frete}">
+                    <h:outputText value="#{item.frete}"/>
+                </p:column>
+                <p:column headerText="Obersavacoes" filterBy="#{item.observacoes}">
+                    <h:outputText value="#{item.observacoes}"/>
+                </p:column>
+                <p:column headerText="TipoDePagamento" filterBy="#{item.tipoDePagamento}">
+                    <h:outputText value="#{item.tipoDePagamento}"/>
+                </p:column>
+            </p:dataTable>
+
+            <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaCompra').show()"
+                             update='dialVisualizaCompra'/>
+            <p:commandButton value="atualizar" action='AlteraCompra.xhtml'/>
+
+            <p:commandButton value="Cancelar Compra" oncomplete="PF('widDialCompra').show()"/>
+
+            <p:confirmDialog id="dialCompra" message="Deseja realmente cancelar essa compra?"
+                             visible="false" widgetVar="widDialCompra" showEffect="fade"
+                             hideEffect="explode">
+
+                <p:commandButton value="sim" 
+                                 action="#{CompraController.deletarAction(CompraController.selectedCompra)}"
+                                 oncomplete="PF('widDialCompra').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialCompra').hide()"/>
+            </p:confirmDialog>
+
+            <p:dialog id="dialVisualizaCompra" visible="false" resizable="false"
+                      modal="true" widgetVar="widDialVisualizaCompra">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id:"/>
+                    <h:outputText value="#{CompraController.selectedCompra.id}"/>
+
+                    <h:outputText value="Cliente:"/>
+                    <h:outputText value="#{CompraController.selectedCompra.cliente}"/>
+
+                    <h:outputText value="Produto:"/>
+                    <h:outputText value="#{CompraController.selectedCompra.produto}"/>
+
+                    <h:outputText value="Data:"/>
+                    <h:outputText value="#{CompraController.selectedCompra.data}"/>
+
+                    <h:outputText value="Total:"/>
+                    <h:outputText value="#{CompraController.selectedCompra.total}"/>
+
+                    <h:outputText value="Frete:"/>
+                    <h:outputText value="#{CompraController.selectedCompra.frete}"/>
+
+                    <h:outputText value="Observacoes:"/>
+                    <h:outputText value="#{CompraController.selectedCompra.observacoes}"/>
+
+                    <h:outputText value="TipoDePagamento:"/>
+                    <h:outputText value="#{CompraController.selectedCompra.tipoDePagamento}"/>
+
+                </p:panelGrid>
+                <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaCompra').hide()"/>
+            </p:dialog>
+
+        </h:form>
+    </h:body>
+</html>
+
