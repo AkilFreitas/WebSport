@@ -22,19 +22,19 @@ import br.edu.ifpe.websport.model.entidades.Fornecedor;
 public class FornecedorController {
 
     FornecedorModel fm = new FornecedorModel();
-    private Fornecedor clienteCadastro;
+    private Fornecedor fornecedorCadastro;
     private Fornecedor selectedFornecedor;
 
     Fornecedor cliente = new Fornecedor();
 
     public FornecedorController() {
-        this.clienteCadastro = new Fornecedor();
+        this.fornecedorCadastro = new Fornecedor();
     }
 
-    public void inserir() {
+    public void inserirAction() {
 
         try {
-            this.fm.inserir(this.clienteCadastro);
+            this.fm.inserir(this.fornecedorCadastro);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O fornecedor foi cadastrado com sucesso!"));
         } catch (Exception ex) {
@@ -43,7 +43,7 @@ public class FornecedorController {
         }
     }
 
-    public void alterar(Fornecedor f) {
+    public void alterarAction(Fornecedor f) {
         try {
             this.fm.alterar(f);
             FacesContext.getCurrentInstance().addMessage(null,
@@ -58,7 +58,7 @@ public class FornecedorController {
         return this.fm.recuperarFornecedor(id);
     }
 
-    public void deletar(Fornecedor f) {
+    public void deletarAction(Fornecedor f) {
         try {
             this.fm.deletar(f);
             FacesContext.getCurrentInstance().addMessage(null,
@@ -70,7 +70,7 @@ public class FornecedorController {
 
     }
 
-    public List<Fornecedor> recuperarTodosFornecedors() {
+    public List<Fornecedor> recuperarTodosFornecedores() {
         return this.fm.recuperarTodos();
     }
 
@@ -82,12 +82,12 @@ public class FornecedorController {
         this.fm = fm;
     }
 
-    public Fornecedor getClienteCadastro() {
-        return clienteCadastro;
+    public Fornecedor getFornecedorCadastro() {
+        return fornecedorCadastro;
     }
 
-    public void setClienteCadastro(Fornecedor clienteCadastro) {
-        this.clienteCadastro = clienteCadastro;
+    public void setFornecedorCadastro(Fornecedor fornecedorCadastro) {
+        this.fornecedorCadastro = fornecedorCadastro;
     }
 
     public Fornecedor getSelectedFornecedor() {
@@ -105,5 +105,7 @@ public class FornecedorController {
     public void setCliente(Fornecedor cliente) {
         this.cliente = cliente;
     }
+
+   
 
 }
