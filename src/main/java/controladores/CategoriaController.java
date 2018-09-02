@@ -6,22 +6,22 @@
 package controladores;
 
 import br.edu.ifpe.websport.model.CategoriaModel;
-import br.edu.ifpe.websport.model.entidades.Categoria;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import br.edu.ifpe.websport.model.entidades.Categoria;
 
 /**
  *
- * @author Val e Michael
+ * @author Netinho
  */
 @ManagedBean
 @SessionScoped
 public class CategoriaController {
 
-    CategoriaModel cm = new CategoriaModel();
+    CategoriaModel ct = new CategoriaModel();
     private Categoria categoriaCadastro;
     private Categoria selectedCategoria;
 
@@ -34,47 +34,52 @@ public class CategoriaController {
     public void inserirAction() {
 
         try {
-            this.cm.inserir(this.categoriaCadastro);
-
+            this.ct.inserir(this.categoriaCadastro);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A categoria foi cadastrado com sucesso!"));
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A categoria não foi cadastrada!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A categoria não foi cadastrado!"));
         }
-
     }
 
     public void alterarAction(Categoria c) {
         try {
-            this.cm.alterar(c);
+            this.ct.alterar(c);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A categoria foi alterado com sucesso!"));
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A categoria não foi alterado!"));
         }
-
     }
 
     public Categoria recuperarCategoria(int id) {
-        return this.cm.recuperarCategoria(id);
+        return this.ct.recuperarCategoria(id);
     }
 
     public void deletarAction(Categoria c) {
         try {
-            this.cm.deletar(c);
+            this.ct.deletar(c);
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A categoria foi deletado com sucesso!"));
-
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O categoria foi deletado com sucesso!"));
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A categoria não foi deletado!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O categoria não foi deletado!"));
         }
+
     }
 
-    public List<Categoria> recuperarTodosCategorias() {
-        return this.cm.recuperarTodos();
+    public List<Categoria> recuperarTodosCategoriaes() {
+        return this.ct.recuperarTodos();
+    }
+
+    public CategoriaModel getFm() {
+        return ct;
+    }
+
+    public void setFm(CategoriaModel ct) {
+        this.ct = ct;
     }
 
     public Categoria getCategoriaCadastro() {
@@ -93,18 +98,6 @@ public class CategoriaController {
         this.selectedCategoria = selectedCategoria;
     }
 
-    /*
-    TÁ COMENTADO PQ EU(MICHAEL) NÃO SEI SE É NECESSARIO TER GET e SET DO CM
-    
-    public CategoriaModel getCm() {
-        return cm;
-    }
-
-    public void setCm(CategoriaModel cm) {
-        this.cm = cm;
-    }
-     */
-    
     public Categoria getCategoria() {
         return categoria;
     }
@@ -112,5 +105,7 @@ public class CategoriaController {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+   
 
 }
