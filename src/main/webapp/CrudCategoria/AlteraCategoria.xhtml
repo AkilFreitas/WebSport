@@ -1,5 +1,10 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -10,44 +15,45 @@
     </h:head>
     <h:body>
         <ui:include src="menu.xhtml"/>
-        
+
         <h:form id="formAlteraCategoria">
             <p:growl id="dro" life="3000"/>
             <p:fieldset legend="Alteração de Categoria">
                 <p:messages/>
                 <p:panelGrid columns="3">
-                   
-                    
-                    <h:outputText value="Descricao*:"/>
-                    <p:inputText value="#{CategoriaController.selectedCategoria.descricao}" id="txtDescricao"
-                                 required="true" requiredMessage="O campo Descrição é obrigatorio"/>
-                    <p:message for="txtDescricao"/>
-      
+
                     <h:outputText value="Id:"/>
                     <p:inputText value="#{CategoriaController.selectedCategoria.id}"/>
                     <h:outputText/>
-                   
+
                     <h:outputText value="Nome*:"/>
-                    <p:inputText value="#{CategoriaController.selectedCategoria.rg}" id="txtNome"
-                                 required="true" requiredMessage="O campo nome é obrigatorio"/>
+                    <p:inputText value="#{CategoriaController.selectedCategoria.nome}" id="txtNome"
+                                 required="true" requiredMessage="O campo Nome é obrigatorio"/>
                     <p:message for="txtNome"/>
-                    
-             
-                    
+
+                    <h:outputText value="Descricao*:"/>
+                    <p:inputText value="#{CategoriaController.selectedCategoria.descricao}" id="txtDescricao"
+                                 required="true" requiredMessage="O campo descrição é obrigatorio"/>
+                    <p:message for="txtDescricao"/>
+
+                   
+
                 </p:panelGrid>
                 <p:commandButton value="Alterar"
                                  oncomplete="PF('widDialCategoria').show()"/>
             </p:fieldset>
-            
+
             <p:confirmDialog id="dialCategoria" message="Deseja realmente alterar a Categoria?"
                              visible="false" widgetVar="widDialCategoria" showEffect="fade"
                              hideEffect="explode">
                 <f:facet name="header">
-                    atencão!
+                    ATENÇÃO!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{CategoriaController.alterar(CategoriaController.selectedCategoria)}"
+                                 action="#{CategoriaController.alterarAction(CategoriaController.selectedCategoria)}"
                                  oncomplete="PF('widDialCategoria').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialCategoria').hide()"/>
             </p:confirmDialog>
-            
+        </h:form>
+    </h:body>
+</html>
