@@ -22,7 +22,7 @@ and open the template in the editor.
             <p:growl id="gro" life="3000"/>
 
             <h:form id="formApresentaCategoria">
-                <p:dataTable id="tabelaCategoria" var="item" value="#{CategoriaController.recuperarTodosCategoriaes()}"
+                <p:dataTable id="tabelaCategoria" var="item" value="#{CategoriaController.recuperarTodasCategorias()}"
                              rowKey="#{item.id}" selectionMode="single" selection="#{CategoriaController.selectedCategoria}">
                     <f:facet name="header">
                         Categoria Cadastradas

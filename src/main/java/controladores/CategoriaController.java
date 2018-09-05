@@ -6,22 +6,22 @@
 package controladores;
 
 import br.edu.ifpe.websport.model.CategoriaModel;
+import br.edu.ifpe.websport.model.entidades.Categoria;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import br.edu.ifpe.websport.model.entidades.Categoria;
 
 /**
  *
- * @author Netinho
+ * @author Val e Michael
  */
 @ManagedBean
 @SessionScoped
 public class CategoriaController {
 
-    CategoriaModel ct = new CategoriaModel();
+    CategoriaModel cm = new CategoriaModel();
     private Categoria categoriaCadastro;
     private Categoria selectedCategoria;
 
@@ -34,54 +34,51 @@ public class CategoriaController {
     public void inserirAction() {
 
         try {
-            this.ct.inserir(this.categoriaCadastro);
+            this.cm.inserir(this.categoriaCadastro);
+
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A categoria foi cadastrado com sucesso!"));
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A categoria não foi cadastrado!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A categoria não foi cadastrada!"));
         }
+
     }
 
     public void alterarAction(Categoria c) {
         try {
-            this.ct.alterar(c);
+            this.cm.alterar(c);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A categoria foi alterado com sucesso!"));
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A categoria não foi alterado!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A categoria não foi alterada!"));
         }
+
     }
 
     public Categoria recuperarCategoria(int id) {
-        return this.ct.recuperarCategoria(id);
+        return this.cm.recuperarCategoria(id);
     }
 
     public void deletarAction(Categoria c) {
         try {
-            this.ct.deletar(c);
+            this.cm.deletar(c);
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O categoria foi deletado com sucesso!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A categoria foi deletado com sucesso!"));
+
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O categoria não foi deletado!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A categoria não foi deletada!"));
         }
-
     }
 
-    public List<Categoria> recuperarTodosCategoriaes() {
-        return this.ct.recuperarTodos();
+    public List<Categoria> recuperarTodasCategorias() {
+        return this.cm.recuperarTodos();
     }
 
-    public CategoriaModel getFm() {
-        return ct;
-    }
-
-    public void setFm(CategoriaModel ct) {
-        this.ct = ct;
-    }
-
+    
+    
     public Categoria getCategoriaCadastro() {
         return categoriaCadastro;
     }
@@ -98,6 +95,15 @@ public class CategoriaController {
         this.selectedCategoria = selectedCategoria;
     }
 
+    public CategoriaModel getCm() {
+        return cm;
+    }
+
+    public void setCm(CategoriaModel cm) {
+        this.cm = cm;
+    }
+  
+    
     public Categoria getCategoria() {
         return categoria;
     }
@@ -105,7 +111,4 @@ public class CategoriaController {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-
-   
-
 }
