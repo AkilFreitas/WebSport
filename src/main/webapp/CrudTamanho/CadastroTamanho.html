@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <ui:include src="menu.xhtml"/>
+
+        <h:form id="formCadastroTamanho">
+            <p:growl id="dro" life="3000"/>
+            <p:fieldset legend="Cadastro de tamanho">
+                <p:messages/>
+                <p:panelGrid columns="3">
+                    <h:outputText value="Id*:"/>
+                    <p:inputText id="txtId" value="#{tamanhoCadastro.id}"
+                                 required="true" requiredMessage="O campo id é obrigatório!"/>
+                    <p:message for="txtId"/>
+
+                    <h:outputText value="Dimensao*:"/>
+                    <p:inputText id="txtDimensao" value="#{tamanhoCadastro.dimensao}"
+                                 required="true" requiredMessage="O campo dimensao é obrigatório!"/>
+                    <p:message for="txtDimensao"/>
+                    
+                    <h:outputText value="Peso*:"/>
+                    <p:inputText id="txtPeso" value="#{tamanhoCadastro.peso}"
+                                 required="true" requiredMessage="O campo peso é obrigatório!"/>
+                    <p:message for="txtPeso"/>
+                 
+                </p:panelGrid>
+                <p:commandButton value="Cadastrar"
+                                 oncomplete="PF('widDialTamanho').show()"/>
+            </p:fieldset>
+
+            <p:confirmDialog id="dialTamanho" message="Deseja realmente cadastrar o tamanho?"
+                             visible="false" widgetVar="widDialTamanho" showEffect="fade"
+                             hideEffect="explode">
+                <f:facet name="header">
+                    ATENÇÃO!
+                </f:facet>
+                <p:commandButton value="sim" 
+                                 action="#{TamanhoController.inserirAction(tamanhoCadastro.TamanhoController())}"
+                                 oncomplete="PF('widDialTamanho').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialTamanho').hide()"/>
+            </p:confirmDialog>
+
+            <p:dialog id="dialConfirm" visible="false" resizable="false" modal="true"
+                      widgetVar="widDialConfirm">
+                <h:outputText value="cadastro realizado com sucesso"/><br/>
+                <p:commandButton value="ok" oncomplete="PF('widDialConfirm').hide()"/>
+            </p:dialog>
+
+        </h:form>
+    </h:body>
+</html>
+

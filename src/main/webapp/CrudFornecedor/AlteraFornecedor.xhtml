@@ -10,6 +10,7 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -18,44 +19,45 @@ and open the template in the editor.
 
         <h:form id="formAlteraFornecedor">
             <p:growl id="dro" life="3000"/>
-            <p:fieldset legend="Alteração de Fornecedor">
+            <p:fieldset legend="Alteração do Fornecedor">
                 <p:messages/>
                 <p:panelGrid columns="3">
 
-                    <h:outputText value="Id:"/>
-                    <p:inputText value="#{FornecedorController.selectedFornecedor.id}"/>
-                    <h:outputText/>
+
+                    <h:outputText value="Id*:"/>
+                    <p:inputText value="#{FornecedorController.selectedFornecedor.id}" id="txtId"
+                                 required="true" requiredMessage="O campo id é obrigatório!"/>
+                    <p:message for="txtId"/>
 
                     <h:outputText value="Cnpj*:"/>
                     <p:inputText value="#{FornecedorController.selectedFornecedor.cnpj}" id="txtCnpj"
-                                 required="true" requiredMessage="O campo Cnpj é obrigatorio"/>
+                                 required="true" requiredMessage="O campo Cnpj é obrigatório!"/>
                     <p:message for="txtCnpj"/>
 
                     <h:outputText value="Telefone*:"/>
                     <p:inputText value="#{FornecedorController.selectedFornecedor.telefone}" id="txtTelefone"
-                                 required="true" requiredMessage="O campo telefone é obrigatorio"/>
+                         required="true" requiredMessage="O campo Telefone é obrigatório!"/>
                     <p:message for="txtTelefone"/>
 
                     <h:outputText value="NomeFantasia*:"/>
                     <p:inputText value="#{FornecedorController.selectedFornecedor.nomeFantasia}" id="txtNomeFantasia"
-                                 required="true" requiredMessage="O campo NomeFantasiaé obrigatorio"/>
+                                 required="true" requiredMessage="O campo NomeFantasia é obrigatório!"/>
                     <p:message for="txtNomeFantasia"/>
 
                     <h:outputText value="Email*:"/>
                     <p:inputText value="#{FornecedorController.selectedFornecedor.email}" id="txtEmail"
-                                 required="true" requiredMessage="O campo Email é obrigatorio"/>
+                                 required="true" requiredMessage="O campo Email é obrigatório!"/>
                     <p:message for="txtEmail"/>
 
                 </p:panelGrid>
                 <p:commandButton value="Alterar"
                                  oncomplete="PF('widDialFornecedor').show()"/>
             </p:fieldset>
-
             <p:confirmDialog id="dialFornecedor" message="Deseja realmente alterar o Fornecedor?"
                              visible="false" widgetVar="widDialFornecedor" showEffect="fade"
                              hideEffect="explode">
                 <f:facet name="header">
-                    ATENÇÃO!
+                    ATENÇÃO!!
                 </f:facet>
                 <p:commandButton value="sim" 
                                  action="#{FornecedorController.alterarAction(FornecedorController.selectedFornecedor)}"
