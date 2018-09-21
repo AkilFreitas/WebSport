@@ -23,21 +23,21 @@ and open the template in the editor.
                 <p:messages/>
                 <p:panelGrid columns="3">
                     <h:outputText value="Id*:"/>
-                    <p:inputText id="txtId" value="#{CategoriaController.categoriaCadastro.id}"
+                    <p:inputText id="txtId" value="#{categoriaController.categoriaCadastro.id}"
                                  required="true" requiredMessage="O campo id é obrigatório!"/>
                     <p:message for="txtId"/>                    
 
                     <h:outputText value="Nome*:"/>
-                    <p:inputText value="#{CategoriaController.categoriaCadastro.nome}" id="txtNome"
+                    <p:inputText value="#{categoriaController.categoriaCadastro.nome}" id="txtNome"
                                  required="true" requiredMessage="O campo nome é obrigatório!"/>
                     <p:message for="txtNome"/>
 
                     <h:outputText value="Descricao*:"/>
-                    <p:inputText value="#{CategoriaController.categoriaCadastro.nomeFantasia}" id="txtDescricao"
+                    <p:inputText value="#{categoriaController.categoriaCadastro.nomeFantasia}" id="txtDescricao"
                                  required="true" requiredMessage="O campo descricao fantasia é obrigatório!"/>
                     <p:message for="txtNomeDescricao"/>
 
-                    
+
 
                 </p:panelGrid>
                 <p:commandButton value="Cadastrar"
@@ -51,7 +51,7 @@ and open the template in the editor.
                     ATENÇÃO!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{CategoriaController.inserirAction(CategoriaController.categoriaCadastro)}"
+                                 action="#{categoriaController.inserirAction(categoriaController.categoriaCadastro)}"
                                  oncomplete="PF('widDialCategoria').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialCategoria').hide()"/>
             </p:confirmDialog>

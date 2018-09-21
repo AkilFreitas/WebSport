@@ -5,124 +5,119 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
- <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        
-        <ui:include src="menu.xhtml"/>
-        
-        <p:growl id="gro" life="3000"/>
-        
-        <h:form id="formApresentaCliente">
-            <p:dataTable id="tabelaCliente" var="item" value="#{clienteController.recuperarTodosClientes()}"
-                         rowKey="#{item.id}" selectionMode="single" selection="#{clienteController.selectedCliente}">
-                <f:facet name="header">
-                    Clientes Cadastrados
-                </f:facet>
-                <p:column headerText="Id">
-                    <h:outputText value="#{item.id}"/>
-                </p:column>
-                <p:column headerText="Login">
-                   <h:outputText value="#{item.login}"/>
-                </p:column>
-                <p:column headerText="Senha" filterBy="#{item.senha}">
-                    <h:outputText value="#{item.senha}"/>
-                </p:column>
-                <p:column headerText="Endereco" filterBy="#{item.endereco}">
-                    <h:outputText value="#{item.endereco}"/>
-                </p:column>
-                <p:column headerText="Email" filterBy="#{item.email}">
-                    <h:outputText value="#{item.email}"/>
-                </p:column>
-                <p:column headerText="Idade" filterBy="#{item.idade}">
-                    <h:outputText value="#{item.idade}"/>
-                </p:column>
-                <p:column headerText="Rg" filterBy="#{item.rg}">
-                    <h:outputText value="#{item.rg}"/>
-                </p:column>
-                <p:column headerText="Cpf" filterBy="#{item.cpf}">
-                    <h:outputText value="#{item.cpf}"/>
-                    <p:column headerText="Telefone" filterBy="#{item.telefone}">
-                    <h:outputText value="#{item.telefone}"/>
+    <?xml version='1.0' encoding='UTF-8' ?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:h="http://xmlns.jcp.org/jsf/html"
+          xmlns:p="http://primefaces.org/ui"
+          xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+          xmlns:f="http://xmlns.jcp.org/jsf/core">
+        <h:head>
+            <title>Facelet Title</title>
+        </h:head>
+        <h:body>
+
+            <ui:include src="menu.xhtml"/>
+
+            <p:growl id="gro" life="3000"/>
+
+            <h:form id="formApresentaCliente">
+                <p:dataTable id="tabelaCliente" var="item" value="#{clienteController.recuperarTodosClientes()}"
+                             rowKey="#{item.id}" selectionMode="single" selection="#{clienteController.selectedCliente}">
+                    <f:facet name="header">
+                        Clientes Cadastrados
+                    </f:facet>
+
+                    <p:column headerText="Id">
+                        <h:outputText value="#{item.id}"/>
+                    </p:column>
                     <p:column headerText="Nome" filterBy="#{item.nome}">
-                    <h:outputText value="#{item.nome}"/>
-                    <p:column headerText="DataDeNascimento" filterBy="#{item.dataDeNascimento}">
-                    <h:outputText value="#{item.dataDeNascimento}"/>
+                        <h:outputText value="#{item.nome}"/>
+                    </p:column>
                     <p:column headerText="Sexo" filterBy="#{item.sexo}">
-                    <h:outputText value="#{item.sexo}"/>
-                </p:column>
-                </p:column>
-                </p:column>
-                </p:column>
-                </p:column>
-            </p:dataTable>
-            
-            <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaCliente').show()"
-                             update='dialVisualizaCliente'/>
-            <p:commandButton value="atualizar" action='alteraCliente.xhtml'/>
-            
-             <p:commandButton value="Deletar" oncomplete="PF('widDialCliente').show()"/>
-             
-             <p:confirmDialog id="dialCliente" message="Deseja realmente apagar o Cliente?"
-                             visible="false" widgetVar="widDialCliente" showEffect="fade"
-                             hideEffect="explode">
-                 
-                <p:commandButton value="sim" 
-                                 action="#{clienteController.deletar(clienteController.selectedCliente)}"
-                                 oncomplete="PF('widDialCliente').hide()" update="@form"/>
-                <p:commandButton value="não" oncomplete="PF('widDialCliente').hide()"/>
-            </p:confirmDialog>
-            
-            <p:dialog id="dialVisualizaCliente" visible="false" resizable="false"
-                      modal="true" widgetVar="widDialVisualizaCliente">
-                <p:panelGrid columns="2">
-                    <h:outputText value="Id"/>
-                    <h:outputText value="#{clienteController.selectedCliente.id}"/>
-                    
-                    <h:outputText value="Login:"/>
-                    <h:outputText value="#{clienteController.selectedUsuario.login}"/>
-                    
-                    <h:outputText value="Senha:"/>
-                    <h:outputText value="#{clienteController.selectedUsuario.senha}"/>
-                    
-                    <h:outputText value="Email:"/>
-                    <h:outputText value="#{clienteController.selectedUsuario.email}"/>
-                    
-                    <h:outputText value="Endereço"/>
-                    <h:outputText value="#{clienteController.selectedUsuario.endereco}"/>
-                    
-                    <h:outputText value="Nome"/>
-                    <h:outputText value="#{clienteController.selectedCliente.nome}"/>
-                    
-                    <h:outputText value="Rg"/>
-                    <h:outputText value="#{clienteController.selectedCliente.rg}"/>
-                    
-                    <h:outputText value="Cpf"/>
-                    <h:outputText value="#{clienteController.selectedCliente.cpf}"/>
-                    
-                    <h:outputText value="Telefone"/>
-                    <h:outputText value="#{clienteController.selectedCliente.telefone}"/>
-                    
-                    <h:outputText value="Sexo"/>
-                    <h:outputText value="#{clienteController.selectedCliente.sexo}"/>
-                    
-                    <h:outputText value="DataDeNascimento"/>
-                    <h:outputText value="#{clienteController.selectedCliente.dataDeNascimento}"/>
-                </p:panelGrid>
-                <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaCliente').hide()"/>
-            </p:dialog>
-            
-        </h:form>
-    </h:body>
+                        <h:outputText value="#{item.sexo}"/>
+                    </p:column>
+                    <p:column headerText="Idade" filterBy="#{item.idade}">
+                        <h:outputText value="#{item.idade}"/>
+                    </p:column>
+                    <p:column headerText="DataDeNascimento" filterBy="#{item.dataDeNascimento}">
+                        <h:outputText value="#{item.dataDeNascimento}"/>
+                    </p:column>
+                    <p:column headerText="Rg" filterBy="#{item.rg}">
+                        <h:outputText value="#{item.rg}"/>
+                    </p:column>
+                    <p:column headerText="Cpf" filterBy="#{item.cpf}">
+                        <h:outputText value="#{item.cpf}"/>
+                    </p:column>
+                    <p:column headerText="Endereco" filterBy="#{item.endereco}">
+                        <h:outputText value="#{item.endereco}"/>
+                    </p:column>
+                    <p:column headerText="Telefone" filterBy="#{item.telefone}">
+                        <h:outputText value="#{item.telefone}"/>
+                    </p:column>
+                    <p:column headerText="Email" filterBy="#{item.email}">
+                        <h:outputText value="#{item.email}"/>
+                    </p:column>
+                    <p:column headerText="Senha" filterBy="#{item.senha}">
+                        <h:outputText value="#{item.senha}"/>
+                    </p:column>
+                </p:dataTable>
 
+                <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaCliente').show()"
+                                 update='dialVisualizaCliente'/>
+                <p:commandButton value="atualizar" action='AlteraCliente.xhtml'/>
 
+                <p:commandButton value="Deletar" oncomplete="PF('widDialCliente').show()"/>
 
-</html>
+                <p:confirmDialog id="dialCliente" message="Deseja realmente apagar o Cliente?"
+                                 visible="false" widgetVar="widDialCliente" showEffect="fade"
+                                 hideEffect="explode">
+
+                    <p:commandButton value="sim" 
+                                     action="#{clienteController.deletarAction(clienteController.selectedCliente)}"
+                                     oncomplete="PF('widDialCliente').hide()" update="@form"/>
+                    <p:commandButton value="não" oncomplete="PF('widDialCliente').hide()"/>
+                </p:confirmDialog>
+
+                <p:dialog id="dialVisualizaCliente" visible="false" resizable="false"
+                          modal="true" widgetVar="widDialVisualizaCliente">
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Id"/>
+                        <h:outputText value="#{clienteController.selectedCliente.id}"/>
+
+                        <h:outputText value="Nome"/>
+                        <h:outputText value="#{clienteController.selectedCliente.nome}"/>
+
+                        <h:outputText value="Sexo"/>
+                        <h:outputText value="#{clienteController.selectedCliente.sexo}"/>
+
+                        <h:outputText value="Idade"/>
+                        <h:outputText value="#{clienteController.selectedCliente.idade}"/>
+
+                        <h:outputText value="DataDeNascimento"/>
+                        <h:outputText value="#{clienteController.selectedCliente.dataDeNascimento}"/>
+
+                        <h:outputText value="Rg"/>
+                        <h:outputText value="#{clienteController.selectedCliente.rg}"/>
+
+                        <h:outputText value="Cpf"/>
+                        <h:outputText value="#{clienteController.selectedCliente.cpf}"/>
+
+                        <h:outputText value="Endereço"/>
+                        <h:outputText value="#{clienteController.selectedUsuario.endereco}"/>
+
+                        <h:outputText value="Telefone"/>
+                        <h:outputText value="#{clienteController.selectedCliente.telefone}"/>
+
+                        <h:outputText value="Email:"/>
+                        <h:outputText value="#{clienteController.selectedUsuario.email}"/>
+
+                        <h:outputText value="Senha:"/>
+                        <h:outputText value="#{clienteController.selectedUsuario.senha}"/>    
+                    </p:panelGrid>
+                    <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaCliente').hide()"/>
+                </p:dialog>
+
+            </h:form>
+        </h:body>
+    </html>

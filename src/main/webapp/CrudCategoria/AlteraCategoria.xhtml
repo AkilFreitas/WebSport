@@ -23,20 +23,20 @@ and open the template in the editor.
                 <p:panelGrid columns="3">
 
                     <h:outputText value="Id:"/>
-                    <p:inputText value="#{CategoriaController.selectedCategoria.id}"/>
+                    <p:inputText value="#{categoriaController.selectedCategoria.id}"/>
                     <h:outputText/>
 
                     <h:outputText value="Nome*:"/>
-                    <p:inputText value="#{CategoriaController.selectedCategoria.nome}" id="txtNome"
+                    <p:inputText value="#{categoriaController.selectedCategoria.nome}" id="txtNome"
                                  required="true" requiredMessage="O campo Nome é obrigatorio"/>
                     <p:message for="txtNome"/>
 
                     <h:outputText value="Descricao*:"/>
-                    <p:inputText value="#{CategoriaController.selectedCategoria.descricao}" id="txtDescricao"
+                    <p:inputText value="#{categoriaController.selectedCategoria.descricao}" id="txtDescricao"
                                  required="true" requiredMessage="O campo descrição é obrigatorio"/>
                     <p:message for="txtDescricao"/>
 
-                   
+
 
                 </p:panelGrid>
                 <p:commandButton value="Alterar"
@@ -50,7 +50,7 @@ and open the template in the editor.
                     ATENÇÃO!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{CategoriaController.alterarAction(CategoriaController.selectedCategoria)}"
+                                 action="#{categoriaController.alterarAction(categoriaController.selectedCategoria)}"
                                  oncomplete="PF('widDialCategoria').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialCategoria').hide()"/>
             </p:confirmDialog>
