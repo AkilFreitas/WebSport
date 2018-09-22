@@ -20,30 +20,30 @@ and open the template in the editor.
         <p:growl id="gro" life="3000"/>
 
         <h:form id="formApresentaEndereco">
-            <p:dataTable id="tabelaEndereco" var="item" value="#{EnderecoController.recuperarTodosEnderecos()}"
-                         rowKey="#{item.id}" selectionMode="single" selection="#{EnderecoController.selectedEndereco}">
+            <p:dataTable id="tabelaEndereco" var="item" value="#{enderecoController.recuperarTodosEnderecos()}"
+                         rowKey="#{item.id}" selectionMode="single" selection="#{enderecoController.selectedEndereco}">
                 <f:facet name="header">
                     Endereço Cadastrados
                 </f:facet>
                 <p:column headerText="Id">
                     <h:outputText value="#{item.id}"/>
                 </p:column>
-                <p:column headerText="Estado">
+                <p:column headerText="Estado" filterBy="#{item.estado}">
                     <h:outputText value="#{item.estado}"/>
                 </p:column>
-                <p:column headerText="Cidade">
+                <p:column headerText="Cidade" filterBy="#{item.cidade}">
                     <h:outputText value="#{item.cidade}"/>
                 </p:column>
-                <p:column headerText="Bairro">
+                <p:column headerText="Bairro" filterBy="#{item.bairro}">
                     <h:outputText value="#{item.bairro}"/>
                 </p:column>
-                <p:column headerText="Rua">
+                <p:column headerText="Rua" filterBy="#{item.rua}">
                     <h:outputText value="#{item.rua}"/>
                 </p:column>
-                <p:column headerText="Cep">
+                <p:column headerText="Cep" filterBy="#{item.cep}">
                     <h:outputText value="#{item.cep}"/>
                 </p:column>
-                <p:column headerText="Numero">
+                <p:column headerText="Numero" filterBy="#{item.numero}">
                     <h:outputText value="#{item.numero}"/>
                 </p:column>
 
@@ -60,7 +60,7 @@ and open the template in the editor.
                              hideEffect="explode">
 
                 <p:commandButton value="sim" 
-                                 action="#{EnderecoController.deletarAction(EnderecoController.selectedEndereco)}"
+                                 action="#{enderecoController.deletarAction(enderecoController.selectedEndereco)}"
                                  oncomplete="PF('widDialEndereco').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialEndereco').hide()"/>
             </p:confirmDialog>
@@ -69,25 +69,25 @@ and open the template in the editor.
                       modal="true" widgetVar="widDialVisualizaEndereco">
                 <p:panelGrid columns="2">
                     <h:outputText value="Id"/>
-                    <h:outputText value="#{EnderecoController.selectedEndereco.id}"/>
+                    <h:outputText value="#{enderecoController.selectedEndereco.id}"/>
 
                     <h:outputText value="Estado:"/>
-                    <h:outputText value="#{EnderecoController.selectedEndereco.estado}"/>
+                    <h:outputText value="#{enderecoController.selectedEndereco.estado}"/>
 
                     <h:outputText value="Cidade:"/>
-                    <h:outputText value="#{EnderecoController.selectedCidade.cidade}"/>
+                    <h:outputText value="#{enderecoController.selectedEndereco.cidade}"/>
 
                     <h:outputText value="Bairro:"/>
-                    <h:outputText value="#{EnderecoController.selectedEndereco.bairro}"/>
+                    <h:outputText value="#{enderecoController.selectedEndereco.bairro}"/>
 
                     <h:outputText value="Rua:"/>
-                    <h:outputText value="#{EnderecoController.selectedEndereco.rua}"/>
+                    <h:outputText value="#{enderecoController.selectedEndereco.rua}"/>
 
                     <h:outputText value="Cep:"/>
-                    <h:outputText value="#{EnderecoController.selectedEndereco.cep}"/>
+                    <h:outputText value="#{enderecoController.selectedEndereco.cep}"/>
 
                     <h:outputText value="Numero:"/>
-                    <h:outputText value="#{EnderecoController.selectedEndereco.numero}"/>
+                    <h:outputText value="#{enderecoController.selectedEndereco.numero}"/>
 
                 </p:panelGrid>
                 <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaEndereco').hide()"/>

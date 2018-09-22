@@ -23,17 +23,17 @@ and open the template in the editor.
                 <p:messages/>
                 <p:panelGrid columns="3">
 
-                    
+
                     <h:outputText value="Produto*:"/>
-                    <p:inputText value="#{CompraController.selectedCompra.produto}" id="txtProduto"
+                    <p:inputText value="#{compraController.selectedCompra.produto}" id="txtProduto"
                                  required="true" requiredMessage="O campo produto é obrigatório!"/>
                     <p:message for="txtProduto"/>
-                    
+
                     <h:outputText value="TipoDePagamento*:"/>
-                    <p:inputText value="#{CompraController.selectedCompra.tipoDePagamento}" id="txtTipoDePagamento"
+                    <p:inputText value="#{compraController.selectedCompra.tipoDePagamento}" id="txtTipoDePagamento"
                                  required="true" requiredMessage="O campo tipo de pagamento é obrigatório!"/>
                     <p:message for="txtTipoDePagamento"/>
-                    
+
 
                 </p:panelGrid>
                 <p:commandButton value="Alterar"
@@ -47,7 +47,7 @@ and open the template in the editor.
                     ATENÇÃO!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{CompraController.alterarAction(CompraController.selectedCompra)}"
+                                 action="#{compraController.alterarAction(compraController.selectedCompra)}"
                                  oncomplete="PF('widDialCompra').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialCompra').hide()"/>
             </p:confirmDialog>

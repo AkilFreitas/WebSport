@@ -20,27 +20,33 @@ and open the template in the editor.
         <p:growl id="gro" life="3000"/>
 
         <h:form id="formApresentaEnderecoEntrega">
-            <p:dataTable id="tabelaEnderecoEntrega" var="item" value="#{EnderecoEntregaController.recuperarTodosEnderecosEntregas()}"
-                         rowKey="#{item.id}" selectionMode="single" selection="#{EnderecoEntregaController.selectedEnderecoEntrega}">
+            <p:dataTable id="tabelaEnderecoEntrega" var="item" value="#{enderecoEntregaController.recuperarTodosEnderecosEntregas()}"
+                         rowKey="#{item.id}" selectionMode="single" selection="#{enderecoEntregaController.selectedEnderecoEntrega}">
                 <f:facet name="header">
                     Endereço de Entrega Cadastrados:
                 </f:facet>
-                <p:column headerText="Id">
+                <p:column headerText="Id" filterBy="#{item.cidade}">
                     <h:outputText value="#{item.id}"/>
                 </p:column>
-                <p:column headerText="Cidade">
-                    <h:outputText value="#{item.cidade}"/>
+                <p:column headerText="Frete" filterBy="#{item.frete}">
+                    <h:outputText value="#{item.frete}"/>
                 </p:column>
-                <p:column headerText="Bairro">
-                    <h:outputText value="#{item.bairro}"/>
+                <p:column headerText="FormaDeEntrega" filterBy="#{item.formaDeEntrega}">
+                    <h:outputText value="#{item.formaDeEntrega}"/>
                 </p:column>
-                <p:column headerText="Rua">
-                    <h:outputText value="#{item.rua}"/>
-                </p:column>
-                <p:column headerText="Cep">
+                <p:column headerText="Cep" filterBy="#{item.cep}">
                     <h:outputText value="#{item.cep}"/>
                 </p:column>
-                <p:column headerText="Numero">
+                <p:column headerText="Cidade" filterBy="#{item.cidade}">
+                    <h:outputText value="#{item.cidade}"/>
+                </p:column>
+                <p:column headerText="Bairro" filterBy="#{item.bairro}">
+                    <h:outputText value="#{item.bairro}"/>
+                </p:column>
+                <p:column headerText="Rua" filterBy="#{item.rua}">
+                    <h:outputText value="#{item.rua}"/>
+                </p:column>                
+                <p:column headerText="Numero" filterBy="#{item.numero}">
                     <h:outputText value="#{item.numero}"/>
                 </p:column>
 
@@ -57,7 +63,7 @@ and open the template in the editor.
                              hideEffect="explode">
 
                 <p:commandButton value="sim" 
-                                 action="#{EnderecoEntregaController.deletarAction(EnderecoEntregaController.selectedEnderecoEntrega)}"
+                                 action="#{enderecoEntregaController.deletarAction(enderecoEntregaController.selectedEnderecoEntrega)}"
                                  oncomplete="PF('widDialEnderecoEntrega').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialEnderecoEntrega').hide()"/>
             </p:confirmDialog>
@@ -66,22 +72,28 @@ and open the template in the editor.
                       modal="true" widgetVar="widDialVisualizaEnderecoEntrega">
                 <p:panelGrid columns="2">
                     <h:outputText value="Id"/>
-                    <h:outputText value="#{EnderecoEntregaController.selectedEnderecoEntrega.id}"/>
+                    <h:outputText value="#{enderecoEntregaController.selectedEnderecoEntrega.id}"/>
+                    
+                    <h:outputText value="Frete:"/>
+                    <h:outputText value="#{enderecoEntregaController.selectedEnderecoEntrega.frete}"/>
+                    
+                    <h:outputText value="Forma de Entrega:"/>
+                    <h:outputText value="#{enderecoEntregaController.selectedEnderecoEntrega.formaDeEntrega}"/>
+                    
+                    <h:outputText value="Cep:"/>
+                    <h:outputText value="#{enderecoEntregaController.selectedEnderecoEntrega.cep}"/>
 
                     <h:outputText value="Cidade:"/>
-                    <h:outputText value="#{EnderecoEntregaController.selectedEnderecoEntrega.cidade}"/>
+                    <h:outputText value="#{enderecoEntregaController.selectedEnderecoEntrega.cidade}"/>
 
                     <h:outputText value="Bairro:"/>
-                    <h:outputText value="#{EnderecoEntregaController.selectedEnderecoEntrega.bairro}"/>
+                    <h:outputText value="#{enderecoEntregaController.selectedEnderecoEntrega.bairro}"/>
 
                     <h:outputText value="Rua:"/>
-                    <h:outputText value="#{EnderecoEntregaController.selectedEnderecoEntrega.rua}"/>
-
-                    <h:outputText value="Cep:"/>
-                    <h:outputText value="#{EnderecoEntregaController.selectedEnderecoEntrega.cep}"/>
+                    <h:outputText value="#{enderecoEntregaController.selectedEnderecoEntrega.rua}"/>
 
                     <h:outputText value="Numero:"/>
-                    <h:outputText value="#{EnderecoEntregaController.selectedEnderecoEntrega.numero}"/>
+                    <h:outputText value="#{enderecoEntregaController.selectedEnderecoEntrega.numero}"/>
 
                 </p:panelGrid>
                 <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaEnderecoEntrega').hide()"/>

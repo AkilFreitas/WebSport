@@ -21,7 +21,7 @@ import br.edu.ifpe.websport.model.entidades.Produto;
 @SessionScoped
 public class ProdutoController {
 
-    ProdutoModel pm = new ProdutoModel();
+    ProdutoModel pdtm = new ProdutoModel();
     private Produto produtoCadastro;
     private Produto selectedProduto;
 
@@ -31,10 +31,10 @@ public class ProdutoController {
         this.produtoCadastro = new Produto();
     }
 
-    public void inserir() {
+    public void inserirAction() {
 
         try {
-            this.pm.inserir(this.produtoCadastro);
+            this.pdtm.inserir(this.produtoCadastro);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O produto foi cadastrado com sucesso!"));
 
@@ -44,9 +44,9 @@ public class ProdutoController {
         }
     }
 
-    public void alterar(Produto p) {
+    public void alterarAction(Produto p) {
         try {
-            this.pm.alterar(p);
+            this.pdtm.alterar(p);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O produto foi alterado com sucesso!"));
 
@@ -57,12 +57,12 @@ public class ProdutoController {
     }
 
     public Produto recuperarProduto(int id) {
-        return this.pm.recuperarProduto(id);
+        return this.pdtm.recuperarProduto(id);
     }
 
-    public void deletar(Produto p) {
+    public void deletarAction(Produto p) {
         try {
-            this.pm.deletar(p);
+            this.pdtm.deletar(p);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O produto foi deletado com sucesso!"));
         } catch (Exception ex) {
@@ -73,15 +73,15 @@ public class ProdutoController {
     }
 
     public List<Produto> recuperarTodosProdutos() {
-        return this.pm.recuperarTodos();
+        return this.pdtm.recuperarTodos();
     }
 
     public ProdutoModel getPm() {
-        return pm;
+        return pdtm;
     }
 
-    public void setPm(ProdutoModel pm) {
-        this.pm = pm;
+    public void setPm(ProdutoModel pdtm) {
+        this.pdtm = pdtm;
     }
 
     public Produto getProdutoCadastro() {

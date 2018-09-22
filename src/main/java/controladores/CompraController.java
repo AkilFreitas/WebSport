@@ -21,7 +21,7 @@ import br.edu.ifpe.websport.model.entidades.Compra;
 @SessionScoped
 public class CompraController {
 
-    CompraModel cm = new CompraModel();
+    CompraModel cpm = new CompraModel();
     private Compra compraCadastro;
     private Compra selectedCompra;
 
@@ -34,7 +34,7 @@ public class CompraController {
     public void inserirAction() {
 
         try {
-            this.cm.inserir(this.compraCadastro);
+            this.cpm.inserir(this.compraCadastro);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A compra foi cadastrado com sucesso!"));
 
@@ -46,7 +46,7 @@ public class CompraController {
 
     public void alterarAction(Compra c) {
         try {
-            this.cm.alterar(c);
+            this.cpm.alterar(c);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A compra foi alterado com sucesso!"));
 
@@ -57,12 +57,12 @@ public class CompraController {
     }
 
     public Compra recuperarCompra(int id) {
-        return this.cm.recuperarCompra(id);
+        return this.cpm.recuperarCompra(id);
     }
 
     public void deletarAction(Compra c) {
         try {
-            this.cm.deletar(c);
+            this.cpm.deletar(c);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A compra foi deletado com sucesso!"));
 
@@ -73,15 +73,15 @@ public class CompraController {
     }
 
     public List<Compra> recuperarTodasCompras() {
-        return this.cm.recuperarTodos();
+        return this.cpm.recuperarTodos();
     }
 
     public CompraModel getCm() {
-        return cm;
+        return cpm;
     }
 
-    public void setCm(CompraModel cm) {
-        this.cm = cm;
+    public void setCm(CompraModel cpm) {
+        this.cpm = cpm;
     }
 
     public Compra getCompraCadastro() {

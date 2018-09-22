@@ -24,21 +24,21 @@ and open the template in the editor.
                 <p:panelGrid columns="3">
 
                     <h:outputText value="Produto*:"/>
-                    <p:inputText value="#{compraCadastro.produto}" id="txtProduto"
+                    <p:inputText value="#{compraController.compraCadastro.produto}" id="txtProduto"
                                  required="true" requiredMessage="O campo produto é obrigatório!"/>
                     <p:message for="txtProduto"/>
 
                     <h:outputText value="TipoDePagamento*:"/>
-                    <p:inputText value="#{compraCadastro.tipoDePagamento}" id="txtTipoDePagamento"
+                    <p:inputText value="#{compraController.compraCadastro.tipoDePagamento}" id="txtTipoDePagamento"
                                  required="true" requiredMessage="O campo tipo de pagamento é obrigatório!"/>
                     <p:message for="txtTipoDePagamento"/>
 
                     <h:outputText value="Data"/>
-                    <p:inputText value="#{compraCadastro.data}"/>
+                    <p:inputText value="#{compraController.compraCadastro.data}"/>
                     <h:outputText/>
 
                     <h:outputText value="Observacoes"/>
-                    <p:inputText value="#{compraCadastro.observacoes}"/>
+                    <p:inputText value="#{compraController.compraCadastro.observacoes}"/>
                     <h:outputText/>
 
                 </p:panelGrid>
@@ -53,7 +53,7 @@ and open the template in the editor.
                     ANTENÇÃO!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{CompraController.inserirAction(compraCadastro.CompraController())}"
+                                 action="#{compraController.inserirAction(compraController.compraCadastro)}"
                                  oncomplete="PF('widDialCompra').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialCompra').hide()"/>
             </p:confirmDialog>

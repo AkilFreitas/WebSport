@@ -21,7 +21,7 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class CategoriaController {
 
-    CategoriaModel cm = new CategoriaModel();
+    CategoriaModel ctm = new CategoriaModel();
     private Categoria categoriaCadastro;
     private Categoria selectedCategoria;
 
@@ -34,7 +34,7 @@ public class CategoriaController {
     public void inserirAction() {
 
         try {
-            this.cm.inserir(this.categoriaCadastro);
+            this.ctm.inserir(this.categoriaCadastro);
 
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A categoria foi cadastrado com sucesso!"));
@@ -47,7 +47,7 @@ public class CategoriaController {
 
     public void alterarAction(Categoria c) {
         try {
-            this.cm.alterar(c);
+            this.ctm.alterar(c);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A categoria foi alterado com sucesso!"));
         } catch (Exception ex) {
@@ -58,12 +58,12 @@ public class CategoriaController {
     }
 
     public Categoria recuperarCategoria(int id) {
-        return this.cm.recuperarCategoria(id);
+        return this.ctm.recuperarCategoria(id);
     }
 
     public void deletarAction(Categoria c) {
         try {
-            this.cm.deletar(c);
+            this.ctm.deletar(c);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "A categoria foi deletado com sucesso!"));
 
@@ -74,7 +74,7 @@ public class CategoriaController {
     }
 
     public List<Categoria> recuperarTodasCategorias() {
-        return this.cm.recuperarTodos();
+        return this.ctm.recuperarTodos();
     }
 
     
@@ -96,11 +96,11 @@ public class CategoriaController {
     }
 
     public CategoriaModel getCm() {
-        return cm;
+        return ctm;
     }
 
-    public void setCm(CategoriaModel cm) {
-        this.cm = cm;
+    public void setCm(CategoriaModel ctm) {
+        this.ctm = ctm;
     }
   
     

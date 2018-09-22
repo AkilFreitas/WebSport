@@ -20,8 +20,8 @@ and open the template in the editor.
         <p:growl id="gro" life="3000"/>
 
         <h:form id="formApresentaCompra">
-            <p:dataTable id="tabelaCompra" var="item" value="#{CompraController.recuperarTodasCompras()}"
-                         rowKey="#{item.id}" selectionMode="single" selection="#{CompraController.selectedCompra}">
+            <p:dataTable id="tabelaCompra" var="item" value="#{compraController.recuperarTodasCompras()}"
+                         rowKey="#{item.id}" selectionMode="single" selection="#{compraController.selectedCompra}">
                 <f:facet name="header">
                     Compras Cadastradas:
                 </f:facet>
@@ -62,7 +62,7 @@ and open the template in the editor.
                              hideEffect="explode">
 
                 <p:commandButton value="sim" 
-                                 action="#{CompraController.deletarAction(CompraController.selectedCompra)}"
+                                 action="#{compraController.deletarAction(compraController.selectedCompra)}"
                                  oncomplete="PF('widDialCompra').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialCompra').hide()"/>
             </p:confirmDialog>
@@ -71,28 +71,28 @@ and open the template in the editor.
                       modal="true" widgetVar="widDialVisualizaCompra">
                 <p:panelGrid columns="2">
                     <h:outputText value="Id:"/>
-                    <h:outputText value="#{CompraController.selectedCompra.id}"/>
+                    <h:outputText value="#{compraController.selectedCompra.id}"/>
 
                     <h:outputText value="Cliente:"/>
-                    <h:outputText value="#{CompraController.selectedCompra.cliente}"/>
+                    <h:outputText value="#{compraController.selectedCompra.cliente}"/>
 
                     <h:outputText value="Produto:"/>
-                    <h:outputText value="#{CompraController.selectedCompra.produto}"/>
+                    <h:outputText value="#{compraController.selectedCompra.produto}"/>
 
                     <h:outputText value="Data:"/>
-                    <h:outputText value="#{CompraController.selectedCompra.data}"/>
+                    <h:outputText value="#{compraController.selectedCompra.data}"/>
 
                     <h:outputText value="Total:"/>
-                    <h:outputText value="#{CompraController.selectedCompra.total}"/>
+                    <h:outputText value="#{compraController.selectedCompra.total}"/>
 
                     <h:outputText value="Frete:"/>
-                    <h:outputText value="#{CompraController.selectedCompra.frete}"/>
+                    <h:outputText value="#{compraController.selectedCompra.frete}"/>
 
                     <h:outputText value="Observacoes:"/>
-                    <h:outputText value="#{CompraController.selectedCompra.observacoes}"/>
+                    <h:outputText value="#{compraController.selectedCompra.observacoes}"/>
 
                     <h:outputText value="TipoDePagamento:"/>
-                    <h:outputText value="#{CompraController.selectedCompra.tipoDePagamento}"/>
+                    <h:outputText value="#{compraController.selectedCompra.tipoDePagamento}"/>
 
                 </p:panelGrid>
                 <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaCompra').hide()"/>

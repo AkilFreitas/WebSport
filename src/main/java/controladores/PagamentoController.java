@@ -21,7 +21,7 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class PagamentoController {
 
-    PagamentoModel pm = new PagamentoModel();
+    PagamentoModel pgtm = new PagamentoModel();
     private Pagamento pagamentoCadastro;
     private Pagamento selectedPagamento;
 
@@ -34,7 +34,7 @@ public class PagamentoController {
     public void inserirAction() {
 
         try {
-            this.pm.inserir(this.pagamentoCadastro);
+            this.pgtm.inserir(this.pagamentoCadastro);
 
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O pagamento foi concluido com sucesso!"));
@@ -47,7 +47,7 @@ public class PagamentoController {
 
     public void alterarAction(Pagamento p) {
         try {
-            this.pm.alterar(p);
+            this.pgtm.alterar(p);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O pagamento foi alterado com sucesso!"));
         } catch (Exception ex) {
@@ -58,23 +58,23 @@ public class PagamentoController {
     }
 
     public Pagamento recuperarPagamento(int id) {
-        return this.pm.recuperarPagamento(id);
+        return this.pgtm.recuperarPagamento(id);
     }
 
     public void deletarAction(Pagamento p) {
         try {
-            this.pm.deletar(p);
+            this.pgtm.deletar(p);
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O pagamento foi deletado com sucesso!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O pagamento foi cancelado com sucesso!"));
 
         } catch (Exception ex) {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falfa!", "O pagamento não foi deletado!"));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falfa!", "O pagamento não foi cancelado!"));
         }
     }
 
     public List<Pagamento> recuperarTodosPagamentos() {
-        return this.pm.recuperarTodos();
+        return this.pgtm.recuperarTodos();
     }
 
     public Pagamento getPagamentoCadastro() {
@@ -94,11 +94,11 @@ public class PagamentoController {
     }
 
     public PagamentoModel getCm() {
-        return pm;
+        return pgtm;
     }
 
-    public void setCm(PagamentoModel pm) {
-        this.pm = pm;
+    public void setCm(PagamentoModel pgtm) {
+        this.pgtm = pgtm;
     }
 
     public Pagamento getPagamento() {
