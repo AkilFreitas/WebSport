@@ -25,27 +25,27 @@ and open the template in the editor.
 
 
                     <h:outputText value="Id*:"/>
-                    <p:inputText value="#{FornecedorController.selectedFornecedor.id}" id="txtId"
+                    <p:inputText value="#{fornecedorController.selectedFornecedor.id}" id="txtId"
                                  required="true" requiredMessage="O campo id é obrigatório!"/>
                     <p:message for="txtId"/>
 
                     <h:outputText value="Cnpj*:"/>
-                    <p:inputText value="#{FornecedorController.selectedFornecedor.cnpj}" id="txtCnpj"
+                    <p:inputText value="#{fornecedorController.selectedFornecedor.cnpj}" id="txtCnpj"
                                  required="true" requiredMessage="O campo Cnpj é obrigatório!"/>
                     <p:message for="txtCnpj"/>
 
                     <h:outputText value="Telefone*:"/>
-                    <p:inputText value="#{FornecedorController.selectedFornecedor.telefone}" id="txtTelefone"
-                         required="true" requiredMessage="O campo Telefone é obrigatório!"/>
+                    <p:inputText value="#{fornecedorController.selectedFornecedor.telefone}" id="txtTelefone"
+                                 required="true" requiredMessage="O campo Telefone é obrigatório!"/>
                     <p:message for="txtTelefone"/>
 
                     <h:outputText value="NomeFantasia*:"/>
-                    <p:inputText value="#{FornecedorController.selectedFornecedor.nomeFantasia}" id="txtNomeFantasia"
+                    <p:inputText value="#{fornecedorController.selectedFornecedor.nomeFantasia}" id="txtNomeFantasia"
                                  required="true" requiredMessage="O campo NomeFantasia é obrigatório!"/>
                     <p:message for="txtNomeFantasia"/>
 
                     <h:outputText value="Email*:"/>
-                    <p:inputText value="#{FornecedorController.selectedFornecedor.email}" id="txtEmail"
+                    <p:inputText value="#{fornecedorController.selectedFornecedor.email}" id="txtEmail"
                                  required="true" requiredMessage="O campo Email é obrigatório!"/>
                     <p:message for="txtEmail"/>
 
@@ -60,7 +60,7 @@ and open the template in the editor.
                     ATENÇÃO!!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{FornecedorController.alterarAction(FornecedorController.selectedFornecedor)}"
+                                 action="#{fornecedorController.alterarAction(fornecedorController.selectedFornecedor)}"
                                  oncomplete="PF('widDialFornecedor').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialFornecedor').hide()"/>
             </p:confirmDialog>

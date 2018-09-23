@@ -22,8 +22,8 @@ and open the template in the editor.
             <p:growl id="gro" life="3000"/>
 
             <h:form id="formApresentaFornecedor">
-                <p:dataTable id="tabelaFornecedor" var="item" value="#{FornecedorController.recuperarTodosFornecedores()}"
-                             rowKey="#{item.id}" selectionMode="single" selection="#{FornecedorController.selectedFornecedor}">
+                <p:dataTable id="tabelaFornecedor" var="item" value="#{fornecedorController.recuperarTodosFornecedores()}"
+                             rowKey="#{item.id}" selectionMode="single" selection="#{fornecedorController.selectedFornecedor}">
                     <f:facet name="header">
                         Fornecedor Cadastrados
                     </f:facet>
@@ -48,7 +48,7 @@ and open the template in the editor.
 
                 <p:commandButton value="visualizar" oncomplete="PF('').show()"
                                  update='dialVisualizaFornecedor'/>
-                <p:commandButton value="atualizar" action='apresentaFornecedor.xhtml'/>
+                <p:commandButton value="atualizar" action='AlteraFornecedor.xhtml'/>
 
                 <p:commandButton value="Deletar" oncomplete="PF('widDialFornecedor').show()"/>
 
@@ -57,7 +57,7 @@ and open the template in the editor.
                                  hideEffect="explode">
 
                     <p:commandButton value="sim" 
-                                     action="#{FornecedorController.deletarAction(FornecedorController.selectedFornecedor)}"
+                                     action="#{fornecedorController.deletarAction(fornecedorController.selectedFornecedor)}"
                                      oncomplete="PF('widDialFornecedor').hide()" update="@form"/>
                     <p:commandButton value="não" oncomplete="PF('widDialFornecedor').hide()"/>
                 </p:confirmDialog>
@@ -66,19 +66,19 @@ and open the template in the editor.
                           modal="true" widgetVar="widDialVisualizaFornecedor">
                     <p:panelGrid columns="2">
                         <h:outputText value="Id:"/>
-                        <h:outputText value="#{FornecedorController.selectedFornecedor.id}"/>
+                        <h:outputText value="#{fornecedorController.selectedFornecedor.id}"/>
 
                         <h:outputText value="NomeFantasia:"/>
-                        <h:outputText value="#{FornecedorController.selectedFornecedor.nomeFantasia}"/>
+                        <h:outputText value="#{fornecedorController.selectedFornecedor.nomeFantasia}"/>
 
                         <h:outputText value="Email:"/>
-                        <h:outputText value="#{FornecedorController.selectedFornecedor.email}"/>
+                        <h:outputText value="#{fornecedorController.selectedFornecedor.email}"/>
 
                         <h:outputText value="Telefone:"/>
-                        <h:outputText value="#{FornecedorController.selectedFornecedor.telefone}"/>
+                        <h:outputText value="#{fornecedorController.selectedFornecedor.telefone}"/>
 
                         <h:outputText value="Cnpj:"/>
-                        <h:outputText value="#{FornecedorController.selectedFornecedor.cnpj}"/>
+                        <h:outputText value="#{fornecedorController.selectedFornecedor.cnpj}"/>
 
                     </p:panelGrid>
                     <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaFornecedor').hide()"/>

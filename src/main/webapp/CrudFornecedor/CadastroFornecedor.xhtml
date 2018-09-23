@@ -23,31 +23,29 @@ and open the template in the editor.
                 <p:messages/>
                 <p:panelGrid columns="3">
                     <h:outputText value="Id*:"/>
-                    <p:inputText id="txtId" value="#{fornecedorCadastro.id}"
+                    <p:inputText id="txtId" value="#{fornecedorController.fornecedorCadastro.id}"
                                  required="true" requiredMessage="O campo id é obrigatório!"/>
                     <p:message for="txtId"/>                    
 
                     <h:outputText value="Email*:"/>
-                    <p:inputText value="#{fornecedorCadastro.email}" id="txtEmail"
+                    <p:inputText value="#{fornecedorController.fornecedorCadastro.email}" id="txtEmail"
                                  required="true" requiredMessage="O campo email é obrigatório!"/>
                     <p:message for="txtEmail"/>
 
                     <h:outputText value="NomeFantasia*:"/>
-                    <p:inputText value="#{fornecedorCadastro.nomeFantasia}" id="txtNomeFantasia"
+                    <p:inputText value="#{fornecedorController.fornecedorCadastro.nomeFantasia}" id="txtNomeFantasia"
                                  required="true" requiredMessage="O campo nome fantasia é obrigatório!"/>
                     <p:message for="txtNomeFantasia"/>
 
                     <h:outputText value="Cnpj*:"/>
-                    <p:inputText value="#{fornecedorCadastro.cnpj}" id="txtCnpj"
+                    <p:inputText value="#{fornecedorController.fornecedorCadastro.cnpj}" id="txtCnpj"
                                  required="true" requiredMessage="O campo Cnpj é obrigatório!"/>
                     <p:message for="txtCnpj"/>
 
-
                     <h:outputText value="Telefone*:"/>
-                    <p:inputText value="#{fornecedorCadastro.telefone}" id="txtTelefone"
+                    <p:inputText value="#{fornecedorController.fornecedorCadastro.telefone}" id="txtTelefone"
                                  required="true" requiredMessage="O campo telefone é obrigatório!"/>
                     <p:message for="txtTelefone"/>
-
                 </p:panelGrid>
                 <p:commandButton value="Cadastrar"
                                  oncomplete="PF('widDialFornecedor').show()"/>
@@ -60,7 +58,7 @@ and open the template in the editor.
                     ATENÇÃO!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{FornecedorController.inserirAction(fornecedorCadastro.FornecedorController())}"
+                                 action="#{fornecedorController.inserirAction(fornecedorController.fornecedorCadastro)}"
                                  oncomplete="PF('widDialFornecedor').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialFornecedor').hide()"/>
             </p:confirmDialog>
@@ -70,7 +68,6 @@ and open the template in the editor.
                 <h:outputText value="cadastro realizado com sucesso"/><br/>
                 <p:commandButton value="ok" oncomplete="PF('widDialConfirm').hide()"/>
             </p:dialog>
-
         </h:form>
     </h:body>
 </html>
