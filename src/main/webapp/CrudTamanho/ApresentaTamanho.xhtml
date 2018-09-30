@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:include src="menu.xhtml"/>
+
+        <p:growl id="gro" life="3000"/>
+
+        <h:form id="formApresentaTamanho">
+            <p:dataTable id="tabelaTamanho" var="item" value="#{tamanhoController.recuperarTodosTamanhos()}"
+                         rowKey="#{item.id}" selectionMode="single" selection="#{tamanhoController.selectedTamanho}">
+                <f:facet name="header">
+                    Tamanho Cadastrados
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="Dimensão" filterBy="#{item.dimensao}">
+                    <h:outputText value="#{item.dimensao}"/>
+                </p:column>
+                <p:column headerText="Peso" filterBy="#{item.peso}">
+                    <h:outputText value="#{item.peso}"/>
+                </p:column>  
+            </p:dataTable>
+
+            <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaTamanho').show()"
+                             update='dialVisualizaTamanho'/>
+            <p:commandButton value="atualizar" action='AlteraTamanho.xhtml'/>
+
+            <p:commandButton value="Deletar" oncomplete="PF('widDialTamanho').show()"/>
+
+            <p:confirmDialog id="dialTamanho" message="Deseja realmente apagar o tamanho?"
+                             visible="false" widgetVar="widDialTamanho" showEffect="fade"
+                             hideEffect="explode">
+
+                <p:commandButton value="sim" 
+                                 action="#{tamanhoController.deletarAction(tamanhoController.selectedTamanho)}"
+                                 oncomplete="PF('widDialTamanho').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialTamanho').hide()"/>
+            </p:confirmDialog>
+
+            <p:dialog id="dialVisualizaTamanho" visible="false" resizable="false"
+                      modal="true" widgetVar="widDialVisualizaTamanho">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id"/>
+                    <h:outputText value="#{tamanhoController.selectedTamanho.id}"/>
+                    <h:outputText value="Dimenção"/>
+                    <h:outputText value="#{tamanhoController.selectedTamanho.dimencao}"/>
+                    <h:outputText value="Peso"/>
+                </p:panelGrid>
+                <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaEndereco').hide()"/>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
