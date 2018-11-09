@@ -7,6 +7,7 @@ package br.edu.ifpe.websport.model;
 
 import br.edu.ifpe.websport.model.entidades.Categoria;
 import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
+import infraestrutura.repositorio.implementacoes.fabricaRepositorios.FabricaRepositorios;
 import infraestrutura.repositorio.implementacoes.repositorioImplBD.CategoriaImplBD;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * @author mayco
  */
 public class CategoriaModel {
-
+ 
     private RepositorioGenerico<Categoria, Integer> repositorioCategoria = null;
 
     public CategoriaModel() {
