@@ -13,7 +13,7 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+    
     <dependencies>
         
         <!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
@@ -21,16 +21,10 @@
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>6.1</version>
-        </dependency>
-        
+        </dependency>    	
         <dependency>
             <groupId>org.primefaces.themes</groupId>
-            <artifactId>cupertino</artifactId>
-            <version>1.0.10</version>
-        </dependency>
-        <dependency>
-            <groupId>org.primefaces.themes</groupId>
-            <artifactId>all-themes</artifactId>
+            <artifactId>south-street</artifactId>
             <version>1.0.10</version>
         </dependency>
         
