@@ -10,20 +10,24 @@
         <h:form id="formMenu">
             <p:menubar>
 
-                <center><h1><p:clock></p:clock>Web Sport</h1></center>
-
-            </p:menubar>
-            <p:menubar>
-
                 <p:menuitem value="Home"  icon="ui-icon-home" url="index.xhtml"/>
-                
                 <p:submenu label="Endereco">
                     <p:menuitem value=" Cadastrar" icon="ui-icon-circle-triangle-e" url="CadastroEndereco.xhtml"/>
                     <p:menuitem value=" Apresentar" icon="ui-icon-circle-triangle-e" url="ApresentaEndereco.xhtml"/>
                     <p:menuitem value=" Alterar" icon="ui-icon-circle-triangle-e" url="AlteraEndereco.xhtml"/>
                 </p:submenu>
+                <p:submenu label="Categotia">
+                    <p:menuitem value=" Cadastrar" icon="ui-icon-circle-triangle-e" url="CadastroCategoria.xhtml"/>
+                    <p:menuitem value=" Apresentar" icon="ui-icon-circle-triangle-e" url="ApresentaCategoria.xhtml"/>
+                    <p:menuitem value=" Alterar" icon="ui-icon-circle-triangle-e" url="AlteraCategoria.xhtml"/>
+                </p:submenu>
+                <p:menuitem value="Informações"  url="informacoes.xhtml"/>
 
             </p:menubar>
+
+            <center><h1><p:clock></p:clock>Web Sport</h1></center>
+
+
         </h:form>
     </h:body>
 </html>

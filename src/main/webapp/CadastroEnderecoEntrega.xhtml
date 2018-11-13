@@ -1,11 +1,5 @@
-
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
@@ -24,17 +18,17 @@ and open the template in the editor.
                 <p:messages/>
                 <p:panelGrid columns="3">
                     <h:outputText value="Id*:"/>
-                    <p:inputText id="txtId" value="#{enderecoEntregaController.enderecoEntregaController.id}"
+                    <p:inputText id="txtId" value="#{enderecoEntregaController.enderecoEntregaCadastro.id}"
                                  required="true" requiredMessage="O campo id é obrigatório!"/>
                     <p:message for="txtId"/>
 
                     <h:outputText value="Frete*:"/>
-                    <p:inputText id="txtFrete" value="#{enderecoEntregaController.enderecoEntregaController.frete}"
+                    <p:inputText id="txtFrete" value="#{enderecoEntregaController.enderecoEntregaCadastro.frete}"
                                  required="true" requiredMessage="O campo frete é obrigatório!"/>
                     <p:message for="txtFrete"/>
 
                     <h:outputText value="Forma de Entrega*:"/>
-                    <p:inputText id="txtFormaDeEntrega" value="#{enderecoEntregaController.enderecoEntregaController.formaDeEntrega}"
+                    <p:inputText id="txtFormaDeEntrega" value="#{enderecoEntregaController.enderecoEntregaCadastro.formaDeEntrega}"
                                  required="true" requiredMessage="O campo forma de entrega é obrigatório!"/>
                     <p:message for="txtFormaDeEntrega"/>
 

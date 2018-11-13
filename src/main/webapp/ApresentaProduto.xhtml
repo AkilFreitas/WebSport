@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <ui:include src="menu.xhtml"/>
+
+        <p:growl id="gro" life="3000"/>
+
+        <h:form id="formApresentaProduto">
+            <p:dataTable id="tabelaProduto" var="item" value="#{produtoController.recuperarTodosProdutos()}"
+                         rowKey="#{item.id}" selectionMode="single" selection="#{produtoController.selectedProduto}">
+                <f:facet name="header">
+                    Produto
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="Nome" filterBy="#{item.nome}">
+                    <h:outputText value="#{item.nome}"/>
+                </p:column>
+                <p:column headerText="Marca" filterBy="#{item.marca}">
+                    <h:outputText value="#{item.marca}"/>
+                </p:column>
+                <p:column headerText="Categoria" filterBy="#{item.categoria}">
+                    <h:outputText value="#{item.categoria}"/>
+                </p:column>
+                <p:column headerText="Descrição" filterBy="#{item.descricao}">
+                    <h:outputText value="#{item.descricao}"/>
+                </p:column>
+                <p:column headerText="Preco" filterBy="#{item.preco}">
+                    <h:outputText value="#{item.preco}"/>
+                </p:column>              
+                <p:column headerText="Tamanho" filterBy="#{item.tamanho}">
+                    <h:outputText value="#{item.tamanho}"/>
+                </p:column>
+                <p:column headerText="Promocao" filterBy="#{item.promocao}">
+                    <h:outputText value="#{item.promocao}"/>
+                </p:column>
+                <p:column headerText="Disponivel" filterBy="#{item.disponivel}">
+                    <h:outputText value="#{item.disponivel}"/>
+                </p:column>     
+                <p:column headerText="Fornecedor" filterBy="#{item.fornecedor}">
+                    <h:outputText value="#{item.fornecedor}"/>
+                </p:column>
+                <p:column headerText="Imagem" filterBy="#{item.imagem}">
+                    <h:outputText value="#{item.imagem}"/>
+                </p:column>
+            </p:dataTable>
+
+            <p:commandButton value="Visualizar" oncomplete="PF('widDialVisualizaProduto').show()"
+                             update='dialVisualizaProduto'/>
+            <p:commandButton value="Atualizar" action='AlteraProduto.xhtml'/>
+
+            <p:commandButton value="Deletar" oncomplete="PF('widDialProduto').show()"/>
+
+            <p:confirmDialog id="dialProduto" message="Deseja realmente apagar o Produto?"
+                             visible="false" widgetVar="widDialProduto" showEffect="fade"
+                             hideEffect="explode">
+
+                <p:commandButton value="sim" 
+                                 action="#{produtoController.deletarAction(produtoController.selectedProduto)}"
+                                 oncomplete="PF('widDialProduto').hide()" update="@form"/>
+                <p:commandButton value="não" oncomplete="PF('widDialProduto').hide()"/>
+            </p:confirmDialog>
+
+            <p:dialog id="dialVisualizaProduto" visible="false" resizable="false"
+                      modal="true" widgetVar="widDialVisualizaProduto">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id"/>
+                    <h:outputText value="#{produtoController.selectedProduto.id}"/>
+
+                    <h:outputText value="Nome"/>
+                    <h:outputText value="#{produtoController.selectedProduto.nome}"/>
+
+                    <h:outputText value="Marca"/>
+                    <h:outputText value="#{produtoController.selectedProduto.marca}"/>
+
+                    <h:outputText value="Categoria"/>
+                    <h:outputText value="#{produtoController.selectedProduto.categoria}"/>
+
+                    <h:outputText value="Descrição"/>
+                    <h:outputText value="#{produtoController.selectedProduto.descricao}"/>
+
+                    <h:outputText value="Preco"/>
+                    <h:outputText value="#{produtoController.selectedProduto.preco}"/>
+
+                    <h:outputText value="Tamanho"/>
+                    <h:outputText value="#{produtoController.selectedProduto.tamanho}"/>
+
+                    <h:outputText value="Promocao"/>
+                    <h:outputText value="#{produtoController.selectedProduto.promocao}"/>
+
+                    <h:outputText value="Disponivel"/>
+                    <h:outputText value="#{produtoController.selectedProduto.disponivel}"/>
+
+                    <h:outputText value="Fornecedor"/>
+                    <h:outputText value="#{produtoController.selectedProduto.fornecedor}"/>
+
+                    <h:outputText value="Imagem"/>
+                    <h:outputText value="#{produtoController.selectedProduto.imagem}"/>
+                </p:panelGrid>
+                <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaProduto').hide()"/>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
