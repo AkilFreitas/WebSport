@@ -5,7 +5,6 @@
  */
 package br.edu.ifpe.websport.model.dao;
 
-import br.edu.ifpe.websport.model.entidades.Cliente;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -65,13 +64,11 @@ public class PersistenceDao {
     public void delete(Object o) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
+        if(!em.contains(o)){
+            o = em.merge(o);
+        }
         em.remove(em.merge(o));
         em.getTransaction().commit();
         em.close();
     }
-
-    Cliente update(String sql, String email, String senha) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
