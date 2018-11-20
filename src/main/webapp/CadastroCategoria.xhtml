@@ -28,9 +28,9 @@
                     <p:message for="txtNome"/>
 
                     <h:outputText value="Descricao*:"/>
-                    <p:inputText value="#{categoriaController.categoriaCadastro.nomeFantasia}" id="txtDescricao"
+                    <p:inputText value="#{categoriaController.categoriaCadastro.descricao}" id="txtDescricao"
                                  required="true" requiredMessage="O campo descricao fantasia é obrigatório!"/>
-                    <p:message for="txtNomeDescricao"/>
+                    <p:message for="txtDescricao"/>
 
 
 
@@ -46,7 +46,7 @@
                     ATENÇÃO!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{categoriaController.inserirAction(categoriaController.categoriaCadastro)}"
+                                 action="#{categoriaController.inserirAction()}"
                                  oncomplete="PF('widDialCategoria').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialCategoria').hide()"/>
             </p:confirmDialog>

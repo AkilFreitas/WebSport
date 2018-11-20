@@ -81,7 +81,6 @@ public class Compra implements Serializable {
     @Column(length = 20)
     private float total;
     @Column(length = 20)
-    @ManyToMany
     private Cliente cliente;
     @Column(length = 20)
     private float frete;
@@ -92,10 +91,8 @@ public class Compra implements Serializable {
     @Column(length = 20)
     private String observacoes;
     @Column(length = 20)
-    @OneToOne
     private Pagamento tipoDePagamento;
     @Column(length = 20)
-    @OneToOne
     private Produto produto;
     @Column(length = 20)
     private STATUS status;

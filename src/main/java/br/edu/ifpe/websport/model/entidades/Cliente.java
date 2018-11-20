@@ -44,7 +44,6 @@ public class Cliente implements Serializable {
     @Column(length = 20)
     private String sexo;
     @Column(length = 20)
-    @OneToOne
     Endereco endereco;
 
     public Cliente() {

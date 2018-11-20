@@ -31,7 +31,6 @@ public class Produto implements Serializable {
     @Column(length = 20)
     private String marca;
     @Column(length = 20)
-    @ManyToMany
     Categoria categoria;
     @Column(length = 20)
     private String descricao;
@@ -40,14 +39,12 @@ public class Produto implements Serializable {
     @Column(length = 20)
     private String imagem;
     @Column(length = 20)
-    @OneToOne
     Tamanho tamanho;
     @Column(length = 20)
     private boolean disponivel;
     @Column(length = 20)
     private boolean promocao;
     @Column(length = 20)
-    @OneToMany
     Fornecedor fornecedor;
 
     public Produto() {
