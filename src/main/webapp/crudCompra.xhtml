@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Crud Compra</title>
+        <style type="text/css">
+            #divCima {
+                width:100%;
+                position: relative;
+                overflow:hidden;
+                background:#fff url('parte de cima.png') top no-repeat;
+
+            }
+            #divBaixo {
+                position: fixed;
+                bottom: 0;
+                right: 1;
+                width:100%;
+                overflow:hidden;
+                background:#fff url('parte de baixo') top no-repeat;
+
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <p:growl id="gro" showDetail="true" showSummary="true"/>
+        <div id="divCima">
+            <hl><img src="\imagens\parte de cima.png"  height="122"/></hl>
+        </div>
+        <h:form id="formCompra">
+            <p:commandButton value="inserir" oncomplete="PF('widDialCadCompra').show()"/>
+            <p:dataTable var="item" value="#{compraController.recuperarTodasCompras()}"
+                         rowKey="#{item.id}" paginator="true"
+                         rows="5">
+                <f:facet name="header">
+                    Compras Efetudas
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="Cliente" filterBy="#{item.cliente}">
+                    <h:outputText value="#{item.cliente}"/>
+                </p:column>
+                <p:column headerText="Produto" filterBy="#{item.produto}">
+                    <h:outputText value="#{item.produto}"/>
+                </p:column>
+                <p:column headerText="Data">
+                    <h:outputText value="#{item.data}"/>
+                </p:column>
+                <p:column headerText="Total" filterBy="#{item.total}">
+                    <h:outputText value="#{item.total}"/>
+                </p:column>
+                <p:column headerText="Frete" filterBy="#{item.frete}">
+                    <h:outputText value="#{item.frete}"/>
+                </p:column>
+                <p:column headerText="Obersavacoes" filterBy="#{item.observacoes}">
+                    <h:outputText value="#{item.observacoes}"/>
+                </p:column>
+                <p:column headerText="TipoDePagamento" filterBy="#{item.tipoDePagamento}">
+                    <h:outputText value="#{item.tipoDePagamento}"/>
+                </p:column>
+                <p:column headerText="operações" style="width: 12%">
+                    <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaCompra').show()" 
+                                     update=":formCompra:dialVisualizaCompra">
+                        <f:setPropertyActionListener value="#{item}" target="#{compraController.selectedCompra}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-wrench" oncomplete="PF('widDialAlteraCompra').show()"
+                                     update=":formDialAlteraCompra">
+                        <f:setPropertyActionListener value="#{item}" target="#{compraController.selectedCompra}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-closethick" oncomplete="PF('widDialDeletaCompra').show()" 
+                                     update=":formCompra:dialDeletaCompra">
+                        <f:setPropertyActionListener value="#{item}" target="#{compraController.selectedCompra}"/>
+                    </p:commandButton>    
+                </p:column>
+            </p:dataTable>
+
+
+            <p:dialog id="dialVisualizaCompra" visible="false" modal="true"
+                      resizable="false" widgetVar="widDialVisualizaCompra"
+                      header="dados da compra">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id:"/>
+                    <h:outputText value="#{compraController.selectedCompra.id}"/>
+
+                    <h:outputText value="Cliente:"/>
+                    <h:outputText value="#{compraController.selectedCompra.cliente}"/>
+
+                    <h:outputText value="Produto:"/>
+                    <h:outputText value="#{compraController.selectedCompra.produto}"/>
+
+                    <h:outputText value="Data:"/>
+                    <h:outputText value="#{compraController.selectedCompra.data}"/>
+
+                    <h:outputText value="Total:"/>
+                    <h:outputText value="#{compraController.selectedCompra.total}"/>
+
+                    <h:outputText value="Frete:"/>
+                    <h:outputText value="#{compraController.selectedCompra.frete}"/>
+
+                    <h:outputText value="Observacoes:"/>
+                    <h:outputText value="#{compraController.selectedCompra.observacoes}"/>
+
+                    <h:outputText value="TipoDePagamento:"/>
+                    <h:outputText value="#{compraController.selectedCompra.tipoDePagamento}"/>
+                </p:panelGrid>
+                <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaCompra').hide()"/>
+            </p:dialog>
+
+
+
+
+
+            <p:dialog id="dialDeletaCompra" visible="false" modal="true"
+                      resizable="false" widgetVar="widDialDeletaCompra"
+                      header="dados da compra">
+                <p:panelGrid columns="2">
+                    <p:panelGrid columns="2">
+                        <h:outputText value="Id:"/>
+                        <h:outputText value="#{compraController.selectedCompra.id}"/>
+
+                        <h:outputText value="Cliente:"/>
+                        <h:outputText value="#{compraController.selectedCompra.cliente}"/>
+
+                        <h:outputText value="Produto:"/>
+                        <h:outputText value="#{compraController.selectedCompra.produto}"/>
+
+                        <h:outputText value="Data:"/>
+                        <h:outputText value="#{compraController.selectedCompra.data}"/>
+
+                        <h:outputText value="Total:"/>
+                        <h:outputText value="#{compraController.selectedCompra.total}"/>
+
+                        <h:outputText value="Frete:"/>
+                        <h:outputText value="#{compraController.selectedCompra.frete}"/>
+
+                        <h:outputText value="Observacoes:"/>
+                        <h:outputText value="#{compraController.selectedCompra.observacoes}"/>
+
+                        <h:outputText value="TipoDePagamento:"/>
+                        <h:outputText value="#{compraController.selectedCompra.tipoDePagamento}"/>            
+                    </p:panelGrid>
+                    <p:commandButton value="Deseja mesmo cancelar essa compra?" action="#{compraController.deletarAction(compraController.selectedCompra)}" 
+                                     oncomplete="PF('widDialDeletaCompra').hide()" update="@form"/>
+            </p:dialog>
+        </h:form>
+
+
+        <p:dialog id="dialCadCompra" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialCadCompra" header="Cadastrar Compra">
+            <h:form id="formDialCadCompra">
+                <p:fieldset legend="Efetuar Compra">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+
+                        <h:outputText value="Produto:"/>
+                        <p:inputText value="#{compraController.compraCadastro.produto}" id="txtProduto"
+                                     required="true" requiredMessage="O campo produto é obrigatório!" />
+                        <p:message for="txtProduto"/>
+
+                        <h:outputText value="TipoDePagamento*:"/>
+                        <p:inputText value="#{compraController.compraCadastro.tipoDePagamento}" id="txtTipoDePagamento"
+                                     required="true" requiredMessage="O campo tipo de pagamento é obrigatório!"/>
+                        <p:message for="txtTipoDePagamento"/>
+
+                        <h:outputText value="Data"/>
+                        <p:inputText value="#{compraController.compraCadastro.data}"/>
+                        <h:outputText/>
+
+                        <h:outputText value="Observações"/>
+                        <p:inputText value="#{compraController.compraCadastro.observacoes}"/>
+                        <h:outputText/>
+                    </p:panelGrid>
+                    <p:commandButton value="Cadastrar" action="#{compraController.inserirAction()}"
+                                     oncomplete="PF('widDialCadCompra').hide()" 
+                                     update=':formCompra :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+
+
+
+        <p:dialog id="dialAlteraCompra" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialAlteraCompra" header="Alterar Compra">
+            <h:form id="formDialAlteraCompra">
+                <p:fieldset legend="Alterar Compra">
+                    <p:messages/>
+                    <p:panelGrid columns="3">   
+                        <h:outputText value="Produto*:"/>
+                        <p:inputText value="#{compraController.selectedCompra.produto}" id="txtProduto"
+                                     required="true" requiredMessage="O campo produto é obrigatório!"/>
+                        <p:message for="txtProduto"/>
+
+                        <h:outputText value="TipoDePagamento*:"/>
+                        <p:inputText value="#{compraController.selectedCompra.tipoDePagamento}" id="txtTipoDePagamento"
+                                     required="true" requiredMessage="O campo tipo de pagamento é obrigatório!"/>
+                        <p:message for="txtTipoDePagamento"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Alterar" action="#{compraController.alterarAction(compraController.selectedCompra)}"
+                                     oncomplete="PF('widDialAlteraCompra').hide()" 
+                                     update=':formCompra :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+        <div id="divBaixo" align="justify">
+            <hl><img src="\imagens\parte de baixo.png" height="101px"/></hl>
+        </div>
+    </h:body>
+</html>
+

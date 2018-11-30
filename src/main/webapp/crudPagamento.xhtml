@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Crud Pagamento</title>
+        <style type="text/css">
+            #divCima {
+                width:100%;
+                position: relative;
+                overflow:hidden;
+                background:#fff url('parte de cima.png') top no-repeat;
+
+            }
+            #divBaixo {
+                position: fixed;
+                bottom: 0;
+                right: 1;
+                width:100%;
+                overflow:hidden;
+                background:#fff url('parte de baixo') top no-repeat;
+
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <p:growl id="gro" showDetail="true" showSummary="true"/>
+        <div id="divCima">
+            <hl><img src="\imagens\parte de cima.png"  height="122"/></hl>
+        </div>
+        <h:form id="formPagamento">
+            <p:commandButton value="inserir" oncomplete="PF('widDialCadPagamento').show()"/>
+            <p:dataTable var="item" value="#{pagamentoController.recuperarTodosPagamentos()}"
+                         rowKey="#{item.id}" paginator="true"
+                         rows="5">
+                <f:facet name="header">
+                    Pagamentos
+                </f:facet>
+                <p:column headerText="TipoDePagamento" filterBy="#{item.status}">
+                    <h:outputText value="#{item.status}"/>
+                </p:column>
+                <p:column headerText="DataDePagamento" filterBy="#{item.dataDePagamento}">
+                    <h:outputText value="#{item.dataDePagamento}"/>
+                </p:column>
+
+                <p:column headerText="operações" style="width: 12%">
+                    <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaPagamento').show()" 
+                                     update=":formPagamento:dialVisualizaPagamento">
+                        <f:setPropertyActionListener value="#{item}" target="#{pagamentoController.selectedPagamento}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-wrench" oncomplete="PF('widDialAlteraPagamento').show()"
+                                     update=":formDialAlteraPagamento">
+                        <f:setPropertyActionListener value="#{item}" target="#{pagamentoController.selectedPagamento}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-closethick" oncomplete="PF('widDialDeletaPagamento').show()" 
+                                     update=":formPagamento:dialDeletaPagamento">
+                        <f:setPropertyActionListener value="#{item}" target="#{pagamentoController.selectedPagamento}"/>
+                    </p:commandButton>    
+                </p:column>
+            </p:dataTable>
+
+            <p:dialog id="dialVisualizaPagamento" visible="false" resizable="false"
+                      modal="true" widgetVar="widDialVisualizaPagamento"
+                      header="dados do pagamento">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Tipo de Pagamento"/>
+                    <h:outputText value="#{pagamentoController.selectedPagamento.status}"/>
+
+                    <h:outputText value="Data do Pagamento"/>
+                    <h:outputText value="#{pagamentoController.selectedPagamento.dataDePagamento}"/>
+                </p:panelGrid>
+                <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaPagamento').hide()"/>
+            </p:dialog>
+
+
+            <p:dialog id="dialDeletaPagamento" visible="false" modal="true"
+                      resizable="false" widgetVar="widDialDeletaPagamento"
+                      header="dados do pagamento">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Tipo de Pagamento"/>
+                    <h:outputText value="#{pagamentoController.selectedPagamento.status}"/>
+
+                    <h:outputText value="Data do Pagamento"/>
+                    <h:outputText value="#{pagamentoController.selectedPagamento.dataDePagamento}"/>
+                </p:panelGrid>
+                <p:commandButton value="Deseja mesmo cancelar esse pagamento?" action="#{pagamentoController.deletarAction(pagamentoController.selectedPagamento)}" 
+                                 oncomplete="PF('widDialDeletaPagamento').hide()" update="@form"/>
+            </p:dialog>
+        </h:form>
+
+
+
+        <p:dialog id="dialCadPagamento" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialCadPagamento" header="Cadastrar Pagamento">
+            <h:form id="formDialCadPagamento">
+                <p:fieldset legend="Efetuar Pagamento">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+                        <h:outputText value="TipoDePagamento*:"/>
+                        <p:inputText id="txtTipoDePagamento" value="#{pagamentoController.pagamentoCadastro.status}"
+                                     required="true" requiredMessage="O campo tipo de pagamento é obrigatório!"/>
+                        <p:message for="txtTipoDePagamento"/>
+
+                        <h:outputText value="DataDePagamento*:"/>
+                        <p:inputText id="txtDataDePagamento" value="#{pagamentoController.pagamentoCadastro.dataDePagamento}"
+                                     required="true" requiredMessage="O campo data de pagamento é obrigatório!"/>
+                        <p:message for="txtDataDePagamento"/>                 
+                    </p:panelGrid>
+                    <p:commandButton value="Cadastrar" action="#{pagamentoController.inserirAction()}"
+                                     oncomplete="PF('widDialCadPagamento').hide()" 
+                                     update=':formPagamento :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+
+
+        <p:dialog id="dialAlteraPagamento" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialAlteraPagamento" header="Alterar Pagamento">
+            <h:form id="formDialAlteraPagamento">
+                <p:fieldset legend="Alterar Pagamento">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+                        <h:outputText value="TipoDePagamento*:"/>
+                        <p:inputText value="#{pagamentoController.selectedPagamento.status}" id="txtTipoDePagamento"
+                                     required="true" requiredMessage="O campo tipo de pagamento é obrigatório!"/>
+                        <p:message for="txtTipoDePagamento"/>
+
+                        <h:outputText value="DataDePagamento*:"/>
+                        <p:inputText value="#{pagamentoController.selectedPagamento.dataDePagamento}" id="txtDataDePagamento"
+                                     required="true" requiredMessage="O campo data de pagamento é obrigatório!"/>
+                        <p:message for="txtDataDePagamento"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Alterar" action="#{pagamentoController.alterarAction(pagamentoController.selectedPagamento)}"
+                                     oncomplete="PF('widDialAlteraPagamento').hide()" 
+                                     update=':formPagamento :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+        <div id="divBaixo" align="justify">
+            <hl><img src="\imagens\parte de baixo.png" height="101px"/></hl>
+        </div>
+    </h:body>
+</html>

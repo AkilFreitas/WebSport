@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Crud Tamanho</title>
+        <style type="text/css">
+            #divCima {
+                width:100%;
+                position: relative;
+                overflow:hidden;
+                background:#fff url('parte de cima.png') top no-repeat;
+
+            }
+            #divBaixo {
+                position: fixed;
+                bottom: 0;
+                right: 1;
+                width:100%;
+                overflow:hidden;
+                background:#fff url('parte de baixo') top no-repeat;
+
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <p:growl id="gro" showDetail="true" showSummary="true"/>
+        <div id="divCima">
+            <hl><img src="\imagens\parte de cima.png"  height="122"/></hl>
+        </div>
+        <h:form id="formTamanho">
+            <p:commandButton value="inserir" oncomplete="PF('widDialCadTamanho').show()"/>
+            <p:dataTable var="item" value="#{tamanhoController.recuperarTodosTamanhos()}"
+                         rowKey="#{item.id}" paginator="true"
+                         rows="5">
+                <f:facet name="header">
+                    Tamanhos
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="Dimensão" filterBy="#{item.dimensao}">
+                    <h:outputText value="#{item.dimensao}"/>
+                </p:column>
+                <p:column headerText="Peso" filterBy="#{item.peso}">
+                    <h:outputText value="#{item.peso}"/>
+                </p:column>  
+
+                <p:column headerText="operações" style="width: 12%">
+                    <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaTamanho').show()" 
+                                     update=":formTamanho:dialVisualizaTamanho">
+                        <f:setPropertyActionListener value="#{item}" target="#{tamanhoController.selectedTamanho}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-wrench" oncomplete="PF('widDialAlteraTamanho').show()"
+                                     update=":formDialAlteraTamanho">
+                        <f:setPropertyActionListener value="#{item}" target="#{tamanhoController.selectedTamanho}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-closethick" oncomplete="PF('widDialDeletaTamanho').show()" 
+                                     update=":formTamanho:dialDeletaTamanho">
+                        <f:setPropertyActionListener value="#{item}" target="#{tamanhoController.selectedTamanho}"/>
+                    </p:commandButton>    
+                </p:column>
+            </p:dataTable> 
+
+
+            <p:dialog id="dialVisualizaTamanho" visible="false" resizable="false"
+                      modal="true" widgetVar="widDialVisualizaTamanho" 
+                      header="dados do Produto">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id"/>
+                    <h:outputText value="#{tamanhoController.selectedTamanho.id}"/>
+                    <h:outputText value="Dimenção"/>
+                    <h:outputText value="#{tamanhoController.selectedTamanho.dimensao}"/>
+                    <h:outputText value="Peso"/>
+                    <h:outputText value="#{tamanhoController.selectedTamanho.peso}"/>
+                </p:panelGrid>
+                <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaProduto').hide()"/>
+            </p:dialog>
+
+
+            <p:dialog id="dialDeletaTamanho" visible="false" modal="true"
+                      resizable="false" widgetVar="widDialDeletaTamanho"
+                      header="dados do tamanho">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id"/>
+                    <h:outputText value="#{tamanhoController.selectedTamanho.id}"/>
+                    <h:outputText value="Dimenção"/>
+                    <h:outputText value="#{tamanhoController.selectedTamanho.dimensao}"/>
+                    <h:outputText value="Peso"/>
+                    <h:outputText value="#{tamanhoController.selectedTamanho.peso}"/>
+                </p:panelGrid>
+                <p:commandButton value="Deseja mesmo deletar essa tamanho?" action="#{tamanhoController.deletarAction(tamanhoController.selectedTamanho)}" 
+                                 oncomplete="PF('widDialDeletaTamanho').hide()" update="@form"/>
+            </p:dialog>
+        </h:form>
+
+
+
+        <p:dialog id="dialCadTamanho" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialCadTamanho" header="Cadastrar Tamanho">
+            <h:form id="formDialCadTamanho">
+                <p:fieldset legend="cadastrar Tamanho">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Dimensao*:"/>
+                        <p:inputText id="txtDimensao" value="#{tamanhoController.tamanhoCadastro.dimensao}"
+                                     required="true" requiredMessage="O campo dimensao é obrigatório!"/>
+                        <p:message for="txtDimensao"/>
+
+                        <h:outputText value="Peso*:"/>
+                        <p:inputText id="txtPeso" value="#{tamanhoController.tamanhoCadastro.peso}"
+                                     required="true" requiredMessage="O campo peso é obrigatório!"/>
+                        <p:message for="txtPeso"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Cadastrar" action="#{tamanhoController.inserirAction()}"
+                                     oncomplete="PF('widDialCadTamanho').hide()" 
+                                     update=':formTamanho :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+
+
+
+        <p:dialog id="dialAlteraTamanho" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialAlteraTamanho" header="Alterar Tamanho">
+            <h:form id="formDialAlteraTamanho">
+                <p:fieldset legend="Alterar Tamanho">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+
+                        <h:outputText value="Id*:"/>
+                        <p:inputText value="#{tamanhoController.selectedTamanho.id}" id="txtId"
+                                     required="true" requiredMessage="O campo id é obrigatório!"/>
+                        <p:message for="txtId"/>
+
+                        <h:outputText value="Dimensão*:"/>
+                        <p:inputText value="#{tamanhoController.selectedTamanho.dimensao}" id="txtDimensao"
+                                     required="true" requiredMessage="O campo dimensão é obrigatório!"/>
+                        <p:message for="txtDimensao"/>
+
+                        <h:outputText value="Peso*:"/>
+                        <p:inputText value="#{tamanhoController.selectedTamanho.peso}" id="txtPeso"
+                                     required="true" requiredMessage="O campo peso é obrigatório!"/>
+                        <p:message for="txtPeso"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Alterar" action="#{tamanhoController.alterarAction(tamanhoController.selectedTamanho)}"
+                                     oncomplete="PF('widDialAlteraTamanho').hide()" 
+                                     update=':formTamanho :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+        <div id="divBaixo" align="justify">
+            <hl><img src="\imagens\parte de baixo.png" height="101px"/></hl>
+        </div>
+    </h:body>
+</html>

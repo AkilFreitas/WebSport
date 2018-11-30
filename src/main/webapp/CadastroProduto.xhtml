@@ -17,11 +17,6 @@
             <p:fieldset legend="Cadastro de Produto">
                 <p:messages/>
                 <p:panelGrid columns="3">
-                    <h:outputText value="Id*:"/>
-                    <p:inputText id="txtId" value="#{produtoController.produtoCadastro.id}"
-                                 required="true" requiredMessage="O campo id é obrigatório"/>
-                    <p:message for="txtId"/>
-
                     <h:outputText value="Nome*:"/>
                     <p:inputText value="#{produtoController.produtoCadastro.nome}" id="txtNome"
                                  required="true" requiredMessage="O campo nome é obrigatório"/>
@@ -83,7 +78,7 @@
                     ATENÇÃO!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{produtoController.inserirAction(produtoController.produtoCadastro)}"
+                                 action="#{produtoController.inserirAction()}"
                                  oncomplete="PF('widDialProduto').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialProduto').hide()"/>
             </p:confirmDialog>

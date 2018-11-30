@@ -17,12 +17,7 @@
             <p:fieldset legend="Cadastro de Fornecedor">
                 <p:messages/>
                 <p:panelGrid columns="3">
-                    <h:outputText value="Id*:"/>
-                    <p:inputText id="txtId" value="#{fornecedorController.fornecedorCadastro.id}"
-                                 required="true" requiredMessage="O campo id é obrigatório!"/>
-                    <p:message for="txtId"/>                    
-
-                    <h:outputText value="Email*:"/>
+                   <h:outputText value="Email*:"/>
                     <p:inputText value="#{fornecedorController.fornecedorCadastro.email}" id="txtEmail"
                                  required="true" requiredMessage="O campo email é obrigatório!"/>
                     <p:message for="txtEmail"/>
@@ -53,7 +48,7 @@
                     ATENÇÃO!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{fornecedorController.inserirAction(fornecedorController.fornecedorCadastro)}"
+                                 action="#{fornecedorController.inserirAction()}"
                                  oncomplete="PF('widDialFornecedor').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialFornecedor').hide()"/>
             </p:confirmDialog>

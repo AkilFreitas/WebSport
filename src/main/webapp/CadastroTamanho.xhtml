@@ -17,11 +17,6 @@
             <p:fieldset legend="Cadastro de tamanho">
                 <p:messages/>
                 <p:panelGrid columns="3">
-                    <h:outputText value="Id*:"/>
-                    <p:inputText id="txtId" value="#{tamanhoController.tamanhoCadastro.id}"
-                                 required="true" requiredMessage="O campo id é obrigatório!"/>
-                    <p:message for="txtId"/>
-
                     <h:outputText value="Dimensao*:"/>
                     <p:inputText id="txtDimensao" value="#{tamanhoController.tamanhoCadastro.dimensao}"
                                  required="true" requiredMessage="O campo dimensao é obrigatório!"/>
@@ -44,7 +39,7 @@
                     ATENÇÃO!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{tamanhoController.inserirAction(tamanhoController.tamanhoCadastro)}"
+                                 action="#{tamanhoController.inserirAction()}"
                                  oncomplete="PF('widDialTamanho').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialTamanho').hide()"/>
             </p:confirmDialog>

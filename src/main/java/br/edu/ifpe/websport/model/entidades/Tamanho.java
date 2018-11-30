@@ -21,7 +21,7 @@ import javax.persistence.Table;
 public class Tamanho implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue()
     private int id;
     @Column(length = 20)
     private String dimensao;

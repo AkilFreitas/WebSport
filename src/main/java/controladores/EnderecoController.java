@@ -32,7 +32,7 @@ public class EnderecoController {
         this.enderecoCadastro = new Endereco();
     }
 
-    public void inserirAction() {
+    public String inserirAction() {
 
         try {
             this.em.inserir(this.enderecoCadastro);
@@ -40,10 +40,12 @@ public class EnderecoController {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O endereço foi cadastrado com sucesso!"));
         } catch (Exception ex) {
+            ex.printStackTrace();
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O endereço não foi cadastrada!"));
+              Endereco endereco = new Endereco();
         }
-
+        return "/menu.xhtml?faces-redirect=true";
     }
 
     public void alterarAction(Endereco e) {

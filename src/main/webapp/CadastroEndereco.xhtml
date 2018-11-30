@@ -17,11 +17,6 @@
             <p:fieldset legend="Cadastro de endereço">
                 <p:messages/>
                 <p:panelGrid columns="3">
-                    <h:outputText value="Id*:"/>
-                    <p:inputText id="txtId" value="#{enderecoController.enderecoCadastro.id}"
-                                 required="true" requiredMessage="O campo id é obrigatório!"/>
-                    <p:message for="txtId"/>
-
                     <h:outputText value="Estado*:"/>
                     <p:inputText id="txtEstado" value="#{enderecoController.enderecoCadastro.estado}"
                                  required="true" requiredMessage="O campo estado é obrigatório!"/>
@@ -63,16 +58,10 @@
                     ATENÇÃO!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{enderecoController.inserirAction(enderecoController.enderecoCadastro)}"
+                                 action="#{enderecoController.inserirAction()}"
                                  oncomplete="PF('widDialEndereco').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialEndereco').hide()"/>
             </p:confirmDialog>
-
-            <p:dialog id="dialConfirm" visible="false" resizable="false" modal="true"
-                      widgetVar="widDialConfirm">
-                <h:outputText value="cadastro realizado com sucesso"/><br/>
-                <p:commandButton value="ok" oncomplete="PF('widDialConfirm').hide()"/>
-            </p:dialog>
 
         </h:form>
     </h:body>

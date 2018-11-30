@@ -2,12 +2,13 @@ package br.edu.ifpe.websport.model.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -71,17 +72,17 @@ public class Compra implements Serializable {
     quando eu comprar um produto seus id's vão ser iguais, e vai ter mais sentido
     na hora de apresentar a compra, pq o id da compra vai bater com o id do produto,
     e não tem sentido o cliente inserir o id da compra!
-    */
+     */
     @Id
-    @GeneratedValue
-    private int id; 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @Column(length = 20)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date data;
     @Column(length = 20)
     private float total;
-    @Column(length = 20)
-    private Cliente cliente;
+    @OneToMany
+    private List<Cliente> cliente;
     @Column(length = 20)
     private float frete;
     @Column(length = 20)
@@ -90,10 +91,10 @@ public class Compra implements Serializable {
     private boolean cancelarCompra;
     @Column(length = 20)
     private String observacoes;
-    @Column(length = 20)
-    private Pagamento tipoDePagamento;
-    @Column(length = 20)
-    private Produto produto;
+    @OneToMany
+    private List<Pagamento> tipoDePagamento;
+    @OneToMany
+    private List<Produto> produto;
     @Column(length = 20)
     private STATUS status;
 
@@ -104,13 +105,13 @@ public class Compra implements Serializable {
         this.id = id;
         this.data = data;
         this.total = total;
-        this.cliente = cliente;
+        this.cliente = (List<Cliente>) cliente;
         this.frete = frete;
         this.concluida = concluida;
         this.cancelarCompra = cancelarCompra;
         this.observacoes = observacoes;
-        this.tipoDePagamento = tipoDePagamento;
-        this.produto = produto;
+        this.tipoDePagamento = (List<Pagamento>) tipoDePagamento;
+        this.produto = (List<Produto>) produto;
         this.status = status;
     }
 
@@ -121,6 +122,31 @@ public class Compra implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    public List<Cliente> getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(List<Cliente> cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<Pagamento> getTipoDePagamento() {
+        return tipoDePagamento;
+    }
+
+    public void setTipoDePagamento(List<Pagamento> tipoDePagamento) {
+        this.tipoDePagamento = tipoDePagamento;
+    }
+
+    public List<Produto> getProduto() {
+        return produto;
+    }
+
+    public void setProduto(List<Produto> produto) {
+        this.produto = produto;
+    }
+
 
     public Date getData() {
         return data;
@@ -136,14 +162,6 @@ public class Compra implements Serializable {
 
     public void setTotal(float total) {
         this.total = total;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public float getFrete() {
@@ -178,22 +196,6 @@ public class Compra implements Serializable {
         this.observacoes = observacoes;
     }
 
-    public Pagamento getTipoDePagamento() {
-        return tipoDePagamento;
-    }
-
-    public void setTipoDePagamento(Pagamento tipoDePagamento) {
-        this.tipoDePagamento = tipoDePagamento;
-    }
-
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
     public STATUS getStatus() {
         return status;
     }
@@ -202,7 +204,6 @@ public class Compra implements Serializable {
         this.status = status;
     }
 
-    
     public void manterCompra() {
 
     }

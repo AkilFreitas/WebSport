@@ -17,11 +17,6 @@
             <p:fieldset legend="Cadastro de pagamento">
                 <p:messages/>
                 <p:panelGrid columns="3">
-                    <h:outputText value="Id*:"/>
-                    <p:inputText id="txtId" value="#{pagamentoController.pagamentoCadastro.id}"
-                                 required="true" requiredMessage="O campo id é obrigatório!"/>
-                    <p:message for="txtId"/>
-
                     <h:outputText value="Nome*:"/>
                     <p:inputText id="txtNome" value="#{pagamentoController.pagamentoCadastro.nome}"
                                  required="true" requiredMessage="O campo nome é obrigatório!"/>
@@ -48,7 +43,7 @@
                     ATENÇÃO!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{pagamentoController.inserirAction(pagamentoController.pagamentoCadastro)}"
+                                 action="#{pagamentoController.inserirAction()}"
                                  oncomplete="PF('widDialPagamento').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialPagamento').hide()"/>
             </p:confirmDialog>

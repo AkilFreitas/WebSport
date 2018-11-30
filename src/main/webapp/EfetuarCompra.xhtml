@@ -17,12 +17,6 @@
             <p:fieldset legend="Cadastro de Compra">
                 <p:messages/>
                 <p:panelGrid columns="3">
-
-                    <h:outputText value="Produto*:"/>
-                    <p:inputText value="#{compraController.compraCadastro.produto}" id="txtProduto"
-                                 required="true" requiredMessage="O campo produto é obrigatório!"/>
-                    <p:message for="txtProduto"/>
-
                     <h:outputText value="TipoDePagamento*:"/>
                     <p:inputText value="#{compraController.compraCadastro.tipoDePagamento}" id="txtTipoDePagamento"
                                  required="true" requiredMessage="O campo tipo de pagamento é obrigatório!"/>
@@ -48,7 +42,7 @@
                     ANTENÇÃO!
                 </f:facet>
                 <p:commandButton value="sim" 
-                                 action="#{compraController.inserirAction(compraController.compraCadastro)}"
+                                 action="#{compraController.inserirAction()}"
                                  oncomplete="PF('widDialCompra').hide()" update="@form"/>
                 <p:commandButton value="não" oncomplete="PF('widDialCompra').hide()"/>
             </p:confirmDialog>

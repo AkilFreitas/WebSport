@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Crud Categoria</title>
+        <style type="text/css">
+            #divCima {
+                width:100%;
+                position: relative;
+                overflow:hidden;
+                background:#fff url('parte de cima.png') top no-repeat;
+
+            }
+            #divBaixo {
+                position: fixed;
+                bottom: 0;
+                right: 1;
+                width:100%;
+                overflow:hidden;
+                background:#fff url('parte de baixo') top no-repeat;
+
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <p:growl id="gro" showDetail="true" showSummary="true"/>
+        <div id="divCima">
+            <hl><img src="\imagens\parte de cima.png"  height="122"/></hl>
+        </div>
+        <h:form id="formCategoria">
+            <p:commandButton value="inserir" oncomplete="PF('widDialCadCategoria').show()"/>
+            <p:dataTable var="item" value="#{categoriaController.recuperarTodasCategorias()}"
+                         rowKey="#{item.id}" paginator="true"
+                         rows="5">
+                <f:facet name="header">
+                    Catedorias Cadastradas
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="Nome" filterBy="#{item.nome}">
+                    <h:outputText value="#{item.nome}"/>
+                </p:column>
+                <p:column headerText="Descricao" filterBy="#{item.descricao}">
+                    <h:outputText value="#{item.descricao}"/>
+                </p:column>  
+
+                <p:column headerText="operações" style="width: 12%">
+                    <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaCategoria').show()" 
+                                     update=":formCategoria:dialVisualizaCategoria">
+                        <f:setPropertyActionListener value="#{item}" target="#{categoriaController.selectedCategoria}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-wrench" oncomplete="PF('widDialAlteraCategoria').show()"
+                                     update=":formDialAlteraCategoria">
+                        <f:setPropertyActionListener value="#{item}" target="#{categoriaController.selectedCategoria}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-closethick" oncomplete="PF('widDialDeletaCategoria').show()" 
+                                     update=":formCategoria:dialDeletaCategoria">
+                        <f:setPropertyActionListener value="#{item}" target="#{categoriaController.selectedCategoria}"/>
+                    </p:commandButton>    
+                </p:column>
+            </p:dataTable>
+
+            <p:dialog id="dialVisualizaCategoria" visible="false" modal="true"
+                      resizable="false" widgetVar="widDialVisualizaCategoria"
+                      header="dados da categoria">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id:"/>
+                    <h:outputText value="#{categoriaController.selectedCategoria.id}"/>
+
+                    <h:outputText value="Nome:"/>
+                    <h:outputText value="#{categoriaController.selectedCategoria.nome}"/>
+
+                    <h:outputText value="Descricao:"/>
+                    <h:outputText value="#{categoriaController.selectedCategoria.descricao}"/>
+                </p:panelGrid>
+                <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaCategoria').hide()"/>
+            </p:dialog>
+
+            <p:dialog id="dialDeletaCategoria" visible="false" modal="true"
+                      resizable="false" widgetVar="widDialDeletaCategoria"
+                      header="dados da categoria">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id:"/>
+                    <h:outputText value="#{categoriaController.selectedCategoria.id}"/>
+
+                    <h:outputText value="Nome:"/>
+                    <h:outputText value="#{categoriaController.selectedCategoria.nome}"/>
+
+                    <h:outputText value="Descricao:"/>
+                    <h:outputText value="#{categoriaController.selectedCategoria.descricao}"/>
+                </p:panelGrid>
+                <p:commandButton value="Deseja mesmo deletar essa categoria?" action="#{categoriaController.deletarAction(categoriaController.selectedCategoria)}" 
+                                 oncomplete="PF('widDialDeletaCategoria').hide()" update="@form"/>
+            </p:dialog>
+        </h:form>
+
+
+
+        <p:dialog id="dialCadCategoria" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialCadCategoria" header="Cadastrar Categoria">
+            <h:form id="formDialCadCategoria">
+                <p:fieldset legend="cadastrar Categoria">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Nome*:"/>
+                        <p:inputText value="#{categoriaController.categoriaCadastro.nome}" id="txtNome"
+                                     required="true" requiredMessage="O campo nome é obrigatório!"/>
+                        <p:message for="txtNome"/>
+
+                        <h:outputText value="Descricao*:"/>
+                        <p:inputText value="#{categoriaController.categoriaCadastro.descricao}" id="txtDescricao"
+                                     required="true" requiredMessage="O campo descricao fantasia é obrigatório!"/>
+                        <p:message for="txtDescricao"/>
+                        </p:panelGrid>
+                        <p:commandButton value="Cadastrar" action="#{categoriaController.inserirAction()}"
+                                         oncomplete="PF('widDialCadCategoria').hide()" 
+                                         update=':formCategoria :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+
+
+        <p:dialog id="dialAlteraCategoria" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialAlteraCategoria" header="Alterar Categoria">
+            <h:form id="formDialAlteraCategoria">
+                <p:fieldset legend="Alterar Categoria">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Id:"/>
+                        <p:inputText value="#{categoriaController.selectedCategoria.id}"/>
+                        <h:outputText/>
+
+                        <h:outputText value="Nome*:"/>
+                        <p:inputText value="#{categoriaController.selectedCategoria.nome}" id="txtNome"
+                                     required="true" requiredMessage="O campo Nome é obrigatorio"/>
+                        <p:message for="txtNome"/>
+
+                        <h:outputText value="Descricao*:"/>
+                        <p:inputText value="#{categoriaController.selectedCategoria.descricao}" id="txtDescricao"
+                                     required="true" requiredMessage="O campo descrição é obrigatorio"/>
+                        <p:message for="txtDescricao"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Alterar" action="#{categoriaController.alterarAction(categoriaController.selectedCategoria)}"
+                                     oncomplete="PF('widDialAlteraCategoria').hide()" 
+                                     update=':formCategoria :gro @form'/>
+                </p:fieldset>
+                </h:form>
+        </p:dialog>
+        <div id="divBaixo" align="justify">
+            <hl><img src="\imagens\parte de baixo.png" height="101px"/></hl>
+        </div>
+    </h:body>
+</html>

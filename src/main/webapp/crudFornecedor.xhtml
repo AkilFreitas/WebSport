@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Crud Fornecedor</title>
+        <style type="text/css">
+            #divCima {
+                width:100%;
+                position: relative;
+                overflow:hidden;
+                background:#fff url('parte de cima.png') top no-repeat;
+
+            }
+            #divBaixo {
+                position: fixed;
+                bottom: 0;
+                right: 1;
+                width:100%;
+                overflow:hidden;
+                background:#fff url('parte de baixo') top no-repeat;
+
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <p:growl id="gro" showDetail="true" showSummary="true"/>
+        <div id="divCima">
+            <hl><img src="\imagens\parte de cima.png"  height="122"/></hl>
+        </div>
+        <h:form id="formFornecedor">
+            <p:commandButton value="inserir" oncomplete="PF('widDialCadFornecedor').show()"/>
+            <p:dataTable var="item" value="#{fornecedorController.recuperarTodosFornecedores()}"
+                         rowKey="#{item.id}" paginator="true"
+                         rows="5">
+                <f:facet name="header">
+                    Fornecedores Cadastrados
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="NomeFantasia" filterBy="#{item.nomeFantasia}">
+                    <h:outputText value="#{item.nomeFantasia}"/>
+                </p:column>
+                <p:column headerText="Email" filterBy="#{item.email}">
+                    <h:outputText value="#{item.email}"/>
+                </p:column>  
+                <p:column headerText="Telefone" filterBy="#{item.telefone}">
+                    <h:outputText value="#{item.telefone}"/>
+                </p:column>
+                <p:column headerText="Cnpj" filterBy="#{item.cnpj}">
+                    <h:outputText value="#{item.cnpj}"/>
+                </p:column>
+
+                <p:column headerText="operações" style="width: 12%">
+                    <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaFornecedor').show()" 
+                                     update=":formFornecedor:dialVisualizaFornecedor">
+                        <f:setPropertyActionListener value="#{item}" target="#{fornecedorController.selectedFornecedor}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-wrench" oncomplete="PF('widDialAlteraFornecedor').show()"
+                                     update=":formDialAlteraFornecedor">
+                        <f:setPropertyActionListener value="#{item}" target="#{fornecedorController.selectedFornecedor}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-closethick" oncomplete="PF('widDialDeletaFornecedor').show()" 
+                                     update=":formFornecedor:dialDeletaFornecedor">
+                        <f:setPropertyActionListener value="#{item}" target="#{fornecedorController.selectedFornecedor}"/>
+                    </p:commandButton>    
+                </p:column>
+            </p:dataTable>
+
+            <p:dialog id="dialVisualizaFornecedor" visible="false" modal="true"
+                      resizable="false" widgetVar="widDialVisualizaFornecedor"
+                      header="dados do fornecedor">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id:"/>
+                    <h:outputText value="#{fornecedorController.selectedFornecedor.id}"/>
+
+                    <h:outputText value="NomeFantasia:"/>
+                    <h:outputText value="#{fornecedorController.selectedFornecedor.nomeFantasia}"/>
+
+                    <h:outputText value="Email:"/>
+                    <h:outputText value="#{fornecedorController.selectedFornecedor.email}"/>
+
+                    <h:outputText value="Telefone:"/>
+                    <h:outputText value="#{fornecedorController.selectedFornecedor.telefone}"/>
+
+                    <h:outputText value="Cnpj:"/>
+                    <h:outputText value="#{fornecedorController.selectedFornecedor.cnpj}"/>
+
+                </p:panelGrid>
+                <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaFornecedor').hide()"/>
+            </p:dialog>
+
+
+            <p:dialog id="dialDeletaFornecedor" visible="false" modal="true"
+                      resizable="false" widgetVar="widDialDeletaFornecedor"
+                      header="dados do fornecedor">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id:"/>
+                    <h:outputText value="#{fornecedorController.selectedFornecedor.id}"/>
+
+                    <h:outputText value="NomeFantasia:"/>
+                    <h:outputText value="#{fornecedorController.selectedFornecedor.nomeFantasia}"/>
+
+                    <h:outputText value="Email:"/>
+                    <h:outputText value="#{fornecedorController.selectedFornecedor.email}"/>
+
+                    <h:outputText value="Telefone:"/>
+                    <h:outputText value="#{fornecedorController.selectedFornecedor.telefone}"/>
+
+                    <h:outputText value="Cnpj:"/>
+                    <h:outputText value="#{fornecedorController.selectedFornecedor.cnpj}"/>
+                </p:panelGrid>
+                <p:commandButton value="Deseja mesmo deletar o fornecedor?" action="#{fornecedorController.deletarAction(fornecedorController.selectedFornecedor)}" 
+                                 oncomplete="PF('widDialDeletaFornecedor').hide()" update="@form"/>
+            </p:dialog>
+        </h:form>
+
+
+
+        <p:dialog id="dialCadFornecedor" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialCadFornecedor" header="Cadastrar Fornecedor">
+            <h:form id="formDialCadFornecedor">
+                <p:fieldset legend="cadastrar Fornecedor">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Email*:"/>
+                        <p:inputText value="#{fornecedorController.fornecedorCadastro.email}" id="txtEmail"
+                                     required="true" requiredMessage="O campo email é obrigatório!"/>
+                        <p:message for="txtEmail"/>
+
+                        <h:outputText value="NomeFantasia*:"/>
+                        <p:inputText value="#{fornecedorController.fornecedorCadastro.nomeFantasia}" id="txtNomeFantasia"
+                                     required="true" requiredMessage="O campo nome fantasia é obrigatório!"/>
+                        <p:message for="txtNomeFantasia"/>
+
+                        <h:outputText value="Cnpj*:"/>
+                        <p:inputText value="#{fornecedorController.fornecedorCadastro.cnpj}" id="txtCnpj"
+                                     required="true" requiredMessage="O campo Cnpj é obrigatório!"/>
+                        <p:message for="txtCnpj"/>
+
+                        <h:outputText value="Telefone*:"/>
+                        <p:inputText value="#{fornecedorController.fornecedorCadastro.telefone}" id="txtTelefone"
+                                     required="true" requiredMessage="O campo telefone é obrigatório!"/>
+                        <p:message for="txtTelefone"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Cadastrar" action="#{fornecedorController.inserirAction()}"
+                                     oncomplete="PF('widDialCadFornecedor').hide()" 
+                                     update=':formFornecedor :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+
+
+        <p:dialog id="dialAlteraFornecedor" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialAlteraFornecedor" header="Alterar Fornecedor">
+            <h:form id="formDialAlteraFornecedor">
+                <p:fieldset legend="Alterar Fornecedor">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Id*:"/>
+                        <p:inputText value="#{fornecedorController.selectedFornecedor.id}" id="txtId"
+                                     required="true" requiredMessage="O campo id é obrigatório!"/>
+                        <p:message for="txtId"/>
+
+                        <h:outputText value="Cnpj*:"/>
+                        <p:inputText value="#{fornecedorController.selectedFornecedor.cnpj}" id="txtCnpj"
+                                     required="true" requiredMessage="O campo Cnpj é obrigatório!"/>
+                        <p:message for="txtCnpj"/>
+
+                        <h:outputText value="Telefone*:"/>
+                        <p:inputText value="#{fornecedorController.selectedFornecedor.telefone}" id="txtTelefone"
+                                     required="true" requiredMessage="O campo Telefone é obrigatório!"/>
+                        <p:message for="txtTelefone"/>
+
+                        <h:outputText value="NomeFantasia*:"/>
+                        <p:inputText value="#{fornecedorController.selectedFornecedor.nomeFantasia}" id="txtNomeFantasia"
+                                     required="true" requiredMessage="O campo NomeFantasia é obrigatório!"/>
+                        <p:message for="txtNomeFantasia"/>
+
+                        <h:outputText value="Email*:"/>
+                        <p:inputText value="#{fornecedorController.selectedFornecedor.email}" id="txtEmail"
+                                     required="true" requiredMessage="O campo Email é obrigatório!"/>
+                        <p:message for="txtEmail"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Alterar" action="#{fornecedorController.alterarAction(fornecedorController.selectedFornecedor)}"
+                                     oncomplete="PF('widDialAlteraFornecedor').hide()" 
+                                     update=':formFornecedor :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+        <div id="divBaixo" align="justify">
+            <hl><img src="\imagens\parte de baixo.png" height="101px"/></hl>
+        </div>
+    </h:body>
+</html>
+

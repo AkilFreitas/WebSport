@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Crud Cliente</title>
+        <style type="text/css">
+            #divCima {
+                width:100%;
+                position: relative;
+                overflow:hidden;
+                background:#fff url('parte de cima.png') top no-repeat;
+
+            }
+            #divBaixo {
+                position: fixed;
+                bottom: 0;
+                right: 1;
+                width:100%;
+                overflow:hidden;
+                background:#fff url('parte de baixo') top no-repeat;
+
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <p:growl id="gro" showDetail="true" showSummary="true"/>
+        <div id="divCima">
+            <hl><img src="\imagens\parte de cima.png"  height="122"/></hl>
+        </div>
+        <h:form id="formCliente">
+            <p:commandButton value="inserir" oncomplete="PF('widDialCadCliente').show()"/>
+            <p:dataTable var="item" value="#{clienteController.recuperarTodosClientes()}"
+                         rowKey="#{item.id}" paginator="true"
+                         rows="5">
+                <f:facet name="header">
+                    Clientes Cadastradas
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="Nome" filterBy="#{item.nome}">
+                    <h:outputText value="#{item.nome}"/>
+                </p:column>
+                <p:column headerText="Sexo" filterBy="#{item.sexo}">
+                    <h:outputText value="#{item.sexo}"/>
+                </p:column>
+                <p:column headerText="Idade" filterBy="#{item.idade}">
+                    <h:outputText value="#{item.idade}"/>
+                </p:column>
+                <p:column headerText="DataDeNascimento" filterBy="#{item.dataDeNascimento}">
+                    <h:outputText value="#{item.dataDeNascimento}"/>
+                </p:column>
+                <p:column headerText="Rg" filterBy="#{item.rg}">
+                    <h:outputText value="#{item.rg}"/>
+                </p:column>
+                <p:column headerText="Cpf" filterBy="#{item.cpf}">
+                    <h:outputText value="#{item.cpf}"/>
+                </p:column>
+                <p:column headerText="Endereco" filterBy="#{item.endereco}">
+                    <h:outputText value="#{item.endereco}"/>
+                </p:column>
+                <p:column headerText="Telefone" filterBy="#{item.telefone}">
+                    <h:outputText value="#{item.telefone}"/>
+                </p:column>
+                <p:column headerText="Email" filterBy="#{item.email}">
+                    <h:outputText value="#{item.email}"/>
+                </p:column>
+                <p:column headerText="Senha" filterBy="#{item.senha}">
+                    <h:outputText value="#{item.senha}"/>
+                </p:column>
+                <p:column headerText="operações" style="width: 12%">
+                    <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaCliente').show()" 
+                                     update=":formCliente:dialVisualizaCliente">
+                        <f:setPropertyActionListener value="#{item}" target="#{clienteController.selectedCliente}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-wrench" oncomplete="PF('widDialAlteraCliente').show()"
+                                     update=":formDialAlteraCliente">
+                        <f:setPropertyActionListener value="#{item}" target="#{clienteController.selectedCliente}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-closethick" oncomplete="PF('widDialDeletaCliente').show()" 
+                                     update=":formCliente:dialDeletaCliente">
+                        <f:setPropertyActionListener value="#{item}" target="#{clienteController.selectedCliente}"/>
+                    </p:commandButton>    
+                </p:column>
+            </p:dataTable> 
+
+
+
+
+
+            <p:dialog id="dialVisualizaCliente" visible="false" modal="true"
+                      resizable="false" widgetVar="widDialVisualizaCliente"
+                      header="dados da cliente">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id"/>
+                    <h:outputText value="#{clienteController.selectedCliente.id}"/>
+
+                    <h:outputText value="Nome"/>
+                    <h:outputText value="#{clienteController.selectedCliente.nome}"/>
+
+                    <h:outputText value="Sexo"/>
+                    <h:outputText value="#{clienteController.selectedCliente.sexo}"/>
+
+                    <h:outputText value="Idade"/>
+                    <h:outputText value="#{clienteController.selectedCliente.idade}"/>
+
+                    <h:outputText value="DataDeNascimento"/>
+                    <h:outputText value="#{clienteController.selectedCliente.dataDeNascimento}"/>
+
+                    <h:outputText value="Rg"/>
+                    <h:outputText value="#{clienteController.selectedCliente.rg}"/>
+
+                    <h:outputText value="Cpf"/>
+                    <h:outputText value="#{clienteController.selectedCliente.cpf}"/>
+
+                    <h:outputText value="Endereço"/>
+                    <h:outputText value="#{clienteController.selectedCliente.endereco}"/>
+
+                    <h:outputText value="Telefone"/>
+                    <h:outputText value="#{clienteController.selectedCliente.telefone}"/>
+
+                    <h:outputText value="Email:"/>
+                    <h:outputText value="#{clienteController.selectedCliente.email}"/>
+
+                    <h:outputText value="Senha:"/>
+                    <h:outputText value="#{clienteController.selectedCliente.senha}"/> 
+                    <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaCliente').hide()"/>
+                </p:panelGrid>                   
+            </p:dialog>
+
+
+
+            <p:dialog id="dialDeletaCliente" visible="false" modal="true"
+                      resizable="false" widgetVar="widDialDeletaCliente"
+                      header="dados da cliente">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id"/>
+                    <h:outputText value="#{clienteController.selectedCliente.id}"/>
+
+                    <h:outputText value="Nome"/>
+                    <h:outputText value="#{clienteController.selectedCliente.nome}"/>
+
+                    <h:outputText value="Sexo"/>
+                    <h:outputText value="#{clienteController.selectedCliente.sexo}"/>
+
+                    <h:outputText value="Idade"/>
+                    <h:outputText value="#{clienteController.selectedCliente.idade}"/>
+
+                    <h:outputText value="DataDeNascimento"/>
+                    <h:outputText value="#{clienteController.selectedCliente.dataDeNascimento}"/>
+
+                    <h:outputText value="Rg"/>
+                    <h:outputText value="#{clienteController.selectedCliente.rg}"/>
+
+                    <h:outputText value="Cpf"/>
+                    <h:outputText value="#{clienteController.selectedCliente.cpf}"/>
+
+                    <h:outputText value="Endereço"/>
+                    <h:outputText value="#{clienteController.selectedCliente.endereco}"/>
+
+                    <h:outputText value="Telefone"/>
+                    <h:outputText value="#{clienteController.selectedCliente.telefone}"/>
+
+                    <h:outputText value="Email:"/>
+                    <h:outputText value="#{clienteController.selectedCliente.email}"/>
+
+                    <h:outputText value="Senha:"/>
+                    <h:outputText value="#{clienteController.selectedCliente.senha}"/> 
+                </p:panelGrid>
+                <p:commandButton value="Deseja mesmo deletar o cliente?" action="#{clienteController.deletarAction(clienteController.selectedCliente)}" 
+                                 oncomplete="PF('widDialDeletaCliente').hide()" update="@form"/>
+            </p:dialog>
+        </h:form>
+
+
+
+        <p:dialog id="dialCadCliente" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialCadCliente" header="Cadastrar Cliente">
+            <h:form id="formDialCadCliente">
+                <p:fieldset legend="Cadastrar Cliente">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Nome*:"/>
+                        <p:inputText value="#{clienteController.clienteCadastro.nome}" id="txtNome"
+                                     required="true" requiredMessage="O campo nome é obrigatório"/>
+                        <p:message for="txtNome"/>
+
+                        <h:outputText value="Sexo*:"/>
+                        <p:inputText value="#{clienteController.clienteCadastro.sexo}" id="txtSexo"
+                                     required="true" requiredMessage="O campo senha é obrigatório"/>
+                        <p:message for="txtSexo"/>
+
+                        <h:outputText value="Idade*:"/>
+                        <p:inputText value="#{clienteController.clienteCadastro.idade}" id="txtIdade"
+                                     required="true" requiredMessage="O campo idade é obrigatório"/>
+                        <p:message for="txtIdade"/>
+
+                        <h:outputText value="Data de Nascimento*:"/>
+                        <p:inputText value="#{clienteController.clienteCadastro.dataDeNascimento}" id="txtDataDeNascimento"
+                                     required="true" requiredMessage="O campo data de nascimeto é obrigatório"/>
+                        <p:message for="txtDataDeNascimento"/>
+
+                        <h:outputText value="Rg*:"/>
+                        <p:inputText value="#{clienteController.clienteCadastro.rg}" id="txtRg"
+                                     required="true" requiredMessage="O campo rg é obrigatório"/>
+                        <p:message for="txtRg"/>
+
+                        <h:outputText value="Cpf*:"/>
+                        <p:inputText value="#{clienteController.clienteCadastro.cpf}" id="txtCpf"
+                                     required="true" requiredMessage="O campo cpf é obrigatório"/>
+                        <p:message for="txtCpf"/>
+
+                        <h:outputText value="Endereço*:"/>
+                        <p:inputText value="#{clienteController.clienteCadastro.endereco}" id="txtEndereco"
+                                     required="true" requiredMessage="O campo endereço é obrigatório"/>
+                        <p:message for="txtEndereco"/>
+
+                        <h:outputText value="Telefone*:"/>
+                        <p:inputText value="#{clienteController.clienteCadastro.telefone}" id="txtTelefone"
+                                     required="true" requiredMessage="O campo telefone é obrigatório"/>
+                        <p:message for="txtTelefone"/>
+
+                        <h:outputText value="Email*:"/>
+                        <p:inputText value="#{clienteController.clienteCadastro.email}" id="txtEmail"
+                                     required="true" requiredMessage="O campo email é obrigatório"/>
+                        <p:message for="txtEmail"/>
+
+                        <h:outputText value="Senha*:"/>
+                        <p:inputText value="#{clienteController.clienteCadastro.senha}" id="txtSenha"
+                                     required="true" requiredMessage="O campo senha é obrigatório"/>
+                        <p:message for="txtSenha"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Cadastrar" action="#{clienteController.inserirAction()}"
+                                     oncomplete="PF('widDialCadCliente').hide()" 
+                                     update=':formCliente :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+
+
+
+
+        <p:dialog id="dialAlteraCliente" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialAlteraCliente" header="Alterar Cliente">
+            <h:form id="formDialAlteraCliente">
+                <p:fieldset legend="Alterar Cliente">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+
+                        <h:outputText value="Id:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.id}"/>
+                        <h:outputText/>
+
+                        <h:outputText value="Nome*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.nome}" id="txtNome"
+                                     required="true" requiredMessage="O campo nome é obrigatorio"/>
+                        <p:message for="txtNome"/>
+
+                        <h:outputText value="Sexo*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.sexo}" id="txtSexo"
+                                     required="true" requiredMessage="O campo sexo é obrigatorio"/>
+                        <p:message for="txtSexo"/>
+
+                        <h:outputText value="Idade*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.idade}" id="txtIdade"
+                                     required="true" requiredMessage="O campo idade é obrigatorio"/>
+                        <p:message for="txtIdade"/>
+
+                        <h:outputText value="DataDeNascimento*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.dataDeNascimento}" id="txtDataDeNascimento"
+                                     required="true" requiredMessage="O campo data de nascimento é obrigatorio"/>
+                        <p:message for="txtDataDeNascimento"/>
+
+                        <h:outputText value="Rg*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.rg}" id="txtRg"
+                                     required="true" requiredMessage="O campo rg é obrigatorio"/>
+                        <p:message for="txtRg"/>
+
+                        <h:outputText value="Cpf*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.cpf}" id="txtCpf"
+                                     required="true" requiredMessage="O campo cpf é obrigatorio"/>
+                        <p:message for="txtCpf"/>
+
+                        <h:outputText value="Endereco*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.endereco}" id="txtEndereco"
+                                     required="true" requiredMessage="O campo endereco é obrigatorio"/>
+                        <p:message for="txtEndereco"/>
+
+                        <h:outputText value="Telefone*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.telefone}" id="txtTelefone"
+                                     required="true" requiredMessage="O campo telefone é obrigatorio"/>
+                        <p:message for="txtTelefone"/>
+
+                        <h:outputText value="Email*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.email}" id="txtEmail"
+                                     required="true" requiredMessage="O campo email é obrigatorio"/>
+                        <p:message for="txtEmail"/>
+
+                        <h:outputText value="Senha*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.senha}" id="txtSenha"
+                                     required="true" requiredMessage="O campo senha é obrigatorio"/>
+                        <p:message for="txtSenha"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Alterar" action="#{clienteController.alterarAction(clienteController.selectedCliente)}"
+                                     oncomplete="PF('widDialAlteraCliente').hide()" 
+                                     update=':formCliente :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+        <div id="divBaixo" align="justify">
+            <hl><img src="\imagens\parte de baixo.png" height="101px"/></hl>
+        </div>
+    </h:body>
+</html>

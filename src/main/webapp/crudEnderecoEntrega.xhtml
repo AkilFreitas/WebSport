@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Crud EnderecoEntrega</title>
+        <style type="text/css">
+            #divCima {
+                width:100%;
+                position: relative;
+                overflow:hidden;
+                background:#fff url('parte de cima.png') top no-repeat;
+
+            }
+            #divBaixo {
+                position: fixed;
+                bottom: 0;
+                right: 1;
+                width:100%;
+                overflow:hidden;
+                background:#fff url('parte de baixo') top no-repeat;
+
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <p:growl id="gro" showDetail="true" showSummary="true"/>
+        <div id="divCima">
+            <hl><img src="\imagens\parte de cima.png"  height="122"/></hl>
+        </div>
+        <h:form id="formEnderecoEntrega">
+            <p:commandButton value="inserir" oncomplete="PF('widDialCadEnderecoEntrega').show()"/>
+            <p:dataTable var="item" value="#{enderecoEntregaController.recuperarTodosEnderecosEntregas()}"
+                         rowKey="#{item.id}" paginator="true"
+                         rows="5">
+                <f:facet name="header">
+                    Endereços de Entrega Cadastrados
+                </f:facet>
+                <p:column headerText="Id" filterBy="#{item.id}">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="Frete" filterBy="#{item.frete}">
+                    <h:outputText value="#{item.frete}"/>
+                </p:column>
+                <p:column headerText="FormaDeEntrega" filterBy="#{item.formaDeEntrega}">
+                    <h:outputText value="#{item.formaDeEntrega}"/>
+                </p:column>
+
+                <p:column headerText="operações" style="width: 12%">
+                    <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaEnderecoEntrega').show()" 
+                                     update=":formEnderecoEntrega:dialVisualizaEnderecoEntrega">
+                        <f:setPropertyActionListener value="#{item}" target="#{enderecoEntregaController.selectedEnderecoEntrega}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-wrench" oncomplete="PF('widDialAlteraEnderecoEntrega').show()"
+                                     update=":formDialAlteraEnderecoEntrega">
+                        <f:setPropertyActionListener value="#{item}" target="#{enderecoEntregaController.selectedEnderecoEntrega}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-closethick" oncomplete="PF('widDialDeletaEnderecoEntrega').show()" 
+                                     update=":formEnderecoEntrega:dialDeletaEnderecoEntrega">
+                        <f:setPropertyActionListener value="#{item}" target="#{enderecoEntregaController.selectedEnderecoEntrega}"/>
+                    </p:commandButton>    
+                </p:column>
+            </p:dataTable>
+
+
+
+            <p:dialog id="dialVisualizaEnderecoEntrega" visible="false" resizable="false"
+                      modal="true" widgetVar="widDialVisualizaEnderecoEntrega">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id"/>
+                    <h:outputText value="#{enderecoEntregaController.selectedEnderecoEntrega.id}"/>
+
+                    <h:outputText value="Frete:"/>
+                    <h:outputText value="#{enderecoEntregaController.selectedEnderecoEntrega.frete}"/>
+
+                    <h:outputText value="Forma de Entrega:"/>
+                    <h:outputText value="#{enderecoEntregaController.selectedEnderecoEntrega.formaDeEntrega}"/>
+                </p:panelGrid>
+                <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaEnderecoEntrega').hide()"/>
+            </p:dialog>
+
+
+            <p:dialog id="dialDeletaEnderecoEntrega" visible="false" modal="true"
+                      resizable="false" widgetVar="widDialDeletaEnderecoEntrega"
+                      header="dados do endereço de entrega">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id"/>
+                    <h:outputText value="#{enderecoEntregaController.selectedEnderecoEntrega.id}"/>
+
+                    <h:outputText value="Frete:"/>
+                    <h:outputText value="#{enderecoEntregaController.selectedEnderecoEntrega.frete}"/>
+
+                    <h:outputText value="Forma de Entrega:"/>
+                    <h:outputText value="#{enderecoEntregaController.selectedEnderecoEntrega.formaDeEntrega}"/>
+                </p:panelGrid>
+                <p:commandButton value="Deseja mesmo deletar essa enderecoEntrega?" action="#{enderecoEntregaController.deletarAction(enderecoEntregaController.selectedEnderecoEntrega)}" 
+                                 oncomplete="PF('widDialDeletaEnderecoEntrega').hide()" update="@form"/>
+            </p:dialog>
+        </h:form>
+
+
+
+        <p:dialog id="dialCadEnderecoEntrega" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialCadEnderecoEntrega" header="Cadastrar EnderecoEntrega">
+            <h:form id="formDialCadEnderecoEntrega">
+                <p:fieldset legend="cadastrar Endereço de Entrega">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Frete*:"/>
+                        <p:inputText id="txtFrete" value="#{enderecoEntregaController.enderecoEntregaCadastro.frete}"
+                                     required="true" requiredMessage="O campo frete é obrigatório!"/>
+                        <p:message for="txtFrete"/>
+
+                        <h:outputText value="Forma de Entrega*:"/>
+                        <p:inputText id="txtFormaDeEntrega" value="#{enderecoEntregaController.enderecoEntregaCadastro.formaDeEntrega}"
+                                     required="true" requiredMessage="O campo forma de entrega é obrigatório!"/>
+                        <p:message for="txtFormaDeEntrega"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Cadastrar" action="#{enderecoEntregaController.inserirAction()}"
+                                     oncomplete="PF('widDialCadEnderecoEntrega').hide()" 
+                                     update=':formEnderecoEntrega :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+
+
+        <p:dialog id="dialAlteraEnderecoEntrega" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialAlteraEnderecoEntrega" header="Alterar EnderecoEntrega">
+            <h:form id="formDialAlteraEnderecoEntrega">
+                <p:fieldset legend="Alterar EnderecoEntrega">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Id*:"/>
+                        <p:inputText value="#{enderecoEntregaController.selectedEnderecoEntrega.id}" id="txtId"
+                                     required="true" requiredMessage="O campo id é obrigatório!"/>
+                        <p:message for="txtId"/>
+
+                        <h:outputText value="Frete*:"/>
+                        <p:inputText value="#{enderecoEntregaController.selectedEnderecoEntrega.frete}" id="txtFrete"
+                                     required="true" requiredMessage="O campo frete é obrigatório!"/>
+                        <p:message for="txtFrete"/>
+
+                        <h:outputText value="Forma de Entrega*:"/>
+                        <p:inputText value="#{enderecoEntregaController.selectedEnderecoEntrega.formaDeEntrega}" id="txtFormaDeEntrega"
+                                     required="true" requiredMessage="O campo cep é obrigatório!"/>
+                        <p:message for="txtFormaDeEntrega"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Alterar" action="#{enderecoEntregaController.alterarAction(enderecoEntregaController.selectedEnderecoEntrega)}"
+                                     oncomplete="PF('widDialAlteraEnderecoEntrega').hide()" 
+                                     update=':formEnderecoEntrega :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+        <div id="divBaixo" align="justify">
+            <hl><img src="\imagens\parte de baixo.png" height="101px"/></hl>
+        </div>
+    </h:body>
+</html>
