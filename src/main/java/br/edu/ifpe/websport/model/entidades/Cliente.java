@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany; 
 import javax.persistence.Table;
 
 /**
@@ -45,7 +45,7 @@ public class Cliente implements Serializable {
     private String dataDeNascimento;
     @Column(length = 20)
     private String sexo;
-    @OneToOne
+    @OneToMany
     private List<Endereco> endereco;
 
     public Cliente() {
