@@ -1,0 +1,7 @@
+Quando criar uma classe nova e que ela precisa ser adicionada na tabela, vai no persistence e muda de update para create:
+
+-> <property name="javax.persistence.schema-generation.database.action" value="create"/>
+
+e quando for usar o projeto normal, deixa com a nomeclatura update:
+
+-> <property name="javax.persistence.schema-generation.database.action" value="update"/>
