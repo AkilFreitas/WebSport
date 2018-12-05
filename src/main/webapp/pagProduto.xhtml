@@ -23,6 +23,14 @@ and open the template in the editor.
                 margin: 0px;               
             }
              
+             #divCima {
+                width:100%;
+                position: relative;
+                overflow:hidden;
+                background: url('imagens/parte cima.png')top no-repeat;
+
+            }
+            
                 .container{
                     margin-top: 100px;
                     
@@ -70,10 +78,42 @@ and open the template in the editor.
                 font-size: 15px;
                 margin-left: 20px;
             }
+             a{
+
+                display: block;
+                padding: 20px 5px;
+                color: white;
+
+
+            }
+            
+                
+                .iconeLogin{
+                    
+                }
+
+            
             
         </style>
     </head>
     <body>
+        
+        
+        <div href="login.xhtml"  style='background-color: transparent; position:absolute;margin-left:1270px;margin-top:-20px;width:60px;height:60px;z-index:1' > 
+                   <a href="login.xhtml" id="iconeLogin" style="background-color: transparent;"></a>
+               </div>
+        
+        <div href="carrinho.xhtml"  style='background-color: transparent; position:absolute;margin-left:1210px;margin-top:-20px;width:60px;height:60px;z-index:1' > 
+                   <a href="carrinho.xhtml" id="iconeLogin" style="background-color: transparent;"></a>
+               </div>
+        
+        <div href="menuLateralTest.xhtml"  style='background-color: transparent; position:absolute;margin-left:20px;margin-top:-5px;width:260px;height:60px;z-index:1' > 
+            <a href="menuLateralTest.xhtml" id="iconeLogin" style="background-color: transparent;"></a>
+               </div>
+        <div id="divCima">
+            <img src="imagens\parte cima.png" height="100"/>
+        </div>
+        
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
