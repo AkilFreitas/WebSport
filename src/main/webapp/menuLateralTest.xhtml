@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+
+      >
+    <head>
+        <title>WS - HOME</title>
+        <meta  name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="estilo.css"> </link>
+
+
+        <style>
+            *{
+                padding:0px;
+                margin: 0px;               
+            }
+            #divCima {
+                width:100%;
+                position: relative;
+                overflow:hidden;
+                background:#fff url('imagens/parte de cima.png')top no-repeat;
+
+            }
+            #formLogin {
+                position: fixed;
+                bottom: 0;
+                right: 1px;
+                width:100%;
+                overflow:hidden;
+                background:#fff url('imagens/parte de baixo.png') top no-repeat;
+
+            }
+            a{
+
+                text-decoration: none;  
+                color: black;                  
+            }
+            .container{
+                margin-top: 100px;
+
+            }
+
+
+            body{
+                font-family: arial;
+                font-style: italic;
+                background: url("imagens/pngtree-Design-Graphic-Blank-Pattern-photo-504558.jpg");
+                background-size: 100%;
+
+            }
+            ul{
+                list-style: none;
+            }
+            img{
+                width: 40px;
+
+            }
+            input[type="checkbox"]{
+                display: none;
+            }
+            nav{
+                background-color: rgba(0, 100, 0, 0.5);
+                width: 300px;
+                height: 100%;
+                left: -350px;
+                position: absolute;
+                transition: all .5s;
+            }
+            input[type="checkbox"]:checked ~ nav
+            {
+                transform: translateX(350px);
+            }
+            ul{
+
+                top:70px;
+
+                position: absolute;
+                width: 100%; 
+            }
+            a{
+
+                display: block;
+                padding: 20px 5px;
+                color: white;
+
+
+            }
+            a:hover{
+                background-color: darkgreen;
+
+            }
+            label{
+
+                padding: 15px;
+                position: absolute;
+                z-index: 1;
+            }
+
+        </style>
+    </head>
+    <body>   
+        <input type="checkbox" id="check">
+            <label for="check">
+                <img src="imagens/Hamburger_icon.svg.png"> </img>
+            </label>  
+        </input>
+        <div id="divCima">
+            <hl><img src="imagens\parte de cima.png" height="100"/></hl>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.xhtml">HOME</a> </li>
+                <li><a href="pagProduto.xhtml">CAMISAS</a> </li>
+                <li><a href="">CALÇAS</a> </li>
+                <li><a href="">ESPORTES</a> </li>
+                <li><a href="informacoes.xhtml">SOBRE</a> </li>
+            </ul>
+        </nav>
+
+
+
+
+
+
+        <div id="formLogin" align="justify">
+            <hl><img src="imagens\parte de baixo.png"  height="100"/></hl>
+        </div>   
+    </body>
+</html>

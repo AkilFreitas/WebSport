@@ -6,8 +6,8 @@
 package br.edu.ifpe.websport.model;
 
 import br.edu.ifpe.websport.model.entidades.Fornecedor;
-import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import infraestrutura.repositorio.implementacoes.repositorioImplBD.FornecedorImplBD;
+import br.edu.ifpe.websport.infraestrutura.repositorio.comportamentos.RepositorioGenerico;
+import br.edu.ifpe.websport.infraestrutura.repositorio.implementacoes.repositorioImplBD.FornecedorImplBD;
 import java.util.List;
 
 /**

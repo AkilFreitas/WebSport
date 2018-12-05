@@ -6,8 +6,8 @@
 package br.edu.ifpe.websport.model;
 
 import br.edu.ifpe.websport.model.entidades.EnderecoEntrega;
-import infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import infraestrutura.repositorio.implementacoes.repositorioImplBD.EnderecoEntregaImplBD;
+import br.edu.ifpe.websport.infraestrutura.repositorio.comportamentos.RepositorioGenerico;
+import br.edu.ifpe.websport.infraestrutura.repositorio.implementacoes.repositorioImplBD.EnderecoEntregaImplBD;
 import java.util.List;
 
 /**
