@@ -26,10 +26,10 @@
         </style>
     </h:head>
     <h:body>
-        <p:growl id="gro" showDetail="true" showSummary="true"/>
         <div id="divCima">
             <hl><img src="\imagens\parte de cima.png"  height="122"/></hl>
         </div>
+        <p:growl id="gro" showDetail="true" showSummary="true"/>
         <h:form id="formProduto">
             <p:commandButton value="inserir" oncomplete="PF('widDialCadProduto').show()"/>
             <p:dataTable var="item" value="#{produtoController.recuperarTodosProdutos()}"
@@ -172,3 +172,134 @@
                                  oncomplete="PF('widDialDeletaProduto').hide()" update="@form"/>
             </p:dialog>
         </h:form>
+
+
+        <p:dialog id="dialCadProduto" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialCadProduto" header="Cadastrar Produto">
+            <h:form id="formDialCadProduto">
+                <p:fieldset legend="Cadastrar Produto">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Nome*:"/>
+                        <p:inputText value="#{produtoController.produtoCadastro.nome}" id="txtNome"
+                                     required="true" requiredMessage="O campo nome é obrigatório"/>
+                        <p:message for="txtNome"/>
+
+                        <h:outputText value="Marca*:"/>
+                        <p:inputText value="#{produtoController.produtoCadastro.marca}" id="txtMarca"
+                                     required="true" requiredMessage="O campo marca é obrigatório"/>
+                        <p:message for="txtMarca"/>
+
+                        <h:outputText value="Categoria*:"/>
+                        <p:inputText value="#{produtoController.produtoCadastro.categoria}" id="txtCategoria"
+                                     required="true" requiredMessage="O campo categoria é obrigatório"/>
+                        <p:message for="txtCategoria"/>
+
+                        <h:outputText value="Descricao*:"/>
+                        <p:inputText value="#{produtoController.produtoCadastro.descricao}" id="txtDescricao"
+                                     required="true" requiredMessage="O campo descrição é obrigatório"/>
+                        <p:message for="txtDescricao"/>
+
+                        <h:outputText value="Preço*:"/>
+                        <p:inputText value="#{produtoController.produtoCadastro.preco}" id="txtPreco"
+                                     required="true" requiredMessage="O campo preço é obrigatório"/>
+                        <p:message for="txtPreco"/>
+
+                        <h:outputText value="Tamanho*:"/>
+                        <p:inputText value="#{produtoController.produtoCadastro.tamanho}" id="txtTamanho"
+                                     required="true" requiredMessage="O campo tamanho é obrigatório"/>
+                        <p:message for="txtTamanho"/>
+
+                        <h:outputText value="Promocao*:"/>
+                        <p:inputText value="#{produtoController.produtoCadastro.promocao}" id="txtPromocao"
+                                     required="true" requiredMessage="O campo promocao é obrigatório"/>
+                        <p:message for="txtPromocao"/>
+
+                        <h:outputText value="Disponivel*:"/>
+                        <p:inputText value="#{produtoController.produtoCadastro.disponivel}" id="txtDisponivel"
+                                     required="true" requiredMessage="O campo disponivel é obrigatório"/>
+                        <p:message for="txtDisponivel"/>
+
+                        <h:outputText value="Fornecedor*:"/>
+                        <p:inputText value="#{produtoController.produtoCadastro.fornecedor}" id="txtFornecedor"
+                                     required="true" requiredMessage="O campo fornecedor é obrigatório"/>
+                        <p:message for="txtFornecedor"/>
+
+                        <h:outputText value="Imagem*:"/>
+                        <p:inputText value="#{produtoController.produtoCadastro.imagem}" id="txtImagem"
+                                     required="true" requiredMessage="O campo imagem é obrigatório"/>
+                        <p:message for="txtImagem"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Cadastrar" action="#{produtoController.inserirAction()}"
+                                     oncomplete="PF('widDialCadProduto').hide()" 
+                                     update=':formProduto :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+
+        <p:dialog id="dialAlteraProduto" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialAlteraProduto" header="Alterar Produto">
+            <h:form id="formDialAlteraProduto">
+                <p:fieldset legend="Alterar Produto">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
+                        <h:outputText value="Id:"/>
+                        <p:inputText value="#{produtoController.selectedProduto.id}"/>
+                        <h:outputText/>
+
+                        <h:outputText value="Nome*:"/>
+                        <p:inputText value="#{produtoController.selectedProduto.nome}" id="txtNome"
+                                     required="true" requiredMessage="O campo nome é obrigatorio"/>
+                        <p:message for="txtNome"/>
+
+                        <h:outputText value="Marca*:"/>
+                        <p:inputText value="#{produtoController.selectedProduto.marca}" id="txtMarca"
+                                     required="true" requiredMessage="O campo Marca é obrigat�rio"/>
+                        <p:message for="txtMarca"/>
+
+                        <h:outputText value="Categoria*:"/>
+                        <p:inputText value="#{produtoController.selectedProduto.categoria}" id="txtCategoria"
+                                     required="true" requiredMessage="O campo categoria é obrigatorio"/>
+                        <p:message for="txtCategoria"/>
+
+                        <h:outputText value="Descrição*:"/>
+                        <p:inputText value="#{produtoController.selectedProduto.descricao}" id="txtDescricao"
+                                     required="true" requiredMessage="O campo descrição é obrigatorio"/>
+                        <p:message for="txtDescricao"/>
+
+                        <h:outputText value="Preço*:"/>
+                        <p:inputText value="#{produtoController.selectedProduto.preco}" id="txtPreco"
+                                     required="true" requiredMessage="O campo preço é obrigatorio"/>
+                        <p:message for="txtPreco"/>
+
+                        <h:outputText value="Tamanho*:"/>
+                        <p:inputText value="#{produtoController.selectedProduto.tamanho}" id="txtTamanho"
+                                     required="true" requiredMessage="O campo tamanho é obrigatorio"/>
+                        <p:message for="txtTamanho"/>
+
+                        <h:outputText value="Promoção*:"/>
+                        <p:inputText value="#{produtoController.selectedProduto.promocao}" id="txtPromocao"
+                                     required="true" requiredMessage="O campo promoção é obrigatorio"/>
+                        <p:message for="txtPromocao"/>
+
+                        <h:outputText value="Disponivel*:"/>
+                        <p:inputText value="#{produtoController.selectedProduto.disponivel}" id="txtDisponivel"
+                                     required="true" requiredMessage="O campo disponivel é obrigatorio"/>
+                        <p:message for="txtDisponivel"/>
+
+                        <h:outputText value="Fornecedor*:"/>
+                        <p:inputText value="#{produtoController.selectedProduto.fornecedor}" id="txtFornecedor"
+                                     required="true" requiredMessage="O campo fornecedor é obrigatorio"/>
+                        <p:message for="txtFornecedor"/>
+                    </p:panelGrid>   
+                    <p:commandButton value="Alterar" action="#{produtoController.alterarAction(produtoController.selectedProduto)}"
+                                     oncomplete="PF('widDialAlteraProduto').hide()" 
+                                     update=':formProduto :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+        <div id="divBaixo" align="justify">
+            <hl><img src="\imagens\parte de baixo.png" height="101px"/></hl>
+        </div>
+    </h:body>
+</html>
