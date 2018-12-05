@@ -20,22 +20,26 @@ and open the template in the editor.
                 padding:0px;
                 margin: 0px;               
             }
+            
+           
             #divCima {
                 width:100%;
                 position: relative;
                 overflow:hidden;
-                background:#fff url('imagens/parte de cima.png')top no-repeat;
+                background: url('imagens/parte cima.png')top no-repeat;
 
             }
-            #formLogin {
-                position: fixed;
-                bottom: 0;
-                right: 1px;
+            
+            #divbaixo {
                 width:100%;
+                position: relative;
                 overflow:hidden;
-                background:#fff url('imagens/parte de baixo.png') top no-repeat;
+                background: url('imagens/parte de baixo.png')top no-repeat;
+                top: 0%;
 
             }
+            
+
             a{
 
                 text-decoration: none;  
@@ -50,7 +54,7 @@ and open the template in the editor.
             body{
                 font-family: arial;
                 font-style: italic;
-                background: url("imagens/pngtree-Design-Graphic-Blank-Pattern-photo-504558.jpg");
+                background: url("imagens/Sem Título-1.jpg");
                 background-size: 100%;
 
             }
@@ -97,22 +101,46 @@ and open the template in the editor.
             }
             label{
 
-                padding: 15px;
+                padding: 30px;
                 position: absolute;
                 z-index: 1;
+                top: 25px;
+                left: -20px;
             }
+            
+           
+           
+                
+            
 
         </style>
     </head>
     <body>   
+               <div href="login.xhtml"  style='background-color: transparent; position:absolute;margin-left:1270px;margin-top:-5px;width:60px;height:60px;z-index:1' > 
+                   <a href="login.xhtml" id="iconeLogin" style="background-color: transparent;"></a>
+               </div>
+        
+        <div href="carrinho.xhtml"  style='background-color: transparent; position:absolute;margin-left:1210px;margin-top:-5px;width:60px;height:60px;z-index:1' > 
+                   <a href="carrinho.xhtml" id="iconeLogin" style="background-color: transparent;"></a>
+               </div>
+        
+        <div href="menuLateralTest.xhtml"  style='background-color: transparent; position:absolute;margin-left:20px;margin-top:-5px;width:260px;height:60px;z-index:1' > 
+            <a href="menuLateralTest.xhtml" id="iconeLogin" style="background-color: transparent;"></a>
+               </div>
         <input type="checkbox" id="check">
             <label for="check">
                 <img src="imagens/Hamburger_icon.svg.png"> </img>
             </label>  
         </input>
-        <div id="divCima">
-            <hl><img src="imagens\parte de cima.png" height="100"/></hl>
+        
+       <div id="divCima">
+            <img src="imagens\parte cima.png" height="100"/>
         </div>
+         
+        <div id="divLogin">
+            
+        </div>
+        
 
         <nav>
             <ul>
@@ -129,8 +157,6 @@ and open the template in the editor.
 
 
 
-        <div id="formLogin" align="justify">
-            <hl><img src="imagens\parte de baixo.png"  height="100"/></hl>
-        </div>   
+        
     </body>
 </html>

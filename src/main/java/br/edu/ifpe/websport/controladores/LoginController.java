@@ -33,8 +33,11 @@ public class LoginController {
     public LoginController(String login, String senha, String senhaCripto, Cliente clienteLogado) {
         this.login = login;
         this.senha = senha;
+        this.senhaCripto = senhaCripto;
         this.clienteLogado = clienteLogado;
     }
+
+   
 
     public String cripSenha(String senha) {
         senhaCripto = LoginCriptografia.criptografar(senha);
