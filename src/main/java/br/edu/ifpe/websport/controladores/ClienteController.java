@@ -42,7 +42,7 @@ public class ClienteController {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O cliente não foi cadastrada!"));
         }
-
+        this.clienteCadastro = new Cliente();
     }
 
     public void alterarAction(Cliente c) {

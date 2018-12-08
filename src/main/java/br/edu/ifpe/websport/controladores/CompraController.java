@@ -42,6 +42,7 @@ public class CompraController {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A compra não foi cadastrado!"));
         }
+        this.compraCadastro = new Compra();
     }
 
     public void alterarAction(Compra c) {

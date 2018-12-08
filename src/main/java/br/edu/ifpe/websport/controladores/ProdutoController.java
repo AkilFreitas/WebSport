@@ -42,6 +42,7 @@ public class ProdutoController {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O produto não foi cadastrado!"));
         }
+        this.produtoCadastro = new Produto();
     }
 
     public void alterarAction(Produto p) {

@@ -42,7 +42,7 @@ public class PagamentoController {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O pagamento não foi concluido!"));
         }
-
+        this.pagamentoCadastro = new Pagamento();
     }
 
     public void alterarAction(Pagamento p) {

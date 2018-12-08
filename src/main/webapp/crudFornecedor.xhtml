@@ -32,6 +32,7 @@
         </div>
         <h:form id="formFornecedor">
             <p:commandButton value="inserir" oncomplete="PF('widDialCadFornecedor').show()"/>
+            <a href="menuTest.xhtml"><p:commandButton value="sair"/></a>
             <p:dataTable var="item" value="#{fornecedorController.recuperarTodosFornecedores()}"
                          rowKey="#{item.id}" paginator="true"
                          rows="5">
@@ -127,7 +128,7 @@
                     <p:messages/>
                     <p:panelGrid columns="3">
                         <h:outputText value="Email*:"/>
-                        <p:inputText value="#{fornecedorController.fornecedorCadastro.email}" id="txtEmail"
+                        <p:inputText type="email" value="#{fornecedorController.fornecedorCadastro.email}" id="txtEmail"
                                      required="true" requiredMessage="O campo email é obrigatório!"/>
                         <p:message for="txtEmail"/>
 
@@ -137,12 +138,12 @@
                         <p:message for="txtNomeFantasia"/>
 
                         <h:outputText value="Cnpj*:"/>
-                        <p:inputText value="#{fornecedorController.fornecedorCadastro.cnpj}" id="txtCnpj"
+                        <p:inputText type="number" value="#{fornecedorController.fornecedorCadastro.cnpj}" id="txtCnpj"
                                      required="true" requiredMessage="O campo Cnpj é obrigatório!"/>
                         <p:message for="txtCnpj"/>
 
                         <h:outputText value="Telefone*:"/>
-                        <p:inputText value="#{fornecedorController.fornecedorCadastro.telefone}" id="txtTelefone"
+                        <p:inputText type="number" value="#{fornecedorController.fornecedorCadastro.telefone}" id="txtTelefone"
                                      required="true" requiredMessage="O campo telefone é obrigatório!"/>
                         <p:message for="txtTelefone"/>
                     </p:panelGrid>
