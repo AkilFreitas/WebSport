@@ -52,7 +52,7 @@ public class LoginController {
             cliLogado = true;
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "Você foi logado com sucesso!"));
-            return "menuTest.xhtml";
+            return "/menuLateralTest.xhtml?faces-redirect=true";
 
         } else {
             FacesContext.getCurrentInstance().addMessage(null,
