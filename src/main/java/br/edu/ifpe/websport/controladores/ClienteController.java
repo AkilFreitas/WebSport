@@ -31,7 +31,7 @@ public class ClienteController {
         this.clienteCadastro = new Cliente();
     }
 
-    public void inserirAction() {
+    public String inserirAction() {
 
         try {
             this.cm.inserir(this.clienteCadastro);
@@ -43,6 +43,7 @@ public class ClienteController {
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O cliente não foi cadastrada!"));
         }
         this.clienteCadastro = new Cliente();
+        return "/menuLateralTest.xhtml?faces-redirect=true"; 
     }
 
     public void alterarAction(Cliente c) {
