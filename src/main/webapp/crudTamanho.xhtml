@@ -32,6 +32,7 @@
         </div>
         <h:form id="formTamanho">
             <p:commandButton value="inserir" oncomplete="PF('widDialCadTamanho').show()"/>
+            <a src="menuTest.xhtml"><p:commandButton value="sair"/></a>
             <p:dataTable var="item" value="#{tamanhoController.recuperarTodosTamanhos()}"
                          rowKey="#{item.id}" paginator="true"
                          rows="5">

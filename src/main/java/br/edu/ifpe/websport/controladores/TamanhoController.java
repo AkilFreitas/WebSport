@@ -37,7 +37,7 @@ public class TamanhoController {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O tamanho não foi cadastrado!"));
         }
-
+        this.tamanhoCadastro = new Tamanho();
     }
 
     public void alterarAction(Tamanho c) {

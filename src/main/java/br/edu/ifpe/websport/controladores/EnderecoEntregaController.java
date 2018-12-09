@@ -42,6 +42,7 @@ public class EnderecoEntregaController {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O Endereço de entrega não foi cadastrado!"));
         }
+        this.enderecoEntregaCadastro = new EnderecoEntrega();
     }
 
     public void alterarAction(EnderecoEntrega ee) {

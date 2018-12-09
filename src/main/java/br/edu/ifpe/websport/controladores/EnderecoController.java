@@ -45,6 +45,7 @@ public class EnderecoController {
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O endereço não foi cadastrada!"));
               Endereco endereco = new Endereco();
         }
+        this.enderecoCadastro = new Endereco();
         return "/menuTest.xhtml?faces-redirect=true";
     }
 

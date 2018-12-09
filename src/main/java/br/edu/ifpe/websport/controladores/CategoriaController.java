@@ -42,7 +42,7 @@ public class CategoriaController {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "A categoria não foi cadastrada!"));
         }
-
+        this.categoriaCadastro = new Categoria();
     }
 
     public void alterarAction(Categoria c) {

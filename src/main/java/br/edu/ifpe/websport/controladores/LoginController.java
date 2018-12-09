@@ -21,9 +21,10 @@ import javax.faces.context.FacesContext;
 public class LoginController {
 
     private String login;
+    
     private String senha;
     private String senhaCripto;
-
+    private Cliente cliente;
     private Cliente clienteLogado;
     private boolean cliLogado = false;
 
@@ -45,7 +46,9 @@ public class LoginController {
     }
 
     public String logar() {
-        if (login.equals("9bpm") && senhaCripto.equals("5cfc42d4c71557cd294522c6b66d91f1")) {
+        
+        //Falar com victor - Comparar a senha que foi passada pelo o cliente com a senha do banco
+        if (Fachada.clienteController.getCliente().getEmail().equals(cliente.getEmail()) && senhaCripto.equals(Fachada.clienteController.getCliente().getSenha().toUpperCase())) {
             cliLogado = true;
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "Você foi logado com sucesso!"));

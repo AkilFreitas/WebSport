@@ -41,6 +41,7 @@ public class FornecedorController {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O fornecedor não foi cadastrado!"));
         }
+        this.fornecedorCadastro = new Fornecedor();
     }
 
     public void alterarAction(Fornecedor f) {
@@ -105,7 +106,5 @@ public class FornecedorController {
     public void setCliente(Fornecedor cliente) {
         this.cliente = cliente;
     }
-
-   
 
 }

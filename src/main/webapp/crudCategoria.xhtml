@@ -32,6 +32,7 @@
         </div>
         <h:form id="formCategoria">
             <p:commandButton value="inserir" oncomplete="PF('widDialCadCategoria').show()"/>
+            <a href="menuTest.xhtml"><p:commandButton value="sair"/></a>
             <p:dataTable var="item" value="#{categoriaController.recuperarTodasCategorias()}"
                          rowKey="#{item.id}" paginator="true"
                          rows="5">

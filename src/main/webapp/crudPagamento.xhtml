@@ -104,7 +104,7 @@
                         <p:message for="txtTipoDePagamento"/>
 
                         <h:outputText value="DataDePagamento*:"/>
-                        <p:inputText id="txtDataDePagamento" value="#{pagamentoController.pagamentoCadastro.dataDePagamento}"
+                        <p:inputText type="date" id="txtDataDePagamento" value="#{pagamentoController.pagamentoCadastro.dataDePagamento}"
                                      required="true" requiredMessage="O campo data de pagamento é obrigatório!"/>
                         <p:message for="txtDataDePagamento"/>                 
                     </p:panelGrid>
