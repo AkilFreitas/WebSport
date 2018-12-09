@@ -10,7 +10,7 @@ and open the template in the editor.
 
 
     <head>
-        <title>WS | LOGIN</title>
+        <title>WS | CADASTRO</title>
         <meta  name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="estilo.css"> </link>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> </link>
@@ -68,7 +68,54 @@ and open the template in the editor.
             border-bottom: 1px solid #4caf50;
 
         }
+        .textEmailBoxBox{
+            width: 100%;
+            overflow: hidden;
+            font-size: 20px;
+            padding: 8px 0;
+            margin: 8px 0;
+            border-bottom: 1px solid #4caf50;
+
+        }
+        .textEmailBox{
+            width: 100%;
+            overflow: hidden;
+            font-size: 20px;
+            padding: 8px 0;
+            margin: 8px 0;
+            border-bottom: 1px solid #4caf50;
+
+        }
+         .textIdadeBoxBox{
+            width: 100%;
+            overflow: hidden;
+            font-size: 20px;
+            padding: 8px 0;
+            margin: 8px 0;
+            border-bottom: 1px solid #4caf50;
+
+        }
+        .textIdadeBox input{
+            border: none;
+            outline: none;
+            background: none;
+            color: white;
+            font-size: 18px;
+            width: 80%;
+            float: left;
+            margin: 10px;
+        }
         .textBox input{
+            border: none;
+            outline: none;
+            background: none;
+            color: white;
+            font-size: 18px;
+            width: 80%;
+            float: left;
+            margin: 10px;
+        }
+        .textEmailBox input{
             border: none;
             outline: none;
             background: none;
@@ -98,27 +145,36 @@ and open the template in the editor.
             margin-bottom: 50px;
             padding: 13px 0;
         }
-
+        .nadan{
+            font-size: 2px;
+        }
 
     </style>
 
     <body>
 
         <div class="login-box">
-            <h1 href="men.xhtml">LOGIN</h1>
+            <h1 href="men.xhtml">Cadastro</h1>
             <div class="textBox">
 
                 <input type="text" placeholder="Username" name="" value=""  > </input>
             </div>
+            
+            <div class="textEmailBox">
 
+                <input type="email" placeholder="Email" name="" value=""  > </input>
+            </div>
+            
             <div class="textBox">
                 <input type="password" placeholder="Senha" name="" value="" > </input>
             </div>
+            
+            
 
-
-            <a href="menuLateralTest.xhtml"><input class="butao" type="button" name="" value="Logar" ></input></a>
-            <a href="cadpagcliente.xhtml"><p  class="cadastrar" >Não possui uma conta? Cadastra-se</p></a>
-            <hl><img src="imagens/WEBSPORT.png" style=' position:absolute;margin-left:-200px;margin-top:10px;width:150px;height:150px;z-index:1' /></hl>
+            <input class="nadan" type="checkbox" name="" value=""> Li e concordo com os termos </input>
+                <hl><img src="imagens/WEBSPORT.png" style=' position:absolute;margin-left:-159px; margin-top:50px;width:150px;height:150px;z-index:1' /></hl>
+            <a href="menuLateralTest.xhtml"><input class="butao" type="button" name="" value="Cadastrar" ></input></a>            
+            
         </div>
 
 
