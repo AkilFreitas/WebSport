@@ -30,7 +30,7 @@ public class Cliente implements Serializable {
     @Column(length = 20)
     private int idade;
     @Column(length = 20)
-    private int rg;
+    private String rg;
     @Column(length = 20)
     private String cpf;
     @Column(length = 20)
@@ -51,7 +51,7 @@ public class Cliente implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(int id, int idade, int rg, String cpf, String telefone, String nome, String email, String senha, String dataDeNascimento, String sexo, Endereco endereco) {
+    public Cliente(int id, int idade, String rg, String cpf, String telefone, String nome, String email, String senha, String dataDeNascimento, String sexo, Endereco endereco) {
         this.id = id;
         this.idade = idade;
         this.rg = rg;
@@ -81,11 +81,11 @@ public class Cliente implements Serializable {
         this.idade = idade;
     }
 
-    public int getRg() {
+    public String getRg() {
         return rg;
     }
 
-    public void setRg(int rg) {
+    public void setRg(String rg) {
         this.rg = rg;
     }
 
@@ -160,7 +160,7 @@ public class Cliente implements Serializable {
         int hash = 5;
         hash = 97 * hash + this.id;
         hash = 97 * hash + this.idade;
-        hash = 97 * hash + this.rg;
+        hash = 97 * hash + Objects.hashCode(this.rg);
         hash = 97 * hash + Objects.hashCode(this.cpf);
         hash = 97 * hash + Objects.hashCode(this.telefone);
         hash = 97 * hash + Objects.hashCode(this.nome);

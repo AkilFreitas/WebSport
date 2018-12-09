@@ -42,7 +42,8 @@ public class ClienteController {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O cliente não foi cadastrada!"));
         }
-        this.clienteCadastro = new Cliente();
+        Cliente cliente1;
+        cliente1 = new Cliente();
         return "/menuLateralTest.xhtml?faces-redirect=true"; 
     }
 
