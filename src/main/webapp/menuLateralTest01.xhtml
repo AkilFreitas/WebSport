@@ -5,11 +5,11 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:p="http://primefaces.org/ui"
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:p="http://primefaces.org/ui">
 
-      >
-    <head>
+    <h:head>
         <title>WS - HOME</title>
         <meta  name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="estilo.css"> </link>
@@ -21,8 +21,6 @@ and open the template in the editor.
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
 
         <style>
-
-
             *{
                 padding:0px;
                 margin: 0px;               
@@ -31,10 +29,9 @@ and open the template in the editor.
 
             #divCima {
                 width:100%;
-                position: relative;
+                position: static;
                 overflow:hidden;
                 background: url('imagens/parte cima.png')top no-repeat;
-
             }
 
             #divbaixo {
@@ -43,19 +40,16 @@ and open the template in the editor.
                 overflow:hidden;
                 background: url('imagens/parte de baixo.png')top no-repeat;
                 top: 0%;
-
             }
-
-
 
             a{
 
                 text-decoration: none;  
                 color: black;                  
             }
+
             .container{
                 margin-top: 100px;
-
             }
 
 
@@ -66,50 +60,50 @@ and open the template in the editor.
             ul{
                 list-style: none;
             }
+
             img{
-                width: 40px;
+                width: 36px;
 
             }
+
             input[type="checkbox"]{
                 display: none;
             }
+
             .navi{
                 background-color: rgba(0, 100, 0, 0.5);
+                background-repeat: repeat;
                 width: 300px;
                 height: 100%;
                 left: -350px;
                 position: absolute;
                 transition: all .5s;
             }
-            input[type="checkbox"]:checked ~ nav
-            {
+
+            input[type="checkbox"]:checked ~ nav {
                 transform: translateX(350px);
             }
+
             ul{
-
-                top:70px;
-
+                top:91px;
                 position: absolute;
                 width: 100%; 
             }
+
             a{
-
                 display: block;
-                padding: 20px 5px;
-                color: white;
-
-
+                padding: 20px 5px;         
             }
+
             a:hover{
-                background-color: darkgreen;
-
+                background-color: #4caf50;
             }
-            label{
 
-                padding: 30px;
+            label {
+                padding: 22px;
                 position: absolute;
                 z-index: 1;
-                top: 25px;
+                top: -13px;
                 left: -20px;
             }
 
@@ -118,19 +112,40 @@ and open the template in the editor.
                 background-color: transparent;
             }
 
+            a.linkMenu{
+                background-color: transparent;
+                z-index: 2;
+            }
 
-
-
-
-
-
-
-
+            a.menuzin{
+                color: white;
+                padding: 15px 5px;
+                color: white;
+            }
 
         </style>
-    </head>
-    <body>   
-
+    </h:head>
+    <h:body>   
+        <input type="checkbox" id="check">
+            <label for="check">
+                <img src="imagens/Hamburger_icon.svg.png"></img>
+            </label>  
+        </input>
+        <nav class="navi">
+            <nav>
+                <div id="divCima">
+                    <a class="linkMenu" href="menuLateralTest01.xhtml"><img src="imagens\parte cima.png" height="100"/></a>
+                </div>
+                <ul>
+                    <li><a class="menuzin" href="menuLateralTest01.xhtml">HOME</a></li>
+                    <p:separator />
+                    <li><a class="menuzin" href="pagProduto.xhtml">CAMISAS</a> </li>
+                    <li><a class="menuzin" href="">CALÇAS</a> </li>
+                    <li><a class="menuzin" href="">ESPORTES</a> </li>
+                    <li><a class="menuzin" href="informacoes.xhtml">SOBRE</a> </li>
+                </ul>
+            </nav>
+        </nav>
         <div href="cadastro.xhtml"  style='background-color: transparent; position:absolute;margin-left:1270px;margin-top:-5px;width:60px;height:60px;z-index:1' > 
             <a href="cadastro.xhtml" id="iconeLogin" style="background-color: transparent;"></a>
         </div>
@@ -142,59 +157,10 @@ and open the template in the editor.
         <div href="menuLateralTest.xhtml"  style='background-color: transparent; position:absolute;margin-left:20px;margin-top:-5px;width:260px;height:60px;z-index:1' > 
             <a href="menuLateralTest.xhtml" id="iconeLogin" style="background-color: transparent;"></a>
         </div>
-
-        <input type="checkbox" id="check">
-            <label for="check">
-                <img src="imagens/Hamburger_icon.svg.png"> </img>
-            </label>  
-        </input>
-
-        <div id="divCima">
-            <h1><img src="imagens\parte cima.png" height="100"/></h1>
-        </div>
-
-        <div id="divLogin">
-
-        </div>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Procurar"> </input>
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Procurar</button>
-                </form>
+        <h:form>          
+            <div id="divCima">
+                <img src="imagens\parte cima.png" height="100"/>
             </div>
-        </nav>
-
-        <nav class="navi">
-
-
-
-            <nav>
-
-                <ul>
-                    <li><a class="menuzin" href="index.xhtml">HOME</a> </li>
-                    <li><a class="menuzin" href="pagProduto.xhtml">CAMISAS</a> </li>
-                    <li><a class="menuzin" href="">CALÇAS</a> </li>
-                    <li><a class="menuzin" href="">ESPORTES</a> </li>
-                    <li><a class="menuzin" href="informacoes.xhtml">SOBRE</a> </li>
-                </ul>
-            </nav>
-        </nav>
-
-
-        <div id="divBaixo">
-            <h1><img src="imagens\parte de baixo.png" height="122"/></h1>
-        </div>
-
-        <img src="imagens/317473e_1.jpg" alt="" class="rounded-circle" style="position:absolute; margin-left:400px; margin-top:20px;width:200px;height:200px;z-index:1" ></img>
-
-    </body>
-
+        </h:form>
+    </h:body>
 </html>
