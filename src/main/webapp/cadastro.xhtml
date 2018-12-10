@@ -6,7 +6,8 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:p="http://primefaces.org/ui" >
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 
     <head>
@@ -102,25 +103,29 @@ and open the template in the editor.
 
     </style>
 
-    <body>
+    <h:body>
+        <h:form>
+            <div class="login-box">
+                <h1 href="men.xhtml">LOGIN</h1>
+                <div class="textBox">
+                    <p:growl id="dro" life="3000"/>
+                    <p:inputText type="text" placeholder="Username"  value="#{clienteController.clienteCadastro.nome}" id="txtNome"
+                                 required="true" requiredMessage="o campo username é obrigatório"></p:inputText>
+                    <p:message for="txtNome"/>
+                </div>
 
-        <div class="login-box">
-            <h1 href="men.xhtml">LOGIN</h1>
-            <div class="textBox">
+                <div class="textBox">
+                    <p:growl  life="3000"/>
+                    <p:inputText type="password" placeholder="Senha" value="#{clienteController.clienteCadastro.senha}" id="txtSenha"
+                                 required="true" requiredMessage="o campo senha é obrigatório"></p:inputText>
+                    <p:message for="txtSenha"/>
+                </div>
 
-                <input type="text" placeholder="Username" name="" value=""  > </input>
+                <p:commandButton  class="butao" value="Logar" action="#{clienteController.inserirAction()}" oncomplete="PF('widDialCliente').hide()" update="@form"/>
+                <a href="cadpagcliente.xhtml"><p  class="cadastrar" >Não possui uma conta? Cadastra-se</p></a>
+                <hl><img src="imagens/WEBSPORT.png" style=' position:absolute;margin-left:-200px;margin-top:10px;width:150px;height:150px;z-index:1'/></hl>
             </div>
 
-            <div class="textBox">
-                <input type="password" placeholder="Senha" name="" value="" > </input>
-            </div>
-
-
-            <a href="menuLateralTest.xhtml"><input class="butao" type="button" name="" value="Logar" ></input></a>
-            <a href="cadpagcliente.xhtml"><p  class="cadastrar" >Não possui uma conta? Cadastra-se</p></a>
-            <hl><img src="imagens/WEBSPORT.png" style=' position:absolute;margin-left:-200px;margin-top:10px;width:150px;height:150px;z-index:1' /></hl>
-        </div>
-
-
-    </body>
+        </h:form>
+    </h:body>
 </html>
