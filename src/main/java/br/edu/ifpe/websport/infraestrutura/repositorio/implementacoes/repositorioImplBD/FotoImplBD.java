@@ -6,43 +6,44 @@
 package br.edu.ifpe.websport.infraestrutura.repositorio.implementacoes.repositorioImplBD;
 
 import br.edu.ifpe.websport.model.dao.PersistenceDao;
+import br.edu.ifpe.websport.entidades.Foto;
 import br.edu.ifpe.websport.infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import br.edu.ifpe.websport.entidades.EnderecoEntrega;
 import java.util.List;
 
 /**
  *
- * @author Neto
+ * @author mayco
  */
-public class EnderecoEntregaImplBD implements RepositorioGenerico<EnderecoEntrega, Integer> {
-
+public class FotoImplBD implements RepositorioGenerico<Foto, Integer>{
+    
+    
     @Override
-    public void inserir(EnderecoEntrega t) {
+    public void inserir(Foto t) {
         PersistenceDao.getInstance().persist(t);
     }
 
     @Override
-    public void alterar(EnderecoEntrega t) {
+    public void alterar(Foto t) {
         PersistenceDao.getInstance().update(t);
     }
 
     @Override
-    public EnderecoEntrega recuperar(Integer id) {
+    public Foto recuperar(Integer id) {
         try {
-            return (EnderecoEntrega) PersistenceDao.getInstance().read("select a from EnderecoEntrega a where a.id=" + id).get(0);
+            return (Foto) PersistenceDao.getInstance().read("select a from Foto a where a.id=" + id).get(0);
         } catch (IndexOutOfBoundsException index) {
             return null;
         }
     }
 
     @Override
-    public void deletar(EnderecoEntrega t) {
+    public void deletar(Foto t) {
         PersistenceDao.getInstance().delete(t);
     }
 
     @Override
-    public List<EnderecoEntrega> recuperarTodos() {
-        return PersistenceDao.getInstance().read("select a from EnderecoEntrega a");
+    public List<Foto> recuperarTodos() {
+        return PersistenceDao.getInstance().read("select a from Foto a");
     }
-
+    
 }

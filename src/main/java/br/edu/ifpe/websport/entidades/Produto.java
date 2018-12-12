@@ -1,4 +1,4 @@
-package br.edu.ifpe.websport.model.entidades;
+package br.edu.ifpe.websport.entidades;
 
 import java.io.Serializable;
 import java.util.List;
@@ -31,37 +31,37 @@ public class Produto implements Serializable {
     @Column(length = 20)
     private String marca;
     @OneToMany
-    private List <Categoria> categoria;
+    private List<Categoria> categoria;
     @Column(length = 20)
     private String descricao;
     @Column(length = 20)
     private float preco;
     @Column(length = 20)
-    private String imagem;
+    private List<Foto> imagem;
     @OneToMany
-    private List <Tamanho> tamanho;
+    private List<Tamanho> tamanho;
     @Column(length = 20)
     private boolean disponivel;
     @Column(length = 20)
     private boolean promocao;
     @OneToMany
-    private List <Fornecedor> fornecedor;
+    private List<Fornecedor> fornecedor;
 
     public Produto() {
     }
 
-    public Produto(int id, String nome, String marca, Categoria categoria, String descricao, float preco, String imagem, Tamanho tamanho, boolean disponivel, boolean promocao, Fornecedor fornecedor) {
+    public Produto(int id, String nome, String marca, List<Categoria> categoria, String descricao, float preco, List<Foto> imagem, List<Tamanho> tamanho, boolean disponivel, boolean promocao, List<Fornecedor> fornecedor) {
         this.id = id;
         this.nome = nome;
         this.marca = marca;
-        this.categoria = (List<Categoria>) categoria;
+        this.categoria = categoria;
         this.descricao = descricao;
         this.preco = preco;
         this.imagem = imagem;
-        this.tamanho = (List<Tamanho>) tamanho;
+        this.tamanho = tamanho;
         this.disponivel = disponivel;
         this.promocao = promocao;
-        this.fornecedor = (List<Fornecedor>) fornecedor;
+        this.fornecedor = fornecedor;
     }
 
     public int getId() {
@@ -112,7 +112,6 @@ public class Produto implements Serializable {
         this.fornecedor = fornecedor;
     }
 
-   
     public String getDescricao() {
         return descricao;
     }
@@ -129,17 +128,16 @@ public class Produto implements Serializable {
         this.preco = preco;
     }
 
-    public String getImagem() {
+    ////////////////////////////////
+    public List<Foto> getImagem() {
         return imagem;
     }
 
-    public void setImagem(String imagem) {
+    public void setImagem(List<Foto> imagem) {
         this.imagem = imagem;
     }
+    /////////////////////////////
 
-  
-    
-    
     public boolean isDisponivel() {
         return disponivel;
     }
@@ -155,7 +153,7 @@ public class Produto implements Serializable {
     public void setPromocao(boolean promocao) {
         this.promocao = promocao;
     }
- 
+
     public void manterProduto() {
 
     }

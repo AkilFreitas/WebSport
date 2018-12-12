@@ -7,7 +7,7 @@ package br.edu.ifpe.websport.controladores;
 
 import br.edu.ifpe.websport.criptografia.LoginCriptografia;
 import br.edu.ifpe.websport.model.ClienteModel;
-import br.edu.ifpe.websport.model.entidades.Cliente;
+import br.edu.ifpe.websport.entidades.Cliente;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;

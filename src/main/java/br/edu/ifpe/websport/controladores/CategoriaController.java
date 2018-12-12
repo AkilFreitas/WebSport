@@ -6,7 +6,7 @@
 package br.edu.ifpe.websport.controladores;
 
 import br.edu.ifpe.websport.model.CategoriaModel;
-import br.edu.ifpe.websport.model.entidades.Categoria;
+import br.edu.ifpe.websport.entidades.Categoria;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;

@@ -1,4 +1,4 @@
-package br.edu.ifpe.websport.model.entidades;
+package br.edu.ifpe.websport.entidades;
 
 import java.io.Serializable;
 import java.util.Objects;

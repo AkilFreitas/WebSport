@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpe.websport.model.entidades;
+package br.edu.ifpe.websport.entidades;
 
 import java.util.List;
 import javax.persistence.Entity;

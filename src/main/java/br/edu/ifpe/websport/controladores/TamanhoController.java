@@ -1,7 +1,7 @@
 package br.edu.ifpe.websport.controladores;
 
 import br.edu.ifpe.websport.model.TamanhoModel;
-import br.edu.ifpe.websport.model.entidades.Tamanho;
+import br.edu.ifpe.websport.entidades.Tamanho;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;

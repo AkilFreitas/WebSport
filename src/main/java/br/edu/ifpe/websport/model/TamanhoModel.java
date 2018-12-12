@@ -5,7 +5,7 @@
  */
 package br.edu.ifpe.websport.model;
 
-import br.edu.ifpe.websport.model.entidades.Tamanho;
+import br.edu.ifpe.websport.entidades.Tamanho;
 import br.edu.ifpe.websport.infraestrutura.repositorio.comportamentos.RepositorioGenerico;
 import br.edu.ifpe.websport.infraestrutura.repositorio.implementacoes.repositorioImplBD.TamanhoImplBD;
 import java.util.List;

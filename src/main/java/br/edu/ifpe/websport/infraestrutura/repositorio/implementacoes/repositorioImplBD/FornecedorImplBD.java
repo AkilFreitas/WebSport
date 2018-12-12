@@ -7,7 +7,7 @@ package br.edu.ifpe.websport.infraestrutura.repositorio.implementacoes.repositor
 
 import br.edu.ifpe.websport.model.dao.PersistenceDao;
 import br.edu.ifpe.websport.infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import br.edu.ifpe.websport.model.entidades.Fornecedor;
+import br.edu.ifpe.websport.entidades.Fornecedor;
 import java.util.List;
 
 /**

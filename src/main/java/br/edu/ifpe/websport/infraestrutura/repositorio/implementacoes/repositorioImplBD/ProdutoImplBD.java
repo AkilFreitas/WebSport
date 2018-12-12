@@ -11,7 +11,7 @@ package br.edu.ifpe.websport.infraestrutura.repositorio.implementacoes.repositor
  */
 import br.edu.ifpe.websport.model.dao.PersistenceDao;
 import br.edu.ifpe.websport.infraestrutura.repositorio.comportamentos.RepositorioGenerico;
-import br.edu.ifpe.websport.model.entidades.Produto;
+import br.edu.ifpe.websport.entidades.Produto;
 import java.util.List;
 
 public class ProdutoImplBD implements RepositorioGenerico<Produto, Integer> {

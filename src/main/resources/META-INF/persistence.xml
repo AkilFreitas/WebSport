@@ -2,16 +2,16 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="WebSportPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <class>br.edu.ifpe.websport.model.entidades.Categoria</class>
-    <class>br.edu.ifpe.websport.model.entidades.Cliente</class>
-    <class>br.edu.ifpe.websport.model.entidades.Compra</class>
-    <class>br.edu.ifpe.websport.model.entidades.Endereco</class>
-    <class>br.edu.ifpe.websport.model.entidades.EnderecoEntrega</class>
-    <class>br.edu.ifpe.websport.model.entidades.Fornecedor</class>
-    <class>br.edu.ifpe.websport.model.entidades.Pagamento</class>
-    <class>br.edu.ifpe.websport.model.entidades.Produto</class>
-    <class>br.edu.ifpe.websport.model.entidades.Tamanho</class>
-    <class>br.edu.ifpe.websport.model.entidades.Carrinho</class>
+    <class>br.edu.ifpe.websport.entidades.Cliente</class>
+    <class>br.edu.ifpe.websport.entidades.Fornecedor</class>
+    <class>br.edu.ifpe.websport.entidades.Compra</class>
+    <class>br.edu.ifpe.websport.entidades.Endereco</class>
+    <class>br.edu.ifpe.websport.entidades.Carrinho</class>
+    <class>br.edu.ifpe.websport.entidades.Tamanho</class>
+    <class>br.edu.ifpe.websport.entidades.Categoria</class>
+    <class>br.edu.ifpe.websport.entidades.Produto</class>
+    <class>br.edu.ifpe.websport.entidades.EnderecoEntrega</class>
+    <class>br.edu.ifpe.websport.entidades.Pagamento</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/websport?zeroDateTimeBehavior=convertToNull&amp;serverTimezone=UTC"/>

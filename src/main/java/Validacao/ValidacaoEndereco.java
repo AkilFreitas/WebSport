@@ -7,7 +7,7 @@ package Validacao;
 
 import java.util.ArrayList;
 import java.util.List;
-import br.edu.ifpe.websport.model.entidades.Endereco;
+import br.edu.ifpe.websport.entidades.Endereco;
 import mensagem.Mensagem;
 
 /**
