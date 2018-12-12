@@ -6,7 +6,8 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:p="http://primefaces.org/ui" >
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 
     <head>
@@ -86,7 +87,7 @@ and open the template in the editor.
             border-bottom: 1px solid #4caf50;
 
         }
-         .textIdadeBoxBox{
+        .textIdadeBoxBox{
             width: 100%;
             overflow: hidden;
             font-size: 20px;
@@ -151,32 +152,36 @@ and open the template in the editor.
 
     </style>
 
-    <body>
+    <h:body>
+        <h:form>
+            <div class="login-box">
+                <h1 href="men.xhtml">Cadastro</h1>
+                <div class="textBox">
+                    <p:growl id="dro" life="3000"/>
+                    <p:inputText type="text" placeholder="Username"  value="#{clienteController.clienteCadastro.nome}" id="txtNome"
+                                 required="true" requiredMessage="o campo username é obrigatório"></p:inputText>
+                    <p:message for="txtNome"/>
+                </div>
 
-        <div class="login-box">
-            <h1 href="men.xhtml">Cadastro</h1>
-            <div class="textBox">
+                <div class="textEmailBox">
+                    <p:growl life="3000"/>
+                    <p:inputText type="email" placeholder="Email" value="#{clienteController.clienteCadastro.email}" id="txtEmail"
+                                 required="true" requiredMessage="o campo email é obrigatório"></p:inputText>
+                    <p:message for="txtEmail"/>
+                </div>
 
-                <input type="text" placeholder="Username" name="" value=""  > </input>
+                <div class="textBox">
+                    <p:growl  life="3000"/>
+                    <p:inputText type="password" placeholder="Senha" value="#{clienteController.clienteCadastro.senha}" id="txtSenha"
+                                 required="true" requiredMessage="o campo senha é obrigatório"></p:inputText>
+                    <p:message for="txtSenha"/>
+                </div>
+
+                <input class="nadan" type="checkbox"  required="true" requiredMessage=""> Li e concordo com os termos </input>
+                <a href="menuLateralTest01.xhtml"><hl><img src="imagens/WEBSPORT.png" style=' position:absolute;margin-left:-159px; margin-top:50px;width:150px;height:150px;z-index:1'/></hl></a>
+
+                <p:commandButton  class="butao" value="Cadastrar" action="#{clienteController.inserirAction()}" oncomplete="PF('widDialCliente').hide()" update="@form"/>
             </div>
-            
-            <div class="textEmailBox">
-
-                <input type="email" placeholder="Email" name="" value=""  > </input>
-            </div>
-            
-            <div class="textBox">
-                <input type="password" placeholder="Senha" name="" value="" > </input>
-            </div>
-            
-            
-
-            <input class="nadan" type="checkbox" name="" value=""> Li e concordo com os termos </input>
-                <hl><img src="imagens/WEBSPORT.png" style=' position:absolute;margin-left:-159px; margin-top:50px;width:150px;height:150px;z-index:1' /></hl>
-            <a href="menuLateralTest.xhtml"><input class="butao" type="button" name="" value="Cadastrar" ></input></a>            
-            
-        </div>
-
-
-    </body>
+        </h:form>
+    </h:body>
 </html>
