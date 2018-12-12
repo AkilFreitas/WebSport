@@ -5,6 +5,7 @@
  */
 package br.edu.ifpe.websport.controladores;
 
+import br.edu.ifpe.websport.criptografia.LoginCriptografia;
 import br.edu.ifpe.websport.model.ClienteModel;
 import br.edu.ifpe.websport.model.entidades.Cliente;
 import java.util.List;
@@ -34,17 +35,20 @@ public class ClienteController {
     public String inserirAction() {
 
         try {
+            String senhaCript = LoginCriptografia.criptografar(this.clienteCadastro.getSenha());
+            this.clienteCadastro.setSenha(senhaCript);
             this.cm.inserir(this.clienteCadastro);
 
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O cliente foi cadastrado com sucesso!"));
         } catch (Exception ex) {
+            ex.printStackTrace();
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O cliente não foi cadastrada!"));
+        } finally {
+            this.clienteCadastro = new Cliente();        
         }
-        Cliente cliente1;
-        cliente1 = new Cliente();
-        return "/menuLateralTest.xhtml?faces-redirect=true"; 
+        return "/menuLateralTest01.xhtml?faces-redirect=true"; 
     }
 
     public void alterarAction(Cliente c) {

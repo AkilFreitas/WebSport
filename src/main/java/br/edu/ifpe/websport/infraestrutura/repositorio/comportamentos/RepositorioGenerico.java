@@ -5,6 +5,7 @@
  */
 package br.edu.ifpe.websport.infraestrutura.repositorio.comportamentos;
 
+import br.edu.ifpe.websport.model.entidades.Cliente;
 import java.util.List;
 
 //Mostra um parâmetro que será passado a um método.(@param)

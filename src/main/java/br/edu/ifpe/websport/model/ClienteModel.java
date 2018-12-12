@@ -57,4 +57,11 @@ public class ClienteModel {
         return this.repositorioCliente.recuperarTodos();
     }
 
+    public Cliente recuperarClienteLogin(String login) {
+        if (login == null) {
+            return null;
+        }
+       return ((ClienteImplBD)this.repositorioCliente).recuperar(login);
+    }
+
 }

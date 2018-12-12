@@ -6,10 +6,12 @@
 package br.edu.ifpe.websport.controladores;
 
 import br.edu.ifpe.websport.criptografia.LoginCriptografia;
+import br.edu.ifpe.websport.model.ClienteModel;
 import br.edu.ifpe.websport.model.entidades.Cliente;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 /**
@@ -17,7 +19,7 @@ import javax.faces.context.FacesContext;
  * @author mayco
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class LoginController {
 
     private String login;
@@ -28,7 +30,7 @@ public class LoginController {
     private Cliente clienteLogado;
     private boolean cliLogado = false;
 
-    LoginController() {
+    public LoginController() {
     }
 
     public LoginController(String login, String senha, String senhaCripto, Cliente clienteLogado) {
@@ -42,23 +44,37 @@ public class LoginController {
 
     public String cripSenha(String senha) {
         senhaCripto = LoginCriptografia.criptografar(senha);
-        return logar();
+        return senhaCripto;
     }
 
     public String logar() {
+                
+        if (this.login.equals("admin") && this.senha.equals("admin")) {
+            return "menuTest.xhtml?faces-redirect=true";
+        }
         
-        //Falar com victor - Comparar a senha que foi passada pelo o cliente com a senha do banco
-        if (Fachada.clienteController.getCliente().getEmail().equals(cliente.getEmail()) && senhaCripto.equals(Fachada.clienteController.getCliente().getSenha().toUpperCase())) {
-            cliLogado = true;
+        this.cripSenha(senha);
+        ClienteModel cm = new ClienteModel();
+        Cliente c = cm.recuperarClienteLogin(login);
+        if (c != null && c.getSenha().equals(senhaCripto)) {
+            this.setClienteLogado(c);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "Você foi logado com sucesso!"));
-            return "/menuLateralTest.xhtml?faces-redirect=true";
+            return "/menuLateralTest01.xhtml?faces-redirect=true";
 
         } else {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Atenção!", "Login ou senha, incorretos!"));
             return null;
         }
+    }
+    
+    public void setClienteLogado(Cliente c) {
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("clienteLogado", c);            
+    }
+    
+    public Cliente getClienteLogado() {
+         return (Cliente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("clienteLogado");
     }
 
     public String getLogin() {
@@ -77,19 +93,4 @@ public class LoginController {
         this.senha = senha;
     }
 
-    public boolean isCliLogado() {
-        return cliLogado;
-    }
-
-    public void setCliLogado(boolean cliLogado) {
-        this.cliLogado = cliLogado;
-    }
-
-    public Cliente getClienteLogado() {
-        return clienteLogado;
-    }
-
-    public void setClienteLogado(Cliente clienteLogado) {
-        this.clienteLogado = clienteLogado;
-    }
 }

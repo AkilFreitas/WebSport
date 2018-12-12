@@ -45,4 +45,12 @@ public class ClienteImplBD implements RepositorioGenerico<Cliente, Integer> {
         return PersistenceDao.getInstance().read("select a from Cliente a");
     }
 
+    public Cliente recuperar(String login) {
+       try {
+            return (Cliente) PersistenceDao.getInstance().read("select a from Cliente a where a.email=" + login).get(0);
+        } catch (IndexOutOfBoundsException index) {
+            return null;
+        }
+    }
+
 }
