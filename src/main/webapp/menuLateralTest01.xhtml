@@ -12,9 +12,7 @@ and open the template in the editor.
     <h:head>
         <title>WS - HOME</title>
         <meta  name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="estilo.css"> </link>
-        <meta  name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="estilo.css"> </link>
+        <link rel="stylesheet" href="estilo.css"></link>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> </link>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
@@ -28,6 +26,7 @@ and open the template in the editor.
 
 
             #divCima {
+                height:100px;
                 width:100%;
                 position: static;
                 overflow:hidden;
@@ -122,6 +121,53 @@ and open the template in the editor.
                 padding: 15px 5px;
                 color: white;
             }
+            
+            div.divIconeLogin{
+              background-color: transparent; 
+              position:absolute;
+              margin-left:1270px;
+              margin-top:-5px;
+              width:60px;
+              height:60px;
+              z-index:1;       
+            }
+            div.divIconeCarrinho {
+                 background-color: transparent; 
+                 position:absolute;
+                 margin-left:1206px;
+                 margin-top:-5px;
+                 width:55px;
+                 height:60px;
+                 z-index:1;
+            }
+            
+            div.divIconeDaLogo{
+                background-color: transparent;
+                position: absolute;
+                margin-left: 48px;
+                margin-top: -5px;
+                width: 170px;
+                height: 61px;
+                z-index: 1;
+            }
+
+            a.linkDoIconeDaLogo{
+                background-color: transparent;
+                height: 61px;
+            }
+            
+            a.linkIconeCarrinho{
+               background-color: transparent;
+               height:60px;
+            }
+            
+            
+            a.linkIconeLogin{
+                background-color: transparent;
+                height:60px;
+            }
+            
+            
 
         </style>
     </h:head>
@@ -139,7 +185,7 @@ and open the template in the editor.
                 <ul>
                     <li><a class="menuzin" href="menuLateralTest01.xhtml">HOME</a></li>
                     <li><a class="menuzin" href="menuLateralTest01.xhtml">#{clienteLogado.email}</a></li>
-                    
+
                     <p:separator />
                     <li><a class="menuzin" href="pagProduto.xhtml">CAMISAS</a> </li>
                     <li><a class="menuzin" href="">CALÇAS</a> </li>
@@ -148,20 +194,20 @@ and open the template in the editor.
                 </ul>
             </nav>
         </nav>
-        <div href="login.xhtml"  style='background-color: transparent; position:absolute;margin-left:1270px;margin-top:-5px;width:60px;height:60px;z-index:1' > 
-            <a href="login.xhtml" id="iconeLogin" style="background-color: transparent;"></a>
+        <div class="divIconeLogin" href="login.xhtml"> 
+            <a class="linkIconeLogin" href="login.xhtml" id="iconeLogin"></a>
         </div>
 
-        <div href="carrinho.xhtml"  style='background-color: transparent; position:absolute;margin-left:1210px;margin-top:-5px;width:60px;height:60px;z-index:1' > 
-            <a href="carrinho.xhtml" id="iconeLogin" style="background-color: transparent;"></a>
+        <div class="divIconeCarrinho" href="carrinho.xhtml"> 
+            <a class="linkIconeCarrinho" href="carrinho.xhtml" id="iconeLogin"></a>
         </div>
 
-        <div href="menuLateralTest01.xhtml"  style='background-color: transparent; position:absolute;margin-left:20px;margin-top:-5px;width:260px;height:60px;z-index:1' > 
-            <a href="menuLateralTest01.xhtml" id="iconeLogin" style="background-color: transparent;"></a>
+        <div class="divIconeDaLogo" href="menuLateralTest01.xhtml"> 
+            <a class="linkDoIconeDaLogo" href="menuLateralTest01.xhtml" id="iconeLogin"></a>
         </div>
         <h:form>          
             <div id="divCima">
-                <img src="imagens\parte cima.png" height="100"/>
+                <img src="imagens\parte cima.png"/>
             </div>
         </h:form>
     </h:body>
