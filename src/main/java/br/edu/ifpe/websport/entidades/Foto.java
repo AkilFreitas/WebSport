@@ -5,14 +5,30 @@
  */
 package br.edu.ifpe.websport.entidades;
 
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+
 /**
  *
  * @author mayco
  */
-public class Foto {
+@Entity
+public class Foto implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Lob @Basic(fetch = FetchType.EAGER)
+    @Column(length = 20)
     private byte[] imagem;
+    @Column(length = 20)
     private int ordem;
 
     public int getId() {

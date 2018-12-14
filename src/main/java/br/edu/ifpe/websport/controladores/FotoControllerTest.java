@@ -7,6 +7,7 @@ package br.edu.ifpe.websport.controladores;
 
 import br.edu.ifpe.websport.infraestrutura.repositorio.implementacoes.repositorioImplBD.FotoImplBD;
 import br.edu.ifpe.websport.entidades.Foto;
+import br.edu.ifpe.websport.model.FotoModel;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -29,16 +30,47 @@ import org.primefaces.model.StreamedContent;
  */
 @ManagedBean
 @SessionScoped
-public class FotoController {
+public class FotoControllerTest {
 
-    private FotoImplBD fotoImplBD = new FotoImplBD();
+    //private FotoImplBD fotoImplBD = new FotoImplBD();
     private Foto foto = new Foto();
-    private StreamedContent imagem = new DefaultStreamedContent();
-    private List<Foto> fotos = new ArrayList<Foto>();
+    //private StreamedContent imagem = new DefaultStreamedContent();
+    //private List<Foto> fotos = new ArrayList<Foto>();  
+    
+    FotoModel ftm = new FotoModel();
+    private Foto fotoCadastro;
+    private Foto selectedFoto;
 
-    public FotoController() {
+    public FotoControllerTest() {
+        this.fotoCadastro = new Foto();
     }
 
+    public FotoModel getFtm() {
+        return ftm;
+    }
+
+    public void setFtm(FotoModel ftm) {
+        this.ftm = ftm;
+    }
+
+    public Foto getFotoCadastro() {
+        return fotoCadastro;
+    }
+
+    public void setFotoCadastro(Foto fotoCadastro) {
+        this.fotoCadastro = fotoCadastro;
+    }
+
+    public Foto getSelectedFoto() {
+        return selectedFoto;
+    }
+
+    public void setSelectedFoto(Foto selectedFoto) {
+        this.selectedFoto = selectedFoto;
+    }
+    
+    
+/*
     public FotoImplBD getFotoImplBD() {
         return fotoImplBD;
     }
@@ -46,7 +78,7 @@ public class FotoController {
     public void setFotoImplBD(FotoImplBD fotoImplBD) {
         this.fotoImplBD = fotoImplBD;
     }
-
+*/
     public Foto getFoto() {
         return foto;
     }
@@ -54,7 +86,7 @@ public class FotoController {
     public void setFoto(Foto foto) {
         this.foto = foto;
     }
-
+/*
     public StreamedContent getImagem() {
         return imagem;
     }
@@ -70,16 +102,30 @@ public class FotoController {
     public void setFotos(List<Foto> fotos) {
         this.fotos = fotos;
     }
-
+*/
+    
     public void salvaFotos(){
-        fotoImplBD.inserir(foto);
-        foto = new Foto();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Foto adicionada", "Foto adicionada"));
+         try {
+            this.ftm.inserir(this.fotoCadastro);
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O foto foi cadastrado com sucesso!"));
+
+        } catch (Exception ex) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O foto não foi cadastrado!"));
+        }
+        this.fotoCadastro = new Foto();
     }
-    public void visualizarFoto(){
-        fotoImplBD.recuperar(Integer.SIZE);
+    
+    public Foto recuperarProduto(int id) {
+        return this.ftm.recuperarFoto(id);
     }
 
+    public List<Foto> recuperarTodosProdutos() {
+        return this.ftm.recuperarTodos();
+    }
+   
+    /*
     public void enviaImagem(FileUploadEvent event) {
         try {
             imagem = new DefaultStreamedContent(event.getFile().getInputstream());
@@ -88,7 +134,7 @@ public class FotoController {
             Logger.getLogger(FotoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+*/
     public void criaArquivo(byte[] bytes, String arquivo) {
         FileOutputStream fos;
         try {

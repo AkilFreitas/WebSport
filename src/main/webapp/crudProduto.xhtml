@@ -125,7 +125,7 @@
                     <h:outputText value="#{produtoController.selectedProduto.fornecedor}"/>
 
                     <h:outputText value="Imagem"/>
-                    <h:outputText value="#{produtoController.selectedProduto.imagem}"/>
+                    <h:outputText value="#{fotoControllerTest.selectedFoto.imagem}"/>
                 </p:panelGrid>
                 <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaProduto').hide()"/>
             </p:dialog>
@@ -227,9 +227,27 @@
                         <p:message for="txtFornecedor"/>
 
                         <h:outputText value="Imagem*:"/>
-                        <p:inputText value="#{produtoController.produtoCadastro.imagem}" id="txtImagem"
-                                     required="true" requiredMessage="O campo imagem é obrigatório"/>
-                        <p:message for="txtImagem"/>
+                        <p:fileUpload fileUploadListener="#{fotoController.enviaImagem}"
+                                      update="imagemTmp"
+                                      cancelLabel="Cancelar"
+                                      fileLimit="100000"
+                                      fileLimitMessage="Imagem muito grande"
+                                      label="Selecionar"
+                                      invalidFileMessage="Tipo de imagem inválido"
+                                      invalidSizeMessage="Imagem muito grande"
+                                      uploadLabel="Enviar"
+                                      allowTypes="/(\.|\/)(jpe?g|png)$/">
+
+                        </p:fileUpload>
+                        <p:outputPanel id="dadosFoto">
+                            <h:panelGrid>
+                                <p:graphicImage cache="false" id="imagemTmp" value="#{fotoController.imagem}" height="300" style="margin: 0 auto;"/>          
+                                <h:outputText value="Ordem"/>
+                                <p:inputMask mask="9" value="#{fotoController.foto.ordem}" size="5"/>
+                            </h:panelGrid>
+                        </p:outputPanel>
+                        <p:commandButton value="Adicionar" action="#{fotoController.salvaFotos()}" update="dadosFoto"/>
+
                     </p:panelGrid>
                     <p:commandButton value="Cadastrar" action="#{produtoController.inserirAction()}"
                                      oncomplete="PF('widDialCadProduto').hide()" 

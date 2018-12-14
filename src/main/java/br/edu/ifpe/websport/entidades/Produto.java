@@ -36,7 +36,7 @@ public class Produto implements Serializable {
     private String descricao;
     @Column(length = 20)
     private float preco;
-    @Column(length = 20)
+    @OneToMany
     private List<Foto> imagem;
     @OneToMany
     private List<Tamanho> tamanho;
