@@ -63,20 +63,28 @@
                     <p:message for="txtFornecedor"/>
 
                     <h:outputText value="Imagem*:"/>
-                    <p:dialog id="dialogFotos" position="top" widgetVar="dialogFotos" modal="true" minWidth="600" minHeight="500">
-                        <p:fileUpload fileUploadListener="#{fotoController.enviaImagem}"
-                                     
-                                      cancelLabel="Cancelar"
-                                      fileLimit="100000"
-                                      fileLimitMessage="Imagem muito grande"
-                                      label="Selecionar"
-                                      invalidFileMessage="Tipo de imagem inválido"
-                                      invalidSizeMessage="Imagem muito grande"
-                                      uploadLabel="Enviar"
-                                      allowTypes="/(\.|\/)(jpe?g|png)$/">
-                        </p:fileUpload>
-                        <p:commandButton value="Adicionar" action="#{fotoController.salvaFotos()}"/>
-                    </p:dialog>
+
+                    <p:fileUpload fileUploadListener="#{fotoController.enviaImagem}"
+                                  update="imagemTmp"
+                                  cancelLabel="Cancelar"
+                                  fileLimit="100000"
+                                  fileLimitMessage="Imagem muito grande"
+                                  label="Selecionar"
+                                  invalidFileMessage="Tipo de imagem inválido"
+                                  invalidSizeMessage="Imagem muito grande"
+                                  uploadLabel="Enviar"
+                                  allowTypes="/(\.|\/)(jpe?g|png)$/">
+
+                    </p:fileUpload>
+                    <p:outputPanel id="dadosFoto">
+                        <h:panelGrid>
+                            <p:graphicImage cache="false" id="imagemTmp" value="#{fotoController.imagem}" height="300" style="margin: 0 auto;"/>          
+                            <h:outputText value="Ordem"/>
+                            <p:inputMask mask="9" value="#{fotoController.foto.ordem}" size="5"/>
+                        </h:panelGrid>
+                    </p:outputPanel>
+                    <p:commandButton value="Adicionar" action="#{fotoController.salvaFotos()}" update="dadosFoto"/>
+
                 </p:panelGrid>
                 <p:commandButton value="Cadastrar"
                                  oncomplete="PF('widDialProduto').show()"/>

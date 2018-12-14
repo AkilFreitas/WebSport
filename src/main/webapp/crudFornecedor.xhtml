@@ -32,7 +32,7 @@
         </div>
         <h:form id="formFornecedor">
             <p:commandButton value="inserir" oncomplete="PF('widDialCadFornecedor').show()"/>
-            <a href="menuTest.xhtml"><p:commandButton value="sair"/></a>
+            <a href="telaDoAdmin.xhtml"><p:commandButton value="sair"/></a>
             <p:dataTable var="item" value="#{fornecedorController.recuperarTodosFornecedores()}"
                          rowKey="#{item.id}" paginator="true"
                          rows="5">

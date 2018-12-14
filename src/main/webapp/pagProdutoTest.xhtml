@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title> WE | CAMISA PSG 2018</title>
         <meta  name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -60,7 +61,7 @@ and open the template in the editor.
             }
             body{
 
-                background: url("imagens/Sem Título-1.jpg");
+                background: url("imagens/planoDeFundo.jpg");
                 background-size: 100%;
 
             }
@@ -90,12 +91,8 @@ and open the template in the editor.
         </style>
     </h:head>
     <body>
-        <h:form>          
-            <div class="divCima">
-                <img src="imagens\parte cima.png"/>
-            </div>
-        </h:form>
-
+        <ui:include src="home.xhtml"/>
+    
         <div href="login.xhtml"  style='background-color: transparent; position:absolute;margin-left:1270px;margin-top:-20px;width:60px;height:60px;z-index:1' > 
             <a href="login.xhtml" id="iconeLogin" style="background-color: transparent;"></a>
         </div>
@@ -114,13 +111,13 @@ and open the template in the editor.
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="imagens/95b7f5d9281-f5e6d3743cc9846fe915345151948786-640-0.png" alt="First slide"></img>
+                                <img class="d-block w-100" src="imagens/comisaPSG2.png" alt="First slide"></img>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="imagens/919011-073_850x.progressive.jpg" alt="Second slide"></img>
+                                <img class="d-block w-100" src="imagens/camisaPSG3.jpg" alt="Second slide"></img>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="imagens/317473e_1.jpg" alt="Third slide"></img>
+                                <img class="d-block w-100" src="imagens/camisaPSG1.jpg" alt="Third slide"></img>
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

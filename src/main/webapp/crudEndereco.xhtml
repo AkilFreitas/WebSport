@@ -32,7 +32,7 @@
         </div>
         <h:form id="formEndereco">
             <p:commandButton value="inserir" oncomplete="PF('widDialCadEndereco').show()"/>
-            <a href="menuTest.xhtml"><p:commandButton value="sair"/></a>
+            <a href="telaDoAdmin.xhtml"><p:commandButton value="sair"/></a>
             <p:dataTable var="item" value="#{enderecoController.recuperarTodosEnderecos()}"
                          rowKey="#{item.id}" paginator="true"
                          rows="5">

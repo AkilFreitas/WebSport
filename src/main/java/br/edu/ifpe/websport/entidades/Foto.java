@@ -13,6 +13,7 @@ public class Foto {
 
     private int id;
     private byte[] imagem;
+    private int ordem;
 
     public int getId() {
         return id;
@@ -28,6 +29,14 @@ public class Foto {
 
     public void setImagem(byte[] imagem) {
         this.imagem = imagem;
+    }
+    
+    public int getOrdem() {
+        return ordem;
+    }
+ 
+    public void setOrdem(int ordem) {
+        this.ordem = ordem;
     }
     
     
