@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>WS - Perfil</title>
+    </h:head>
+    <h:body>
+        <ui:include src="home.xhtml"/>
+
+        <p:growl id="gro" life="3000"/>
+
+        <h:form id="formApresentaCliente">
+            <p:dataTable id="tabelaCliente" var="item" value="#{clienteController.selectedCliente}"
+                         rowKey="#{item.id}">
+                <f:facet name="header">
+                    Seu Perfil
+                </f:facet>
+
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="Nome" filterBy="#{item.nome}">
+                    <h:outputText value="#{item.nome}"/>
+                </p:column>
+                <p:column headerText="Sexo" filterBy="#{item.sexo}">
+                    <h:outputText value="#{item.sexo}"/>
+                </p:column>
+                <p:column headerText="Idade" filterBy="#{item.idade}">
+                    <h:outputText value="#{item.idade}"/>
+                </p:column>
+                <p:column headerText="DataDeNascimento" filterBy="#{item.dataDeNascimento}">
+                    <h:outputText value="#{item.dataDeNascimento}"/>
+                </p:column>
+                <p:column headerText="Rg" filterBy="#{item.rg}">
+                    <h:outputText value="#{item.rg}"/>
+                </p:column>
+                <p:column headerText="Cpf" filterBy="#{item.cpf}">
+                    <h:outputText value="#{item.cpf}"/>
+                </p:column>
+                <p:column headerText="Endereco" filterBy="#{item.endereco}">
+                    <h:outputText value="#{item.endereco}"/>
+                </p:column>
+                <p:column headerText="Telefone" filterBy="#{item.telefone}">
+                    <h:outputText value="#{item.telefone}"/>
+                </p:column>
+                <p:column headerText="Email" filterBy="#{item.email}">
+                    <h:outputText value="#{item.email}"/>
+                </p:column>
+                <p:column headerText="Senha" filterBy="#{item.senha}">
+                    <h:outputText value="#{item.senha}"/>
+                </p:column>
+            </p:dataTable>
+            
+        </h:form>
+    </h:body>
+</html>

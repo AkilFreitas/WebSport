@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html  xmlns="http://www.w3.org/1999/xhtml"
        xmlns:h="http://xmlns.jcp.org/jsf/html"
-       xmlns:p="http://primefaces.org/ui">
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
         <title>WS - HOME</title>
@@ -166,11 +167,9 @@ and open the template in the editor.
                 background-color: transparent;
                 height:60px;
             }
-
-
-
         </style>
     </h:head>
+
     <h:body>   
         <input type="checkbox" id="check">
             <label for="check">
@@ -184,8 +183,9 @@ and open the template in the editor.
                 </div>
                 <ul>
                     <li><a class="menuzin" href="home.xhtml">HOME</a></li>
-                    <li><a class="menuzin" href="home.xhtml">#{clienteLogado.email}</a></li>
-
+                    <c:if test="#{clienteLogado != null}">
+                        <li><a class="menuzin" href="perfilCliente.xhtml" id="iconeLogin">#{clienteLogado.email}</a></li>
+                    </c:if>
                     <p:separator />
                     <li><a class="menuzin" href="pagProduto.xhtml">CAMISAS</a> </li>
                     <li><a class="menuzin" href="">CALÇAS</a> </li>
@@ -197,6 +197,11 @@ and open the template in the editor.
         <div class="divIconeLogin" href="login.xhtml"> 
             <a class="linkIconeLogin" href="login.xhtml" id="iconeLogin"></a>
         </div>
+        <c:if test="#{clienteLogado != null}">
+            <div class="divIconeLogin" href="perfilCliente.xhtml"> 
+                <a class="linkIconeLogin" href="perfilCliente.xhtml" id="iconeLogin"></a>
+            </div>
+        </c:if>
 
         <div class="divIconeCarrinho" href="carrinho.xhtml"> 
             <a class="linkIconeCarrinho" href="carrinho.xhtml" id="iconeLogin"></a>

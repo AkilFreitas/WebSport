@@ -48,7 +48,7 @@ public class ClienteController {
         } finally {
             this.clienteCadastro = new Cliente();        
         }
-        return "/menuLateralTest01.xhtml?faces-redirect=true"; 
+        return "/home.xhtml?faces-redirect=true"; 
     }
 
     public void alterarAction(Cliente c) {

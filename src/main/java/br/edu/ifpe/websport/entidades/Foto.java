@@ -26,7 +26,6 @@ public class Foto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Lob @Basic(fetch = FetchType.EAGER)
-    @Column(length = 20)
     private byte[] imagem;
     @Column(length = 20)
     private int ordem;

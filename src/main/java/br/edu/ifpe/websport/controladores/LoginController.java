@@ -21,36 +21,34 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @SessionScoped
 public class LoginController {
-
+    
     private String login;
     
     private String senha;
     private String senhaCripto;
     private Cliente cliente;
     private Cliente clienteLogado;
-    private boolean cliLogado = false;
-
+    private boolean cliLogado;
+    
     public LoginController() {
     }
-
+    
     public LoginController(String login, String senha, String senhaCripto, Cliente clienteLogado) {
         this.login = login;
         this.senha = senha;
         this.senhaCripto = senhaCripto;
         this.clienteLogado = clienteLogado;
     }
-
-   
-
+    
     public String cripSenha(String senha) {
         senhaCripto = LoginCriptografia.criptografar(senha);
         return senhaCripto;
     }
-
+    
     public String logar() {
-                
+        
         if (this.login.equals("admin") && this.senha.equals("admin")) {
-            return "menuTest.xhtml?faces-redirect=true";
+            return "telaDoAdmin.xhtml?faces-redirect=true";
         }
         
         this.cripSenha(senha);
@@ -61,7 +59,7 @@ public class LoginController {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "Você foi logado com sucesso!"));
             return "/menuLateralTest01.xhtml?faces-redirect=true";
-
+            
         } else {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Atenção!", "Login ou senha, incorretos!"));
@@ -69,28 +67,40 @@ public class LoginController {
         }
     }
     
+    public void deslogar() {
+        setCliLogado(false);
+    }
+    
     public void setClienteLogado(Cliente c) {
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("clienteLogado", c);            
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("clienteLogado", c);        
     }
     
     public Cliente getClienteLogado() {
-         return (Cliente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("clienteLogado");
+        return (Cliente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("clienteLogado");
     }
-
+    
     public String getLogin() {
         return login;
     }
-
+    
     public void setLogin(String login) {
         this.login = login;
     }
-
+    
     public String getSenha() {
         return senha;
     }
-
+    
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
+    
+    public boolean isCliLogado() {
+        return cliLogado;
+    }
+    
+    public void setCliLogado(boolean cliLogado) {
+        this.cliLogado = cliLogado;
+    }
+    
 }

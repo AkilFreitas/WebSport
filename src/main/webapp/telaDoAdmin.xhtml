@@ -5,11 +5,17 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>------WEB-SPORT------</title>
+
+        <style>
+            body{      
+                background: url("imagens/planoDeFundo.jpg");
+            }
+        </style>
     </h:head>
     <h:body>
         <h:form id="formTelaDoAdmin">
             <p:menubar>
-                <p:menuitem value="Página Inicial" url="home.xhtml"/> 
+                <p:menuitem value="SAIR" icon="ui-icon-home" url="home.xhtml"/> 
                 <p:submenu label="Categoria">
                     <p:menuitem value="Dados" url="crudCategoria.xhtml"/>
                 </p:submenu>

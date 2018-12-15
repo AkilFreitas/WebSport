@@ -11,7 +11,7 @@ and open the template in the editor.
 
 
     <head>
-        <title>WS | CADASTRO</title>
+        <title>WS | CONFIRMAR COMPRA</title>
         <meta  name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="estilo.css"> </link>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> </link>
@@ -35,7 +35,7 @@ and open the template in the editor.
         body{
             font-family: sans-serif;
 
-            background: url("imagens/dark.jpg");
+            background: url("imagens/planoDeFundo.jpg");
             background-size: 100%;
 
         }
@@ -155,41 +155,36 @@ and open the template in the editor.
     <h:body>
         <h:form>
             <div class="login-box">
-                <h1 href="men.xhtml">Cadastro</h1>
+                <h1 href="men.xhtml">Confirmar Compra</h1>
                 <div class="textBox">
                     <p:growl id="dro" life="3000"/>
-                    <p:inputText type="text" placeholder="Username"  value="#{clienteController.clienteCadastro.nome}" id="txtNome"
-                                 required="true" requiredMessage="o campo username é obrigatório"></p:inputText>
-                    <p:message for="txtNome"/>
+                    <p:inputText type="text" placeholder="Endereço"  value="#{clienteController.clienteCadastro.endereco}" id="txtEndereco"
+                                 required="true" requiredMessage="o campo endereço é obrigatório"></p:inputText>
+                    <p:message for="txtEndereco"/>
                 </div>
-                
+
                 <div class="textBox">
                     <p:growl id="dro" life="3000"/>
-                    <p:inputText type="text" placeholder="Sexo"  value="#{clienteController.clienteCadastro.sexo}" id="txtSexo"
-                                 required="true" requiredMessage="o campo sexo é obrigatório"></p:inputText>
-                    <p:message for="txtSexo"/>
+                    <p:inputMask placeholder="Cep" value="#{enderecoController.enderecoCadastro.cep}" id="txtCep" mask="99999-999"
+                                 required="true" requiredMessage="O campo cep é obrigatório"/>
+                    <p:message for="txtCep"/>
                 </div>
-                
+
                 <div class="textBox">
                     <p:growl id="dro" life="3000"/>
-                    <p:inputText type="number" placeholder="idade"  value="#{clienteController.clienteCadastro.sexo}" id="txtIdade"
-                                 required="true" requiredMessage="o campo idade é obrigatório"></p:inputText>
-                    <p:message for="txtIdade"/>
+                    <p:inputText type="text" placeholder="Rua"  value="#{enderecoController.enderecoCadastro.rua}" id="txtRua"
+                                 required="true" requiredMessage="o campo rua é obrigatório"></p:inputText>
+                    <p:message for="txtRua"/>
                 </div>
 
                 <div class="textEmailBox">
                     <p:growl life="3000"/>
-                    <p:inputText type="email" placeholder="Email" value="#{clienteController.clienteCadastro.email}" id="txtEmail"
-                                 required="true" requiredMessage="o campo email é obrigatório"></p:inputText>
-                    <p:message for="txtEmail"/>
+                    <p:inputText type="number" placeholder="Numero" value="#{enderecoController.enderecoCadastro.numero}" id="txtNumero"
+                                 required="true" requiredMessage="o campo numero é obrigatório"></p:inputText>
+                    <p:message for="txtNumero"/>
                 </div>
 
-                <div class="textBox">
-                    <p:growl  life="3000"/>
-                    <p:inputText type="password" placeholder="Senha" value="#{clienteController.clienteCadastro.senha}" id="txtSenha"
-                                 required="true" requiredMessage="o campo senha é obrigatório"></p:inputText>
-                    <p:message for="txtSenha"/>
-                </div>
+
 
                 <input class="nadan" type="checkbox"  required="true" requiredMessage=""> Li e concordo com os termos </input>
                 <a href="home.xhtml"><hl class="imagensLogo"><img src="imagens/logoWebSport.png" style=' position:absolute;margin-left:-172px;margin-top:72px;width:173px;height:74px;z-index:1'/></hl></a>

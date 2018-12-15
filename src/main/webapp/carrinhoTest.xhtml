@@ -5,7 +5,9 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <head>
         <title>WS | Meu Carrinho</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -26,7 +28,9 @@ and open the template in the editor.
                 margin: 0px;               
             }
 
-
+             body{      
+                background: url("imagens/planoDeFundo.jpg");
+            }
 
 
             .table>tbody>tr>td, .table>tfoot>tr>td{
@@ -62,40 +66,49 @@ and open the template in the editor.
                 table#cart tfoot td{display:block; }
                 table#cart tfoot td .btn{display:block;}
 
+                .navi{
+                    background-color: rgba(0, 100, 0, 0.5);
+                    background-repeat: repeat;
+                    width: 300px;
+                    height: 100%;
+                    left: -350px;
+                    position: absolute;
+                    transition: all .5s;
 
+                }
 
+                input[type="checkbox"]:checked ~ nav {
+                    transform: translateX(350px);
+                }
+
+                #divCima {
+                    height:100px;
+                    width:100%;
+                    position: static;
+                    overflow:hidden;
+                    background: url('imagens/parte cima.png')top no-repeat;
+                }
 
 
             }
-
-            #divCima {
-                width:100%;
-                position: relative;
-                overflow:hidden;
-                background: url('imagens/parte cima.png')top no-repeat;
-
-            }
-
-
-            body{
-                background: url("imagens/Sem Título-1.jpg");
-            }
-
-
-
-
-
 
         </style>
 
 
 
     </head>
-    <body>
-        <div id="divCima">
-            <h1><img src="imagens\parte cima.png" height="80"/></h1>
-        </div>
 
+    <h:body>
+         <h:form>          
+            <div id="divCima">
+               
+            </div>
+        </h:form>
+        <input type="checkbox" id="check">
+            <label for="check">
+                <img src="imagens/Hamburger_icon.svg.png"></img>
+            </label>  
+        </input>
         <div class="container">
             <table id="cart" class="table table-hover table-condensed">
                 <thead>
@@ -107,22 +120,22 @@ and open the template in the editor.
                         <th style="width:10%"></th>
                     </tr>
                 </thead>
-                <tbody>s
+                <tbody>
                     <tr>
                         <td data-th="Product">
                             <div class="row">
                                 <div class="col-sm-2 hidden-xs"><img src="imagens/camisaPSG3.jpg" alt="..." class="img-responsive"/></div>
                                 <div class="col-sm-10">
                                     <h4 class="nomargin">Camisa Nike Jordan Branca</h4>
-                                    <p>Camisa topada do maior time da frança que possue o maior jogador de todos os tempos, claro Neymar</p>
+                                    <p>...</p>
                                 </div>
                             </div>
                         </td>
-                        <td data-th="Price">$1.99</td>
+                        <td data-th="Price">$349,00</td>
                         <td data-th="Quantity">
                             <input type="number" class="form-control text-center" value="1"> </input>
                         </td>
-                        <td data-th="Subtotal" class="text-center">300,00</td>
+                        <td data-th="Subtotal" class="text-center">349,00</td>
                         <td class="actions" data-th="">
                             <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
                             <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
@@ -131,17 +144,17 @@ and open the template in the editor.
                 </tbody>
                 <tfoot>
                     <tr class="visible-xs">
-                        <td class="text-center"><strong>Total 300,00</strong></td>
+                        <td class="text-center"><strong>Total 349,00</strong></td>
                     </tr>
                     <tr>
-                        <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continuar Comprando</a></td>
+                        <td><a href="home.xhtml" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continuar Comprando</a></td>
                         <td colspan="2" class="hidden-xs"></td>
-                        <td class="hidden-xs text-center"><strong>Total R$ 300,00</strong></td>
-                        <td><a href="#" class="btn btn-success btn-block">Finalizar <i class="fa fa-angle-right"></i></a></td>
+                        <td class="hidden-xs text-center"><strong>Total R$ 349,00</strong></td>
+                        <td><a href="confirmarCompra.xhtml" class="btn btn-success btn-block">Confirmar <i class="fa fa-angle-right"></i></a></td>
                     </tr>
                 </tfoot>
             </table>
         </div>
 
-    </body>
+    </h:body>
 </html>
