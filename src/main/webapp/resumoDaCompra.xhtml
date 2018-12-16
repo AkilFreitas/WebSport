@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <ui:include src="home.xhtml"/>
+    <h:body>
+        <h:form id="formApresentaCliente">
+            <p:growl id="gro" life="3000"/>
+            <p:dialog id="dialVisualizaCliente" visible="false" resizable="false"
+                      modal="true" widgetVar="widDialVisualizaCliente">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Id"/>
+                    <h:outputText value="#{clienteController.selectedCliente.id}"/>
+
+                    <h:outputText value="Nome"/>
+                    <h:outputText value="#{clienteController.selectedCliente.nome}"/>
+
+                    <h:outputText value="Email:"/>
+                    <h:outputText value="#{clienteController.selectedCliente.email}"/>
+
+                    <h:outputText value="Sexo"/>
+                    <h:outputText value="#{clienteController.selectedCliente.sexo}"/>
+
+                    <h:outputText value="Idade"/>
+                    <h:outputText value="#{clienteController.selectedCliente.idade}"/>
+
+                    <h:outputText value="Estado"/>
+                    <h:outputText value="#{clienteController.selectedCliente.endereco.estado}"/>
+
+                    <h:outputText value="Cidade"/>
+                    <h:outputText value="#{clienteController.selectedCliente.endereco.cidade}"/>
+
+                    <h:outputText value="Bairro"/>
+                    <h:outputText value="#{clienteController.selectedCliente.endereco.bairro}"/>
+
+                    <h:outputText value="Rua"/>
+                    <h:outputText value="#{clienteController.selectedCliente.endereco.rua}"/>
+
+                    <h:outputText value="Cep"/>
+                    <h:outputText value="#{clienteController.selectedCliente.endereco.cep}"/>
+                </p:panelGrid>
+                <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaCliente').hide()"/>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>

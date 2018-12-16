@@ -16,11 +16,11 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author Val e Michael
+ * @author mayco
  */
 @ManagedBean
 @SessionScoped
-public class ClienteController {
+public class ClienteController1 {
 
     ClienteModel cm = new ClienteModel();
     private Cliente clienteCadastro;
@@ -28,7 +28,7 @@ public class ClienteController {
 
     Cliente cliente = new Cliente();
 
-    public ClienteController() {
+    public ClienteController1() {
         this.clienteCadastro = new Cliente();
     }
 
@@ -48,7 +48,9 @@ public class ClienteController {
         } finally {
             this.clienteCadastro = new Cliente();
         }
-        return "/home.xhtml?faces-redirect=true";
+
+        return "/resumoDaCompra.xhtml?faces-redirect=true";
+
     }
 
     public void alterarAction(Cliente c) {

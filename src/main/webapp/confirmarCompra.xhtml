@@ -40,17 +40,17 @@ and open the template in the editor.
 
         }
 
-        .login-box{
+        .confirmarCompra-box{
             width: 280px;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white;
+            color: #212529;
 
         }
 
-        .login-box h1{
+        .confirmarCompra-box h1{
             float: left;
             font-size: 40px;
             border-bottom: 6px solid #4caf50;
@@ -69,70 +69,26 @@ and open the template in the editor.
             border-bottom: 1px solid #4caf50;
 
         }
-        .textEmailBoxBox{
-            width: 100%;
-            overflow: hidden;
-            font-size: 20px;
-            padding: 8px 0;
-            margin: 8px 0;
-            border-bottom: 1px solid #4caf50;
 
-        }
-        .textEmailBox{
-            width: 100%;
-            overflow: hidden;
-            font-size: 20px;
-            padding: 8px 0;
-            margin: 8px 0;
-            border-bottom: 1px solid #4caf50;
-
-        }
-        .textIdadeBoxBox{
-            width: 100%;
-            overflow: hidden;
-            font-size: 20px;
-            padding: 8px 0;
-            margin: 8px 0;
-            border-bottom: 1px solid #4caf50;
-
-        }
-        .textIdadeBox input{
-            border: none;
-            outline: none;
-            background: none;
-            color: white;
-            font-size: 18px;
-            width: 80%;
-            float: left;
-            margin: 10px;
-        }
         .textBox input{
             border: none;
             outline: none;
             background: none;
-            color: white;
+            color: #212529;
             font-size: 18px;
             width: 80%;
             float: left;
             margin: 10px;
         }
-        .textEmailBox input{
-            border: none;
-            outline: none;
-            background: none;
-            color: white;
-            font-size: 18px;
-            width: 80%;
-            float: left;
-            margin: 10px;
-        }
+
+
         .butao{
             width: 100%;
             background: none;
             border: 2px solid #4caf50;
-            color: white;
+            color: #4caf50;
             padding: 5px;
-            font-size: 18px;
+            font-size: 23px;
             cursor: pointer;
             margin: 12px 0;
 
@@ -147,49 +103,67 @@ and open the template in the editor.
             padding: 13px 0;
         }
         .nadan{
-            font-size: 2px;
+            font-size: 5px;
+
+        }
+        h1{
+            color:#4caf50 ;
+
         }
 
     </style>
 
     <h:body>
         <h:form>
-            <div class="login-box">
+            <div class="confirmarCompra-box">
                 <h1 href="men.xhtml">Confirmar Compra</h1>
                 <div class="textBox">
                     <p:growl id="dro" life="3000"/>
-                    <p:inputText type="text" placeholder="Endereço"  value="#{clienteController.clienteCadastro.endereco}" id="txtEndereco"
-                                 required="true" requiredMessage="o campo endereço é obrigatório"></p:inputText>
-                    <p:message for="txtEndereco"/>
+                    <p:inputText type="text" placeholder="Estado"  value="#{clienteController.clienteCadastro.endereco.estado}" id="txtEstado"
+                                 required="true" requiredMessage="o campo estado é obrigatório"></p:inputText>
+                    <p:message for="txtEstado"/>
                 </div>
 
                 <div class="textBox">
-                    <p:growl id="dro" life="3000"/>
-                    <p:inputMask placeholder="Cep" value="#{enderecoController.enderecoCadastro.cep}" id="txtCep" mask="99999-999"
+                    <p:growl life="3000"/>
+                    <p:inputText type="text" placeholder="Cidade"  value="#{clienteController.clienteCadastro.endereco.cidade}" id="txtCidade"
+                                 required="true" requiredMessage="o campo cidade é obrigatório"></p:inputText>
+                    <p:message for="txtCidade"/>
+                </div>
+
+                <div class="textBox">
+                    <p:growl life="3000"/>
+                    <p:inputText type="text" placeholder="Bairro"  value="#{clienteController.clienteCadastro.endereco.bairro}" id="txtBairro"
+                                 required="true" requiredMessage="o campo bairro é obrigatório"></p:inputText>
+                    <p:message for="txtBairro"/>
+                </div>
+
+                <div class="textBox">
+                    <p:growl life="3000"/>
+                    <p:inputMask placeholder="Cep" value="#{clienteController.clienteCadastro.endereco.cep}" id="txtCep" mask="99999-999"
                                  required="true" requiredMessage="O campo cep é obrigatório"/>
                     <p:message for="txtCep"/>
                 </div>
 
                 <div class="textBox">
-                    <p:growl id="dro" life="3000"/>
-                    <p:inputText type="text" placeholder="Rua"  value="#{enderecoController.enderecoCadastro.rua}" id="txtRua"
+                    <p:growl life="3000"/>
+                    <p:inputText type="text" placeholder="Rua"  value="#{clienteController.clienteCadastro.endereco.rua}" id="txtRua"
                                  required="true" requiredMessage="o campo rua é obrigatório"></p:inputText>
                     <p:message for="txtRua"/>
                 </div>
 
-                <div class="textEmailBox">
+                <div class="textBox">
                     <p:growl life="3000"/>
-                    <p:inputText type="number" placeholder="Numero" value="#{enderecoController.enderecoCadastro.numero}" id="txtNumero"
+                    <p:inputText placeholder="Numero" value="#{clienteController.clienteCadastro.endereco.numero}" id="txtNumero"
                                  required="true" requiredMessage="o campo numero é obrigatório"></p:inputText>
                     <p:message for="txtNumero"/>
                 </div>
 
-
-
                 <input class="nadan" type="checkbox"  required="true" requiredMessage=""> Li e concordo com os termos </input>
-                <a href="home.xhtml"><hl class="imagensLogo"><img src="imagens/logoWebSport.png" style=' position:absolute;margin-left:-172px;margin-top:72px;width:173px;height:74px;z-index:1'/></hl></a>
+                <a href="home.xhtml"><hl class="imagensLogo"><img src="imagens/logoWebSport.png" style=' position:absolute;margin-left:-172px;margin-top:80px;width:173px;height:74px;z-index:1'/></hl></a>
 
-                <p:commandButton  class="butao" value="Cadastrar" action="#{clienteController.inserirAction()}" oncomplete="PF('widDialCliente').hide()" update="@form"/>
+                <a href="resumoDaCompra.xhtml"><p:commandButton  class="butao" value="Confirmar" action="#{clienteController1.inserirAction()}" 
+                                                                 oncomplete="PF('widDialCliente').hide()" update="@form"/></a>
             </div>
         </h:form>
     </h:body>

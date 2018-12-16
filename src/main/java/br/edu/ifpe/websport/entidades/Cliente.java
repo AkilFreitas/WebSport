@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany; 
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -45,10 +46,11 @@ public class Cliente implements Serializable {
     private String dataDeNascimento;
     @Column(length = 20)
     private String sexo;
-    @OneToMany
-    private List<Endereco> endereco;
+    @OneToOne
+    private Endereco endereco;
 
     public Cliente() {
+        this.endereco = new Endereco();
     }
 
     public Cliente(int id, int idade, String rg, String cpf, String telefone, String nome, String email, String senha, String dataDeNascimento, String sexo, Endereco endereco) {
@@ -62,8 +64,8 @@ public class Cliente implements Serializable {
         this.senha = senha;
         this.dataDeNascimento = dataDeNascimento;
         this.sexo = sexo;
-        this.endereco = (List<Endereco>) endereco;
-    }
+        this.endereco = endereco;
+    }   
 
     public int getId() {
         return id;
@@ -145,16 +147,14 @@ public class Cliente implements Serializable {
         this.sexo = sexo;
     }
 
-    public List<Endereco> getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(List<Endereco> endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-
     
-
     @Override
     public int hashCode() {
         int hash = 5;
