@@ -271,18 +271,18 @@ and open the template in the editor.
                     <tr>
                         <td data-th="Product">
                             <div class="row">
-                                <div class="col-sm-2 hidden-xs"><img src="imagens/camisaPSG3.jpg" alt="..." class="img-responsive"/></div>
+                                <div class="col-sm-2 hidden-xs">#{produtoController.produtoCadastro.imagem}</div>
                                 <div class="col-sm-10">
-                                    <h4 class="nomargin">Camisa Nike Jordan Branca</h4>
-                                    <p>...</p>
+                                    <h4 class="nomargin">#{produtoController.produtoCadastro.nome}</h4>
+                                    <p>#{produtoController.produtoCadastro.descricao}</p>
                                 </div>
                             </div>
                         </td>
-                        <td data-th="Price">$349,00</td>
+                        <td data-th="Price">#{produtoController.produtoCadastro.preco}</td>
                         <td data-th="Quantity">
                             <input type="number" class="form-control text-center" value="1"> </input>
                         </td>
-                        <td data-th="Subtotal" class="text-center">349,00</td>
+                        <td data-th="Subtotal" class="text-center">#{produtoController.produtoCadastro.preco}</td>
                         <td class="actions" data-th="">
                             <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
                             <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
@@ -291,12 +291,12 @@ and open the template in the editor.
                 </tbody>
                 <tfoot>
                     <tr class="visible-xs">
-                        <td class="text-center"><strong>Total 349,00</strong></td>
+                        <td class="text-center"><strong>Total #{produtoController.produtoCadastro.preco}</strong></td>
                     </tr>
                     <tr>
                         <td><a href="home.xhtml" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continuar Comprando</a></td>
                         <td colspan="2" class="hidden-xs"></td>
-                        <td class="hidden-xs text-center"><strong>Total R$ 349,00</strong></td>
+                        <td class="hidden-xs text-center"><strong>Total #{produtoController.produtoCadastro.preco}</strong></td>
                         <td><a href="confirmarCompra.xhtml" class="btn btn-success btn-block">Confirmar <i class="fa fa-angle-right"></i></a></td>
                     </tr>
                 </tfoot>
