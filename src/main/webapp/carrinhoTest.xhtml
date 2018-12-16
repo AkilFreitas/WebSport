@@ -6,8 +6,10 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <head>
         <title>WS | Meu Carrinho</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -30,6 +32,140 @@ and open the template in the editor.
 
             body{      
                 background: url("imagens/planoDeFundo.jpg");
+            }
+
+
+            #divCima {
+                height:100px;
+                width:100%;
+                position: static;
+                overflow:hidden;
+                background: url('imagens/parte cima.png')top no-repeat;
+            }
+            ul{
+                list-style: none;
+            }
+
+            ul{
+                top:91px;
+                position: absolute;
+                width: 100%; 
+            }
+            label {
+                padding: 22px;
+                position: absolute;
+                z-index: 1;
+                top: -13px;
+                left: -20px;
+            }
+
+
+            a.linkMenu{
+                background-color: transparent;
+                z-index: 2;
+                width: 100%;
+                margin-top: 4px;
+                max-height: 50px;
+            }
+            a.menuzin{
+                color: white;
+                padding: 15px 5px;
+                color: white;
+            }
+            a:hover{
+                background-color: #4caf50;
+            }
+
+            a{
+                display: block;
+                padding: 20px 5px; 
+                
+            }
+
+            input[type="checkbox"]{
+                display: none;
+            }
+
+            .navi {
+                background-color: rgba(0, 100, 0, 0.5);
+                background-repeat: repeat;
+                width: 300px;
+                height: 100%;
+                left: -350px;
+                position: absolute;
+                transition: all .5s;
+            }
+
+            input[type="checkbox"]:checked ~ nav {
+                transform: translateX(350px);
+            }
+
+            img{
+                width: 36px;
+
+            }
+
+            ul{
+                list-style: none;
+            }
+
+            div.divIconeLogin{
+                background-color: transparent; 
+                position:absolute;
+                margin-left:1270px;
+                margin-top:-5px;
+                width:60px;
+                height:60px;
+                z-index:1;       
+            }
+            div.divIconeCarrinho {
+                background-color: transparent; 
+                position:absolute;
+                margin-left:1206px;
+                margin-top:-5px;
+                width:55px;
+                height:60px;
+                z-index:1;
+            }
+
+            div.divIconeDaLogo{
+                background-color: transparent;
+                position: absolute;
+                margin-left: 48px;
+                margin-top: -5px;
+                width: 170px;
+                height: 61px;
+                z-index: 1;
+            }
+
+            a.linkDoIconeDaLogo{
+                background-color: transparent;
+                height: 61px;
+            }
+
+            a.linkIconeCarrinho{
+                background-color: transparent;
+                height:60px;
+            }
+
+
+            a.linkIconeLogin{
+                background-color: transparent;
+                height:60px;
+            }
+
+            hr {
+                margin-top: 20px;
+                margin-bottom: 20px;
+                border: 0;
+                border-top: 1px solid #327e04;
+            }
+
+
+
+
+            .form-inline my-2 my-lg-0{
+                background-color: transparent;
             }
 
 
@@ -73,7 +209,52 @@ and open the template in the editor.
 
 
     </head>
-    
+    <h:body>   
+        <input type="checkbox" id="check">
+            <label for="check">
+                <img src="imagens/Hamburger_icon.svg.png"></img>
+            </label>  
+        </input>
+        <nav class="navi">
+            <nav>
+                <div id="divCima">
+                    <a class="linkMenu" href="home.xhtml"><img src="imagens\parte cima.png" height="100"/></a>
+                </div>
+                <ul>
+                    <li><a class="menuzin" href="home.xhtml">HOME</a></li>
+                    <c:if test="#{clienteLogado != null}">
+                        <li><a class="menuzin" href="perfilCliente.xhtml" id="iconeLogin">#{clienteLogado.email}</a></li>
+                    </c:if>
+                    <p:separator />
+                    <li><a class="menuzin" href="pagProduto.xhtml">CAMISAS</a> </li>
+                    <li><a class="menuzin" href="">CALÇAS</a> </li>
+                    <li><a class="menuzin" href="">ESPORTES</a> </li>
+                    <li><a class="menuzin" href="informacoes.xhtml">SOBRE</a> </li>
+                </ul>
+            </nav>
+        </nav>
+        <div class="divIconeLogin" href="login.xhtml"> 
+            <a class="linkIconeLogin" href="login.xhtml" id="iconeLogin"></a>
+        </div>
+        <c:if test="#{clienteLogado != null}">
+            <div class="divIconeLogin" href="perfilCliente.xhtml"> 
+                <a class="linkIconeLogin" href="perfilCliente.xhtml" id="iconeLogin"></a>
+            </div>
+        </c:if>
+
+        <div class="divIconeCarrinho" href="carrinhoTest.xhtml"> 
+            <a class="linkIconeCarrinho" href="carrinhoTest.xhtml" id="iconeLogin"></a>
+        </div>
+
+        <div class="divIconeDaLogo" href="home.xhtml"> 
+            <a class="linkDoIconeDaLogo" href="home.xhtml" id="iconeLogin"></a>
+        </div>
+        <h:form>          
+            <div id="divCima">
+
+            </div>
+        </h:form>
+    </h:body>
     <h:body>
         <div class="container">
             <table id="cart" class="table table-hover table-condensed">
