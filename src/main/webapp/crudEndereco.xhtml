@@ -167,7 +167,7 @@
                         <p:message for="txtRua"/>
 
                         <h:outputText value="Cep*:"/>
-                        <p:inputText type="number" id="txtCep" value="#{enderecoController.enderecoCadastro.cep}"
+                        <p:inputMask id="txtCep" value="#{enderecoController.enderecoCadastro.cep}" mask="99999-99"
                                      required="true" requiredMessage="O campo cep é obrigatório!"/>
                         <p:message for="txtCep"/>
 

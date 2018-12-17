@@ -143,7 +143,7 @@
                         <p:message for="txtCnpj"/>
 
                         <h:outputText value="Telefone*:"/>
-                        <p:inputText type="number" value="#{fornecedorController.fornecedorCadastro.telefone}" id="txtTelefone"
+                        <p:inputMask value="#{fornecedorController.fornecedorCadastro.telefone}" id="txtTelefone" mask="(99) 99999-9999"
                                      required="true" requiredMessage="O campo telefone é obrigatório!"/>
                         <p:message for="txtTelefone"/>
                     </p:panelGrid>
