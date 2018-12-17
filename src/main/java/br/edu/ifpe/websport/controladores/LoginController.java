@@ -48,6 +48,8 @@ public class LoginController {
     public String logar() {
         
         if (this.login.equals("admin") && this.senha.equals("admin")) {
+            this.login = "";
+            this.senha = "";
             return "telaDoAdmin.xhtml?faces-redirect=true";
         }
         
@@ -58,7 +60,7 @@ public class LoginController {
             this.setClienteLogado(c);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "Você foi logado com sucesso!"));
-            return "/menuLateralTest01.xhtml?faces-redirect=true";
+            return "/home.xhtml?faces-redirect=true";
             
         } else {
             FacesContext.getCurrentInstance().addMessage(null,
