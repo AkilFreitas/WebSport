@@ -51,10 +51,35 @@
                                  required="true" requiredMessage="O campo cpf é obrigatório"/>
                     <p:message for="txtCpf"/>
 
-                    <h:outputText value="Endereço*:"/>
-                    <p:inputText value="#{clienteController.clienteCadastro.endereco}" id="txtEndereco"
-                                 required="true" requiredMessage="O campo endereço é obrigatório"/>
-                    <p:message for="txtEndereco"/>
+                    <h:outputText value="Estado*:"/>
+                    <p:inputText value="#{clienteController.clienteCadastro.endereco.estado}" id="txtEstado"
+                                 required="true" requiredMessage="O campo estado é obrigatório"/>
+                    <p:message for="txtEstado"/>
+
+                    <h:outputText value="Cidade*:"/>
+                    <p:inputText value="#{clienteController.clienteCadastro.endereco.cidade}" id="txtCidade"
+                                 required="true" requiredMessage="O campo cidade é obrigatório"/>
+                    <p:message for="txtCidade"/>
+
+                    <h:outputText value="Cep*:"/>
+                    <p:inputMask value="#{clienteController.clienteCadastro.endereco.cep}" id="txtCep" mask="99999-999"
+                                 required="true" requiredMessage="O campo cep é obrigatório"/>
+                    <p:message for="txtCep"/>
+
+                    <h:outputText value="Bairro*:"/>
+                    <p:inputText value="#{clienteController.clienteCadastro.endereco.bairro}" id="txtBairro"
+                                 required="true" requiredMessage="O campo bairro é obrigatório"/>
+                    <p:message for="txtBairro"/>
+
+                    <h:outputText value="Rua*:"/>
+                    <p:inputText value="#{clienteController.clienteCadastro.endereco.rua}" id="txtRua"
+                                 required="true" requiredMessage="O campo rua é obrigatório"/>
+                    <p:message for="txtRua"/>
+
+                    <h:outputText value="Numero*:"/>
+                    <p:inputText type="number" value="#{clienteController.clienteCadastro.endereco.numero}" id="txtNumero"
+                                 required="true" requiredMessage="O campo numero é obrigatório"/>
+                    <p:message for="txtNumero"/>
 
                     <h:outputText value="Telefone*:"/>
                     <p:inputMask  value="#{clienteController.clienteCadastro.telefone}" id="txtTelefone" mask="(99) 99999-9999"
