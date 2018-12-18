@@ -20,9 +20,7 @@ and open the template in the editor.
             <p:dataTable var="item" value="#{clienteController.recuperarTodosClientes()}"
                          rowKey="#{item.id}" paginator="true"
                          rows="5">
-                <p:column headerText="Id">
-                    <h:outputText value="#{item.id}"/>
-                </p:column>
+               
                 <p:column headerText="Email" filterBy="#{item.email}">
                     <h:outputText value="#{item.email}"/>
                 </p:column>
@@ -32,22 +30,7 @@ and open the template in the editor.
                 <p:column headerText="Idade" filterBy="#{item.idade}">
                     <h:outputText value="#{item.idade}"/>
                 </p:column>
-                <p:column headerText="Cep" filterBy="#{item.endereco.cep}">
-                    <h:outputText value="#{item.endereco.cep}"/>
-                </p:column>
-                <p:column headerText="Rua" filterBy="#{item.endereco.rua}">
-                    <h:outputText value="#{item.endereco.rua}"/>
-                </p:column>
-                <p:column headerText="Estado" filterBy="#{item.endereco.estado}">
-                    <h:outputText value="#{item.endereco.estado}"/>
-                </p:column>
-                <p:column headerText="Cidade" filterBy="#{item.endereco.cidade}">
-                    <h:outputText value="#{item.endereco.cidade}"/>
-                </p:column>
-                <p:column headerText="Bairro" filterBy="#{item.endereco.bairro}">
-                    <h:outputText value="#{item.endereco.bairro}"/>
-                </p:column>
-
+                
                 <p:column headerText="operações" style="width: 12%">
                     <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaCliente').show()" 
                                      update=":formCliente:dialVisualizaCliente">
@@ -65,9 +48,6 @@ and open the template in the editor.
                       resizable="false" widgetVar="widDialVisualizaCliente"
                       header="dados da cliente">
                 <p:panelGrid columns="2">
-                    <h:outputText value="Id"/>
-                    <h:outputText value="#{clienteController.selectedCliente.id}"/>
-
                     <h:outputText value="Email"/>
                     <h:outputText value="#{clienteController.selectedCliente.email}"/>
 
@@ -101,11 +81,6 @@ and open the template in the editor.
                 <p:fieldset legend="Alterar Cliente">
                     <p:messages/>
                     <p:panelGrid columns="3">
-
-                        <h:outputText value="Id:"/>
-                        <p:inputText value="#{clienteController.selectedCliente.id}"/>
-                        <h:outputText/>
-
                         <h:outputText value="Email*:"/>
                         <p:inputText value="#{clienteController.selectedCliente.email}" id="txtEmail"
                                      required="true" requiredMessage="O campo email é obrigatorio"/>

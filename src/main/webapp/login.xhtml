@@ -105,17 +105,16 @@
     </style>
     <h:body>
         <h:form>
+            <p:growl id="dro" life="3000"/>
             <div class="login-box">
                 <h1 href="men.xhtml">LOGIN</h1>               
-                <div class="textBox">
-                    <p:growl id="dro" life="3000"/>
+                <div class="textBox">     
                     <p:inputText type="email" placeholder="Email"  value="#{loginController.login}" id="txtLogin"
                                  required="true" requiredMessage="o campo username é obrigatório"></p:inputText>
                     <p:message for="txtLogin"/>
                 </div>    
 
                 <div class="textBox">
-                    <p:growl  life="3000"/>
                     <p:inputText type="password" placeholder="Senha" value="#{loginController.senha}" id="txtSenha"
                                  required="true" requiredMessage="o campo senha é obrigatório"></p:inputText>
                     <p:message for="txtSenha"/>

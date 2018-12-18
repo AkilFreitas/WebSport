@@ -12,6 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import br.edu.ifpe.websport.entidades.Produto;
+import java.util.ArrayList;
 
 /**
  *
@@ -78,6 +79,10 @@ public class ProdutoController {
     public List<Produto> recuperarTodosProdutos() {
         return this.pdtm.recuperarTodos();
     }
+    
+    public String redCarrinho(){
+        return "carrinhoTest.xhtml?faces-redirect=true";
+    }
 
     public ProdutoModel getPm() {
         return pdtm;
@@ -109,6 +114,13 @@ public class ProdutoController {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+    
+    public List getSelectedProdutos(){
+        List p = new ArrayList();
+        p.add(this.selectedProduto);
+        
+        return p;
     }
 
 }

@@ -21,7 +21,7 @@ and open the template in the editor.
         }
         div.camisa{
             
-            width: 200px;
+            width: 500px;
            
         }
     </style>
@@ -38,9 +38,15 @@ and open the template in the editor.
                     <p:column headerText="Imagem">
                         <h:outputText value="#{item.imagem}"/>
                     </p:column>
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{item.nome}"/>
+                    </p:column>
+                    <p:column headerText="Preço">
+                        <h:outputText value="#{item.preco}"/>
+                    </p:column>
                 </p:dataTable>
                 <div class="DivDaCamisa">
-                    <p:commandButton value="comprar" oncomplete="PF('widDialCadProduto').hide()"/>
+                    <p:commandButton action="#{produtoController.redCarrinho()}" value="comprar"/>
                 </div>   
             </div>
 

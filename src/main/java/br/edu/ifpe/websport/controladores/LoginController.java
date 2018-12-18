@@ -60,7 +60,7 @@ public class LoginController {
             this.setClienteLogado(c);
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "Você foi logado com sucesso!"));
-            return "/home.xhtml?faces-redirect=true";
+            return "home.xhtml?faces-redirect=true";
             
         } else {
             FacesContext.getCurrentInstance().addMessage(null,
