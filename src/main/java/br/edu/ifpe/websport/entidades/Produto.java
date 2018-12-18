@@ -2,12 +2,14 @@ package br.edu.ifpe.websport.entidades;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -30,27 +32,27 @@ public class Produto implements Serializable {
     private String nome;
     @Column(length = 20)
     private String marca;
-    @OneToMany
-    private List<Categoria> categoria;
+    @OneToOne (cascade = CascadeType.ALL)
+    private Categoria categoria;
     @Column(length = 20)
     private String descricao;
     @Column(length = 20)
     private float preco;
-    @OneToMany
-    private List<Foto> imagem;
-    @OneToMany
-    private List<Tamanho> tamanho;
+    @Column(length = 20)
+    private String imagem;
+    @OneToOne (cascade = CascadeType.ALL)
+    private Tamanho tamanho;
     @Column(length = 20)
     private boolean disponivel;
     @Column(length = 20)
     private boolean promocao;
-    @OneToMany
-    private List<Fornecedor> fornecedor;
+    @OneToOne (cascade = CascadeType.ALL)
+    private Fornecedor fornecedor;
 
     public Produto() {
     }
 
-    public Produto(int id, String nome, String marca, List<Categoria> categoria, String descricao, float preco, List<Foto> imagem, List<Tamanho> tamanho, boolean disponivel, boolean promocao, List<Fornecedor> fornecedor) {
+    public Produto(int id, String nome, String marca, Categoria categoria, String descricao, float preco, String imagem, Tamanho tamanho, boolean disponivel, boolean promocao, Fornecedor fornecedor) {
         this.id = id;
         this.nome = nome;
         this.marca = marca;
@@ -88,27 +90,27 @@ public class Produto implements Serializable {
         this.marca = marca;
     }
 
-    public List<Categoria> getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(List<Categoria> categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
-    public List<Tamanho> getTamanho() {
+    public Tamanho getTamanho() {
         return tamanho;
     }
 
-    public void setTamanho(List<Tamanho> tamanho) {
+    public void setTamanho(Tamanho tamanho) {
         this.tamanho = tamanho;
     }
 
-    public List<Fornecedor> getFornecedor() {
+    public Fornecedor getFornecedor() {
         return fornecedor;
     }
 
-    public void setFornecedor(List<Fornecedor> fornecedor) {
+    public void setFornecedor(Fornecedor fornecedor) {
         this.fornecedor = fornecedor;
     }
 
@@ -128,15 +130,13 @@ public class Produto implements Serializable {
         this.preco = preco;
     }
 
-    ////////////////////////////////
-    public List<Foto> getImagem() {
+    public String getImagem() {
         return imagem;
     }
 
-    public void setImagem(List<Foto> imagem) {
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
-    /////////////////////////////
 
     public boolean isDisponivel() {
         return disponivel;

@@ -39,10 +39,12 @@ public class ProdutoController {
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "O produto foi cadastrado com sucesso!"));
 
         } catch (Exception ex) {
+            ex.printStackTrace();
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Falha!", "O produto não foi cadastrado!"));
+        } finally {
+            this.produtoCadastro = new Produto();
         }
-        this.produtoCadastro = new Produto();
     }
 
     public void alterarAction(Produto p) {

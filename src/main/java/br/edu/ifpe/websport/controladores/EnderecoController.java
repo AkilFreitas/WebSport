@@ -32,7 +32,7 @@ public class EnderecoController {
         this.enderecoCadastro = new Endereco();
     }
 
-    public String inserirAction() {
+    public void inserirAction() {
 
         try {
             this.em.inserir(this.enderecoCadastro);
@@ -46,7 +46,6 @@ public class EnderecoController {
               Endereco endereco = new Endereco();
         }
         this.enderecoCadastro = new Endereco();
-        return "/menuTest.xhtml?faces-redirect=true";
     }
 
     public void alterarAction(Endereco e) {

@@ -9,10 +9,21 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+
+    <style>
+        div.DivDaCamisa{
+            position: absolute;
+            margin-left: 0px;
+            margin-top: 1px;
+            width: 115px;
+            height: 39px;
+            z-index: 1;
+        }
+
+    </style>
+    <h:head>
+        <title>Resumo da Compra</title>
+    </h:head>
     <ui:include src="home1.xhtml"/>
     <h:body>
         <h:form id="formApresentaCliente">
@@ -51,6 +62,18 @@ and open the template in the editor.
                     <h:outputText value="#{clienteController.selectedCliente.endereco.cep}"/>
                 </p:panelGrid>
                 <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaCliente').hide()"/>
+            </p:dialog>
+        </h:form>
+
+
+        <h:form id="formCamisas">
+            <p:dialog id="dialVisualizaProduto" visible="false" modal="true"
+                      resizable="false" widgetVar="widDialVisualizaProduto">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Imagem"/>
+                    <h:outputText value="#{produtoController.selectedProduto.imagem}"/>
+                    <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaProduto').hide()"/>
+                </p:panelGrid> 
             </p:dialog>
         </h:form>
     </h:body>

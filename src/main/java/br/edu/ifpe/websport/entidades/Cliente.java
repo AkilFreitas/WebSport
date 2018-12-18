@@ -3,6 +3,7 @@ package br.edu.ifpe.websport.entidades;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,13 +41,13 @@ public class Cliente implements Serializable {
     private String nome;
     @Column(length = 20)
     private String email;
-    @Column(length = 20)
+    @Column(length = 64)
     private String senha;
     @Column(length = 20)
     private String dataDeNascimento;
     @Column(length = 20)
     private String sexo;
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     private Endereco endereco;
 
     public Cliente() {

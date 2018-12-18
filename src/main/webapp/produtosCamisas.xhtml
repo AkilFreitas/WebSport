@@ -6,14 +6,46 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div></div>
-        <p>AS COMISAS DEVERÃO FICAR AQUIIIIIIIIIIIIIIIIIIIIIIII</p>
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <style>
+        div.DivDaCamisa{
+            position: absolute;
+            margin-left: 0px;
+            margin-top: 1px;
+            width: 115px;
+            height: 39px;
+            z-index: 1;
+        }
+        div.camisa{
+            
+            width: 200px;
+           
+        }
+
+    </style>
+    <h:head>
+        <title>camisas</title>
+    </h:head>
+    <h:body>
         <ui:include src="home1.xhtml"/>
-    </body>
+        <h:form id="formCamisas">
+            <div class="camisa" id="camisa">
+                <p:dataTable id="tabelaProduto" var="item" value="#{produtoController.recuperarTodosProdutos()}"
+                             rowKey="#{item.id}" selectionMode="single" selection="#{produtoController.selectedProduto}">
+                    
+                        <p:column headerText="Imagem">
+                            <h:outputText value="#{item.imagem}"/>
+                        </p:column>
+                    
+                </p:dataTable>
+                <div class="DivDaCamisa">
+                    <p:commandButton value="comprar" oncomplete="PF('widDialCadProduto').hide()"/>
+                </div>   
+            </div>
+
+        </h:form>
+    </h:body>
 </html>

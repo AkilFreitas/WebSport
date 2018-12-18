@@ -6,30 +6,14 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Crud Fornecedor</title>
-        <style type="text/css">
-            #divCima {
-                width:100%;
-                position: relative;
-                overflow:hidden;
-                background:#fff url('parte de cima.png') top no-repeat;
-
-            }
-            #divBaixo {
-                position: fixed;
-                bottom: 0;
-                right: 1;
-                width:100%;
-                overflow:hidden;
-                background:#fff url('parte de baixo') top no-repeat;
-
+        <style>
+            body{      
+                background: url("imagens/planoDeFundo.jpg");
             }
         </style>
     </h:head>
     <h:body>
         <p:growl id="gro" showDetail="true" showSummary="true"/>
-        <div id="divCima">
-            <hl><img src="\imagens\parte de cima.png"  height="122"/></hl>
-        </div>
         <h:form id="formFornecedor">
             <p:commandButton value="inserir" oncomplete="PF('widDialCadFornecedor').show()"/>
             <a href="telaDoAdmin.xhtml"><p:commandButton value="sair"/></a>
@@ -192,9 +176,6 @@
                 </p:fieldset>
             </h:form>
         </p:dialog>
-        <div id="divBaixo" align="justify">
-            <hl><img src="\imagens\parte de baixo.png" height="101px"/></hl>
-        </div>
     </h:body>
 </html>
 

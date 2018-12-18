@@ -155,27 +155,8 @@ and open the template in the editor.
     <h:body>
         <h:form>
             <div class="login-box">
+                <p:growl id="dro" life="3000"/>
                 <h1 href="men.xhtml">Cadastro</h1>
-                <div class="textBox">
-                    <p:growl id="dro" life="3000"/>
-                    <p:inputText type="text" placeholder="Username"  value="#{clienteController.clienteCadastro.nome}" id="txtNome"
-                                 required="true" requiredMessage="o campo username é obrigatório"></p:inputText>
-                    <p:message for="txtNome"/>
-                </div>
-                
-                <div class="textBox">
-                    <p:growl id="dro" life="3000"/>
-                    <p:inputText type="text" placeholder="Sexo"  value="#{clienteController.clienteCadastro.sexo}" id="txtSexo"
-                                 required="true" requiredMessage="o campo sexo é obrigatório"></p:inputText>
-                    <p:message for="txtSexo"/>
-                </div>
-                
-                <div class="textBox">
-                    <p:growl id="dro" life="3000"/>
-                    <p:inputText type="number" placeholder="idade"  value="#{clienteController.clienteCadastro.sexo}" id="txtIdade"
-                                 required="true" requiredMessage="o campo idade é obrigatório"></p:inputText>
-                    <p:message for="txtIdade"/>
-                </div>
 
                 <div class="textEmailBox">
                     <p:growl life="3000"/>
@@ -185,7 +166,18 @@ and open the template in the editor.
                 </div>
 
                 <div class="textBox">
-                    <p:growl  life="3000"/>
+                    <p:inputText type="text" placeholder="Sexo"  value="#{clienteController.clienteCadastro.sexo}" id="txtSexo"
+                                 required="true" requiredMessage="o campo sexo é obrigatório"></p:inputText>
+                    <p:message for="txtSexo"/>
+                </div>
+
+                <div class="textBox">
+                    <p:inputText type="number" placeholder="idade"  value="#{clienteController.clienteCadastro.idade}" id="txtIdade"
+                                 required="true" requiredMessage="o campo idade é obrigatório"></p:inputText>
+                    <p:message for="txtIdade"/>
+                </div>
+
+                <div class="textBox">
                     <p:inputText type="password" placeholder="Senha" value="#{clienteController.clienteCadastro.senha}" id="txtSenha"
                                  required="true" requiredMessage="o campo senha é obrigatório"></p:inputText>
                     <p:message for="txtSenha"/>

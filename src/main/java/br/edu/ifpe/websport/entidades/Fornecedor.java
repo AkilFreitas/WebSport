@@ -27,7 +27,7 @@ public class Fornecedor implements Serializable {
     @Column(length = 20)
     private int cnpj;
     @Column(length = 20)
-    private int telefone;
+    private String telefone;
     @Column(length = 20)
     private String nomeFantasia;
     @Column(length = 20)
@@ -36,7 +36,7 @@ public class Fornecedor implements Serializable {
     public Fornecedor() {
     }
 
-    public Fornecedor(int id, int cnpj, int telefone, String nomeFantasia, String email) {
+    public Fornecedor(int id, int cnpj, String telefone, String nomeFantasia, String email) {
         this.id = id;
         this.cnpj = cnpj;
         this.telefone = telefone;
@@ -60,11 +60,11 @@ public class Fornecedor implements Serializable {
         this.cnpj = cnpj;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
