@@ -47,7 +47,7 @@ public class LoginController {
     
     public String logar() {
         
-        if (this.login.equals("admin") && this.senha.equals("admin")) {
+        if (this.login.equals("admin@g.com") && this.senha.equals("admin")) {
             this.login = "";
             this.senha = "";
             return "telaDoAdmin.xhtml?faces-redirect=true";

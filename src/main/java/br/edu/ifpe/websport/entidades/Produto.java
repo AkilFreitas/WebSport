@@ -28,23 +28,23 @@ public class Produto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(length = 20)
+    @Column(length = 100)
     private String nome;
-    @Column(length = 20)
+    @Column(length = 100)
     private String marca;
     @OneToOne (cascade = CascadeType.ALL)
     private Categoria categoria;
-    @Column(length = 20)
+    @Column(length = 100)
     private String descricao;
-    @Column(length = 20)
+    @Column(length = 100)
     private float preco;
-    @Column(length = 20)
+    @Column(length = 100)
     private String imagem;
     @OneToOne (cascade = CascadeType.ALL)
     private Tamanho tamanho;
-    @Column(length = 20)
+    @Column(length = 100)
     private boolean disponivel;
-    @Column(length = 20)
+    @Column(length = 100)
     private boolean promocao;
     @OneToOne (cascade = CascadeType.ALL)
     private Fornecedor fornecedor;

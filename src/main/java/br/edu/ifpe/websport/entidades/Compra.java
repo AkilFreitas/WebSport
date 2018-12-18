@@ -3,12 +3,13 @@ package br.edu.ifpe.websport.entidades;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -81,8 +82,8 @@ public class Compra implements Serializable {
     private Date data;
     @Column(length = 20)
     private float total;
-    @OneToMany
-    private List<Cliente> cliente;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Cliente cliente;
     @Column(length = 20)
     private float frete;
     @Column(length = 20)
@@ -91,10 +92,10 @@ public class Compra implements Serializable {
     private boolean cancelarCompra;
     @Column(length = 20)
     private String observacoes;
-    @OneToMany
-    private List<Pagamento> tipoDePagamento;
-    @OneToMany
-    private List<Produto> produto;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Pagamento tipoDePagamento;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Produto produto;
     @Column(length = 20)
     private STATUS status;
 
@@ -105,13 +106,13 @@ public class Compra implements Serializable {
         this.id = id;
         this.data = data;
         this.total = total;
-        this.cliente = (List<Cliente>) cliente;
+        this.cliente = cliente;
         this.frete = frete;
         this.concluida = concluida;
         this.cancelarCompra = cancelarCompra;
         this.observacoes = observacoes;
-        this.tipoDePagamento = (List<Pagamento>) tipoDePagamento;
-        this.produto = (List<Produto>) produto;
+        this.tipoDePagamento = tipoDePagamento;
+        this.produto = produto;
         this.status = status;
     }
 
@@ -123,31 +124,31 @@ public class Compra implements Serializable {
         this.id = id;
     }
 
-    public List<Cliente> getCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(List<Cliente> cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
-    public List<Pagamento> getTipoDePagamento() {
+    public Pagamento getTipoDePagamento() {
         return tipoDePagamento;
     }
 
-    public void setTipoDePagamento(List<Pagamento> tipoDePagamento) {
+    public void setTipoDePagamento(Pagamento tipoDePagamento) {
         this.tipoDePagamento = tipoDePagamento;
     }
 
-    public List<Produto> getProduto() {
+    public Produto getProduto() {
         return produto;
     }
 
-    public void setProduto(List<Produto> produto) {
+    public void setProduto(Produto produto) {
         this.produto = produto;
     }
 
-
+    
     public Date getData() {
         return data;
     }

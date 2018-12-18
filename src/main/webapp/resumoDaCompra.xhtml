@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <style>
         div.DivDaCamisa{
@@ -26,18 +27,60 @@ and open the template in the editor.
     </h:head>
     <ui:include src="home1.xhtml"/>
     <h:body>
-        <h:form id="formApresentaCliente">
-            <p:growl id="gro" life="3000"/>
-            <p:dialog id="dialVisualizaCliente" visible="false" resizable="false"
-                      modal="true" widgetVar="widDialVisualizaCliente">
+        <p:growl id="gro" showDetail="true" showSummary="true"/>
+        <h:form id="formCliente">
+            <p:dataTable var="item" value="#{clienteController.recuperarTodosClientes()}"
+                         rowKey="#{item.id}" paginator="true"
+                         rows="5">
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="Email" filterBy="#{item.email}">
+                    <h:outputText value="#{item.email}"/>
+                </p:column>
+                <p:column headerText="Sexo" filterBy="#{item.sexo}">
+                    <h:outputText value="#{item.sexo}"/>
+                </p:column>
+                <p:column headerText="Idade" filterBy="#{item.idade}">
+                    <h:outputText value="#{item.idade}"/>
+                </p:column>
+                <p:column headerText="Cep" filterBy="#{item.endereco.cep}">
+                    <h:outputText value="#{item.endereco.cep}"/>
+                </p:column>
+                <p:column headerText="Rua" filterBy="#{item.endereco.rua}">
+                    <h:outputText value="#{item.endereco.rua}"/>
+                </p:column>
+                <p:column headerText="Estado" filterBy="#{item.endereco.estado}">
+                    <h:outputText value="#{item.endereco.estado}"/>
+                </p:column>
+                <p:column headerText="Cidade" filterBy="#{item.endereco.cidade}">
+                    <h:outputText value="#{item.endereco.cidade}"/>
+                </p:column>
+                <p:column headerText="Bairro" filterBy="#{item.endereco.bairro}">
+                    <h:outputText value="#{item.endereco.bairro}"/>
+                </p:column>
+
+                <p:column headerText="operações" style="width: 12%">
+                    <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaCliente').show()" 
+                                     update=":formCliente:dialVisualizaCliente">
+                        <f:setPropertyActionListener value="#{item}" target="#{clienteController.selectedCliente}"/>
+                    </p:commandButton>
+                    <p:commandButton icon="ui-icon-wrench" oncomplete="PF('widDialAlteraCliente').show()"
+                                     update=":formDialAlteraCliente">
+                        <f:setPropertyActionListener value="#{item}" target="#{clienteController.selectedCliente}"/>
+                    </p:commandButton>
+                </p:column>           
+            </p:dataTable>
+
+
+            <p:dialog id="dialVisualizaCliente" visible="false" modal="true"
+                      resizable="false" widgetVar="widDialVisualizaCliente"
+                      header="dados da cliente">
                 <p:panelGrid columns="2">
                     <h:outputText value="Id"/>
                     <h:outputText value="#{clienteController.selectedCliente.id}"/>
 
-                    <h:outputText value="Nome"/>
-                    <h:outputText value="#{clienteController.selectedCliente.nome}"/>
-
-                    <h:outputText value="Email:"/>
+                    <h:outputText value="Email"/>
                     <h:outputText value="#{clienteController.selectedCliente.email}"/>
 
                     <h:outputText value="Sexo"/>
@@ -45,6 +88,12 @@ and open the template in the editor.
 
                     <h:outputText value="Idade"/>
                     <h:outputText value="#{clienteController.selectedCliente.idade}"/>
+
+                    <h:outputText value="Cep"/>
+                    <h:outputText value="#{clienteController.selectedCliente.endereco.cep}"/>
+
+                    <h:outputText value="Rua"/>
+                    <h:outputText value="#{clienteController.selectedCliente.endereco.rua}"/>
 
                     <h:outputText value="Estado"/>
                     <h:outputText value="#{clienteController.selectedCliente.endereco.estado}"/>
@@ -54,27 +103,88 @@ and open the template in the editor.
 
                     <h:outputText value="Bairro"/>
                     <h:outputText value="#{clienteController.selectedCliente.endereco.bairro}"/>
-
-                    <h:outputText value="Rua"/>
-                    <h:outputText value="#{clienteController.selectedCliente.endereco.rua}"/>
-
-                    <h:outputText value="Cep"/>
-                    <h:outputText value="#{clienteController.selectedCliente.endereco.cep}"/>
-                </p:panelGrid>
-                <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaCliente').hide()"/>
+                </p:panelGrid>                   
             </p:dialog>
         </h:form>
 
+        <p:dialog id="dialAlteraCliente" visible="false" modal="true" resizable="false"
+                  widgetVar="widDialAlteraCliente" header="Alterar Cliente">
+            <h:form id="formDialAlteraCliente">
+                <p:fieldset legend="Alterar Cliente">
+                    <p:messages/>
+                    <p:panelGrid columns="3">
 
-        <h:form id="formCamisas">
-            <p:dialog id="dialVisualizaProduto" visible="false" modal="true"
-                      resizable="false" widgetVar="widDialVisualizaProduto">
-                <p:panelGrid columns="2">
-                    <h:outputText value="Imagem"/>
-                    <h:outputText value="#{produtoController.selectedProduto.imagem}"/>
-                    <p:commandButton value="fechar" oncomplete="PF('widDialVisualizaProduto').hide()"/>
-                </p:panelGrid> 
-            </p:dialog>
+                        <h:outputText value="Id:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.id}"/>
+                        <h:outputText/>
+
+                        <h:outputText value="Email*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.email}" id="txtEmail"
+                                     required="true" requiredMessage="O campo email é obrigatorio"/>
+                        <p:message for="txtEmail"/>
+
+                        <h:outputText value="Sexo*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.sexo}" id="txtSexo"
+                                     required="true" requiredMessage="O campo sexo é obrigatorio"/>
+                        <p:message for="txtSexo"/>
+
+                        <h:outputText value="Idade*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.idade}" id="txtIdade"
+                                     required="true" requiredMessage="O campo idade é obrigatorio"/>
+                        <p:message for="txtIdade"/>
+
+                        <h:outputText value="Cep*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.endereco.cep}" id="txtCep"
+                                     required="true" requiredMessage="O campo cep é obrigatorio"/>
+                        <p:message for="txtCep"/>
+
+                        <h:outputText value="Rua*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.endereco.rua}" id="txtRua"
+                                     required="true" requiredMessage="O campo rua é obrigatorio"/>
+                        <p:message for="txtRua"/>
+
+                        <h:outputText value="Estado*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.endereco.estado}" id="txtEstado"
+                                     required="true" requiredMessage="O campo estado é obrigatorio"/>
+                        <p:message for="txtEstado"/>
+
+                        <h:outputText value="Cidade*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.endereco.cidade}" id="txtCidade"
+                                     required="true" requiredMessage="O campo cidade é obrigatorio"/>
+                        <p:message for="txtCidade"/>
+
+                        <h:outputText value="Bairro*:"/>
+                        <p:inputText value="#{clienteController.selectedCliente.endereco.bairro}" id="txtBairro"
+                                     required="true" requiredMessage="O campo bairro é obrigatorio"/>
+                        <p:message for="txtBairro"/>   
+                    </p:panelGrid>
+                    <p:commandButton value="Alterar" action="#{clienteController.alterarAction(clienteController.selectedCliente)}"
+                                     oncomplete="PF('widDialAlteraCliente').hide()" 
+                                     update=':formCliente :gro @form'/>
+                </p:fieldset>
+            </h:form>
+        </p:dialog>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h:form id="formProduto">
+            <p:dataTable var="item" value="#{produtoController.recuperarTodosProdutos()}"
+                         rowKey="#{item.id}">
+                <f:facet name="header">
+                    Produto
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+                <p:column headerText="Imagem" filterBy="#{item.imagem}">
+                    <h:outputText value="#{item.imagem}"/>
+                </p:column>
+                <p:column headerText="Nome" filterBy="#{item.nome}">
+                    <h:outputText value="#{item.nome}"/>
+                </p:column>
+            </p:dataTable>
         </h:form>
     </h:body>
 </html>

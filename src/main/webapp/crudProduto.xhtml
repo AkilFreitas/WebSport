@@ -18,7 +18,6 @@
         <p:growl id="gro" showDetail="true" showSummary="true"/>
         <h:form id="formProduto">
             <p:commandButton value="inserir" oncomplete="PF('widDialCadProduto').show()"/>
-            <a  href="telaDoAdmin.xhtml"><p:commandButton  value="sair"/></a>
             <p:dataTable var="item" value="#{produtoController.recuperarTodosProdutos()}"
                          rowKey="#{item.id}" paginator="true"
                          rows="5">
