@@ -19,7 +19,11 @@ and open the template in the editor.
             height: 39px;
             z-index: 1;
         }
-
+        div.camisa{
+            
+            width: 200px;
+           
+        }
     </style>
     <h:head>
         <title>camisas</title>
@@ -27,7 +31,7 @@ and open the template in the editor.
     <h:body>
         <ui:include src="home1.xhtml"/>
         <h:form id="formCamisas">
-            <div id="camisa">
+            <div class="camisa" id="camisa">
                 <p:dataTable id="tabelaProduto" var="item" value="#{produtoController.recuperarTodosProdutos()}"
                              rowKey="#{item.id}" selectionMode="single" selection="#{produtoController.selectedProduto}">
                     
