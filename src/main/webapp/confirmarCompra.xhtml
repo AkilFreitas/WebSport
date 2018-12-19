@@ -119,42 +119,42 @@ and open the template in the editor.
                 <h1 href="men.xhtml">Confirmar Compra</h1>
                 <div class="textBox">
                     <p:growl id="dro" life="3000"/>
-                    <p:inputText type="text" placeholder="Estado"  value="#{clienteController1.clienteCadastro.endereco.estado}" id="txtEstado"
+                    <p:inputText type="text" placeholder="Estado"  value="#{clienteController.clienteCadastro.endereco.estado}" id="txtEstado"
                                  required="true" requiredMessage="o campo estado é obrigatório"></p:inputText>
                     <p:message for="txtEstado"/>
                 </div>
 
                 <div class="textBox">
                     <p:growl life="3000"/>
-                    <p:inputText type="text" placeholder="Cidade"  value="#{clienteController1.clienteCadastro.endereco.cidade}" id="txtCidade"
+                    <p:inputText type="text" placeholder="Cidade"  value="#{clienteController.clienteCadastro.endereco.cidade}" id="txtCidade"
                                  required="true" requiredMessage="o campo cidade é obrigatório"></p:inputText>
                     <p:message for="txtCidade"/>
                 </div>
 
                 <div class="textBox">
                     <p:growl life="3000"/>
-                    <p:inputText type="text" placeholder="Bairro"  value="#{clienteController1.clienteCadastro.endereco.bairro}" id="txtBairro"
+                    <p:inputText type="text" placeholder="Bairro"  value="#{clienteController.clienteCadastro.endereco.bairro}" id="txtBairro"
                                  required="true" requiredMessage="o campo bairro é obrigatório"></p:inputText>
                     <p:message for="txtBairro"/>
                 </div>
 
                 <div class="textBox">
                     <p:growl life="3000"/>
-                    <p:inputMask placeholder="Cep" value="#{clienteController1.clienteCadastro.endereco.cep}" id="txtCep" mask="99999-999"
+                    <p:inputMask placeholder="Cep" value="#{clienteController.clienteCadastro.endereco.cep}" id="txtCep" mask="99999-999"
                                  required="true" requiredMessage="O campo cep é obrigatório"/>
                     <p:message for="txtCep"/>
                 </div>
 
                 <div class="textBox">
                     <p:growl life="3000"/>
-                    <p:inputText type="text" placeholder="Rua"  value="#{clienteController1.clienteCadastro.endereco.rua}" id="txtRua"
+                    <p:inputText type="text" placeholder="Rua"  value="#{clienteController.clienteCadastro.endereco.rua}" id="txtRua"
                                  required="true" requiredMessage="o campo rua é obrigatório"></p:inputText>
                     <p:message for="txtRua"/>
                 </div>
 
                 <div class="textBox">
                     <p:growl life="3000"/>
-                    <p:inputText placeholder="Numero" value="#{clienteController1.clienteCadastro.endereco.numero}" id="txtNumero"
+                    <p:inputText placeholder="Numero" value="#{clienteController.clienteCadastro.endereco.numero}" id="txtNumero"
                                  required="true" requiredMessage="o campo numero é obrigatório"></p:inputText>
                     <p:message for="txtNumero"/>
                 </div>

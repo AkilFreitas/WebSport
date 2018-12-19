@@ -208,11 +208,12 @@ and open the template in the editor.
                     <c:if test="#{clienteLogado != null}">
                         <li><a class="menuzin" href="perfilCliente.xhtml" id="iconeLogin">#{clienteLogado.email}</a></li>
                         <h:form>
-                        <li><h:commandLink styleClass="menuzin" action="#{loginController.deslogar()}" value="Deslogar"/></li>
+                        <li><h:commandLink styleClass="menuzin" action="#{loginController.deslogar()}" value="DESLOGAR"/></li>
                         </h:form>
                     </c:if>
                     <p:separator />
                     <li><a class="menuzin" href="produtosCamisas.xhtml">CAMISAS</a> </li>
+                    <li><a class="menuzin" href="resumoDaCompra.xhtml">RESUMO DA COMPRA</a> </li>
                     <li><a class="menuzin" href="informacoes.xhtml">SOBRE</a> </li>
                 </ul>
             </nav>
