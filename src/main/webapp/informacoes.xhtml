@@ -1,22 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        
-        <h1>
-            Desenvolvedores:
-            
-            
-            
-        </h1>
-        
-                    Michael Lucas
-                    Paulo Davi
-                    Akil Victon
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    </body>
+    <style>
+        div.divFotoMichael{
+            margin-left:120px;
+            margin-top:31px;
+        }
+
+        div.divFotoLogo{
+            margin-left: 519px;
+            margin-top: -320px;
+        }
+
+        div.divFotoNeto{
+            margin-left: 862px;
+            margin-top: -369px;
+        }
+
+        img.fotoMichael{
+            width: 300px;
+        }
+
+        img.fotoNeto{
+            width: 300px;
+        }
+
+        img.fotoLogo{
+            width: 300px;
+        }
+
+        h1.h1-Desenvolvedor{
+            font-size: 2.5rem;
+            color: #3eb649;
+        }
+        
+        div.divNomeMichael{
+            font-size: 1rem;
+            color: #3eb649;
+        }
+        
+        div.divNomeNeto{
+            font-size: 1rem;
+            color: #3eb649;
+        }
+        
+    </style>
+
+    <h:head>
+
+    </h:head>
+
+
+    <h:body>
+        <ui:include src="home1.xhtml"/>
+
+        <h1 class="h1-Desenvolvedor">
+            Desenvolvedores:
+        </h1>
+
+        <div class="divFotoMichael">
+            <img class="fotoMichael" src="imagens/desenvolvedores/eu-foto reduzida.jpg"/>
+            <div class="divNomeMichael"><h1>Michael Lucas</h1></div>
+        </div>
+
+        <div class="divFotoLogo">
+            <img class="fotoLogo" src="imagens/logo redonda.png"/>
+        </div>
+
+        <div class="divFotoNeto">
+            <img class="fotoNeto" src="imagens/desenvolvedores/neto.jpg"/>
+            <div class="divNomeNeto"><h1>Paulo Davi</h1></div>
+        </div>
+
+    </h:body>
 </html>

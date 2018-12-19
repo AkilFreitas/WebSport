@@ -17,7 +17,7 @@ and open the template in the editor.
     <h:body>
         <p:growl id="gro" showDetail="true" showSummary="true"/>
         <h:form id="formCliente">
-            <p:dataTable var="item" value="#{clienteController.recuperarTodosClientes()}"
+            <p:dataTable var="item" value="#{loginController.selectedClientes()}"
                          rowKey="#{item.id}" paginator="true"
                          rows="5">
                
@@ -49,28 +49,28 @@ and open the template in the editor.
                       header="dados da cliente">
                 <p:panelGrid columns="2">
                     <h:outputText value="Email"/>
-                    <h:outputText value="#{clienteController.selectedCliente.email}"/>
+                    <h:outputText value="#{loginController.getClienteLogado().email}"/>
 
                     <h:outputText value="Sexo"/>
-                    <h:outputText value="#{clienteController.selectedCliente.sexo}"/>
+                    <h:outputText value="#{loginController.getClienteLogado().sexo}"/>
 
                     <h:outputText value="Idade"/>
-                    <h:outputText value="#{clienteController.selectedCliente.idade}"/>
+                    <h:outputText value="#{loginController.getClienteLogado().idade}"/>
 
                     <h:outputText value="Cep"/>
-                    <h:outputText value="#{clienteController.selectedCliente.endereco.cep}"/>
+                    <h:outputText value="#{loginController.getClienteLogado().endereco.cep}"/>
 
                     <h:outputText value="Rua"/>
-                    <h:outputText value="#{clienteController.selectedCliente.endereco.rua}"/>
+                    <h:outputText value="#{loginController.getClienteLogado().endereco.rua}"/>
 
                     <h:outputText value="Estado"/>
-                    <h:outputText value="#{clienteController.selectedCliente.endereco.estado}"/>
+                    <h:outputText value="#{loginController.getClienteLogado().endereco.estado}"/>
 
                     <h:outputText value="Cidade"/>
-                    <h:outputText value="#{clienteController.selectedCliente.endereco.cidade}"/>
+                    <h:outputText value="#{loginController.getClienteLogado().endereco.cidade}"/>
 
                     <h:outputText value="Bairro"/>
-                    <h:outputText value="#{clienteController.selectedCliente.endereco.bairro}"/>
+                    <h:outputText value="#{loginController.getClienteLogado().endereco.bairro}"/>
                 </p:panelGrid>                   
             </p:dialog>
         </h:form>
@@ -82,42 +82,42 @@ and open the template in the editor.
                     <p:messages/>
                     <p:panelGrid columns="3">
                         <h:outputText value="Email*:"/>
-                        <p:inputText value="#{clienteController.selectedCliente.email}" id="txtEmail"
+                        <p:inputText value="#{loginController.getClienteLogado().email}" id="txtEmail"
                                      required="true" requiredMessage="O campo email é obrigatorio"/>
                         <p:message for="txtEmail"/>
 
                         <h:outputText value="Sexo*:"/>
-                        <p:inputText value="#{clienteController.selectedCliente.sexo}" id="txtSexo"
+                        <p:inputText value="#{loginController.getClienteLogado().sexo}" id="txtSexo"
                                      required="true" requiredMessage="O campo sexo é obrigatorio"/>
                         <p:message for="txtSexo"/>
 
                         <h:outputText value="Idade*:"/>
-                        <p:inputText value="#{clienteController.selectedCliente.idade}" id="txtIdade"
+                        <p:inputText value="#{loginController.getClienteLogado().idade}" id="txtIdade"
                                      required="true" requiredMessage="O campo idade é obrigatorio"/>
                         <p:message for="txtIdade"/>
 
                         <h:outputText value="Cep*:"/>
-                        <p:inputText value="#{clienteController.selectedCliente.endereco.cep}" id="txtCep"
+                        <p:inputText value="#{loginController.getClienteLogado().endereco.cep}" id="txtCep"
                                      required="true" requiredMessage="O campo cep é obrigatorio"/>
                         <p:message for="txtCep"/>
 
                         <h:outputText value="Rua*:"/>
-                        <p:inputText value="#{clienteController.selectedCliente.endereco.rua}" id="txtRua"
+                        <p:inputText value="#{loginController.getClienteLogado().endereco.rua}" id="txtRua"
                                      required="true" requiredMessage="O campo rua é obrigatorio"/>
                         <p:message for="txtRua"/>
 
                         <h:outputText value="Estado*:"/>
-                        <p:inputText value="#{clienteController.selectedCliente.endereco.estado}" id="txtEstado"
+                        <p:inputText value="#{loginController.getClienteLogado().endereco.estado}" id="txtEstado"
                                      required="true" requiredMessage="O campo estado é obrigatorio"/>
                         <p:message for="txtEstado"/>
 
                         <h:outputText value="Cidade*:"/>
-                        <p:inputText value="#{clienteController.selectedCliente.endereco.cidade}" id="txtCidade"
+                        <p:inputText value="#{loginController.getClienteLogado().endereco.cidade}" id="txtCidade"
                                      required="true" requiredMessage="O campo cidade é obrigatorio"/>
                         <p:message for="txtCidade"/>
 
                         <h:outputText value="Bairro*:"/>
-                        <p:inputText value="#{clienteController.selectedCliente.endereco.bairro}" id="txtBairro"
+                        <p:inputText value="#{loginController.getClienteLogado().endereco.bairro}" id="txtBairro"
                                      required="true" requiredMessage="O campo bairro é obrigatorio"/>
                         <p:message for="txtBairro"/>   
                     </p:panelGrid>

@@ -202,8 +202,14 @@ and open the template in the editor.
                 </div>
                 <ul>
                     <li><a class="menuzin" href="home.xhtml">HOME</a></li>
+                    <c:if test="#{clienteController.clienteCadastro.email != null}">
+                        <li><a class="menuzin" href="perfilCliente.xhtml" id="iconeLogin">#{clienteLogado.email}</a></li>
+                    </c:if>
                     <c:if test="#{clienteLogado != null}">
                         <li><a class="menuzin" href="perfilCliente.xhtml" id="iconeLogin">#{clienteLogado.email}</a></li>
+                        <h:form>
+                        <li><h:commandLink styleClass="menuzin" action="#{loginController.deslogar()}" value="Deslogar"/></li>
+                        </h:form>
                     </c:if>
                     <p:separator />
                     <li><a class="menuzin" href="produtosCamisas.xhtml">CAMISAS</a> </li>
@@ -240,12 +246,12 @@ and open the template in the editor.
                     <div class="col-md-5">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <a href="produtosCamisas.xhtml"> <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="imagens/promocaoChampiosLeague/vai2.jpg" alt="First slide"></img>
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="imagens/promocaoChampiosLeague/vai.jpg" alt="Second slide"></img>
-                                </div>
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" src="imagens/promocaoChampiosLeague/vai2.jpg" alt="First slide"></img>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="imagens/promocaoChampiosLeague/vai.jpg" alt="Second slide"></img>
+                                    </div>
                                 </div></a>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

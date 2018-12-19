@@ -8,6 +8,8 @@ package br.edu.ifpe.websport.controladores;
 import br.edu.ifpe.websport.criptografia.LoginCriptografia;
 import br.edu.ifpe.websport.model.ClienteModel;
 import br.edu.ifpe.websport.entidades.Cliente;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -69,8 +71,9 @@ public class LoginController {
         }
     }
     
-    public void deslogar() {
-        setCliLogado(false);
+    public String deslogar() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "home.xhtml?faces-redirect=true";
     }
     
     public void setClienteLogado(Cliente c) {
@@ -105,4 +108,10 @@ public class LoginController {
         this.cliLogado = cliLogado;
     }
     
+    public List selectedClientes(){
+        List c = new ArrayList();
+        c.add(this.getClienteLogado());
+        
+        return c;
+    }
 }

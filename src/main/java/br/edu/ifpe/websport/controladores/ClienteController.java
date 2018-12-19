@@ -8,6 +8,7 @@ package br.edu.ifpe.websport.controladores;
 import br.edu.ifpe.websport.criptografia.LoginCriptografia;
 import br.edu.ifpe.websport.model.ClienteModel;
 import br.edu.ifpe.websport.entidades.Cliente;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -115,4 +116,10 @@ public class ClienteController {
         this.cliente = cliente;
     }
 
+    public List setSelectedClientes(){
+        List c = new ArrayList();
+        c.add(this.selectedCliente);
+        
+        return c;
+    }
 }

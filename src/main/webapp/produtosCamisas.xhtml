@@ -13,28 +13,31 @@ and open the template in the editor.
     <style>
         div.DivDaCamisa{
             position: absolute;
-            margin-left: 94px;
+            margin-left: 1258px;
             margin-top: 1px;
             width: 115px;
             height: 39px;
             z-index: 1;
         }
         div.camisa{
-            
-            width: 500px;
-           
+
+            width: 1365px;
+
         }
     </style>
     <h:head>
         <title>camisas</title>
     </h:head>
-    <h:body>
+    <h:body> 
         <ui:include src="home1.xhtml"/>
+        <br></br>
+        <br></br>
+          
         <h:form id="formCamisas">
             <div class="camisa" id="camisa">
                 <p:dataTable id="tabelaProduto" var="item" value="#{produtoController.recuperarTodosProdutos()}"
                              rowKey="#{item.id}" selectionMode="single" selection="#{produtoController.selectedProduto}">
-                    
+
                     <p:column headerText="Imagem">
                         <h:outputText value="#{item.imagem}"/>
                     </p:column>
@@ -49,7 +52,6 @@ and open the template in the editor.
                     <p:commandButton action="#{produtoController.redCarrinho()}" value="comprar"/>
                 </div>   
             </div>
-
         </h:form>
     </h:body>
 </html>

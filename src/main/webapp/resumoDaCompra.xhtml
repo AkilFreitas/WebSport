@@ -9,7 +9,8 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <style>
         div.DivDaCamisa{
@@ -27,30 +28,36 @@ and open the template in the editor.
     </h:head>
     <ui:include src="home1.xhtml"/>
     <h:body>
+        <br></br>
+        <br></br>
         <p:growl id="gro" showDetail="true" showSummary="true"/>
         <h:form id="formCliente">
-            <p:dataTable var="item" value="#{clienteController.recuperarTodosClientes()}"
-                         rowKey="#{item.id}" paginator="true"
-                         rows="5">
-              
-                <p:column headerText="Email" filterBy="#{item.email}">
-                    <h:outputText value="#{item.email}"/>
-                </p:column>
-                <p:column headerText="Sexo" filterBy="#{item.sexo}">
-                    <h:outputText value="#{item.sexo}"/>
-                </p:column>
-                <p:column headerText="Idade" filterBy="#{item.idade}">
-                    <h:outputText value="#{item.idade}"/>
-                </p:column>
-                
-                <p:column headerText="operações" style="width: 12%">
-                    <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaCliente').show()" 
-                                     update=":formCliente:dialVisualizaCliente">
-                        <f:setPropertyActionListener value="#{item}" target="#{clienteController.selectedCliente}"/>
-                    </p:commandButton>
-                </p:column>           
-            </p:dataTable>
+            <c:if test="#{clienteLogado != null}">
+                <p:dataTable var="item" value="#{loginController.selectedClientes()}"
+                             rowKey="#{item.id}" 
+                             rows="5">
+                    <f:facet name="header">
+                        Dados
+                    </f:facet>
 
+                    <p:column headerText="Email" filterBy="#{item.email}">
+                        <h:outputText value="#{item.email}"/>
+                    </p:column>
+                    <p:column headerText="Sexo" filterBy="#{item.sexo}">
+                        <h:outputText value="#{item.sexo}"/>
+                    </p:column>
+                    <p:column headerText="Idade" filterBy="#{item.idade}">
+                        <h:outputText value="#{item.idade}"/>
+                    </p:column>
+
+                    <p:column headerText="operações" style="width: 12%">
+                        <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaCliente').show()" 
+                                         update=":formCliente:dialVisualizaCliente">
+                            <f:setPropertyActionListener value="#{item}" target="#{clienteController.selectedCliente}"/>
+                        </p:commandButton>
+                    </p:column>           
+                </p:dataTable>
+            </c:if>
 
             <p:dialog id="dialVisualizaCliente" visible="false" modal="true"
                       resizable="false" widgetVar="widDialVisualizaCliente"
@@ -102,7 +109,7 @@ and open the template in the editor.
                 <p:column headerText="Preço" filterBy="#{item.preco}">
                     <h:outputText value="#{item.preco}"/>
                 </p:column>
-                
+
             </p:dataTable>
         </h:form>
     </h:body>
