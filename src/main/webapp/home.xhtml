@@ -18,6 +18,8 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"> </link>
+        <script defer="" src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" ></script>
 
         <style>
             *{
@@ -182,14 +184,76 @@ and open the template in the editor.
                 background-color: #e1e1e1;
                 color: transparent;
                 height: 51px;
-                margin-top: 4px;
+                margin-top: 50px;
                 padding: 0px 5px;
             }
 
+            
+            .search-box{
+                position: absolute;
+                top: 17%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #4caf50;
+                height: 40px;
+                border-radius: 40px;
+                padding: 10px;
+                
+            }
+            .search-box:hover > .seach-text{
+                width: 200px;
+                padding: 0 6px;
+                background-color: #4caf50;
+                
+            }
+            
+            .search-box:hover > .seach-btn{
+               background: #ccc;
+               right: 90%;
+               
+            }
+            
+            .seach-btn{
+                
+                color: white;
+                float: right;
+                width: 40px;
+                height:  20px;
+                border-radius: 90%;
+                background:#4caf50;
+                display:  flex;
+                justify-content: center;
+                align-items: stretch;
+            }
+            
+            .seach-text{
+                top: 17%;
+                left: 50%;
+                border: none;
+                background: none;
+                outline: none;
+                float: left;
+                padding: 0;
+                color: white;
+                font-size: 16px;
+                transition: 0.4s;
+                line-height: 20px;
+                width: 0px;
+                
+            }
+            
+            
         </style>
     </h:head>
 
     <h:body>   
+        
+        <div class="search-box">
+            <input class="seach-text" type="Text" placeholder="Pesquisa" style="color: white "> </input>
+            <a class="seach-btn" href="#" style="top: 70%">
+            <i class="fas fa-search"></i>
+        </a>
+        </div>
         <input type="checkbox" id="check">
             <label for="check">
                 <img src="imagens/Hamburger_icon.svg.png"></img>

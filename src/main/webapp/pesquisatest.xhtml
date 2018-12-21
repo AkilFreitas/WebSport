@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"> </link>
+        <script defer="" src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" ></script>
+        <style>
+            *{  
+                
+            }
+            body{
+                margin: 0;
+                padding: 0;
+            }
+            
+            .search-box{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #2f3640;
+                height: 40px;
+                border-radius: 40px;
+                padding: 10px;
+                
+            }
+            .search-box:hover > .seach-text{
+                width: 240px;
+                padding: 0 6px;
+            }
+            
+            .search-box:hover > .seach-btn{
+               background: white;
+            }
+            
+            .seach-btn{
+                color: #e84118;
+                float: right;
+                width: 40px;
+                height:  40px;
+                border-radius: 50%;
+                background:#2f3640;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .seach-text{
+                border: none;
+                background:  none;
+                outline: none;
+                float: left;
+                padding: 0;
+                color: white;
+                font-size: 16px;
+                transition: 0.4s;
+                line-height: 40px;
+                width: 0px;
+                
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="search-box">
+            <input class="seach-text" type="Text" placeholder="Pesquisa"> </input>
+        <a class="seach-btn" href="#">
+            <i class="fas fa-search"></i>
+        </a>
+        </div>
+    </body>
+</html>
