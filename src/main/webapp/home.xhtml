@@ -134,7 +134,7 @@ and open the template in the editor.
                 height:60px;
                 z-index:1;       
             }
-            
+
             div.divIconeCarrinho {
                 background-color: transparent; 
                 position:absolute;
@@ -144,7 +144,7 @@ and open the template in the editor.
                 height:60px;
                 z-index:1;
             }
-            
+
             div.divIconeCarrinho {
                 background-color: transparent; 
                 position:absolute;
@@ -199,7 +199,7 @@ and open the template in the editor.
                 padding: 0px 5px;
             }
 
-            
+
             .search-box{
                 position: absolute;
                 top: 17%;
@@ -209,23 +209,23 @@ and open the template in the editor.
                 height: 40px;
                 border-radius: 40px;
                 padding: 10px;
-                
+
             }
             .search-box:hover > .seach-text{
                 width: 200px;
                 padding: 0 6px;
                 background-color: #4caf50;
-                
+
             }
-            
+
             .search-box:hover > .seach-btn{
-               background: #ccc;
-               right: 90%;
-               
+                background: #ccc;
+                right: 90%;
+
             }
-            
+
             .seach-btn{
-                
+
                 color: white;
                 float: right;
                 width: 40px;
@@ -236,7 +236,7 @@ and open the template in the editor.
                 justify-content: center;
                 align-items: stretch;
             }
-            
+
             .seach-text{
                 top: 17%;
                 left: 50%;
@@ -250,20 +250,21 @@ and open the template in the editor.
                 transition: 0.4s;
                 line-height: 20px;
                 width: 0px;
-                
+
             }
-            
-            
+
+
         </style>
     </h:head>
 
     <h:body>   
-        
+
         <div class="search-box">
-            <input class="seach-text" type="Text" placeholder="Pesquisa" style="color: white "> </input>
-            <a class="seach-btn" href="#" style="top: 70%">
-            <i class="fas fa-search"></i>
-        </a>
+            <input class="seach-text" type="Text" value="#{produtoController.recuperarProduto(nome)}" rowKey="#{item.id}" 
+                  selectionMode="single" selection="#{produtoController.selectedProduto}" placeholder="Pesquisa" style="color: white"> </input>
+                  <a class="seach-btn" href="produtoCamisasIndividuais.xhtml" style="top: 70%">
+                <i class="fas fa-search"></i>
+            </a>
         </div>
         <input type="checkbox" id="check">
             <label for="check">
@@ -283,7 +284,7 @@ and open the template in the editor.
                     <c:if test="#{clienteLogado != null}">
                         <li><a class="menuzin" href="perfilCliente.xhtml" id="iconeLogin">#{clienteLogado.email}</a></li>
                         <h:form>
-                        <li><h:commandLink styleClass="menuzin" action="#{loginController.deslogar()}" value="DESLOGAR"/></li>
+                            <li><h:commandLink styleClass="menuzin" action="#{loginController.deslogar()}" value="DESLOGAR"/></li>
                         </h:form>
                     </c:if>
                     <p:separator />

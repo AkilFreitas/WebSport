@@ -24,9 +24,6 @@
                 <f:facet name="header">
                     Produtos Cadastrados
                 </f:facet>
-                <p:column headerText="Id">
-                    <h:outputText value="#{item.id}"/>
-                </p:column>
                 <p:column headerText="Nome" filterBy="#{item.nome}">
                     <h:outputText value="#{item.nome}"/>
                 </p:column>
@@ -72,8 +69,6 @@
                       resizable="false" widgetVar="widDialVisualizaProduto"
                       header="dados do produto">
                 <p:panelGrid columns="2">
-                    <h:outputText value="Id"/>
-                    <h:outputText value="#{produtoController.selectedProduto.id}"/>
 
                     <h:outputText value="Nome"/>
                     <h:outputText value="#{produtoController.selectedProduto.nome}"/>
@@ -81,23 +76,17 @@
                     <h:outputText value="Marca"/>
                     <h:outputText value="#{produtoController.selectedProduto.marca}"/>
 
-
-
                     <h:outputText value="Descrição"/>
                     <h:outputText value="#{produtoController.selectedProduto.descricao}"/>
 
                     <h:outputText value="Preco"/>
                     <h:outputText value="#{produtoController.selectedProduto.preco}"/>
 
-
-
                     <h:outputText value="Promocao"/>
                     <h:outputText value="#{produtoController.selectedProduto.promocao}"/>
 
                     <h:outputText value="Disponivel"/>
                     <h:outputText value="#{produtoController.selectedProduto.disponivel}"/>
-
-
 
                     <h:outputText value="Imagem"/>
                     <h:outputText value="#{produtoController.selectedProduto.imagem}"/>
@@ -111,8 +100,6 @@
                       resizable="false" widgetVar="widDialDeletaProduto"
                       header="dados da produto">
                 <p:panelGrid columns="2">
-                    <h:outputText value="Id"/>
-                    <h:outputText value="#{produtoController.selectedProduto.id}"/>
 
                     <h:outputText value="Nome"/>
                     <h:outputText value="#{produtoController.selectedProduto.nome}"/>
@@ -120,23 +107,17 @@
                     <h:outputText value="Marca"/>
                     <h:outputText value="#{produtoController.selectedProduto.marca}"/>
 
-
-
                     <h:outputText value="Descrição"/>
                     <h:outputText value="#{produtoController.selectedProduto.descricao}"/>
 
                     <h:outputText value="Preco"/>
                     <h:outputText value="#{produtoController.selectedProduto.preco}"/>
 
-
-
                     <h:outputText value="Promocao"/>
                     <h:outputText value="#{produtoController.selectedProduto.promocao}"/>
 
                     <h:outputText value="Disponivel"/>
                     <h:outputText value="#{produtoController.selectedProduto.disponivel}"/>
-
-
 
                     <h:outputText value="Imagem"/>
                     <h:outputText value="#{produtoController.selectedProduto.imagem}"/>
@@ -168,8 +149,6 @@
                                      required="true" requiredMessage="O campo marca é obrigatório"/>
                         <p:message for="txtMarca"/>
 
-
-
                         <h:outputText value="Descricao*:"/>
                         <p:inputText value="#{produtoController.produtoCadastro.descricao}" id="txtDescricao"
                                      required="true" requiredMessage="O campo descrição é obrigatório"/>
@@ -179,8 +158,6 @@
                         <p:inputText value="#{produtoController.produtoCadastro.preco}" id="txtPreco"
                                      required="true" requiredMessage="O campo preço é obrigatório"/>
                         <p:message for="txtPreco"/>
-
-
 
                         <h:outputText value="Promocao*:"/>
                         <p:inputText value="#{produtoController.produtoCadastro.promocao}" id="txtPromocao"
@@ -207,9 +184,6 @@
                 <p:fieldset legend="Alterar Produto">
                     <p:messages/>
                     <p:panelGrid columns="3">
-                        <h:outputText value="Id:"/>
-                        <p:inputText value="#{produtoController.selectedProduto.id}"/>
-                        <h:outputText/>
 
                         <h:outputText value="Nome*:"/>
                         <p:inputText value="#{produtoController.selectedProduto.nome}" id="txtNome"
@@ -221,8 +195,6 @@
                                      required="true" requiredMessage="O campo Marca é obrigat�rio"/>
                         <p:message for="txtMarca"/>
 
-
-
                         <h:outputText value="Descrição*:"/>
                         <p:inputText value="#{produtoController.selectedProduto.descricao}" id="txtDescricao"
                                      required="true" requiredMessage="O campo descrição é obrigatorio"/>
@@ -233,7 +205,6 @@
                                      required="true" requiredMessage="O campo preço é obrigatorio"/>
                         <p:message for="txtPreco"/>
 
-
                         <h:outputText value="Promoção*:"/>
                         <p:inputText value="#{produtoController.selectedProduto.promocao}" id="txtPromocao"
                                      required="true" requiredMessage="O campo promoção é obrigatorio"/>
@@ -243,8 +214,6 @@
                         <p:inputText value="#{produtoController.selectedProduto.disponivel}" id="txtDisponivel"
                                      required="true" requiredMessage="O campo disponivel é obrigatorio"/>
                         <p:message for="txtDisponivel"/>
-
-
                     </p:panelGrid>   
                     <p:commandButton value="Alterar" action="#{produtoController.alterarAction(produtoController.selectedProduto)}"
                                      oncomplete="PF('widDialAlteraProduto').hide()" 
