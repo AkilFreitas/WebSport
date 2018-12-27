@@ -260,9 +260,9 @@ and open the template in the editor.
     <h:body>   
 
         <div class="search-box">
-            <input class="seach-text" type="Text" value="#{produtoController.recuperarProduto(nome)}" rowKey="#{item.id}" 
-                  selectionMode="single" selection="#{produtoController.selectedProduto}" placeholder="Pesquisa" style="color: white"> </input>
-                  <a class="seach-btn" href="produtoCamisasIndividuais.xhtml" style="top: 70%">
+            <input class="seach-text" type="Text" value="#{produtoController.recuperarTodosProdutos()}" rowKey="#{item.id}" filterBy="#{item.nome}"
+                   selectionMode="single" selection="#{produtoController.selectedProduto}" placeholder="Pesquisa" style="color: white"> </input>
+            <a class="seach-btn" href="produtoCamisasIndividuais.xhtml" style="top: 70%">
                 <i class="fas fa-search"></i>
             </a>
         </div>
