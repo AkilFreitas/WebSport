@@ -13,27 +13,68 @@ and open the template in the editor.
     <h:head>
         <title>WS - Perfil</title>
     </h:head>
+    <style>
+          *{
+            padding:0px;
+            margin: 0px;               
+        }
+        datatable{
+            top: 50%;
+            left: 50%
+        }
+        
+        
+    </style>
     <ui:include src="home1.xhtml"/>
     <h:body>
         <p:growl id="gro" showDetail="true" showSummary="true"/>
         <h:form id="formCliente">
             <p:dataTable var="item" value="#{loginController.selectedClientes()}"
-                         rowKey="#{item.id}" paginator="true"
+                         rowKey="#{item.id}" 
                          rows="5">
                 
                 
-               
-                <p:column headerText="Email" filterBy="#{item.email}">
+                    
+                
+                    
+                        <p:column headerText="Email" filterBy="#{item.email}">
                     <h:outputText value="#{item.email}"/>
-                </p:column>
-                <p:column headerText="Sexo" filterBy="#{item.sexo}">
+                </p:column> 
+                    
+                    
+                    
+                      
+                    
+                    
+                        
+                
+               
+                    
+                    
+            </p:dataTable>
+            
+             <p:dataTable var="item" value="#{loginController.selectedClientes()}"
+                         rowKey="#{item.id}" 
+                        >
+                 
+                  <p:column headerText="Sexo" filterBy="#{item.sexo}">
                     <h:outputText value="#{item.sexo}"/>
                 </p:column>
-                <p:column headerText="Idade" filterBy="#{item.idade}">
+                  
+                 
+                  </p:dataTable>
+
+            <p:dataTable var="item" value="#{loginController.selectedClientes()}"
+                         rowKey="#{item.id}" 
+                        >
+            <p:column headerText="Idade" filterBy="#{item.idade}">
                     <h:outputText value="#{item.idade}"/>
                 </p:column> 
                 
-                <p:column headerText="operações" style="width: 12%">
+                
+                
+                </p:dataTable>
+            <p:column headerText="operações" style="width: 12%">
                     <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaCliente').show()" 
                                      update=":formCliente:dialVisualizaCliente">
                         <f:setPropertyActionListener value="#{item}" target="#{clienteController.selectedCliente}"/>
@@ -42,9 +83,7 @@ and open the template in the editor.
                                      update=":formDialAlteraCliente">
                         <f:setPropertyActionListener value="#{item}" target="#{clienteController.selectedCliente}"/>
                     </p:commandButton>
-                </p:column>           
-            </p:dataTable>
-
+                </p:column> 
 
             <p:dialog id="dialVisualizaCliente" visible="false" modal="true"
                       resizable="false" widgetVar="widDialVisualizaCliente"
