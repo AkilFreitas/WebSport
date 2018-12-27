@@ -258,14 +258,13 @@ and open the template in the editor.
     </h:head>
 
     <h:body>   
+        <h:form>
+            <div class="search-box">
+                <p:inputText styleClass="seach-text" binding="#{texto}" placeholder="Pesquisa" style="color: white"/>
+                <p:commandButton styleClass="seach-btn" style="top: 40%" action="#{produtoController.buscarCamisa(texto.value)}"/> 
+            </div>
+        </h:form>
 
-        <div class="search-box">
-            <input class="seach-text" type="Text" value="#{produtoController.recuperarTodosProdutos()}" rowKey="#{item.id}" filterBy="#{item.nome}"
-                   selectionMode="single" selection="#{produtoController.selectedProduto}" placeholder="Pesquisa" style="color: white"> </input>
-            <a class="seach-btn" href="produtoCamisasIndividuais.xhtml" style="top: 70%">
-                <i class="fas fa-search"></i>
-            </a>
-        </div>
         <input type="checkbox" id="check">
             <label for="check">
                 <img src="imagens/Hamburger_icon.svg.png"></img>

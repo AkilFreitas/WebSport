@@ -79,8 +79,8 @@ public class ProdutoController {
     public List<Produto> recuperarTodosProdutos() {
         return this.pdtm.recuperarTodos();
     }
-    
-    public String redCarrinho(){
+
+    public String redCarrinho() {
         return "carrinhoTest.xhtml?faces-redirect=true";
     }
 
@@ -115,12 +115,27 @@ public class ProdutoController {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
-    
-    public List getSelectedProdutos(){
+
+    public List getSelectedProdutos() {
         List p = new ArrayList();
         p.add(this.selectedProduto);
-        
+
         return p;
+    }
+
+    public String buscarCamisa(String texto) {
+
+        List<Produto> ps = this.pdtm.recuperarTodos();
+        
+        for (Produto p : ps) {
+            if (p.getNome() != null) {
+                boolean contem = p.getNome().contains(texto);
+                if (contem == true) {
+                    this.selectedProduto = p;
+                }
+            }
+        }
+        return "produtoCamisasIndividuais.xhtml?faces-redirect=true";
     }
 
 }

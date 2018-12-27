@@ -34,25 +34,15 @@ and open the template in the editor.
         <br></br>
 
         <h:form>
-                <div class="camisa" id="camisa">
-                    <p:dataTable id="tabelaProduto" var="item" value="#{produtoController.recuperarProduto(id)}"
-                                 rowKey="#{item.id}" selectionMode="single" selection="#{produtoController.selectedProduto}">
-
-                        <p:column headerText="Imagem">
-                            <h:outputText value="#{item.imagem}"/>
-                        </p:column>
-                        <p:column headerText="Nome">
-                            <h:outputText value="#{item.nome}"/>
-                        </p:column>
-                        <p:column headerText="Preço">
-                            <h:outputText value="#{item.preco}"/>
-                        </p:column>
-                    </p:dataTable>
-                    <div class="DivDaCamisa">
-                        <p:commandButton action="#{produtoController.redCarrinho()}" value="comprar" />
-                    </div>   
-                </div>
-            </h:form>
+            <div class="camisa" id="camisa">
+                <h:outputText value="#{produtoController.selectedProduto.imagem}"/>
+                <h:outputText value="#{produtoController.selectedProduto.nome}"/>
+                <h:outputText value="#{produtoController.selectedProduto.preco}"/>
+                <div class="DivDaCamisa">
+                    <p:commandButton action="#{produtoController.redCarrinho()}" value="comprar" />
+                </div>   
+            </div>
+        </h:form>
 
     </h:body>
 </html>
