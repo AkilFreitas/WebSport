@@ -16,22 +16,22 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"> </link>
         <script defer="" src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" ></script>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> </link>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
-<style>
-    *{}
-    .container{
-        position: absolute;
-        top: 12%;
-       
-    }
-    body{
-        background: url("imagens/planoDeFundo.jpg");
-    }
-    
-    div.divIconeCarrinho {
+        <style>
+            *{}
+            .container{
+                position: absolute;
+                top: 12%;
+
+            }
+            body{
+                background: url("imagens/planoDeFundo.jpg");
+            }
+
+            div.divIconeCarrinho {
                 background-color: transparent; 
                 position:absolute;
                 margin-left:1206px;
@@ -50,22 +50,22 @@
                 height: 61px;
                 z-index: 1;
             }
-    
-     #divCima {
+
+            #divCima {
                 height:100px;
                 width:100%;
                 position: static;
                 overflow:hidden;
                 background: url('imagens/parte cima.png')top no-repeat;
             }
-</style>
-</h:head>
+        </style>
+    </h:head>
 
     <h:body>   
-<div id="divCima">
-                    <a class="linkMenu" href="home.xhtml"><img src="imagens\parte cima.png" height="100"/></a>
-                </div>
-        
+        <div id="divCima">
+            <a class="linkMenu" href="home.xhtml"><img src="imagens\parte cima.png" height="100"/></a>
+        </div>
+
         <div class="divIconeLogin" href="login.xhtml"> 
             <a class="linkIconeLogin" href="login.xhtml" id="iconeLogin"></a>
         </div>
@@ -82,87 +82,91 @@
         <div class="divIconeDaLogo" href="home.xhtml"> 
             <a class="linkDoIconeDaLogo" href="home.xhtml" id="iconeLogin"></a>
         </div>
-        
-<div class="container">
-	<div class="row">
-		<div class="col-md-3 ">
-		    
-		</div>
-		<div class="col-md-9">
-		    <div class="card">
-		        <div class="card-body">
-		            <div class="row">
-		                <div class="col-md-12">
-		                    <h4>PERFIL</h4>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 ">
+
+                </div>
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>PERFIL</h4>
                                     <hr> </hr>
-		                </div>
-		            </div>
-		            <div class="row">
-		                <div class="col-md-12">
-		                    <form>
-                              <div class="form-group row">
-                                <label for="username" class="col-4 col-form-label">User Name*</label> 
-                                <div class="col-8">
-                                    <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text"> </input>
                                 </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="name" class="col-4 col-form-label">Primeiro Nome</label> 
-                                <div class="col-8">
-                                  <input id="name" name="name" placeholder="Primeiro Nome" class="form-control here" type="text"> </input>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="lastname" class="col-4 col-form-label">Ultino Nome</label> 
-                                <div class="col-8">
-                                  <input id="lastname" name="lastname" placeholder="Primeiro Nome" class="form-control here" type="text"> </input>
-                                </div>
-                              </div>
-                              
-                              <div class="form-group row">
-                                <label for="select" class="col-4 col-form-label">Sexo</label> 
-                                <div class="col-8">
-                                  <select id="select" name="select" class="custom-select">
-                                    <option value="admin">Masculino</option>
-                                    <option value="admin">Feminino</option>
-                                    
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="email" class="col-4 col-form-label">Email*</label> 
-                                <div class="col-8">
-                                  <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text"> </input>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="website" class="col-4 col-form-label">Idade</label> 
-                                <div class="col-8">
-                                    <input id="website" name="website" placeholder="18" class="form-control here" type="number"> </input>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="publicinfo" class="col-4 col-form-label">Biografia</label> 
-                                <div class="col-8">
-                                  <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="newpass" class="col-4 col-form-label">Senha Antiga</label> 
-                                <div class="col-8">
-                                    <input id="newpass" name="newpass2" placeholder="" class="form-control here" type="password"> </input>
-                                </div>
-                              </div> 
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form>
                                         <div class="form-group row">
-                                <label for="newpass" class="col-4 col-form-label">Senha Nova</label> 
-                                <div class="col-8">
-                                    <input id="newpass" name="newpass" placeholder="" class="form-control here" type="password"> </input>
+                                            <label for="username" class="col-4 col-form-label">User Name*</label> 
+                                            <div class="col-8">
+                                                <input id="username" name="username" placeholder="Username" class="form-control here" required="required" type="text"> </input>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="name" class="col-4 col-form-label">Primeiro Nome</label> 
+                                            <div class="col-8">
+                                                <input id="name" name="name" placeholder="Primeiro Nome" class="form-control here" type="text"> </input>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="lastname" class="col-4 col-form-label">Ultino Nome</label> 
+                                            <div class="col-8">
+                                                <input id="lastname" name="lastname" placeholder="Primeiro Nome" class="form-control here" type="text"> </input>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="select" class="col-4 col-form-label">Sexo</label> 
+                                            <div class="col-8">
+                                                <select id="select" name="select" class="custom-select">
+                                                    <option value="admin">Masculino</option>
+                                                    <option value="admin">Feminino</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="email" class="col-4 col-form-label">Email*</label> 
+                                            <div class="col-8">
+                                                <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text"> </input>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="website" class="col-4 col-form-label">Idade</label> 
+                                            <div class="col-8">
+                                                <input id="website" name="website" placeholder="18" class="form-control here" type="number"> </input>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="publicinfo" class="col-4 col-form-label">Biografia</label> 
+                                            <div class="col-8">
+                                                <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="newpass" class="col-4 col-form-label">Senha Antiga</label> 
+                                            <div class="col-8">
+                                                <input id="newpass" name="newpass2" placeholder="" class="form-control here" type="password"> </input>
+                                            </div>
+                                        </div> 
+                                        <div class="form-group row">
+                                            <label for="newpass" class="col-4 col-form-label">Senha Nova</label> 
+                                            <div class="col-8">
+                                                <input id="newpass" name="newpass" placeholder="" class="form-control here" type="password"> </input>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="offset-4 col-8">
+                                                <button name="submit" type="submit" class="btn btn-primary">Salvar e Finalizar</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                              </div>
-                              <div class="form-group row">
-                                <div class="offset-4 col-8">
-                                  <button name="submit" type="submit" class="btn btn-primary">Salvar e Finalizar</button>
-                                </div>
+<<<<<<< HEAD
                               </div>
                             </form>
 		                </div>
@@ -179,4 +183,14 @@
         
        
 </h:body>
+=======
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </h:body>
+>>>>>>> bbe6a73a3c49dd06f3e7f401c1adaa95771e7dc3
 </html>

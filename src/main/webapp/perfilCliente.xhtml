@@ -32,26 +32,24 @@ and open the template in the editor.
             <p:dataTable var="item" value="#{loginController.selectedClientes()}"
                          rowKey="#{item.id}" 
                          rows="5">
+
                 
                 
                     
                 
                     
                         <p:column headerText="Email" filterBy="#{item.email}">
+
+
+
+
+                <p:column headerText="Email" filterBy="#{item.email}">
+
                     <h:outputText value="#{item.email}"/>
                 </p:column> 
                     
                     
-                    
-                      
-                    
-                    
-                        
-                
-               
-                    
-                    
-            </p:dataTable>
+                        </p:column></p:dataTable>
             
              <p:dataTable var="item" value="#{loginController.selectedClientes()}"
                          rowKey="#{item.id}" 
@@ -70,11 +68,16 @@ and open the template in the editor.
             <p:column headerText="Idade" filterBy="#{item.idade}">
                     <h:outputText value="#{item.idade}"/>
                 </p:column> 
+
                 
                 
                 
                 </p:dataTable>
             <p:column headerText="operações" style="width: 12%">
+
+
+                <p:column headerText="operações" style="width: 12%">
+
                     <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaCliente').show()" 
                                      update=":formCliente:dialVisualizaCliente">
                         <f:setPropertyActionListener value="#{item}" target="#{clienteController.selectedCliente}"/>
@@ -114,7 +117,7 @@ and open the template in the editor.
                     <h:outputText value="#{loginController.getClienteLogado().endereco.bairro}"/>
                 </p:panelGrid>                   
             </p:dialog>
-        </h:form>
+       </p:column> </h:form>
 
         <p:dialog id="dialAlteraCliente" visible="false" modal="true" resizable="false"
                   widgetVar="widDialAlteraCliente" header="Alterar Cliente">
