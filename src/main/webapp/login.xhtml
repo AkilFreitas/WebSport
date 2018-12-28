@@ -10,6 +10,7 @@
         <meta  name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="estilo.css"> </link>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> </link>
+        <link rel="stylesheet" href="assets/css/animate.css" > </link>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
@@ -34,7 +35,15 @@
             background-size: 100%;
 
         }
+login-box{
+            width: 280px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
 
+        }
         .login-box{
             width: 280px;
             position: absolute;
@@ -106,7 +115,7 @@
     <h:body>
         <h:form>
             <p:growl id="dro" life="3000"/>
-            <div class="login-box">
+            <div class="login-box animated flip">
                 <h1 href="men.xhtml">LOGIN</h1>               
                 <div class="textBox">     
                     <p:inputText type="email" placeholder="Email"  value="#{loginController.login}" id="txtLogin"

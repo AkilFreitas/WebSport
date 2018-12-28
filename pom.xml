@@ -77,11 +77,17 @@
             <version>2.6</version>
         </dependency>
         <dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>animate.css</artifactId>
+    <version>3.5.2</version>
+</dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
             <type>jar</type>
-        </dependency>     
+        </dependency> 
+           
       
 
 
