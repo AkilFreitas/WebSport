@@ -45,7 +45,10 @@ and open the template in the editor.
             <p:dataTable var="item" value="#{loginController.selectedClientes()}"
                          rowKey="#{item.id}"  editable="true"
                          rows="5">
-
+                
+                <f:facet name="header">
+                    Perfil
+                </f:facet>
                 <p:column headerText="Email" class="email">
                     <h:outputText value="#{item.email}"/>
                 </p:column>
