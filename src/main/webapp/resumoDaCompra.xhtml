@@ -21,6 +21,19 @@ and open the template in the editor.
             height: 39px;
             z-index: 1;
         }
+         .formstyle  {
+                width: 550px;
+                position: absolute;
+                top: 35%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-family: Comic Sans;
+            }
+            form {
+                
+                
+            }
 
     </style>
     <h:head>
@@ -30,8 +43,8 @@ and open the template in the editor.
     <h:body>
         <br></br>
         <br></br>
-        <p:growl id="gro" showDetail="true" showSummary="true"/>
-        <h:form id="formCliente">
+        <p:growl id="gro" />
+        <h:form id="formCliente" class="formstyle">
             <c:if test="#{clienteLogado != null}">
                 <p:dataTable var="item" value="#{loginController.selectedClientes()}"
                              rowKey="#{item.id}" 
@@ -94,7 +107,7 @@ and open the template in the editor.
         <br></br>
         <br></br>
         <br></br>
-        <h:form id="formProduto">
+        <h:form id="formProduto" class="formstyle" >
             <p:dataTable var="item" value="#{produtoController.getSelectedProdutos()}"
                          rowKey="#{item.id}">
                 <f:facet name="header">
