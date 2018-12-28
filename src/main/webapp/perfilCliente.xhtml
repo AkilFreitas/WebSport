@@ -18,13 +18,11 @@ and open the template in the editor.
     
     <ui:include src="home1.xhtml"/>
     <style>
-            body{
-                position: relative;
-            }
+          
             .aaa  {
                 width: 550px;
                 position: absolute;
-                top: 120%;
+                top: 35%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 color: white;
@@ -58,7 +56,7 @@ and open the template in the editor.
                     <h:outputText value="#{item.idade}"/>
                 </p:column>
 
-                <p:column headerText="operações" style="width: 12%">
+                <p:column headerText="Editar" style="width: 12%">
                     <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaCliente').show()" 
                                      update=":formCliente:dialVisualizaCliente">
                         <f:setPropertyActionListener value="#{item}" target="#{clienteController.selectedCliente}"/>
