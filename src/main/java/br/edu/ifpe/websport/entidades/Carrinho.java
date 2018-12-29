@@ -25,6 +25,11 @@ public class Carrinho extends Produto {
     
     @OneToMany
     private List<Produto> recebeProduto;
+     
+    
+    @OneToMany
+    private List<Produto> produtos;
+    private List<Item> items;
 
     public void recebeProduto(){
        recebeProduto = this.getRecebeProduto();
@@ -47,5 +52,17 @@ public class Carrinho extends Produto {
     public void setRecebeProduto(List<Produto> recebeProduto) {
         this.recebeProduto = recebeProduto;
     }   
+        public void adicionar(Produto produto){
+        produtos.add(produto);
+        
+    }
+    public void adicionar(Item item){
+        items.add(item);
+        
+    }
+    public Produto remove(int indiceDoItem) {
+		Produto produto = produtos.remove(indiceDoItem);
+		return produto;
+	}
  
 }
