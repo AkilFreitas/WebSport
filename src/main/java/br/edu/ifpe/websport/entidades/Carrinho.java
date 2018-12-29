@@ -25,13 +25,10 @@ public class Carrinho extends Produto {
     
     @OneToMany
     private List<Produto> recebeProduto;
-    
-   
-    
+
     public void recebeProduto(){
        recebeProduto = this.getRecebeProduto();
     }
-
     
     @Override
     public int getId() {

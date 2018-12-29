@@ -23,6 +23,7 @@ import java.util.ArrayList;
 public class ProdutoController {
 
     ProdutoModel pdtm = new ProdutoModel();
+    List <Produto> produtos;
     private Produto produtoCadastro;
     private Produto selectedProduto;
 
