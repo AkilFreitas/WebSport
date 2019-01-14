@@ -26,7 +26,6 @@ public class ClienteController {
     ClienteModel cm = new ClienteModel();
     private Cliente clienteCadastro;
     private Cliente selectedCliente;
-
     Cliente cliente = new Cliente();
 
     public ClienteController() {

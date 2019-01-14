@@ -4,18 +4,15 @@
  * and open the template in the editor.
  */
 package br.edu.ifpe.websport.entidades;
-
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 /**
  *
  * @author mayco
  */
-    
 @Entity
 @Table(name = "Carrinho")
 public class Carrinho extends Produto {
@@ -26,12 +23,9 @@ public class Carrinho extends Produto {
     @OneToMany
     private List<Produto> recebeProduto;
     
-   
-    
     public void recebeProduto(){
        recebeProduto = this.getRecebeProduto();
     }
-
     
     @Override
     public int getId() {
@@ -50,5 +44,4 @@ public class Carrinho extends Produto {
     public void setRecebeProduto(List<Produto> recebeProduto) {
         this.recebeProduto = recebeProduto;
     }   
- 
 }

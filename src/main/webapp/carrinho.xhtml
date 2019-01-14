@@ -59,7 +59,7 @@
                 </p:column>              
                 <p:column headerText="Tamanho" filterBy="#{item.tamanho}">
                     <h:outputText value="#{item.tamanho}"/>
-                </p:column>
+                </p:column> 
                 <p:column headerText="Promocao" filterBy="#{item.promocao}">
                     <h:outputText value="#{item.promocao}"/>
                 </p:column>
@@ -72,7 +72,6 @@
                 <p:column headerText="Imagem" filterBy="#{item.imagem}">
                     <h:outputText value="#{item.imagem}"/>
                 </p:column>
-
 
                 <p:column headerText="operações" style="width: 12%">
                     <p:commandButton value="Remover do Carrinho" icon="ui-icon-closethick" oncomplete="PF('widDialDeletaProduto').show()" 
@@ -111,8 +110,6 @@
                 <p:commandButton value="Deseja mesmo tirar do carrinho?" action="#{produtoController.deletarAction(produtoController.selectedProduto)}" 
                                  oncomplete="PF('widDialDeletaProduto').hide()" update="@form"/>
             </p:dialog>
-            
-            
         </h:form>
     </h:body>
 </html>

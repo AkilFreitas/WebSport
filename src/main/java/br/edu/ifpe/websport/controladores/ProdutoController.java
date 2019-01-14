@@ -25,6 +25,7 @@ public class ProdutoController {
     ProdutoModel pdtm = new ProdutoModel();
     private Produto produtoCadastro;
     private Produto selectedProduto;
+    private ArrayList<Produto> produtoscompra = new ArrayList<>();
 
     Produto produto = new Produto();
 
@@ -81,7 +82,9 @@ public class ProdutoController {
     }
 
     public String redCarrinho() {
-        return "carrinhoTest.xhtml?faces-redirect=true";
+        produtoscompra.add(selectedProduto);
+        selectedProduto = null;
+        return "carrinhoTest_1.xhtml?faces-redirect=true";
     }
 
     public ProdutoModel getPm() {
@@ -138,4 +141,11 @@ public class ProdutoController {
         return "produtoCamisasIndividuais.xhtml?faces-redirect=true";
     }
 
+    public ArrayList<Produto> getProdutoscompra() {
+        return produtoscompra;
+    }
+
+    public void setProdutoscompra(ArrayList<Produto> produtoscompra) {
+        this.produtoscompra = produtoscompra;
+    }
 }

@@ -95,7 +95,7 @@ and open the template in the editor.
         <br></br>
         <br></br>
         <h:form id="formProduto">
-            <p:dataTable var="item" value="#{produtoController.getSelectedProdutos()}"
+            <p:dataTable var="item" value="#{produtoController.produtoscompra}"
                          rowKey="#{item.id}">
                 <f:facet name="header">
                     Produto
@@ -109,7 +109,6 @@ and open the template in the editor.
                 <p:column headerText="Preço" filterBy="#{item.preco}">
                     <h:outputText value="#{item.preco}"/>
                 </p:column>
-
             </p:dataTable>
         </h:form>
     </h:body>

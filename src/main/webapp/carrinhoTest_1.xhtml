@@ -8,21 +8,16 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <head>
         <title>WS | Meu Carrinho</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="estilo.css"> </link>
-
         <link rel="stylesheet" href="estilo.css"> </link>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> 
-
-
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
-
         <style>
 
             *{
@@ -33,7 +28,19 @@ and open the template in the editor.
             body{      
                 background: url("imagens/planoDeFundo.jpg");
             }
+            div.DivDaCamisa{
+                position: absolute;
+                margin-left: 1258px;
+                margin-top: 1px;
+                width: 115px;
+                height: 39px;
+                z-index: 1;
+            }
+            div.camisa{
 
+                width: 1365px;
+
+            }
 
             #divCima {
                 height:100px;
@@ -173,7 +180,7 @@ and open the template in the editor.
                 vertical-align: middle;
             }
             @media screen and (max-width: 600px) {
-                table#cart tbody td .form-control{
+                table#itemt tbody td .form-control{
                     width:20%;
                     display: inline !important;
                 }
@@ -189,113 +196,64 @@ and open the template in the editor.
                     float:right;
                 }
 
-                table#cart thead { display: none; }
-                table#cart tbody td { display: block; padding: .6rem; min-width:320px;}
-                table#cart tbody tr td:first-child { background: #333; color: #fff; }
-                table#cart tbody td:before {
+                table#itemt thead { display: none; }
+                table#itemt tbody td { display: block; padding: .6rem; min-width:320px;}
+                table#itemt tbody tr td:first-child { background: #333; color: #fff; }
+                table#itemt tbody td:before {
                     content: attr(data-th); font-weight: bold;
                     display: inline-block; width: 8rem;
                 }
 
 
 
-                table#cart tfoot td{display:block; }
-                table#cart tfoot td .btn{display:block;}
+                table#itemt tfoot td{display:block; }
+                table#itemt tfoot td .btn{display:block;}
 
             }
 
         </style>
-
-
-
     </head>
     <h:body>   
-        <input type="checkbox" id="check">
-            <label for="check">
-                <img src="imagens/Hamburger_icon.svg.png"></img>
-            </label>  
-        </input>
-        <nav class="navi">
-            <nav>
-                <div id="divCima">
-                    <a class="linkMenu" href="home.xhtml"><img src="imagens\parte cima.png" height="100"/></a>
-                </div>
-                <ul>
-                    <li><a class="menuzin" href="home.xhtml">HOME</a></li>
-                    <c:if test="#{clienteLogado != null}">
-                        <li><a class="menuzin" href="perfilCliente.xhtml" id="iconeLogin">#{clienteLogado.email}</a></li>
-                    </c:if>
-                    <p:separator />
-                    <li><a class="menuzin" href="produtosCamisas.xhtml">CAMISAS</a> </li>
-                    <li><a class="menuzin" href="informacoes.xhtml">SOBRE</a> </li>
-                </ul>
-            </nav>
-        </nav>
-        <div class="divIconeLogin" href="login.xhtml"> 
-            <a class="linkIconeLogin" href="login.xhtml" id="iconeLogin"></a>
-        </div>
-        <c:if test="#{clienteLogado != null}">
-            <div class="divIconeLogin" href="perfilCliente.xhtml"> 
-                <a class="linkIconeLogin" href="perfilCliente.xhtml" id="iconeLogin"></a>
-            </div>
-        </c:if>
+        <ui:include src="home1.xhtml"/>
 
-        <div class="divIconeCarrinho" href="carrinhoTest.xhtml"> 
-            <a class="linkIconeCarrinho" href="carrinhoTest.xhtml" id="iconeLogin"></a>
-        </div>
-
-        <div class="divIconeDaLogo" href="home.xhtml"> 
-            <a class="linkDoIconeDaLogo" href="home.xhtml" id="iconeLogin"></a>
-        </div>
-        <h:form>          
-            <div id="divCima">
-
-            </div>
-        </h:form>
-    </h:body>
-    <h:body>
         <div class="container">
-            <table id="cart" class="table table-hover table-condensed">
-                <thead>
-                    <tr>
-                        <th style="width:50%">Produto</th>
-                        <th style="width:10%">Preço</th>
-                        <th style="width:8%">Quantidade</th>
-                        <th style="width:22%" class="text-center">Subtotal</th>
-                        <th style="width:10%"></th>
-                    </tr>
-                </thead>
+            <table id="itemt" class="table table-hover table-condensed">
                 <tbody>
-                    <tr>
-                        <td data-th="Product">
-                            <div class="row">
-                                <div class="col-sm-2 hidden-xs">#{produtoController.selectedProduto.imagem}</div>
-                                <div class="col-sm-10">
-                                    <h4 class="nomargin">#{produtoController.selectedProduto.nome}</h4>
-                                    <p>#{produtoController.produtoCadastro.descricao}</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td data-th="Price">#{produtoController.selectedProduto.preco}</td>
-                        <td data-th="Quantity">
-                            <input type="number" class="form-control text-center" value="1"> </input>
-                        </td>
-                        <td data-th="Subtotal" class="text-center">#{produtoController.selectedProduto.preco}</td>
-                        <td class="actions" data-th="">
-                            <button class="btn btn-danger btn-sm" value="#{produtoController.deletarAction(produtoController.selectedProduto)}"><i class="fa fa-trash-o"></i></button>								
-                        </td>
-                    </tr>
+                    <div class="container">
+                        <table id="cart" class="table table-hover table-condensed">
+
+                            <tbody>
+
+                            </tbody>
+                            <tfoot>
+                                <tr class="visible-xs">
+                                    <td class="text-center"><strong>Total #{produtoController.selectedProduto.preco}</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+
+                    <h:form id="formCamisas">
+                        <div class="camisa" id="camisa">
+                            <p:dataTable id="tabelaProduto" var="item" value="#{produtoController.produtoscompra}"
+                                         selection="#{produtoController.produtoscompra}">
+                                <p:column headerText="Imagem">
+                                    <h:outputText value="#{item.imagem}"/>
+                                </p:column>
+                                <p:column headerText="Nome">
+                                    <h:outputText value="#{item.nome}"/>
+                                </p:column>
+                                <p:column headerText="Preço">
+                                    <h:outputText value="#{item.preco}"/>
+                                </p:column>
+                            </p:dataTable>
+                            <div class="DivDaCamisa">
+                                <td><a href="confirmarCompra.xhtml" class="btn btn-success btn-block" action="#{produtoController.inserirAction()}">Confirmar <i class="fa fa-angle-right"></i></a></td>
+                            </div>   
+                        </div>
+                    </h:form>
                 </tbody>
-                <tfoot>
-                    <tr class="visible-xs">
-                        <td class="text-center"><strong>Total #{produtoController.selectedProduto.preco}</strong></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="hidden-xs"></td>
-                        <td class="hidden-xs text-center"><strong>Total #{produtoController.selectedProduto.preco}</strong></td>
-                        <td><a href="confirmarCompra.xhtml" class="btn btn-success btn-block" action="#{produtoController.inserirAction()}">Confirmar <i class="fa fa-angle-right"></i></a></td>
-                    </tr>
-                </tfoot>
             </table>
         </div>
     </h:body>

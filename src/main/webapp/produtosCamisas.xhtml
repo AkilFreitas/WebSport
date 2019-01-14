@@ -36,7 +36,6 @@ and open the template in the editor.
             <div class="camisa" id="camisa">
                 <p:dataTable id="tabelaProduto" var="item" value="#{produtoController.recuperarTodosProdutos()}"
                              rowKey="#{item.id}" selectionMode="single" selection="#{produtoController.selectedProduto}">
-
                     <p:column headerText="Imagem">
                         <h:outputText value="#{item.imagem}"/>
                     </p:column>
