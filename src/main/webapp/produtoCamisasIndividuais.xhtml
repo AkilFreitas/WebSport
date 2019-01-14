@@ -12,17 +12,25 @@ and open the template in the editor.
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <style>
         div.DivDaCamisa{
-            position: absolute;
-            margin-left: 1258px;
-            margin-top: 1px;
-            width: 115px;
-            height: 39px;
+            width: 550px;
+                position: absolute;
+                top: 35%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-family: Comic Sans;
             z-index: 1;
         }
-        div.camisa{
-
-            width: 1365px;
-
+        
+        camisa{
+             width: 550px;
+                position: absolute;
+                top: 35%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-family: Comic Sans;
+            
         }
     </style>
     <h:head>
@@ -34,7 +42,7 @@ and open the template in the editor.
         <br></br>
 
         <h:form>
-            <div class="camisa" id="camisa">
+            <div class="camisa" id="camisa2">
                 <h:outputText value="#{produtoController.selectedProduto.imagem}"/>
                 <h:outputText value="#{produtoController.selectedProduto.nome}"/>
                 <h:outputText value="#{produtoController.selectedProduto.preco}"/>

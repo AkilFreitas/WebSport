@@ -12,20 +12,44 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>WS - Perfil</title>
+        <link rel="stylesheet" href="assets/css/animate.css" > </link>
+
     </h:head>
+    
     <ui:include src="home1.xhtml"/>
+    <style>
+          
+            .aaa  {
+                width: 550px;
+                position: absolute;
+                top: 35%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-family: Comic Sans;
+            }
+            .b{
+                background: #FE980F;
+            }
+
+
+        </style>
     <h:body>
+        
         <br></br>
         <br></br>
         <br></br>     
-        
-        <p:growl id="gro" showDetail="true" showSummary="true"/>
-        <h:form id="formCliente">
-            <p:dataTable var="item" value="#{loginController.selectedClientes()}"
-                         rowKey="#{item.id}" paginator="true"
-                         rows="5">
 
-                <p:column headerText="Email">
+        <p:growl id="gro" showDetail="true" showSummary="true"/>
+        <h:form id="formCliente" class="aaa ">
+            <p:dataTable var="item" value="#{loginController.selectedClientes()}"
+                         rowKey="#{item.id}"  editable="true"
+                         rows="5">
+                
+                <f:facet name="header">
+                    Perfil
+                </f:facet>
+                <p:column headerText="Email" class="email">
                     <h:outputText value="#{item.email}"/>
                 </p:column>
                 <p:column headerText="Sexo">
@@ -35,7 +59,7 @@ and open the template in the editor.
                     <h:outputText value="#{item.idade}"/>
                 </p:column>
 
-                <p:column headerText="operações" style="width: 12%">
+                <p:column headerText="Editar" style="width: 12%">
                     <p:commandButton icon="ui-icon-search" oncomplete="PF('widDialVisualizaCliente').show()" 
                                      update=":formCliente:dialVisualizaCliente">
                         <f:setPropertyActionListener value="#{item}" target="#{clienteController.selectedCliente}"/>
@@ -81,7 +105,7 @@ and open the template in the editor.
 
         <p:dialog id="dialAlteraCliente" visible="false" modal="true" resizable="false"
                   widgetVar="widDialAlteraCliente" header="Alterar Cliente">
-            <h:form id="formDialAlteraCliente">
+            <h:form id="formDialAlteraCliente" class="aaa">
                 <p:fieldset legend="Alterar Cliente">
                     <p:messages/>
                     <p:panelGrid columns="3">
@@ -131,5 +155,6 @@ and open the template in the editor.
                 </p:fieldset>
             </h:form>
         </p:dialog>
+        
     </h:body>
 </html>

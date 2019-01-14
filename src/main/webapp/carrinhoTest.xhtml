@@ -58,6 +58,13 @@ and open the template in the editor.
                 top: -13px;
                 left: -20px;
             }
+            .container{
+                 width: 550px;
+                position: absolute;
+                top: 35%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
 
 
             a.linkMenu{
@@ -291,6 +298,7 @@ and open the template in the editor.
                         <td class="text-center"><strong>Total #{produtoController.selectedProduto.preco}</strong></td>
                     </tr>
                     <tr>
+                        <td><a href="home.xhtml" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continuar Comprando</a></td>
                         <td colspan="2" class="hidden-xs"></td>
                         <td class="hidden-xs text-center"><strong>Total #{produtoController.selectedProduto.preco}</strong></td>
                         <td><a href="confirmarCompra.xhtml" class="btn btn-success btn-block" action="#{produtoController.inserirAction()}">Confirmar <i class="fa fa-angle-right"></i></a></td>
